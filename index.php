@@ -1,17 +1,14 @@
 <?php
 include"admin/include/config.php";
 if(isset($_POST['signup'])){
-    $veriotp=$_POST['veriotp'];
     $status=1;
-    $email=$row['email'];  
+    $email=$_POST['email'];  
   $from = 'Enquiry <'.$email.'>' . "\r\n";
   $sendTo = 'Enquiry <naiduvedant@gmail.com>';
   $subject = 'Agreerent';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  $from .= "Content-Type: multipart/mixed;"; 
-  $from .= "boundary = $boundary\r\n"; 
   
   
   $emailText = '
