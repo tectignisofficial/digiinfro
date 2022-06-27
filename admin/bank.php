@@ -1,3 +1,20 @@
+<?php
+include"include/config.php";
+
+ if(isset($_POST['submit'])){
+ $bank_details = $_POST['bank_details'];
+ $status = $_POST['status'];
+  
+  $query="UPDATE bank SET bank_details='$bank_details',status='$status'";
+  $result=mysqli_query($conn,$query);
+  if($result){
+    echo"<script>alert('Successfully Updated');</script>";
+  }
+  else{
+    echo"<script>alert('Not Updated');</script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +48,17 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="Digi Infromatrics" height="60" width="60"></div>
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
 
-    <?php include"include/header.php" ?>
+  <!-- Navbar -->
+  <?php include"include/header.php" ?>
 
-  <!-- Main Sidebar Container -->
+    <!-- Main Sidebar Container -->
 
-  <?php include"include/sidebar.php" ?>
+    <?php include"include/sidebar.php" ?>
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -59,18 +80,64 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <?php
+    $sql="SELECT * FROM bank";
+    $result=mysqli_query($conn,$sql);
+    $arr=mysqli_fetch_assoc($result);
+    ?>
+
     <section class="content">
-      <div class="container-fluid">
-        
-      </div><!-- /.container-fluid -->
-    </section>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <form method="POST">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Payment Settings</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+  <div class="form-group">
+                    <label for="exampleInputtext1">Razopay Key</label>
+                    <textarea type="text" class="form-control" name="bank_details"id="exampleInputtext1" value="<?php echo $arr['bank_details'] ?>" placeholder="Bank Details"><?php echo $arr['bank_details'] ?></textarea>
+                  </div>
+                    </div>
+                    <div class="col-6">
+<div class="form-group">
+                    <label for="exampleInputtext1">Status</label>
+                    <select class="form-control" id="exampleInputtext1" name="status" placeholder="text">
+                      <option value="1">Active</option>
+                      <option value="0">Deactivate</option>
+                    </select>
+
+                  </div>
+                    </div>
+                  </div>
+                
+                
+               
+                  
+                  
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
 
   <!-- Control Sidebar -->
-<?php include"include/footer.php" ?>
+     <?php include"include/footer.php" ?>
+
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
