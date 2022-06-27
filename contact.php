@@ -1,10 +1,18 @@
+<?php
+include("include/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
+        <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
         <title>Vcard - Directory & Listings HTML Template</title>
