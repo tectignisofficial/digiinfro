@@ -238,7 +238,7 @@ if(isset($_POST["submit"])){
               </p>
             </a>
           </li>
-			<li class="nav-item ">
+			<li class="nav-item">
             <a href="" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -350,7 +350,7 @@ if(isset($_POST["submit"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pricing.html" class="nav-link">
+                <a href="pricing.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pricing</p>
                 </a>
@@ -368,7 +368,7 @@ if(isset($_POST["submit"])){
                 </a>
               </li>
 				<li class="nav-item">
-                <a href="seovender.html" class="nav-link active">
+                <a href="seovender.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vendor Registration</p>
                 </a>
@@ -570,7 +570,7 @@ if(isset($_POST["submit"])){
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Vendor Registration</h3>
+                <h3 class="card-title">Pricing Page</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
