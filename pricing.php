@@ -1,5 +1,5 @@
 <?php
-include("include/config.php");
+include("admin/include/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@ include("include/config.php");
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <?php
-            $sql=mysqli_query($conn,"Select * from seo");
+            $sql=mysqli_query($conn,"Select * from seo where page_name='pricing'");
                while($arr=mysqli_fetch_array($sql)){
              ?>
         <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
