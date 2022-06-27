@@ -51,7 +51,7 @@
                         <div class="col-lg-8">
                             <div class="hero-content">
                                 <h1>Dream Explore
-                                    Discover</h1>
+                                    Discover1</h1>
                                 <h3>People Don’t Take,Trips Take People</h3>
                                 <div class="hero-search-wrapper">
                                     <form>
