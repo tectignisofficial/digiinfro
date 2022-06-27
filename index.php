@@ -5,7 +5,7 @@ if(isset($_POST['signup'])){
     $status=1;
     $email=$row['email'];  
   $from = 'Enquiry <'.$email.'>' . "\r\n";
-  $sendTo = 'Enquiry <'naiduvedant@gmail.com'>';
+  $sendTo = 'Enquiry <naiduvedant@gmail.com>';
   $subject = 'Agreerent';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
