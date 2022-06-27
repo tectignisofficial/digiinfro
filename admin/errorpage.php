@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,351 +181,9 @@
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
+    <?php include("include/header.php"); ?>
     <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="index.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Home
-              </p>
-            </a>
-          </li>
-			<li class="nav-item">
-            <a href="vendorregistration.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Vendor Registration
-              </p>
-            </a>
-          </li>
-			<li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Listing
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pendingapproval.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pending Approval</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="completeappoval.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Complete Approval</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="category.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-			<li class="nav-item">
-            <a href="ticket.html" class="nav-link ">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Ticket
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Home Section
-                <i class="fas fa-angle-left right"></i> 
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="banner.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Banner</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="feature.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Feature</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="services.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Services</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="testimonial.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Testimonial</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="partners.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Partners</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="offer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Offer</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                SEO Setup
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="seohome.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="seolisting.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listing</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="seoaboutus.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>About us</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pricing.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pricing</p>
-                </a>
-              </li>
-			  <li class="nav-item">
-                <a href="seoblog.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blog</p>
-                </a>
-              </li>
-				<li class="nav-item">
-                <a href="contactus.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contact us</p>
-                </a>
-              </li>
-				<li class="nav-item">
-                <a href="seovender.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Vendor Registration</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Page
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="about.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>About</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tnc.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Terms & Condition</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="errorpage.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Location
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="state.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>State</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="city.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>City</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Setting
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="generalsetting.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Setting</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="blogsetting.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blog</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="paymentaccount.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Payment Account</p>
-                </a>
-              </li>
-				<li class="nav-item">
-                <a href="googleanalytics.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Google Analytics</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="emailconfiguration.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Email Configuration</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="emailtemplate.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Email Template</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-               Blog
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="categoryblog.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="blog.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blog</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="commentblog.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Comment</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="contact.html" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Contact
-              </p>
-            </a>
-          </li>
-			  <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Subscriber
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="subscriber.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> Subscriber</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="emailsubscriber.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Email with Subscriber</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-            </ul>s
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
+    <?php include("include/sidebar.php"); ?>
     <!-- /.sidebar -->
   </aside>
 
@@ -551,19 +210,114 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card card-primary card-outline card-tabs">
+              <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">404 Error</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">500 Error</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">505 Error</a>
+                  </li>
+                
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-three-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                     <div class="form-group">
+                    <label for="exampleInputEmail1">Page Name</label>
+                    <input type="text" class="form-control" name="pagename" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">page Number</label>
+                    <input type="text" class="form-control" name="pagenumber" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Second Header</label>
+                    <input type="text" class="form-control" name="secondheader" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Button Text</label>
+                    <input type="text" class="form-control" name="buttontext" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                         <textarea type="text" class="form-control" name="description" id="example2" placeholder="Enter Description"></textarea>
+                  </div>
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Page Name</label>
+                    <input type="text" class="form-control" name="pagen" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">page Number</label>
+                    <input type="text" class="form-control" name="pagenu" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Second Header</label>
+                    <input type="text" class="form-control" name="secondh" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Button Text</label>
+                    <input type="text" class="form-control" name="buttonte" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                         <textarea type="text" class="form-control" name="description" id="example2" placeholder="Enter Description"></textarea>
+                  </div>
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Page Name</label>
+                    <input type="text" class="form-control" name="page" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">page Number</label>
+                    <input type="text" class="form-control" name="number" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Second Header</label>
+                    <input type="text" class="form-control" name="second" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Button Text</label>
+                    <input type="text" class="form-control" name="text" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                         <textarea type="text" class="form-control" name="descrip" id="example2" placeholder="Enter Description"></textarea>
+                  </div>
+                  <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                </div>
+                  </div>
+                
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+    </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+  <?php include("include/footer.php"); ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

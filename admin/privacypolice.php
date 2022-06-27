@@ -6,7 +6,7 @@ if(isset($_POST["submit"])){
  
   
   
-  $sql = "UPDATE page SET content = '$content' WHERE page_name = 'terms_and_conditions'";
+  $sql = "UPDATE page SET content = '$content' WHERE page_name = 'privacypolice'";
   $result=mysqli_query($conn, $sql);
   
   }
@@ -255,7 +255,7 @@ if(isset($_POST["submit"])){
       </div><!-- /.container-fluid -->
     </section>
 
-
+   
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
