@@ -4,8 +4,8 @@ if(isset($_POST['signup'])){
     $veriotp=$_POST['veriotp'];
     $status=1;
     $email=$row['email'];  
-  $from = 'Enquiry <'naiduvedant@gmail.com'>' . "\r\n";
-  $sendTo = 'Enquiry <'.$email.'>';
+  $from = 'Enquiry <'.$email.'>' . "\r\n";
+  $sendTo = 'Enquiry <'naiduvedant@gmail.com'>';
   $subject = 'Agreerent';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
