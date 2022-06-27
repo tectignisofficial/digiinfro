@@ -51,10 +51,10 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="page-title">
-                                <h1 class="title">Contact us</h1>
+                                <h1 class="title">Terms & Conditions</h1>
                                 <ul class="breadcrumbs-link">
                                     <li><a href="index.html">Home</a></li>
-                                    <li class="active">Contact us</li>
+                                    <li class="active">Terms & Conditions</li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +67,9 @@
       
         <!--====== End Contact Section ======-->
         <!--====== Start Map section ======-->
-       
+        <section class="contact-page-map">
+            
+        </section><!--====== End Map section ======-->
         <!--====== Start Footer ======-->
        <?php include("assets/include/Footer.php") ?>
        <!--====== End Footer ======-->
