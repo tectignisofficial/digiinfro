@@ -1,3 +1,16 @@
+<?php
+include("include/config.php");
+if(isset($_POST["submit"])){
+
+  $meta_title=$_POST['meta_title'];
+  $meta_discription=$_POST['meta_discription'];
+  
+  
+  $sql = "UPDATE seo SET meta_title = '$meta_title', meta_description = '$meta_discription' WHERE page_name = 'home'";
+  $result=mysqli_query($conn, $sql);
+  
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -551,7 +564,46 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        
+      <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Blog Page</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="POST">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" class="form-control" name="meta_title" id="example1" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Meta Description</label>
+                         <textarea type="text" class="form-control" name="meta_discription" id="example2" placeholder="Enter Description"></textarea>
+                  </div>
+                 
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                </div>
+              </form>
+            </div> 
+
+          </div>
+          
+                
+                  <!-- input states -->
+                 
+              
+            <!-- /.card -->
+          </div>
+          <!--/.col (right) -->
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
