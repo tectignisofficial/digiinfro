@@ -122,7 +122,7 @@ if(isset($_POST['save'])){
               <div class="card-body">
                 <div class="form-group">
                   <h5>Subject <span class="text-danger">*</span></h5>
-                  <input class="form-control" name="subject" placeholder="Subject">
+                  <input class="form-control" type="text" name="subject" placeholder="Subject">
                 </div>
                 <div class="form-group">
                   <h5>Message<span class="text-danger">*</span></h5>
