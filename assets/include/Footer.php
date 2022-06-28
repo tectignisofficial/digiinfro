@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="widget newsletter-widget mb-40">
+                        <div class="widget newsletter-widget mb-40" id="subscribe">
                             <h4 class="widget-title">Newsletter</h4>
                             <p>Caoreet massa torto pon interdum
                                 sestibulum suscipit duis.</p>
