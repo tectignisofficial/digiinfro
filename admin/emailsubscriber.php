@@ -1,14 +1,11 @@
 <?php
 include"include/config.php";
 if(isset($_POST['save'])){
-    $status=1;
-                      
-                     $sql=mysqli_query($conn,"select * from `subscriber` where id=1");
+  $subject=$_POST['subject'];  
+  $message=$_POST['message'];                        
+                     $sql=mysqli_query($conn,"select * from `subscriber`");
                          $arr=mysqli_fetch_array($sql);
                         $email=$arr['email'];  
-
-    $subject=$_POST['subject'];  
-    $message=$_POST['message'];  
 
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
   $sendTo = 'Enquiry <'.$email.'>';
@@ -33,8 +30,10 @@ if(isset($_POST['save'])){
   </head>
   <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
      <div>
-     <h1>'.$subject.'</h1>
+     <div>'.$subject.'</div>
       <p>'.$email.'</p>
+      <p>'.$message.'</p>
+      <div>congratulations</div>
      </div>
   </body>
   </html>';
