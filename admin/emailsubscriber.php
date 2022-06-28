@@ -30,8 +30,6 @@ if(isset($_POST['save'])){
   </head>
   <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
      <div>
-     <div>'.$subject.'</div>
-      <p>'.$email.'</p>
       <p>'.$message.'</p>
       <div>congratulations</div>
      </div>
