@@ -33,7 +33,6 @@
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
-
   <?php include("include/header.php") ?>
   <?php include("include/sidebar.php") ?>
 
@@ -83,24 +82,60 @@
                           aria-describedby="example1_info">
                           <thead>
                           <tr>
-                              <th>Sr. No.</th>
-                              <th>Email Type</th>
-                              <th>Subject</th>
-                              <th>Action</th>
+                              <th>Variable</th>
+                              <th>Meaning</th>
                           </tr>
                           </thead>
                           <tbody>
                           <tr>
-                              <td>1</td>
-                              <td>e@ma.il</td>
-                              <td>update</td>
-                              <td><button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button></td>
+                              <td>{{name}}</td>
+                              <td>User Name</td>
                           </tr>              
                           </tbody>
                           <tfoot>
 
                           </tfoot>
                         </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+          </div>
+          <div class="card">
+                <!-- <div class="card-header">
+                  <h5 class="card-title">Email Template</h5>
+                  <div class="card-tools">
+                  <a href="employees-Grid.html"> <button type="button" title="Grid view" class="btn btn-primary btn-sm">
+                      <i class="fas fa-th-large"></i></button></a> 
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
+                      href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="fas fa-plus"></i> Add New</button>
+                  </div>
+                </div> -->
+
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                      <div class="col-sm-12">
+                       <label>Subject<sup><b style="color:red;">*</b></sup></label>
+                              <div class="input-group">
+                                <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Subject" required>
+                              </div>
+                            <!-- /input-group -->
+                          </div>
+                         <div class="col-sm-12">
+                         <div class="form-group">
+                             <label for="description">Description<sup><b style="color:red;">*</b></sup></label>
+                                 <textarea id="summernote">
+                                 <strong>  Dear <em>{{name}},</em></strong><br><p>Do You Want To Reset Your Password? Please Click The Following Link and Reset Your Password.</p>
+                                   </textarea>
+                         </div>
+                         <div class="col-sm-12">
+                            <button class="btn btn-success">Update</button>
+                         </div>
+                         </div>
                       </div>
                     </div>
                   </div>
@@ -158,5 +193,17 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<script>
+        $(function () {
+          // Summernote
+          $('#summernote').summernote()
+      
+          // CodeMirror
+          CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+            mode: "htmlmixed",
+            theme: "monokai"
+          });
+        })
+      </script>
 </body>
 </html>
