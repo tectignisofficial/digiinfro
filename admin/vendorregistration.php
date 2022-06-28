@@ -748,5 +748,36 @@ let validenqName;
     });
       </script> -->
 
+
+
+      <script>
+        $(document).ready(function(){
+
+            $("#otp").on("click", function () {
+            
+            let email = $("#email").val();
+            let name = $("#shop_name").val();
+            let otp = $("#otp").val();
+                $.ajax({
+                    type: "POST",
+                    url: "newcheck.php",
+                    data:{
+                        
+                        email:email,
+                        otp:otp,
+                        name:name,
+                    },
+                    cache: false,
+                    success: function(datadnk)
+                    {
+                        alert(datadnk);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
 </body>
 </html>
