@@ -65,14 +65,18 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+    
   </div>
   <!-- /.content-wrapper -->
 
 
   <!-- Control Sidebar -->
-<?php include"include/footer.php" ?>
+  <?php include"include/footer.php" ?>
   <!-- /.control-sidebar -->
 </div>
+
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
