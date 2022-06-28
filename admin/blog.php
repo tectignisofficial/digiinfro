@@ -551,7 +551,91 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        
+      <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- /.card -->
+                            <div class="card">
+                                
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.No</th>
+                                                <th>Title</th>
+                                                <th>Views</th>
+                                                <th>Category</th>
+                                                <th>Image</th>
+                                                <th>Status</th>
+                                             
+                                                <th>Action</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from `blog`");
+                     $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
+                                            <tr>
+                                                <td> <?php echo $count;?> </td>
+                                                <td> <?php echo $arr['title'];?> </td>
+                                                <td> <?php echo $arr['view'];?></td>
+                                                <td> <?php echo $arr['category'];?></td>
+                                                <td> <?php echo $arr['img'];?></td>
+                                                
+                                                <td> 
+                                                <?php
+                                                $status=$arr['status'];
+                                                if($status=='0'){
+                                                    echo '<span class="badge badge-success">Active</span>';
+                                                }
+                                               
+                                                else if($status=='1'){
+                                                    echo '<span class="badge badge-danger">Deactive</span>';
+                                                }
+                                                ?>    
+                                                </td> 
+                                                <td>
+                                                     <?php
+                                                                                $status=$arr['status'];
+                                                                                if($status=='Closed'){
+                                                                                ?>
+                                                                  
+
+                                                            
+                                                                            <?php
+                                                                                }
+                                                                                else{
+                                                                                ?>
+                                               
+                                               
+                                               <a href="blog.php?delid=<?php echo $arr['id']; ?>"><button
+                                                            type="button" class="btn btn-danger btn-rounded btn-icon"
+                                                            onclick="ConfirmDelete()" style="color: aliceblue"> <i
+                                                                class="fas fa-trash"></i> </button></a>
+                                                                <?php } ?>
+</td>
+                                                                                </tr>
+                                                                                <?php $count++;   } ?>
+                                             
+                                        </tbody>
+                                    </table>
+                                </div>                                 
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

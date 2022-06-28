@@ -1,3 +1,21 @@
+<?php
+include("admin/include/config.php");
+
+if(isset($_POST['save'])){
+
+ 
+  $comment=$_POST['comment'];
+  $vname=$_POST['vname'];
+  $email=$_POST['email'];
+  $phone=$_POST['phone'];
+  $status=1;
+  
+
+  $sql=mysqli_query($conn,"INSERT INTO `blog_comment`(`comment`,`vname`,`email`,`status`,`phone`) 
+  VALUES ('$comment','$vname','$email','$status','$phone')");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -137,51 +155,49 @@
                                 </div>
                             </div>
                             <div class="comments-area">
-                                <h4 class="comments-title mb-35">Comment (2)</h4>
+                                <h4 class="comments-title mb-35">Comment </h4>
                                 <ul class="comments-list">
+                                <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from `blog_comment` where status='0'");
+                     $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
                                     <li class="comment">
-                                        <div class="comment-avatar">
-                                            <img src="assets/images/blog/comment-avatar-1.jpg" alt="comment author one">
-                                        </div>
                                         <div class="comment-wrap">
                                             <div class="comment-author-content">
-                                                <span class="author-name">Moriana Steve<span class="date">Sep 02, 2021</span></span>
-                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum verra cubilia ipsum duis amet nullam sit ut ornare mattis urna. </p>
-                                                <a href="#comment-respond" class="reply"><i class="ti-share-alt"></i>Reply</a>
+                                                <span class="author-name"> <b><?php echo $arr['vname'];?></b></span>
+                                                <p> <?php echo $arr['comment'];?> </p>
+                                                
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="comment">
-                                        <div class="comment-avatar">
-                                            <img src="assets/images/blog/comment-avatar-2.jpg" alt="comment author two">
-                                        </div>
-                                        <div class="comment-wrap">
-                                            <div class="comment-author-content">
-                                                <span class="author-name">Richard Coleum<span class="date">Sep 02, 2021</span></span>
-                                                <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum verra cubilia ipsum duis amet nullam sit ut ornare mattis urna. </p>
-                                                <a href="#comment-respond" class="reply"><i class="ti-share-alt"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <?php    } ?>
                                 </ul>
+                           
                             </div>
                             <div class="comments-respond">
                                 <h4 class="comments-heading mb-20">Write a Review</h4>
-                                <form>
+                                <form method="post">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <textarea class="form_control" name="message" placeholder="Write Message"></textarea>
+                                                <textarea class="form_control" name="comment" placeholder="Write Message"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="Full Name" name="name" required>
+                                                <input type="text" class="form_control" placeholder="Full Name" name="vname" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
                                                 <input type="email" class="form_control" placeholder="Type your email" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_group">
+                                                <input type="tel" class="form_control" placeholder=" Phone " minlength="10" maxlength="10" name="phone" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -194,7 +210,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <button class="main-btn">Submit Review</button>
+                                                <button class="main-btn" type="submit" name="save">Submit Review</button>
                                             </div>
                                         </div>
                                     </div>

@@ -296,7 +296,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="pages/mailbox/mailbox.html" class="nav-link">
+            <a href="category.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Category</p>
             </a>
@@ -308,7 +308,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/mailbox/read-mail.html" class="nav-link">
+            <a href="commentblog.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Comment</p>
             </a>
