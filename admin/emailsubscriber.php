@@ -3,7 +3,7 @@ include"include/config.php";
 if(isset($_POST['save'])){
     $status=1;
                       
-                     $sql=mysqli_query($conn,"select * from `subscriber where id=1`");
+                     $sql=mysqli_query($conn,"select * from `subscriber` where id=1");
                          $arr=mysqli_fetch_array($sql);
                         $email=$arr['email'];  
 
@@ -46,7 +46,7 @@ if(isset($_POST['save'])){
       }
     }
    if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-      echo "<script>alert('submit')</script>";}
+      echo "<script>alert('submit');</script>";}
   }
   catch(\Exception $e){
     echo "not done";
