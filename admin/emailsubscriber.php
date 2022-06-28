@@ -1,7 +1,7 @@
 <?php
 include"include/config.php";
 if(isset($_POST['save'])){
-  $subj=$_POST['subj'];  
+  $subj=$_POST['subject'];  
   $message=$_POST['message'];                        
                      $sql=mysqli_query($conn,"select * from `subscriber`");
                          $arr=mysqli_fetch_array($sql);
@@ -9,7 +9,7 @@ if(isset($_POST['save'])){
 
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
   $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Agreerent';
+  $subject = $subj;
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -30,7 +30,7 @@ if(isset($_POST['save'])){
   </head>
   <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
      <div>
-     <div>'.$subj.'</div>
+     <div>'.$subject.'</div>
       <p>'.$email.'</p>
       <p>'.$message.'</p>
       <div>congratulations</div>
@@ -122,7 +122,7 @@ if(isset($_POST['save'])){
               <div class="card-body">
                 <div class="form-group">
                   <h5>Subject <span class="text-danger">*</span></h5>
-                  <input class="form-control" type="text" name="subj" placeholder="Subject">
+                  <input class="form-control" type="text" name="subject" placeholder="Subject">
                 </div>
                 <div class="form-group">
                   <h5>Message<span class="text-danger">*</span></h5>
