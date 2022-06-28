@@ -478,7 +478,7 @@ include('include/sidebar.php');
                                         <div class="col-sm-10">
                                         <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
                                                 <input type="email" class="form-control" name="email" id="email"
-                                                 placeholder="Enter Email ID" required>
+                                                 placeholder="Enter Email ID" >
                                                  
                                                 <a class="btn btn-primary" id="otp" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Send OTP</a>
 
@@ -639,7 +639,7 @@ include('include/sidebar.php');
                  
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="subit" id= "submit" style="float:right;">Register</button>
+                  <button type="submit" class="btn btn-primary" name="subit" id="submit" style="float:right;">Register</button>
                 </div>
               </form>
             </div> 
@@ -710,7 +710,7 @@ include('include/sidebar.php');
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
-<script>
+<!-- <script>
 
 let validenqName;
 
@@ -746,7 +746,7 @@ let validenqName;
 		  });
 
     });
-      </script>
+      </script> -->
 
 </body>
 </html>
