@@ -1,3 +1,69 @@
+<?php
+include"include/config.php";
+if(isset($_POST['save'])){
+    $status=1;
+                      
+                     $sql=mysqli_query($conn,"select * from `subscriber where id=1`");
+                         $arr=mysqli_fetch_array($sql);
+                        $email=$arr['email'];  
+
+    $subject=$_POST['subject'];  
+    $message=$_POST['message'];  
+
+  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
+  $subject = 'Agreerent';
+  // $fields = array( 'name' => 'name' );
+  $from = 'Agreerent: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  
+  
+  $emailText = '
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="x-apple-disable-message-reformatting"> 
+      <title></title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+      <style>
+        
+      </style>
+  </head>
+  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+     <div>
+     <h1>'.$subject.'</h1>
+      <p>'.$email.'</p>
+     </div>
+  </body>
+  </html>';
+  
+  try{
+    foreach($_POST as $key => $value){
+      if(isset($fields[$key])){
+        $emailText.="$fields[$key]: $value\n";
+      }
+    }
+   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+      echo "<script>alert('submit')</script>";}
+  }
+  catch(\Exception $e){
+    echo "not done";
+  }
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    $encode=json_encode($responseArray);
+    header('content-Type: application/json');
+    echo $encoded;
+  }
+  else{
+    echo $responseArray['message'];
+  }
+  }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -860,21 +926,23 @@
                 <h3 class="card-title">Email For Subscriber</h3>
               </div>
               <!-- /.card-header -->
+              <form action="" method="post">
               <div class="card-body">
                 <div class="form-group">
                   <h5>Subject <span class="text-danger">*</span></h5>
-                  <input class="form-control" placeholder="Subject">
+                  <input class="form-control" name="subject" placeholder="Subject">
                 </div>
                 <div class="form-group">
                   <h5>Message<span class="text-danger">*</span></h5>
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                    <textarea id="compose-textarea" class="form-control" name="message" style="height: 300px">
                     </textarea>
                 </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-warning"> Send Email</button>
+                <button type="submit" class="btn btn-warning" name="save"> Send Email</button>
               </div>
+              </form>
               <!-- /.card-footer -->
             </div>
             <!-- /.card -->
@@ -901,12 +969,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-  $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote()
-  })
-</script>
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -915,7 +978,13 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
+</script>
 
-<script src="dist/js/pages/dashboard.js"></scrip>
+<script src="dist/js/pages/dashboard.js"></script>
 </body>
 </html>
