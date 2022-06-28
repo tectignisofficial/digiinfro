@@ -901,12 +901,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-  $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote()
-  })
-</script>
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -915,7 +910,13 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
+</script>
 
-<script src="dist/js/pages/dashboard.js"></scrip>
+<script src="dist/js/pages/dashboard.js"></script>
 </body>
 </html>
