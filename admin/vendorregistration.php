@@ -19,6 +19,13 @@ if(isset($_POST['subit'])){
  
   $status="open";
   $action="1";
+  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$otp=$otprow['otp'];
+if($veriotp == ""){
+   echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
+}else{
+if($otp==$veriotp){
   // $image=$_FILES['gallery']['name'];
   // move_uploaded_file($dnk,$loc);
  
@@ -333,8 +340,15 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 else{
   echo $responseArray['message'];
 }
-
 }
+
+else{
+ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
+}
+}
+}
+
+
 
 
 ?>
