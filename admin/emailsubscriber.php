@@ -915,9 +915,7 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- Page specific script -->
 
+<script src="dist/js/pages/dashboard.js"></scrip>
 </body>
 </html>
