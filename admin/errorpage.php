@@ -1,4 +1,52 @@
 
+<?php
+include("include/config.php");
+if(isset($_POST["404submit"])){
+
+  $page_name=$_POST['page_name'];
+  $page_number=$_POST['page_number'];
+  $second_header=$_POST['secondheader'];
+  $buttontext=$_POST['buttontext'];
+  $description=$_POST['description'];
+  $buttontext=$_POST['buttontext'];
+ 
+  
+  
+  $sql = "UPDATE error_page SET page_name = '$page_name', page_number = '$page_number', second_header = '$second_header', buttontext = '$buttontext' , description = '$description',buttontext = '$buttontext' WHERE pagename = ''";
+  $result=mysqli_query($conn, $sql);
+  
+  }
+  if(isset($_POST["500submit"])){
+
+    $page_name500=$_POST['500page_name'];
+    $page_number500=$_POST['500page_number'];
+    $second_header500=$_POST['500second_header'];
+    $buttontext500=$_POST['500buttontext'];
+    $description500=$_POST['500description'];
+    $buttontext500=$_POST['500buttontext'];
+   
+    
+    
+    $sql = "UPDATE error_page SET page_name = '$page_name500', page_number = '$page_number500', second_header = '$second_header500', buttontext = '$buttontext500' , description = '$description500',buttontext = '$buttontext500' WHERE pagename = '500'";
+    $result=mysqli_query($conn, $sql);
+    
+    }
+    if(isset($_POST["505submit"])){
+
+      $page_name505=$_POST['505page_name'];
+      $page_number505=$_POST['505page_number'];
+      $second_header505=$_POST['505second_header'];
+      $buttontext505=$_POST['505buttontext'];
+      $description505=$_POST['505description'];
+      $buttontext505=$_POST['505buttontext'];
+     
+      
+      
+      $sql = "UPDATE error_page SET page_name = '$page_name505', page_number = '$page_number505', second_header = '$second_header505', buttontext = '$description505' , description = '$description505',buttontext = '$buttontext505' WHERE pagename = '505'";
+      $result=mysqli_query($conn, $sql);
+      
+      }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,144 +83,6 @@
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -194,7 +104,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+          
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -209,9 +119,11 @@
 
     <!-- Main content -->
     <section class="content">
+    
       <div class="container-fluid">
     <div class="row">
     <div class="col-md-12">
+
     <div class="card card-primary card-outline card-tabs">
               <div class="card-header p-0 pt-1 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
@@ -226,84 +138,102 @@
                   </li>
                 
                 </ul>
-              </div>
+              </div><form method="POST">
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-three-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                  <?php
+                      $sql=mysqli_query($conn,"select * from error_page where pagename='404'");
+                       while($arr=mysqli_fetch_array($sql)){;                ?>
                      <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
-                    <input type="text" class="form-control" name="pagename" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" name="page_name" id="example1" value="<?php echo $arr['page_name'];?>"placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">page Number</label>
-                    <input type="text" class="form-control" name="pagenumber" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr['page_number'];?>" name="page_number" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Second Header</label>
-                    <input type="text" class="form-control" name="secondheader" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr['second_header'];?>" name="secondheader" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Button Text</label>
-                    <input type="text" class="form-control" name="buttontext" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" name="buttontext" value="<?php echo $arr['button_text'];?>" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                         <textarea type="text" class="form-control" name="description" id="example2" placeholder="Enter Description"></textarea>
+                         <textarea type="text" class="form-control" value="<?php echo $arr['description'];?>" name="description" id="example2" placeholder="Enter Description"></textarea>
                   </div>
+                  <?php } ?>
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                  <button type="submit" class="btn btn-primary" name="404submit">update</button>
                 </div>
                   </div>
-
+                  
+                </form>
+               
+                <form method="POST">
                   <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                  <?php
+              $sql1=mysqli_query($conn,"select * from error_page where pagename='500'");
+              while($arr1=mysqli_fetch_array($sql1)){   
+             ?>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
-                    <input type="text" class="form-control" name="pagen" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr1['page_name'];?>" name="500page_name" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">page Number</label>
-                    <input type="text" class="form-control" name="pagenu" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr1['page_number'];?>" name="500page_number" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Second Header</label>
-                    <input type="text" class="form-control" name="secondh" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr1['second_header'];?>" name="500secondheader" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Button Text</label>
-                    <input type="text" class="form-control" name="buttonte" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr1['button_text'];?>" name="500buttontext" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                         <textarea type="text" class="form-control" name="description" id="example2" placeholder="Enter Description"></textarea>
+                         <textarea type="text" class="form-control" value="<?php echo $arr1['description'];?>" name="500description" id="example2" placeholder="Enter Description"></textarea>
                   </div>
+                  <?php } ?>
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                  <button type="submit" class="btn btn-primary" name="500submit">update</button>
                 </div>
                   </div>
-
+                  </form>
+                 
+                  <form method="POST">
                   <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+                  <?php
+                  $sql2=mysqli_query($conn,"select * from error_page where pagename='505'");
+                    $arr2=mysqli_fetch_array($sql2);
+                    ?>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
-                    <input type="text" class="form-control" name="page" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr2['page_name'];?>" name="504page_name" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">page Number</label>
-                    <input type="text" class="form-control" name="number" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr2['page_number'];?>" name="504page_number" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Second Header</label>
-                    <input type="text" class="form-control" name="second" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr2['second_header'];?>" name="504secondheader" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Button Text</label>
-                    <input type="text" class="form-control" name="text" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" value="<?php echo $arr2['button_text'];?>" name="504buttontext" id="example1" placeholder="Enter Title">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                         <textarea type="text" class="form-control" name="descrip" id="example2" placeholder="Enter Description"></textarea>
+                         <textarea type="text" class="form-control" name="504description" id="example2" value="<?php echo $arr2['description'];?>" placeholder="Enter Description"></textarea>
                   </div>
                   <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                  <button type="submit" class="btn btn-primary" name="505submit">update</button>
                 </div>
                   </div>
                 
@@ -313,6 +243,7 @@
             </div>
     </div>
       </div><!-- /.container-fluid -->
+</form>
     </section>
     <!-- /.content -->
   </div>

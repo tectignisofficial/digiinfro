@@ -225,7 +225,7 @@ if(isset($_POST["submit"])){
      
         <div class="row">
           <div class="col-md-12">
-            <form method="POST">
+          <form method="POST">
               <div class="card card-outline card-info">
                 <div class="card-header">
                   <h3 class="card-title">
