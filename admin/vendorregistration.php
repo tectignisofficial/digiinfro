@@ -19,11 +19,11 @@ if(isset($_POST['subit'])){
  
   $status="open";
   $action="1";
-  $image=$_FILES['gallery']['name'];
-  move_uploaded_file($dnk,$loc);
+  // $image=$_FILES['gallery']['name'];
+  // move_uploaded_file($dnk,$loc);
  
-  $from = 'Enquiry <'.$email.'>' . "\r\n";
-  $sendTo = 'Enquiry <'.$email_no.'>';
+  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
   $subject = 'Agreerent';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
