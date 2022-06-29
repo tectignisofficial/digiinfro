@@ -119,6 +119,7 @@ include("admin/include/config.php");
                         </div>
                     </div>
                     <div class="col-lg-8">
+                        <form>
                         <div class="contact-wrapper-one mb-30">
                             <div class="contact-form">
                                 <form>
@@ -155,13 +156,14 @@ include("admin/include/config.php");
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <button class="main-btn">Send Message</button>
+                                                <button name="submit" type="submit" class="main-btn">Send Message</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+               </form>
                     </div>
                 </div>
             </div>
