@@ -21,16 +21,11 @@ if(isset($_POST['subit'])){
   $action="1";
 
 
-  // $image=$_FILES['image']['name'];
-  // $extension=substr($image,strlen($image)-4,strlen($image));
-  // $upload_marksheet=md5($image).$extension;
-  // $dnk=$_FILES['image']['tmp_name'];
-  // $loc="img/".$upload_marksheet;
-  // move_uploaded_file($dnk,$loc);
-
-
-
-
+  $file=$_FILES['image']['name'];
+  $file_size=$_FILES['image']['size'];  
+  $file_tmp=$_FILES['image']['tmp_name'];
+  $file_type=$_FILES['image']['type'];
+  move_uploaded_file($file_tmp,"dist/img/".$file);
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
@@ -45,7 +40,7 @@ if($otp==$veriotp){
   $sendTo = 'Enquiry <'.$email.'>';
   $subject = 'vendor registration';
   // $fields = array( 'name' => 'name' );
-  $from = 'Agreerent: 1.0' . "\r\n";
+  $from = 'DigiINfromatrics' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
@@ -331,7 +326,7 @@ try{
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   
-  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image1','$location')");
+  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$file','$location')");
    if($sql=1){
      echo "<script>alert('vendor Registered Successfully');</script>";  }
    else{
@@ -372,7 +367,7 @@ $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_n
   <?php  } 
 }else{ ?>
   <option value="">designation not found</option>
-<?php }
+<?php } 
 
 
 ?>
@@ -669,17 +664,10 @@ include('include/sidebar.php');
 
 
                   
-          <div class="form-group">
-                    <label for="exampleInputFile">Image 1</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" accept="image/png,image/jpeg,,image/jpg">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
+          <div class="form-group row">
+                    <label for="exampledate">Image</label>
+                      <input type="file" name="image">
+
                   </div>
 
                   <div class="form-group">
