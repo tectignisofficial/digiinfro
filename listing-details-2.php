@@ -472,6 +472,7 @@ VALUES ('$name','$phonenumber','$email', '$message')");
                                     </div>
                                     <div class="form_group">
                                         <input type="email" class="form_control" placeholder="Email" name="email" required>
+
                                         <i class="ti-email"></i>
                                     </div>
                                     <div class="form_group">
