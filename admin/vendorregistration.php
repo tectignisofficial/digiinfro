@@ -21,11 +21,7 @@ if(isset($_POST['subit'])){
   $action="1";
 
 
-  $file=$_FILES['image']['name'];
-  $file_size=$_FILES['image']['size'];  
-  $file_tmp=$_FILES['image']['tmp_name'];
-  $file_type=$_FILES['image']['type'];
-  move_uploaded_file($file_tmp,"dist/img/".$file);
+
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
@@ -40,7 +36,7 @@ if($otp==$veriotp){
   $sendTo = 'Enquiry <'.$email.'>';
   $subject = 'vendor registration';
   // $fields = array( 'name' => 'name' );
-  $from = 'DigiINfromatrics' . "\r\n";
+  $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
