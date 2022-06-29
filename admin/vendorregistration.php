@@ -11,20 +11,39 @@ if(isset($_POST['subit'])){
   $whatsapp_no=$_POST['whatsapp_no'];
   $email=$_POST['email'];
   $website=$_POST['website'];
-  $services=$_POST['services'];
+  // $services=$_POST['services'];
   $facebook=$_POST['facebook'];
   $instagram=$_POST['instagram'];
   $linkedin=$_POST['linkedin'];
   $youtube=$_POST['youtube'];
- 
+  $location=$_POST['location'];
   $status="open";
   $action="1";
+
+
+  // $image=$_FILES['image']['name'];
+  // $extension=substr($image,strlen($image)-4,strlen($image));
+  // $upload_marksheet=md5($image).$extension;
+  // $dnk=$_FILES['image']['tmp_name'];
+  // $loc="img/".$upload_marksheet;
+  // move_uploaded_file($dnk,$loc);
+
+
+
+
+$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$otp=$otprow['otp'];
+if($veriotp == ""){
+   echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
+}else{
+if($otp==$veriotp){
   // $image=$_FILES['gallery']['name'];
   // move_uploaded_file($dnk,$loc);
  
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
   $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Agreerent';
+  $subject = 'vendor registration';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -288,14 +307,14 @@ ul.social li{
 				          	<h3 class="name">'.$shop_address.'</h3>
 				          	<span class="position">'.$authorized_person.'</span>
 							<p>Client Code&nbsp;:&nbsp;<b>'.$shop_address.'</b><br>Username&nbsp;:&nbsp;<b>'.$whatsapp_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$authorized_person.'</b></p> 
-				           	<p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
-				           	<p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
+				           	<p><a href="https://www.vcard.in/client/" class="btn btn-primary">Login Now</a></p>
+				           	<p><a href="https://www.vcard.in/" class="btn-custom">Visit Our Website</a></p>
 							
 			           	</div>
 			          </td>
 			        </tr>
             </table><br>
-		<h4 class="position" align="center">for any query feel free to email us<br><a href="mailto: support@agreerent.in"> support@agreerent.in</a></h4>			  
+		<h4 class="position" align="center">for any query feel free to email us<br><a href="mailto: support@vcard.in"> support@vcard.in</a></h4>			  
           </td>
 	      </tr><!-- end tr -->
       <!-- 1 Column Text + Button : END -->
@@ -312,9 +331,9 @@ try{
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   
-  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`, `website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action')");
+  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image1','$location')");
    if($sql=1){
-     echo "<script>alert('vendor Registered Successfully');</script>";    }
+     echo "<script>alert('vendor Registered Successfully');</script>";  }
    else{
      echo "<script>alert('Something Wrong');</script>";
    }
@@ -333,8 +352,27 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 else{
   echo $responseArray['message'];
 }
-
 }
+
+else{
+ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
+}
+}
+}
+
+
+
+if(!empty($_POST["state"])){ 
+  $department_id = $_POST["state"];
+$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
+ ?>
+ <option value="" disabled>Select city</option>
+   <?php while($row = $query->fetch_assoc()){  ?>
+       <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
+  <?php  } 
+}else{ ?>
+  <option value="">designation not found</option>
+<?php }
 
 
 ?>
@@ -421,18 +459,18 @@ include('include/sidebar.php');
                 <div class="form-group">
                   <label>Category</label>
                   <?php 
-                  $query=mysqli_query($conn,"select * from vendor");
+                  $query=mysqli_query($conn,"select * from listcategory");
                 
                   ?>
 
 
-                      <select class="form-control select2" name="category" id="category" style="width: 100%;" required>
+                      <select class="form-control select2" name="category" id="category" style="width: 100%;" >
                         <option selected="selected" disabled>select</option>
                         <?php
                    while($sql=mysqli_fetch_array($query))
                    {
                      ?>
-                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
+                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
                         <?php
                     }
                     ?>
@@ -470,12 +508,12 @@ include('include/sidebar.php');
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                   </div> -->
 
-
+                  <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
+                                                style="color:Red">*</label></label>
 
                   <div class="form-group row">
-                                        <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
-                                                style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                                      
+                                        <div class="col-sm-12">
                                         <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
                                                 <input type="email" class="form-control" name="email" id="email"
                                                  placeholder="Enter Email ID" >
@@ -497,19 +535,6 @@ include('include/sidebar.php');
                                     </div>
                                    
                                    
-
-
-
-
-
-
-
-
-
-
-
-
-
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Website</label>
@@ -523,7 +548,7 @@ include('include/sidebar.php');
                   ?>
 
 
-                      <select class="form-control select2" name="services" id="services" style="width: 100%;" required>
+                      <select class="form-control select2" name="services" id="services" style="width: 100%;" >
                         <option selected="selected" disabled>select</option>
                         <?php
                    while($sql=mysqli_fetch_array($query))
@@ -534,6 +559,64 @@ include('include/sidebar.php');
                       </select>
                   </div>
                   <div>
+
+                  <div class="form-group">
+                <label>Select a state </label>
+                  <?php 
+                   $query=mysqli_query($conn,"select * from state");
+                   ?>
+ 
+                       <select class="form-control select2" name="" style="width: 100%;" onChange="get(this.value)" >
+                         <option selected="selected" disabled>select</option>
+                         <?php
+                    while($sql=mysqli_fetch_array($query))
+                    {
+                      ?>
+
+                <option value="<?php echo $sql['state_code'];?>"><?php echo $sql['state'];?></option>
+                         <?php } ?>
+                       </select>
+                        
+                </div>
+
+                  <div class="form-group">
+                  <label>City Name</label>
+             
+                   
+                       <select class="form-control select2" name="" id="designation" style="width: 100%;" >
+                         
+                       </select>
+                        
+                </div>
+
+                <div class="form-group">
+                  <label>location</label>
+                  <?php 
+                  $query=mysqli_query($conn,"select * from location");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="location" id="location" style="width: 100%;" >
+                        <option selected="selected" disabled>select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                        <?php
+                    }
+                    ?>
+                      </select>
+
+                        
+                </div>
+
+
+                
+                
+
+
                   <div class="row">
                   <h5> Social Media </h5>
                 </div>
@@ -587,10 +670,36 @@ include('include/sidebar.php');
 
                   
           <div class="form-group">
-                    <label for="exampleInputFile">Gallery</label>
+                    <label for="exampleInputFile">Image 1</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" multiple>
+                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" accept="image/png,image/jpeg,,image/jpg">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 2</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 3</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -600,6 +709,18 @@ include('include/sidebar.php');
                   </div>
 
 
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 4</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
 
 
 
@@ -776,6 +897,18 @@ let validenqName;
         });
     </script>
 
+<script>
+  function get(val){
+$.ajax({
+  type:'POST',
+  url:'vendorregistration.php',
+  data:'state='+val,
+  success:function(html){
+    $('#designation').html(html);
+  }
+});
+  }
+  </script>
 
 
 </body>
