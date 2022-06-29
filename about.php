@@ -59,7 +59,7 @@ include("admin/include/config.php");
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="page-title">
-                                <h1 class="title">About us</h1>
+                                <h1 class="title">About Us</h1>
                                 <ul class="breadcrumbs-link">
                                     <li><a href="index.html">Home</a></li>
                                     <li class="active">About us</li>
