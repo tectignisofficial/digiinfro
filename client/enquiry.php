@@ -1,3 +1,21 @@
+
+<?php
+include"../admin/include/config.php";
+if(isset($_POST['save'])){
+
+ 
+  $name=$_POST['name'];
+  $phonenumber=$_POST['phonenumber'];
+  $email=$_POST['email'];
+  $message=$_POST['message'];
+  
+  $sql =mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`) 
+VALUES ('$name','$phonenumber','$email', '$message')");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +43,18 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+       -webkit-appearance: none;
+       margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -61,7 +91,46 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        
+        <div class="row">
+         
+          <!-- /.col -->
+          <div class="col-md-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">Enquiry</h3>
+              </div>
+              <!-- /.card-header -->
+              <form  method="post">
+              <div class="card-body">
+                <div class="form-group">
+                  <h5>Name <span class="text-danger">*</span></h5>
+                  <input class="form-control" type="text" name="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <h5>Phone Number <span class="text-danger">*</span></h5>
+                  <input class="form-control" type="number" name="phonenumber" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                  <h5>Email <span class="text-danger">*</span></h5>
+                  <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <h5>Message<span class="text-danger">*</span></h5>
+                    <textarea id="textarea" class="form-control" name="message" style="height: 100px" placeholder="Write Message"></textarea>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary" name="save"> Submit</button>
+              </div>
+              </form>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

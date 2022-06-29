@@ -1,3 +1,20 @@
+<?php
+include"../admin/include/config.php";
+if(isset($_POST['save'])){
+
+ 
+  $name=$_POST['name'];
+  $phonenumber=$_POST['phonenumber'];
+  $email=$_POST['email'];
+  $message=$_POST['message'];
+  
+  $sql =mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`) 
+VALUES ('$name','$phonenumber','$email', '$message')");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -450,18 +467,19 @@
                                         <i class="ti-user"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                        <input type="text" class="form_control" placeholder="Phone" name="phonenumber" required>
                                         <i class="ti-mobile"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="email" class="form_control" placeholder="Email" name="Email" required>
+                                        <input type="email" class="form_control" placeholder="Email" name="email" required>
+
                                         <i class="ti-email"></i>
                                     </div>
                                     <div class="form_group">
                                                 <textarea class="form_control" placeholder="Write Message" name="message"></textarea>
                                             </div>
                                     <div class="form_group">
-                                        <button class="main-btn icon-btn">Book Now</button>
+                                        <button class="main-btn icon-btn">Submit</button>
                                     </div>
                                 </form>
                             </div>
