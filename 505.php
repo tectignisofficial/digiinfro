@@ -404,7 +404,7 @@ body {
 
 <div class="error">
 <?php
-            $sql=mysqli_query($conn,"Select * from error_page where page_name='404'");
+            $sql=mysqli_query($conn,"Select * from error_page where pagename='505'");
                while($arr=mysqli_fetch_array($sql)){
              ?>
   <div class="error__title"><?php echo $arr['page_name'];?></div>
