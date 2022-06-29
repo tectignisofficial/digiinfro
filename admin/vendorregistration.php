@@ -16,6 +16,7 @@ if(isset($_POST['subit'])){
   $instagram=$_POST['instagram'];
   $linkedin=$_POST['linkedin'];
   $youtube=$_POST['youtube'];
+  $image=$_FILES['image']['name'];
  
   $status="open";
   $action="1";
@@ -31,7 +32,7 @@ if($otp==$veriotp){
  
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
   $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Agreerent';
+  $subject = 'vendor registration';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -435,7 +436,7 @@ include('include/sidebar.php');
                 <div class="form-group">
                   <label>Category</label>
                   <?php 
-                  $query=mysqli_query($conn,"select * from listcategory");
+                  $query=mysqli_query($conn,"select * from vendor");
                 
                   ?>
 
@@ -446,7 +447,7 @@ include('include/sidebar.php');
                    while($sql=mysqli_fetch_array($query))
                    {
                      ?>
-                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
                         <?php
                     }
                     ?>
@@ -484,11 +485,11 @@ include('include/sidebar.php');
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                   </div> -->
 
-
                   <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
+
                   <div class="form-group row">
-                                        
+                                      
                                         <div class="col-sm-12">
                                         <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
                                                 <input type="email" class="form-control" name="email" id="email"
@@ -511,19 +512,6 @@ include('include/sidebar.php');
                                     </div>
                                    
                                    
-
-
-
-
-
-
-
-
-
-
-
-
-
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Website</label>
@@ -548,6 +536,86 @@ include('include/sidebar.php');
                       </select>
                   </div>
                   <div>
+
+
+
+                  <div class="form-group">
+                  <label>City</label>
+                  <?php 
+                  $query=mysqli_query($conn,"select * from vendor");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="category" id="category" style="width: 100%;" required>
+                        <option selected="selected" disabled>select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
+                        <?php
+                    }
+                    ?>
+                      </select>
+
+                        
+                </div>
+
+
+
+                <div class="form-group">
+                  <label>State</label>
+                  <?php 
+                  $query=mysqli_query($conn,"select * from vendor");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="category" id="category" style="width: 100%;" required>
+                        <option selected="selected" disabled>select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
+                        <?php
+                    }
+                    ?>
+                      </select>
+
+                        
+                </div>
+                
+
+
+                <div class="form-group">
+                  <label>Location</label>
+                  <?php 
+                  $query=mysqli_query($conn,"select * from vendor");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="category" id="category" style="width: 100%;" required>
+                        <option selected="selected" disabled>select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
+                        <?php
+                    }
+                    ?>
+                      </select>
+
+                        
+                </div>
+
+
+
+
+
                   <div class="row">
                   <h5> Social Media </h5>
                 </div>
@@ -639,6 +707,7 @@ include('include/sidebar.php');
                     </div>
                   </div>
 
+
                   <div class="form-group">
                     <label for="exampleInputFile">Image 4</label>
                     <div class="input-group">
@@ -651,8 +720,6 @@ include('include/sidebar.php');
                       </div>
                     </div>
                   </div>
-
-
 
 
 
