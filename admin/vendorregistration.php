@@ -435,7 +435,7 @@ include('include/sidebar.php');
                 <div class="form-group">
                   <label>Category</label>
                   <?php 
-                  $query=mysqli_query($conn,"select * from vendor");
+                  $query=mysqli_query($conn,"select * from listcategory");
                 
                   ?>
 
@@ -446,7 +446,7 @@ include('include/sidebar.php');
                    while($sql=mysqli_fetch_array($query))
                    {
                      ?>
-                        <option value="<?php echo $sql['category'];?>"><?php echo $sql['category'];?></option>
+                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
                         <?php
                     }
                     ?>
@@ -485,11 +485,11 @@ include('include/sidebar.php');
                   </div> -->
 
 
-
-                  <div class="form-group row">
-                                        <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
+                  <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
-                                        <div class="col-sm-10">
+                  <div class="form-group row">
+                                        
+                                        <div class="col-sm-12">
                                         <div class="input-group date" id="reservationdateAllowances" data-target-input="nearest">
                                                 <input type="email" class="form-control" name="email" id="email"
                                                  placeholder="Enter Email ID" >
@@ -601,7 +601,46 @@ include('include/sidebar.php');
 
                   
           <div class="form-group">
-                    <label for="exampleInputFile">Gallery</label>
+                    <label for="exampleInputFile">Image 1</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" multiple>
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 2</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" multiple>
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 3</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" multiple>
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image 4</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" multiple>
