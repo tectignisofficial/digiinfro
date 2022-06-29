@@ -479,7 +479,7 @@ VALUES ('$name','$phonenumber','$email', '$message')");
                                                 <textarea class="form_control" placeholder="Write Message" name="message"></textarea>
                                             </div>
                                     <div class="form_group">
-                                        <button class="main-btn icon-btn">Submit</button>
+                                        <button type="submit" class="main-btn icon-btn" name="save">Submit</button>
                                     </div>
                                 </form>
                             </div>
