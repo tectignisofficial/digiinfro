@@ -1,6 +1,40 @@
 <?php
 include("include/config.php");
 
+<<<<<<< Updated upstream
+=======
+if(isset($_POST['submit'])){
+
+ 
+  $title=$_POST['title'];
+  $blog_content	=$_POST['blog_content'];
+  $category=$_POST['category'];
+  $meta_title=$_POST['meta_title'];
+  $meta_description=$_POST['meta_description'];
+  $status=$_POST['status'];
+
+  $file=$_FILES['img']['name'];  
+  $file_size=$_FILES['img']['size'];  
+  $file_tmp=$_FILES['img']['tmp_name'];
+  $file_type=$_FILES['img']['type'];
+  
+  if(
+  move_uploaded_file($file_tmp,"../assets/images/blog_image/".$file)){
+ 
+  
+    echo "<script> alert ('New record has been added successfully !');</script>";
+ } else {
+    echo "<script> alert ('connection failed !');</script>";
+ }
+
+  $sql=mysqli_query($conn,"INSERT INTO `blog`(`title`,`blog_content`,`category`,`img`,`meta_title`,`meta_description`,`status`) 
+  VALUES ('$title','$blog_content','$category','$file','$meta_title','$meta_description','$status')");
+}
+
+
+
+
+>>>>>>> Stashed changes
 
 ?>
 
@@ -69,7 +103,11 @@ include("include/sidebar.php");
       <!-- /.content-header -->
 
       <!-- Main content -->
+<<<<<<< Updated upstream
       <form method="post">
+=======
+      <form method="post" enctype="multipart/form-data">
+>>>>>>> Stashed changes
       <section class="content">
         <div class="container-fluid">
           <div class="row" style="display:flex;">
@@ -83,13 +121,21 @@ include("include/sidebar.php");
                   <div class="form-group row">
                     <div class="col-12">
                       <h5>Title</h5>
+<<<<<<< Updated upstream
                       <input type="text" class="form-control" placeholder="Title">
+=======
+                      <input type="text" class="form-control" name="title" placeholder="Title">
+>>>>>>> Stashed changes
                     </div>
 
                   </div>
 
                   <div class="form-group ">
+<<<<<<< Updated upstream
                     <textarea id="summernote">
+=======
+                    <textarea id="summernote" name="blog_content">
+>>>>>>> Stashed changes
 
                      </textarea>
 
@@ -104,13 +150,21 @@ include("include/sidebar.php");
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <label>Meta Title</label>
+<<<<<<< Updated upstream
                       <input type="text" name="title" class="form-control" id="title" placeholder="Meta Title">
+=======
+                      <input type="text" name="meta_title" class="form-control" id="meta_title" placeholder="Meta Title">
+>>>>>>> Stashed changes
                     </div>
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <label>Meta Description</label>
+<<<<<<< Updated upstream
                       <input type="text" name="description" class="form-control" id="description "
+=======
+                      <input type="text" name="meta_description" class="form-control" id="meta_description "
+>>>>>>> Stashed changes
                         placeholder="Meta Description">
                     </div>
                   </div>
@@ -128,10 +182,18 @@ include("include/sidebar.php");
                       <label>Status : </label>
                       <p> <select required class="form-control" name="status" id="Selectstatusblog">
                           <option value="" disabled selected hidden>select</option>
+<<<<<<< Updated upstream
                           <option>Active</option>
                           <option>Deactive</option>
 
                         </select> </p>
+=======
+                          <option value="1">Publish</option>
+                          <option value="0">Drop</option>
+
+                        </select> </p>
+                        <button type="submit" class="btn btn-primary" name="submit" >Submit</button>
+>>>>>>> Stashed changes
                     </div>
 
                   </div>
@@ -143,12 +205,32 @@ include("include/sidebar.php");
                   <div class="form-group row">
                     <div class="col-12">
                       <label> Category :</label>
+<<<<<<< Updated upstream
                       <p> <select required class="form-control" name="category" id="SelectCategory">
                           <option value="" disabled selected hidden>select</option>
                           <option>Active</option>
                           <option>Deactive</option>
 
                         </select> </p>
+=======
+                      <?php 
+                  $query=mysqli_query($conn,"select * from blog_category");
+                
+                  ?>
+
+
+                      <select class="form-control select2" name="category" id="category" style="width: 100%;" required>
+                        <option selected="selected" disabled>select</option>
+                        <?php
+                   while($sql=mysqli_fetch_array($query))
+                   {
+                     ?>
+                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                        <?php
+                    }
+                    ?>
+                      </select>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                 </div>
@@ -158,7 +240,11 @@ include("include/sidebar.php");
 
                   <div class="form-group row">
                     <label for="exampledate">Image</label>
+<<<<<<< Updated upstream
                       <input type="file" name="blogimage">
+=======
+                      <input type="file" name="img">
+>>>>>>> Stashed changes
 
                   </div>
                 </div>

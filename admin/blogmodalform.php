@@ -44,7 +44,11 @@ if(isset($_POST['dnkid'])){
                 </div>
                 <div class="col-8">
                 <p>  <select  class="form-control" name="status"  value="'.$arr['status'].'"
+<<<<<<< Updated upstream
                 id="exampleSelectGender" required>
+=======
+                id="selectstatus" required>
+>>>>>>> Stashed changes
                 <option value="" disabled selected hidden>select</option>
                 <option value="0">Active</option>
                 <option value="1">Deactive</option>
