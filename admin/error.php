@@ -1,5 +1,6 @@
 
 <?php
+
 include("include/config.php");
 if(isset($_POST["404submit"])){
 
@@ -12,37 +13,41 @@ if(isset($_POST["404submit"])){
  
   
   
-  $sql = "UPDATE error_page SET page_name = '$page_name', page_number = '$page_number', second_header = '$second_header', buttontext = '$buttontext' , description = '$description',buttontext = '$buttontext' WHERE pagename = ''";
+  $sql = "UPDATE error_page SET page_name = '$page_name', page_number = '$page_number', second_header = '$second_header', button_text = '$buttontext' , description = '$description' WHERE pagename = '404'";
   $result=mysqli_query($conn, $sql);
   
   }
+?>
+<?php
   if(isset($_POST["500submit"])){
 
     $page_name500=$_POST['500page_name'];
     $page_number500=$_POST['500page_number'];
-    $second_header500=$_POST['500second_header'];
+    $second_header500=$_POST['500secondheader'];
     $buttontext500=$_POST['500buttontext'];
     $description500=$_POST['500description'];
-    $buttontext500=$_POST['500buttontext'];
+    
    
     
     
-    $sql = "UPDATE error_page SET page_name = '$page_name500', page_number = '$page_number500', second_header = '$second_header500', buttontext = '$buttontext500' , description = '$description500',buttontext = '$buttontext500' WHERE pagename = '500'";
+    $sql = "UPDATE error_page SET page_name = '$page_name500', page_number = '$page_number500', second_header = '$second_header500',description = '$description500',button_text = '$buttontext500' WHERE pagename = '500'";
     $result=mysqli_query($conn, $sql);
     
     }
+    ?>
+
+    <?php
     if(isset($_POST["505submit"])){
 
-      $page_name505=$_POST['505page_name'];
-      $page_number505=$_POST['505page_number'];
-      $second_header505=$_POST['505second_header'];
-      $buttontext505=$_POST['505buttontext'];
-      $description505=$_POST['505description'];
-      $buttontext505=$_POST['505buttontext'];
-     
+      $page_name505=$_POST['504page_name'];
+      $page_number505=$_POST['504page_number'];
+      $second_header505=$_POST['504secondheader'];
+      $buttontext505=$_POST['504buttontext'];
+      $description505=$_POST['504description'];
       
       
-      $sql = "UPDATE error_page SET page_name = '$page_name505', page_number = '$page_number505', second_header = '$second_header505', buttontext = '$description505' , description = '$description505',buttontext = '$buttontext505' WHERE pagename = '505'";
+      
+      $sql = "UPDATE error_page SET page_name = '$page_name505', page_number = '$page_number505', second_header = '$second_header505', description = '$description505',button_text = '$buttontext505' WHERE pagename = '505'";
       $result=mysqli_query($conn, $sql);
       
       }
@@ -74,6 +79,8 @@ if(isset($_POST["404submit"])){
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -120,31 +127,32 @@ if(isset($_POST["404submit"])){
     <!-- Main content -->
     <section class="content">
     
-      <div class="container-fluid">
-    <div class="row">
-    <div class="col-md-12">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
 
-    <div class="card card-primary card-outline card-tabs">
-              <div class="card-header p-0 pt-1 border-bottom-0">
-                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">404 Error</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">500 Error</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">505 Error</a>
-                  </li>
-                
-                </ul>
-              </div><form method="POST">
+<div class="m-4">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+            <a href="#home" class="nav-link active" data-bs-toggle="tab">404 Error</a>
+        </li>
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" data-bs-toggle="tab">500 Error</a>
+        </li>
+        <li class="nav-item">
+            <a href="#messages" class="nav-link" data-bs-toggle="tab">505 Error</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="home">
+        <form method="POST">
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-three-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
                   <?php
                       $sql=mysqli_query($conn,"select * from error_page where pagename='404'");
-                       while($arr=mysqli_fetch_array($sql)){;                ?>
+                       while($arr=mysqli_fetch_array($sql)){               
+                         ?>
                      <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
                     <input type="text" class="form-control" name="page_name" id="example1" value="<?php echo $arr['page_name'];?>"placeholder="Enter Title">
@@ -170,14 +178,15 @@ if(isset($_POST["404submit"])){
                   <button type="submit" class="btn btn-primary" name="404submit">update</button>
                 </div>
                   </div>
-                  
+                </div>
+                </div>
                 </form>
-               
-                <form method="POST">
-                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+        </div>
+        <div class="tab-pane fade" id="profile">
+            <form method="POST">
                   <?php
               $sql1=mysqli_query($conn,"select * from error_page where pagename='500'");
-              while($arr1=mysqli_fetch_array($sql1)){   
+              $arr1=mysqli_fetch_array($sql1)  
              ?>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
@@ -199,19 +208,18 @@ if(isset($_POST["404submit"])){
                     <label for="exampleInputPassword1">Description</label>
                          <textarea type="text" class="form-control" value="<?php echo $arr1['description'];?>" name="500description" id="example2" placeholder="Enter Description"></textarea>
                   </div>
-                  <?php } ?>
+                  <?php  ?>
                   <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name="500submit">update</button>
                 </div>
-                  </div>
                   </form>
-                 
-                  <form method="POST">
-                  <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+        </div>
+        <div class="tab-pane fade" id="messages">
+        <form method="POST">
                   <?php
-                  $sql2=mysqli_query($conn,"select * from error_page where pagename='505'");
-                    $arr2=mysqli_fetch_array($sql2);
-                    ?>
+              $sql2=mysqli_query($conn,"select * from error_page where pagename='505'");
+              while($arr2=mysqli_fetch_array($sql2)){   
+             ?>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Page Name</label>
                     <input type="text" class="form-control" value="<?php echo $arr2['page_name'];?>" name="504page_name" id="example1" placeholder="Enter Title">
@@ -232,18 +240,18 @@ if(isset($_POST["404submit"])){
                     <label for="exampleInputPassword1">Description</label>
                          <textarea type="text" class="form-control" name="504description" id="example2" value="<?php echo $arr2['description'];?>" placeholder="Enter Description"></textarea>
                   </div>
+                  <?php } ?>
                   <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name="505submit">update</button>
                 </div>
-                  </div>
-                
-                </div>
-              </div>
-              <!-- /.card -->
-            </div>
+                  </form>
+        </div>
     </div>
-      </div><!-- /.container-fluid -->
-</form>
+</div>
+            </div>
+                  </div>
+                  </div>
+                  
     </section>
     <!-- /.content -->
   </div>
@@ -251,11 +259,7 @@ if(isset($_POST["404submit"])){
   <?php include("include/footer.php"); ?>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
+ 
 <!-- ./wrapper -->
 
 <!-- jQuery -->
