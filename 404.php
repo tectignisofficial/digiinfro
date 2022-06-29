@@ -1,3 +1,6 @@
+<?php
+include("admin/include/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -400,12 +403,16 @@ body {
 <div class="star star5"></div>
 
 <div class="error">
-  <div class="error__title">404</div>
-  <div class="error__subtitle">Hmmm...</div>
-  <div class="error__description">It looks like one of the  developers fell asleep</div>
-  <button class="error__button error__button--active">LOGIN</button>
-  <button class="error__button">CONTACT</button>
-</div>
+<?php
+            $sql=mysqli_query($conn,"Select * from error_page where page_name='404'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+  <div class="error__title"><?php echo $arr['page_name'];?></div>
+  <div class="error__subtitle"><?php echo $arr['second_header'];?></div>
+  <div class="error__description"><?php echo $arr['description'];?></div>
+  <button class="error__button"><?php echo $arr['button_text'];?></button>
+  <?php } ?>
+</div>	
 
 <div class="astronaut">
   <div class="astronaut__backpack"></div>
