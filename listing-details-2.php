@@ -1,5 +1,5 @@
 <?php
-include"../admin/include/config.php";
+include"admin/include/config.php";
 if(isset($_POST['save'])){
 
  
@@ -457,11 +457,12 @@ VALUES ('$name','$phonenumber','$email', '$message')");
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4">
                         <div class="sidebar-widget-area">
                             <div class="widget reservation-form-widget mb-30">
                                 <h4 class="widget-title">Enquiry</h4>
-                                <form>
+                                <form method="POST">
                                     <div class="form_group">
                                         <input type="text" class="form_control" placeholder="Name" name="name" required>
                                         <i class="ti-user"></i>
