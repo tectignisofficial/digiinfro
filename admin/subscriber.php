@@ -882,12 +882,10 @@ if(isset($_GET['delid'])){
                     <th>Email</th>
                     <th>Status</th>
                     <th>Action</th>
-                    
                   </tr>
                   </thead>
                   <tbody>
-                                            <?php 
-                      
+                <?php 
                      $sql=mysqli_query($conn,"select * from `subscriber`");
                      $count=1;
                          while($arr=mysqli_fetch_array($sql)){
@@ -914,14 +912,12 @@ if(isset($_GET['delid'])){
                                                             type="button" class="btn btn-danger btn-sm btn-icon"
                                                             onclick="ConfirmDelete()" style="color: aliceblue"> <i
                                                                 class="fas fa-trash"></i> </button></a>
-</td>
+                                            </td>
                                             </tr>
 
                                             <?php $count++;   } ?>
                                         </tbody>
                   <tr>
-                    
-                   
                   </tfoot>
                 </table>
               </div>

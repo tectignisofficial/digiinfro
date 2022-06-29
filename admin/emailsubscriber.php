@@ -3,8 +3,8 @@ include"include/config.php";
 if(isset($_POST['save'])){
   $subj=$_POST['subject'];  
   $message=$_POST['message'];                        
-                     $sql=mysqli_query($conn,"select * from `subscriber`");
-                        while($arr=mysqli_fetch_array($sql)){
+                     $sql=mysqli_query($conn,"select * from `subscriber`"); 
+                     $arr=mysqli_fetch_array($sql);
                         $email=$arr['email'];  
 
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
@@ -56,7 +56,6 @@ if(isset($_POST['save'])){
   else{
     echo $responseArray['message'];
   }
-}
   }
 ?>
 
