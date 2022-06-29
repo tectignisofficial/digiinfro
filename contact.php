@@ -1,5 +1,5 @@
 <?php
-include("include/config.php");
+include("admin/include/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,7 @@ include("include/config.php");
         <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <!--====== Title ======-->
         <title>Vcard - Directory & Listings HTML Template</title>
         <!--====== Favicon Icon ======-->
