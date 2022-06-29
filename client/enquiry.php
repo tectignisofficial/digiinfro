@@ -1,21 +1,4 @@
 
-<?php
-include"../admin/include/config.php";
-if(isset($_POST['save'])){
-
- 
-  $name=$_POST['name'];
-  $phonenumber=$_POST['phonenumber'];
-  $email=$_POST['email'];
-  $message=$_POST['message'];
-  
-  $sql =mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`) 
-VALUES ('$name','$phonenumber','$email', '$message')");
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
