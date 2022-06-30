@@ -8,7 +8,7 @@
                                     <li><span>Follow us:</span></li>
                                     <li><a href="#"><i class="ti-facebook"></i></a></li>
                                     <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                   <li><a href="#"><i class="ti-linkedin"></i></a></li>
                                     <li><a href="#"><i class="ti-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
 

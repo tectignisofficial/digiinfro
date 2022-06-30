@@ -890,7 +890,7 @@ if(isset($_GET['delid'])){
                      $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
-                                            <tr>
+                                             <tr>
                                                 <td> <?php echo $count;?> </td>
                                                 <td> <?php echo $arr['email'];?></td>
                                                 
