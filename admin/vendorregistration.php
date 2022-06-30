@@ -31,7 +31,6 @@ if(isset($_POST['subit'])){
   // $loc="img/".$upload_marksheet;
   // move_uploaded_file($dnk,$loc);
 
-echo "<script>alert('hhjjhj');</script>";
 
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
