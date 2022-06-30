@@ -2,25 +2,6 @@
 include("include/config.php");
 
 
-if(isset($_GET['catonstatus'])){
-  $wid=$_GET['catonstatus'];
-  $sql=mysqli_query($conn,"UPDATE `blog_comment` SET `status`='0' where id='$wid'");
-  if($sql==1){
-      header("location:commentblog.php");
-  }
-  
-  }
-
-  if(isset($_GET['catonstatus'])){
-    $id=$_GET['catonstatus'];
-   
-    $sql=mysqli_query($conn,"UPDATE  'blog_comment' SET `status`='1' where id='$id'");
-    
-  
-    if($sql==1){
-        header("location:commentblog.php");
-    }
-    }
     
     if(isset($_GET['delid'])){
       $id=mysqli_real_escape_string($conn,$_GET['delid']);
@@ -121,7 +102,7 @@ include("include/sidebar.php");
                                         </thead>
                                         <tbody>
                                         <?php 
-                        
+                      
                         $sql=mysqli_query($conn,"select * from `blog`");
                      $count=1;
                          while($arr=mysqli_fetch_array($sql)){
@@ -135,11 +116,16 @@ include("include/sidebar.php");
                                                 
                                                 
                                                 <td> 
-                                                <?php if($arr['status']=='1'){
-                      echo "<a href='commentblog.php?catonstatus=".$arr['id']."' class='btn btn-danger'>Deactive</a>";
-                    } else if($arr['status']=='0'){
-                      echo "<a href='commentblog.php?catzestatus=".$arr['id']."' class='btn btn-success'>Active</a>";
-                    }?>  
+                                                <?php
+                                                $status=$arr['status'];
+                                                if($status=='1'){
+                                                    echo '<span class="badge badge-success">PUBLISH</span>';
+                                                }
+                                               
+                                                else if($status=='0'){
+                                                    echo '<span class="badge badge-danger">DRAFT</span>';
+                                                }
+                                                ?>    
                                                 </td> 
                                                 <td>
                                                      <?php
