@@ -19,6 +19,7 @@ if(isset($_POST['subit'])){
   $linkedin=$_POST['linkedin'];
   $youtube=$_POST['youtube'];
   $location=$_POST['location'];
+  $veriotp=$_POST['veriotp'];
   $status="open";
   $action="1";
 
@@ -30,10 +31,10 @@ if(isset($_POST['subit'])){
   // $loc="img/".$upload_marksheet;
   // move_uploaded_file($dnk,$loc);
 
+echo "<script>alert('hhjjhj');</script>";
 
 
-
-$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email_no'");
+$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
 if($veriotp == ""){
