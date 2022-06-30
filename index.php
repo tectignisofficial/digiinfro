@@ -1,67 +1,5 @@
 <?php
-include"admin/include/config.php";
-if(isset($_POST['signup'])){
-    $status=1;
-    $email=$_POST['email'];  
-  $from = 'Enquiry <'.$email.'>' . "\r\n";
-  $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Agreerent';
-  // $fields = array( 'name' => 'name' );
-  $from = 'Agreerent: 1.0' . "\r\n";
-  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  
-  
-  $emailText = '
-  <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="x-apple-disable-message-reformatting"> 
-      <title></title>
-      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-      <style>
-        
-      </style>
-  </head>
-  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-     <div>
-     <h1>'.$email.'</h1>
-     </div>
-  </body>
-  </html>';
-  
-  try{
-    foreach($_POST as $key => $value){
-      if(isset($fields[$key])){
-        $emailText.="$fields[$key]: $value\n";
-      }
-    }
-   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  
-    $sql=mysqli_query($conn,"INSERT INTO `subscriber`(`email`,`status`) 
-     VALUES ('$email','$status')");
-     if($sql=1){
-       echo "<script>alert('Agent Registered Successfully');</script>";    }
-     else{
-       echo "<script>alert('Something Wrong');</script>";
-     }
-   }else{
-      echo "$sendTo $subject $emailText $from";
-   }
-  }
-  catch(\Exception $e){
-    echo "not done";
-  }
-  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-    $encode=json_encode($responseArray);
-    header('content-Type: application/json');
-    echo $encoded;
-  }
-  else{
-    echo $responseArray['message'];
-  }
-  }
+include("admin/include/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +34,7 @@ if(isset($_POST['signup'])){
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -154,18 +93,23 @@ if(isset($_POST['signup'])){
             <div class="container">
                 <div class="category-wrapper-one">
                     <div class="row no-gutters">
+                        <?php
+                        $query=mysqli_query($conn,"select * from listcategory where status='Active'");
+                        while($arr=mysqli_fetch_array($query)){
+                        ?>
                         <div class="col-lg-2 col-md-4 category-column">
                             <div class="category-item category-item-one">
                                 <div class="info text-center">
                                     <div class="icon">
-                                        <i class="flaticon-government"></i>
+                                        <i class="<?php echo $arr['icon'] ?>"></i>
                                     </div>
-                                    <h6>Museums</h6>
+                                    <h6><?php echo $arr['name'] ?></h6>
                                 </div>
                                 <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 category-column">
+                        <?php } ?>
+                        <!-- <div class="col-lg-2 col-md-4 category-column">
                             <div class="category-item category-item-one">
                                 <div class="info text-center">
                                     <div class="icon">
@@ -219,7 +163,7 @@ if(isset($_POST['signup'])){
                                 </div>
                                 <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -237,6 +181,13 @@ if(isset($_POST['signup'])){
                     </div>
                 </div>
                 <div class="row">
+                    <?php 
+                    $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' limit 6";
+                    $result=$conn->query($query);
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                    ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="listing-item listing-grid-one mb-45">
                             <div class="listing-thumbnail">
@@ -245,17 +196,17 @@ if(isset($_POST['signup'])){
                                 <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                     <div class="meta-icon-title d-flex align-items-center">
                                         <div class="icon">
-                                            <i class="flaticon-chef"></i>
+                                            <i class="<?php echo $row['icon'] ?>"></i>
                                         </div>
                                         <div class="title">
-                                            <h6>Restaurant</h6>
+                                            <h6><?php echo $row['name'] ?></h6>
                                         </div>
                                     </div>
                                     <span class="status st-open">Open</span>
                                 </div>
                             </div>
                             <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">Food Corner</a></h3>
+                                <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['id']; ?>"><?php echo $row['shop_name'] ?></a></h3>
                                 <div class="ratings">
                                     <ul class="ratings ratings-three">
                                         <li class="star"><i class="flaticon-star-1"></i></li>
@@ -267,219 +218,34 @@ if(isset($_POST['signup'])){
                                     </ul>
                                 </div>
                                 <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
+                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>
                                 <div class="listing-meta">
                                     <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
+                                        <li><span><i class="ti-location-pin"></i><?php echo $row['city'] ?>,  <?php echo $row['state'] ?></span></li>
                                         <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="listing-item listing-grid-one mb-45">
-                            <div class="listing-thumbnail">
-                                <img src="assets/images/listing/listing-grid-2.jpg" alt="Listing Image">
-                                <span class="featured-btn">Featured</span>
-                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
-                                    <div class="meta-icon-title d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="flaticon-government"></i>
-                                        </div>
-                                        <div class="title">
-                                            <h6>Museums</h6>
-                                        </div>
-                                    </div>
-                                    <span class="status st-open">Open</span>
-                                </div>
-                            </div>
-                            <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">Central History</a></h3>
-                                <div class="ratings">
-                                    <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
-                                    </ul>
-                                </div>
-                                <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
-                                <div class="listing-meta">
-                                    <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="listing-item listing-grid-one mb-45">
-                            <div class="listing-thumbnail">
-                                <img src="assets/images/listing/listing-grid-3.jpg" alt="Listing Image">
-                                <span class="featured-btn">Fitness</span>
-                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
-                                    <div class="meta-icon-title d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="flaticon-dumbbell"></i>
-                                        </div>
-                                        <div class="title">
-                                            <h6>Fitness</h6>
-                                        </div>
-                                    </div>
-                                    <span class="status st-close">Close</span>
-                                </div>
-                            </div>
-                            <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">Xtream Gym</a></h3>
-                                <div class="ratings">
-                                    <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
-                                    </ul>
-                                </div>
-                                <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
-                                <div class="listing-meta">
-                                    <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="listing-item listing-grid-one mb-45">
-                            <div class="listing-thumbnail">
-                                <img src="assets/images/listing/listing-grid-4.jpg" alt="Listing Image">
-                                <span class="featured-btn">Featured</span>
-                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
-                                    <div class="meta-icon-title d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="flaticon-suitcase"></i>
-                                        </div>
-                                        <div class="title">
-                                            <h6>Job & Feed</h6>
-                                        </div>
-                                    </div>
-                                    <span class="status st-open">Open</span>
-                                </div>
-                            </div>
-                            <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">Mega Agency</a></h3>
-                                <div class="ratings">
-                                    <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
-                                    </ul>
-                                </div>
-                                <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
-                                <div class="listing-meta">
-                                    <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="listing-item listing-grid-one mb-45">
-                            <div class="listing-thumbnail">
-                                <img src="assets/images/listing/listing-grid-5.jpg" alt="Listing Image">
-                                <span class="featured-btn">Featured</span>
-                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
-                                    <div class="meta-icon-title d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="flaticon-shopping"></i>
-                                        </div>
-                                        <div class="title">
-                                            <h6>Central Plaza</h6>
-                                        </div>
-                                    </div>
-                                    <span class="status st-close">Close</span>
-                                </div>
-                            </div>
-                            <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">Central Plaza</a></h3>
-                                <div class="ratings">
-                                    <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
-                                    </ul>
-                                </div>
-                                <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
-                                <div class="listing-meta">
-                                    <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="listing-item listing-grid-one mb-45">
-                            <div class="listing-thumbnail">
-                                <img src="assets/images/listing/listing-grid-6.jpg" alt="Listing Image">
-                                <span class="featured-btn">Featured</span>
-                                <div class="thumbnail-meta d-flex justify-content-between align-items-center">
-                                    <div class="meta-icon-title d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="flaticon-color-palette"></i>
-                                        </div>
-                                        <div class="title">
-                                            <h6>Art Gallery</h6>
-                                        </div>
-                                    </div>
-                                    <span class="status st-open">Open</span>
-                                </div>
-                            </div>
-                            <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.html">National Art</a></h3>
-                                <div class="ratings">
-                                    <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
-                                    </ul>
-                                </div>
-                                <span class="price">$05.00 - $80.00</span>
-                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
-                                <div class="listing-meta">
-                                    <ul>
-                                        <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }
+                        } else {
+                            echo "0 results";
+                        }
+                         ?>
                 </div>
             </div>
+
+            <div class="row justify-content-center ">
+                        <div class="col-lg-8">
+                            <div class="cta-content-box text-center ">
+                                <a href="listing-list.php" class="main-btn icon-btn btn-warning">View More</a>
+                            </div>
+                        </div>
+                    </div>
         </section>
+
+        
         <!--====== End Listing Section ======-->
         <!--====== Start offer Section ======-->
         <section class="cta-area">
@@ -499,82 +265,6 @@ if(isset($_POST['signup'])){
             </div>
         </section>
         <!--====== End offer Section ======-->
-           <!--====== Start Category Section ======-->
-           <section class="category-area my-5">
-            <div class="container">
-                <div class="category-wrapper-one">
-                    <div class="row no-gutters">
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-government"></i>
-                                    </div>
-                                    <h6>Museums</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-serving-dish"></i>
-                                    </div>
-                                    <h6>Restaurant</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-game-controller"></i>
-                                    </div>
-                                    <h6>Game Field</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-suitcase"></i>
-                                    </div>
-                                    <h6>Job & Feed</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-gift-box"></i>
-                                    </div>
-                                    <h6>Party Center</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-dumbbell"></i>
-                                    </div>
-                                    <h6>Fitness Zone</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--====== End Category Section ======-->
         <!--====== Start Features Section ======-->
         <section class="features-area">
             <div class="features-wrapper-one pt-120">
@@ -797,10 +487,14 @@ if(isset($_POST['signup'])){
                     </div>
                 </div>
                 <div class="listing-slider-one">
+                <?php
+                        $query=mysqli_query($conn,"select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.morerating='1' limit 4");
+                        while($arr=mysqli_fetch_array($query)){
+                        ?>
                     <div class="listing-item listing-grid-item-two">
                         <div class="listing-thumbnail">
                             <img src="assets/images/listing/listing-grid-7.jpg" alt="Listing Image">
-                            <a href="#" class="cat-btn"><i class="flaticon-chef"></i></a>
+                            <a href="#" class="cat-btn"><i class="<?php echo $arr['icon'] ?>"></i></a>
                             <span class="featured-btn">Featured</span>
                             <ul class="ratings ratings-four">
                                 <li class="star"><i class="flaticon-star-1"></i></li>
@@ -812,17 +506,18 @@ if(isset($_POST['signup'])){
                             </ul>
                         </div>
                         <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
-                            <p>Popular restaurant in california</p>
-                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
+                            <h3 class="title"><a href="listing-details-2.html"><?php echo $arr['shop_name'] ?></a></h3>
+                            <p>Popular <?php echo $arr['category'] ?> in <?php echo $arr['city'] ?></p>
+                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $arr['mobile_no'] ?></a><span class="status st-open">Open</span></span>
                             <div class="listing-meta">
                                 <ul>
-                                    <li><span><i class="ti-location-pin"></i>California, USA</span></li>
+                                    <li><span><i class="ti-location-pin"></i><?php echo $arr['city'] ?>, <?php echo $arr['state'] ?></span></li>
                                     <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <div class="listing-item listing-grid-item-two">
                         <div class="listing-thumbnail">
                             <img src="assets/images/listing/listing-grid-8.jpg" alt="Listing Image">
@@ -950,13 +645,11 @@ if(isset($_POST['signup'])){
                         </div>
                         <div class="col-lg-7">
                             <div class="newsletter-form">
-                                <form method="POST" action="#">
                                 <div class="form_group">
                                     <input type="email" class="form_control" placeholder="Enter Address" name="email" required>
                                     <i class="ti-location-pin"></i>
-                                    <button class="main-btn" name="signup">Subscribe +</button>
+                                    <button class="main-btn">Subscribe +</button>
                                 </div>
-                                </form>
                             </div>
                         </div>
                     </div>
