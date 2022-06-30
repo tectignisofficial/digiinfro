@@ -110,10 +110,7 @@
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-  $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote()
-  });
+  
 </script>
   <script>
 $(document).ready(function() {
