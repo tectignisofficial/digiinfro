@@ -1,3 +1,68 @@
+<?php
+include"admin/include/config.php";
+if(isset($_POST['signup'])){
+    $status=1;
+    $email=$_POST['email'];  
+  $from = 'Enquiry <'.$email.'>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
+  $subject = 'Agreerent';
+  // $fields = array( 'name' => 'name' );
+  $from = 'Agreerent: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  
+  
+  $emailText = '
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="x-apple-disable-message-reformatting"> 
+      <title></title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+      <style>
+        
+      </style>
+  </head>
+  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+     <div>
+     <h1>'.$email.'</h1>
+     </div>
+  </body>
+  </html>';
+  
+  try{
+    foreach($_POST as $key => $value){
+      if(isset($fields[$key])){
+        $emailText.="$fields[$key]: $value\n";
+      }
+    }
+   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+  
+    $sql=mysqli_query($conn,"INSERT INTO `subscriber`(`email`,`status`) 
+     VALUES ('$email','$status')");
+     if($sql=1){
+       echo "<script>alert('Agent Registered Successfully');</script>";    }
+     else{
+       echo "<script>alert('Something Wrong');</script>";
+     }
+   }else{
+      echo "$sendTo $subject $emailText $from";
+   }
+  }
+  catch(\Exception $e){
+    echo "not done";
+  }
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    $encode=json_encode($responseArray);
+    header('content-Type: application/json');
+    echo $encoded;
+  }
+  else{
+    echo $responseArray['message'];
+  }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -434,6 +499,82 @@
             </div>
         </section>
         <!--====== End offer Section ======-->
+           <!--====== Start Category Section ======-->
+           <section class="category-area my-5">
+            <div class="container">
+                <div class="category-wrapper-one">
+                    <div class="row no-gutters">
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-government"></i>
+                                    </div>
+                                    <h6>Museums</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-serving-dish"></i>
+                                    </div>
+                                    <h6>Restaurant</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-game-controller"></i>
+                                    </div>
+                                    <h6>Game Field</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-suitcase"></i>
+                                    </div>
+                                    <h6>Job & Feed</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-gift-box"></i>
+                                    </div>
+                                    <h6>Party Center</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 category-column">
+                            <div class="category-item category-item-one">
+                                <div class="info text-center">
+                                    <div class="icon">
+                                        <i class="flaticon-dumbbell"></i>
+                                    </div>
+                                    <h6>Fitness Zone</h6>
+                                </div>
+                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--====== End Category Section ======-->
         <!--====== Start Features Section ======-->
         <section class="features-area">
             <div class="features-wrapper-one pt-120">
@@ -809,11 +950,13 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="newsletter-form">
+                                <form method="POST" action="#">
                                 <div class="form_group">
                                     <input type="email" class="form_control" placeholder="Enter Address" name="email" required>
                                     <i class="ti-location-pin"></i>
-                                    <button class="main-btn">Subscribe +</button>
+                                    <button class="main-btn" name="signup">Subscribe +</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

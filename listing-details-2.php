@@ -1,3 +1,20 @@
+<?php
+include"admin/include/config.php";
+if(isset($_POST['save'])){
+
+ 
+  $name=$_POST['name'];
+  $phonenumber=$_POST['phonenumber'];
+  $email=$_POST['email'];
+  $message=$_POST['message'];
+  
+  $sql =mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`) 
+VALUES ('$name','$phonenumber','$email', '$message')");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -76,6 +93,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="button">
+                                            <a href="listing-grid.html" class="icon-btn"><i class="ti-mobile"></i></a>
                                             <a href="listing-grid.html" class="icon-btn"><i class="ti-heart"></i></a>
                                             <a href="listing-grid.html" class="icon-btn"><i class="ti-share"></i></a>
                                         </div>
@@ -178,7 +196,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="listing-tag-box mb-30">
+                            <!-- <div class="listing-tag-box mb-30">
                                 <h4 class="title">Popular Tag</h4>
                                 <a href="#">Delivery</a>
                                 <a href="#">Restaurant</a>
@@ -234,7 +252,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="listing-review-box mb-50">
                                 <h4 class="title">Customer Review</h4>
                                 <ul class="review-list">
@@ -255,7 +273,7 @@
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                 </ul>
-                                                <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a>
+                                                <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
                                             </div>
                                         </div>
                                     </li>
@@ -276,7 +294,7 @@
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                 </ul>
-                                                <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a>
+                                                <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
                                             </div>
                                         </div>
                                     </li>
@@ -297,7 +315,7 @@
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                 </ul>
-                                                <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a>
+                                                <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
                                             </div>
                                         </div>
                                     </li>
@@ -439,48 +457,30 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-4">
                         <div class="sidebar-widget-area">
                             <div class="widget reservation-form-widget mb-30">
                                 <h4 class="widget-title">Enquiry</h4>
-                                <form>
+                                <form method="POST">
                                     <div class="form_group">
                                         <input type="text" class="form_control" placeholder="Name" name="name" required>
                                         <i class="ti-user"></i>
                                     </div>
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                        <input type="text" class="form_control" placeholder="Phone" name="phonenumber" required>
                                         <i class="ti-mobile"></i>
                                     </div>
                                     <div class="form_group">
-                                        <select class="wide">
-                                            <option data-display="Guest">Guest</option>
-                                            <option data-display="01">Guest 01</option>
-                                            <option data-display="02">Guest 02</option>
-                                            <option data-display="02">Guest 02</option>
-                                            <option data-display="02">Guest 02</option>
-                                        </select>
+                                        <input type="email" class="form_control" placeholder="Email" name="email" required>
+
+                                        <i class="ti-email"></i>
                                     </div>
                                     <div class="form_group">
-                                        <select class="wide">
-                                            <option data-display="Date">Date</option>
-                                            <option data-display="01">01.11.2021</option>
-                                            <option data-display="02">01.11.2021</option>
-                                            <option data-display="03">01.11.2021</option>
-                                            <option data-display="04">01.11.2021</option>
-                                        </select>
-                                    </div>
+                                                <textarea class="form_control" placeholder="Write Message" name="message"></textarea>
+                                            </div>
                                     <div class="form_group">
-                                        <select class="wide">
-                                            <option data-display="Guest">Time</option>
-                                            <option data-display="01">08.00AM-10.00AM</option>
-                                            <option data-display="02">11.00AM-12.00PM</option>
-                                            <option data-display="03">01.00PM-02.00PM</option>
-                                            <option data-display="04">02.00PM-03.00PM</option>
-                                        </select>
-                                    </div>
-                                    <div class="form_group">
-                                        <button class="main-btn icon-btn">Book Now</button>
+                                        <button type="submit" class="main-btn icon-btn" name="save">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -500,10 +500,10 @@
                                         </div>
                                         <ul class="social-link">
                                             <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
                                             <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
+                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="ti-youtube"></i></a></li>
+                                            <!-- <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -525,7 +525,7 @@
                                     <i class="flaticon-email-1"></i>
                                     <h3>Subscribe Our
                                         Newsletter</h3>
-                                    <button class="main-btn icon-btn">Subscribe</button>
+                                   <a href="#subscribe"><button class="main-btn icon-btn">Subscribe</button></a> 
                                 </div>
                             </div>
                         </div>
