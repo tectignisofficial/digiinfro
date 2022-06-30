@@ -175,9 +175,9 @@ if(isset($_POST['save'])){
   }
 }
 echo"<script>swal({
-  title: "Good job!",
-  text: "You clicked the button!",
-  icon: "success",
+  title: 'Good job!',
+  text: 'You clicked the button!',
+  icon: 'success',
 });</script>";
   }
 ?>
