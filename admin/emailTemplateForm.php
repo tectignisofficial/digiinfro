@@ -1,3 +1,17 @@
+<?php
+include("include/config.php");
+if(isset($_POST['submit'])){
+  $subject=$_POST['subject'];
+  $description=$_POST['description'];
+  $sql="INSERT INTO `email_template`(`subject`, `description`) VALUES ('$subject','$description')";
+  if(mysqli_query($conn,$sql)){
+    echo"<script>alert('updated succesfully!');</script>";
+  }
+  else{
+    echo"<script>alert('connection failed');</script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,25 +130,30 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
+                  <form method="post">
                   <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                       <div class="col-sm-12">
+                      <?php
+                            $sql=mysqli_query($conn,"select * from email_template");
+                           
+                           $arr=mysqli_fetch_assoc($sql)
+                          ?>
                        <label>Subject<sup><b style="color:red;">*</b></sup></label>
                               <div class="input-group">
-                                <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Subject" required>
+                                <input type="text" class="form-control" name="subject" value="<?php echo $arr['subject'];?>" id="Subject" placeholder="Subject" required>
                               </div>
                             <!-- /input-group -->
                           </div>
                          <div class="col-sm-12">
                          <div class="form-group">
                              <label for="description">Description<sup><b style="color:red;">*</b></sup></label>
-                                 <textarea id="summernote">
-                                 <strong>  Dear <em>{{name}},</em></strong><br><p>Do You Want To Reset Your Password? Please Click The Following Link and Reset Your Password.</p>
-                                   </textarea>
+                          <textarea id="summernote" name="description" value="<?php echo $arr['description'];?>"><?php echo $arr['description'];?></textarea>
                          </div>
                          <div class="col-sm-12">
-                            <button class="btn btn-success">Update</button>
+                            <button class="btn btn-success" name="submit">Update</button>
                          </div>
+                        
                          </div>
                       </div>
                     </div>
@@ -143,8 +162,9 @@
                 </div>
           </div>
         </div>
-        
+
       </div><!-- /.container-fluid -->
+                            </form>
     </section>
     <!-- /.content -->
   </div>

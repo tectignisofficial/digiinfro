@@ -1,3 +1,6 @@
+<?php
+include("include/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,12 +93,18 @@
                           </tr>
                           </thead>
                           <tbody>
+                            <?php
+                            $sql=mysqli_query($conn,"select * from email_template");
+                            $count=1;
+                            while($arr=mysqli_fetch_array($sql)){
+                          ?>
                           <tr>
-                              <td>1</td>
-                              <td>e@ma.il</td>
-                              <td>update</td>
+                              <td><?php echo $count;?></td>
+                              <td><?php echo $arr['email_type'];?></td>
+                              <td><?php echo $arr['subject'];?></td>
                               <td><button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button></td>
-                          </tr>              
+                          </tr>   
+                          <?php $count++; } ?>           
                           </tbody>
                           <tfoot>
 
