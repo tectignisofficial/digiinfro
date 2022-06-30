@@ -556,10 +556,7 @@ if($veriotp == ""){
 if($otp==$veriotp){
 $image=$_FILES['img']['name'];
 $tmp_name = $_FILES['img']['tmp_name']; 
- $size     = $_FILES['img']['size']; 
- $type     = $_FILES['img']['type']; 
- $error     = $_FILES['img']['error'];
-$loc="dist/img/agent_photo/".basename($image);
+$loc="admin/dist/img/vender_image/".basename($image);
 if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
  echo "<script>swal('oops','please fill all the fields','success');</script>";
 
@@ -836,10 +833,10 @@ ul.social li{
              <tr>
                    <td style="text-align: center;">
                        <div class="text-author">
-                           <img src="https://agreerent.in/admin/dist/img/agent_photo/'.$shop_name.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                           <img src="dist/img/vender_image/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
                            <h3 class="name">'.$shop_name.'</h3>
                            <span class="position">'.$shop_name.'</span>
-                         <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 
+                         <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 
                             <p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
                             <p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
                          
@@ -892,10 +889,6 @@ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 }
 }
 }
-
-
-
-
 ?>
 
 
