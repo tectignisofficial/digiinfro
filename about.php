@@ -15,7 +15,7 @@ include("admin/include/config.php");
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
-        <title>VCard - Directory & Listings HTML Template</title>
+        <title>Digi INfro</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
