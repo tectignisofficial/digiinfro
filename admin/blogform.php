@@ -54,7 +54,13 @@ $emailText = '
 </style>
 </head>
 <body>
+<div class="content-wrapper">
+<div class="row" style="display:flex;">
+<div class="card-body">
 
+</div>
+</div>
+</div>
 
 </body>
 </html>';
