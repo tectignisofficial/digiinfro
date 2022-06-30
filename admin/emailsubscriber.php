@@ -42,8 +42,8 @@ if(isset($_POST['save'])){
         $emailText.="$fields[$key]: $value\n";
       }
     }
-   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-      echo "<script>alert('submit');</script>";}
+  mail($sendTo,$subject,$emailText, "From:" .$from);
+    
   }
   catch(\Exception $e){
     echo "not done";
