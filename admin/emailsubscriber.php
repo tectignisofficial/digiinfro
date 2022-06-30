@@ -114,7 +114,7 @@
     //Add text editor
     $('#compose-textarea').summernote()
   });
-
+</script>
   <script>
 $(document).ready(function() {
   $('#compose-textarea').summernote({
