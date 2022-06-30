@@ -1,391 +1,5 @@
 <?php include("include/config.php"); ?>
 
-<?php
-
-
-
-if(isset($_POST['subit'])){
-  $category=$_POST['category'];
-  $shop_name=$_POST['shop_name'];
-	$shop_address=$_POST['shop_address'];
-  $authorized_person=$_POST['authorized_person'];
-  $mobile_no=$_POST['mobile_no'];
-  $whatsapp_no=$_POST['whatsapp_no'];
-  $city=$_POST['city'];
-  $state=$_POST['state'];
-  $email=$_POST['email'];
-  $website=$_POST['website'];
-  $services=$_POST['services'];
-  $facebook=$_POST['facebook'];
-  $instagram=$_POST['instagram'];
-  $linkedin=$_POST['linkedin'];
-  $youtube=$_POST['youtube'];
-  $location=$_POST['location'];
-  $veriotp=$_POST['veriotp'];
-  $status="open";
-  $action="1";
-
-
-  $file=$_FILES['img']['name'];  
-  $file_size=$_FILES['img']['size'];  
-  $file_tmp=$_FILES['img']['tmp_name'];
-  $file_type=$_FILES['img']['type'];
-  if(move_uploaded_file($file_tmp,"dist/img/".$file))
-  {
-    echo "file uploaded";
-  }
-  else
-  {
-    echo "file not uploaded";
-  }
-
-
-
-if($veriotp == ""){
-   echo "<script>alert('oops..','please Verify your email first then submit','error');</script>";
-}else{
-  $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
-$otprow=mysqli_fetch_assoc($otpsql);
-$otp=$otprow['otp'];
-if($otp==$veriotp){
-  // $image=$_FILES['gallery']['name'];
-  // move_uploaded_file($dnk,$loc);
- 
-  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
-  $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'vendor registration';
-  // $fields = array( 'name' => 'name' );
-  $from = 'Agreerent: 1.0' . "\r\n";
-  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-
-  $emailText = '
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="x-apple-disable-message-reformatting"> 
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <style>
-        html,
-body {
-    margin: 0 auto !important;
-    padding: 0 !important;
-    height: 100% !important;
-    width: 100% !important;
-    background: #f1f1f1;
-}
-* {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-div[style*="margin: 16px 0"] {
-    margin: 0 !important;
-}
-table,
-td {
-    mso-table-lspace: 0pt !important;
-    mso-table-rspace: 0pt !important;
-}
-table {
-    border-spacing: 0 !important;
-    border-collapse: collapse !important;
-    table-layout: fixed !important;
-    margin: 0 auto !important;
-}
-img {
-    -ms-interpolation-mode:bicubic;
-}
-a {
-    text-decoration: none;
-}
-*[x-apple-data-detectors], 
-.unstyle-auto-detected-links *,
-.aBn {
-    border-bottom: 0 !important;
-    cursor: default !important;
-    color: inherit !important;
-    text-decoration: none !important;
-    font-size: inherit !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-}
-.a6S {
-    display: none !important;
-    opacity: 0.01 !important;
-}
-.im {
-    color: inherit !important;
-}
-img.g-img + div {
-    display: none !important;
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-    u ~ div .email-container {
-        min-width: 320px !important;
-    }
-}
-@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-    u ~ div .email-container {
-        min-width: 375px !important;
-    }
-}
-@media only screen and (min-device-width: 414px) {
-    u ~ div .email-container {
-        min-width: 414px !important;
-    }
-}
-    </style>
-    <style>
-	    .primary{
-	background: #17bebb;
-}
-.bg_white{
-	background: #ffffff;
-}
-.bg_light{
-	background: #f7fafa;
-}
-.bg_black{
-	background: #000000;
-}
-.bg_dark{
-	background: rgba(0,0,0,.8);
-}
-.email-section{
-	padding:2.5em;
-}
-.btn{
-	padding: 10px 15px;
-	display: inline-block;
-}
-.btn.btn-primary{
-	border-radius: 5px;
-	background: #A800BF;
-	color: #ffffff;
-}
-.btn.btn-white{
-	border-radius: 5px;
-	background: #ffffff;
-	color: #000000;
-}
-.btn.btn-white-outline{
-	border-radius: 5px;
-	background: transparent;
-	border: 1px solid #fff;
-	color: #fff;
-}
-.btn.btn-black-outline{
-	border-radius: 0px;
-	background: transparent;
-	border: 2px solid #000;
-	color: #000;
-	font-weight: 700;
-}
-.btn-custom{
-	color: rgba(0,0,0,.3);
-	text-decoration: underline;
-}
-h1,h2,h3,h4,h5,h6{
-	font-family: "Poppins", sans-serif;
-	color: #000000;
-	margin-top: 0;
-	font-weight: 400;
-}
-body{
-	font-family: "Poppins", sans-serif;
-	font-weight: 400;
-	font-size: 15px;
-	line-height: 1.8;
-	color: rgba(0 0 0 / 60%);
-}
-a{
-	color: #A800BF;
-}
-table{
-}
-.logo h1{
-	margin: 0;
-}
-.logo h1 a{
-	color: #A800BF;
-	font-size: 24px;
-	font-weight: 700;
-	font-family: "Poppins", sans-serif;
-}
-.hero{
-	position: relative;
-	z-index: 0;
-}
-.hero .text{
-	color: rgba(0,0,0,.3);
-}
-.hero .text h2{
-	color: #000;
-	font-size: 34px;
-	margin-bottom: 0;
-	font-weight: 200;
-	line-height: 1.4;
-}
-.hero .text h3{
-	font-size: 24px;
-	font-weight: 300;
-}
-.hero .text h2 span{
-	font-weight: 600;
-	color: #000;
-}
-.text-author{
-	bordeR: 1px solid rgba(0,0,0,.05);
-	max-width: 50%;
-	margin: 0 auto;
-	padding: 2em;
-}
-.text-author img{
-	border-radius: 50%;
-	padding-bottom: 20px;
-}
-.text-author h3{
-	margin-bottom: 0;
-}
-ul.social{
-	padding: 0;
-}
-ul.social li{
-	display: inline-block;
-	margin-right: 10px;
-}
-.footer{
-	border-top: 1px solid rgba(0,0,0,.05);
-	color: rgba(0,0,0,.5);
-}
-.footer .heading{
-	color: #000;
-	font-size: 20px;
-}
-.footer ul{
-	margin: 0;
-	padding: 0;
-}
-.footer ul li{
-	list-style: none;
-	margin-bottom: 10px;
-}
-.footer ul li a{
-	color: rgba(0,0,0,1);
-}
-@media screen and (max-width: 500px) {
-}
-    </style>
-</head>
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-      &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-    </div>
-    <div style="max-width: 600px; margin: 0 auto;" class="email-container">
-    	<!-- BEGIN BODY -->
-      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
-      	<tr>
-          <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
-          	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-          		<tr>
-          			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">vendor</a></h1>
-			          </td>
-          		</tr>
-          	</table>
-          </td>
-	      </tr><!-- end tr -->
-				<tr>
-          <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            	<tr>
-            		<td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
-            			<div class="text">
-							<h3>Hello <b>'.$shop_name.'</b></h3>
-            				<h3>Congratulation your account has been Activated Successfully.</h3>
-            			</div>
-            		</td>
-            	</tr>
-            	<tr>
-			          <td style="text-align: center;">
-			          	<div class="text-author">
-				          	
-				          	<h3 class="name">'.$shop_address.'</h3>
-				          	<span class="position">'.$authorized_person.'</span>
-							<p>Client Code&nbsp;:&nbsp;<b>'.$shop_address.'</b><br>Username&nbsp;:&nbsp;<b>'.$whatsapp_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$authorized_person.'</b></p> 
-				           	<p><a href="https://www.vcard.in/client/" class="btn btn-primary">Login Now</a></p>
-				           	<p><a href="https://www.vcard.in/" class="btn-custom">Visit Our Website</a></p>
-							
-			           	</div>
-			          </td>
-			        </tr>
-            </table><br>
-		<h4 class="position" align="center">for any query feel free to email us<br><a href="mailto: support@vcard.in"> support@vcard.in</a></h4>			  
-          </td>
-	      </tr><!-- end tr -->
-      <!-- 1 Column Text + Button : END -->
-      </table>
-    </div>
-</body>
-</html>';
-
-try{
-  foreach($_POST as $key => $value){
-    if(isset($fields[$key])){
-      $emailText.="$fields[$key]: $value\n";
-    }
-  }
- if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-  
-  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$file','$location','$city','$state')");
-   if($sql=1){
-     echo "<script>alert('vendor Registered Successfully');</script>";  }
-   else{
-     echo "<script>alert('Something Wrong');</script>";
-   }
- }else{
-    echo "eeee $sendTo $subject $emailText $from";
- }
-}
-catch(\Exception $e){
-  echo "not done";
-}
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-  $encode=json_encode($responseArray);
-  header('content-Type: application/json');
-  echo $encoded;
-}
-else{
-  echo $responseArray['message'];
-}
-}
-
-else{
- echo "<script>alert('oops...','Invalid Otp','warning');</script>";
-}
-}
-}
-
-?>
-
-<?php
-if(!empty($_POST["state"])){ 
-  $department_id = $_POST["state"];
-$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
- ?>
- <option value="" disabled>Select city</option>
-   <?php while($row = $query->fetch_assoc()){  ?>
-       <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
-  <?php  } 
-}else{ ?>
-  <option value="">designation not found</option>
-<?php }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -593,7 +207,7 @@ include('include/sidebar.php');
                   <label>City Name</label>
              
                    
-                       <select class="form-control select2" name="city" id="designation" style="width: 100%;" >
+                       <select class="form-control select2 designation" name="city" style="width: 100%;" >
                          
                        </select>
                         
@@ -908,20 +522,395 @@ let validenqName;
     </script>
 
 
+
+<?php
+
+if(isset($_POST['subit'])){
+
+  $category=$_POST['category'];
+$shop_name=$_POST['shop_name'];
+$shop_address=$_POST['shop_address'];
+$authorized_person=$_POST['authorized_person'];
+$mobile_no=$_POST['mobile_no'];
+$whatsapp_no=$_POST['whatsapp_no'];
+$city=$_POST['city'];
+$state=$_POST['state'];
+$email=$_POST['email'];
+$website=$_POST['website'];
+$services=$_POST['services'];
+$facebook=$_POST['facebook'];
+$instagram=$_POST['instagram'];
+$linkedin=$_POST['linkedin'];
+$youtube=$_POST['youtube'];
+$location=$_POST['location'];
+$veriotp=$_POST['veriotp'];
+$status="open";
+$action="1";
+
+$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$otp=$otprow['otp'];
+if($veriotp == ""){
+ echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
+}else{
+if($otp==$veriotp){
+$image=$_FILES['img']['name'];
+$tmp_name = $_FILES['img']['tmp_name']; 
+ $size     = $_FILES['img']['size']; 
+ $type     = $_FILES['img']['type']; 
+ $error     = $_FILES['img']['error'];
+$loc="dist/img/agent_photo/".basename($image);
+if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
+ echo "<script>swal('oops','please fill all the fields','success');</script>";
+
+}
+ move_uploaded_file($tmp_name, $loc);
+
+$imgEncoded = base64_encode(file_get_contents($tmp_name));
+
+//   $loc="dist/img/";
+
+//   move_uploaded_file($_FILES['img']['tmp_name'],$loc.$image);
+
+$from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+$sendTo = 'Enquiry <'.$email.'>';
+$subject = 'Agreerent';
+// $fields = array( 'name' => 'name' );
+$from = 'Agreerent: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$from .= "Content-Type: multipart/mixed;"; 
+$from .= "boundary = $boundary\r\n"; 
+
+
+$emailText = '
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="x-apple-disable-message-reformatting"> 
+ <title></title>
+ <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+ <style>
+     html,
+body {
+ margin: 0 auto !important;
+ padding: 0 !important;
+ height: 100% !important;
+ width: 100% !important;
+ background: #f1f1f1;
+}
+* {
+ -ms-text-size-adjust: 100%;
+ -webkit-text-size-adjust: 100%;
+}
+div[style*="margin: 16px 0"] {
+ margin: 0 !important;
+}
+table,
+td {
+ mso-table-lspace: 0pt !important;
+ mso-table-rspace: 0pt !important;
+}
+table {
+ border-spacing: 0 !important;
+ border-collapse: collapse !important;
+ table-layout: fixed !important;
+ margin: 0 auto !important;
+}
+img {
+ -ms-interpolation-mode:bicubic;
+}
+a {
+ text-decoration: none;
+}
+*[x-apple-data-detectors], 
+.unstyle-auto-detected-links *,
+.aBn {
+ border-bottom: 0 !important;
+ cursor: default !important;
+ color: inherit !important;
+ text-decoration: none !important;
+ font-size: inherit !important;
+ font-family: inherit !important;
+ font-weight: inherit !important;
+ line-height: inherit !important;
+}
+.a6S {
+ display: none !important;
+ opacity: 0.01 !important;
+}
+.im {
+ color: inherit !important;
+}
+img.g-img + div {
+ display: none !important;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+ u ~ div .email-container {
+     min-width: 320px !important;
+ }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+ u ~ div .email-container {
+     min-width: 375px !important;
+ }
+}
+@media only screen and (min-device-width: 414px) {
+ u ~ div .email-container {
+     min-width: 414px !important;
+ }
+}
+ </style>
+ <style>
+     .primary{
+ background: #17bebb;
+}
+.bg_white{
+ background: #ffffff;
+}
+.bg_light{
+ background: #f7fafa;
+}
+.bg_black{
+ background: #000000;
+}
+.bg_dark{
+ background: rgba(0,0,0,.8);
+}
+.email-section{
+ padding:2.5em;
+}
+.btn{
+ padding: 10px 15px;
+ display: inline-block;
+}
+.btn.btn-primary{
+ border-radius: 5px;
+ background: #A800BF;
+ color: #ffffff;
+}
+.btn.btn-white{
+ border-radius: 5px;
+ background: #ffffff;
+ color: #000000;
+}
+.btn.btn-white-outline{
+ border-radius: 5px;
+ background: transparent;
+ border: 1px solid #fff;
+ color: #fff;
+}
+.btn.btn-black-outline{
+ border-radius: 0px;
+ background: transparent;
+ border: 2px solid #000;
+ color: #000;
+ font-weight: 700;
+}
+.btn-custom{
+ color: rgba(0,0,0,.3);
+ text-decoration: underline;
+}
+h1,h2,h3,h4,h5,h6{
+ font-family: "Poppins", sans-serif;
+ color: #000000;
+ margin-top: 0;
+ font-weight: 400;
+}
+body{
+ font-family: "Poppins", sans-serif;
+ font-weight: 400;
+ font-size: 15px;
+ line-height: 1.8;
+ color: rgba(0 0 0 / 60%);
+}
+a{
+ color: #A800BF;
+}
+table{
+}
+.logo h1{
+ margin: 0;
+}
+.logo h1 a{
+ color: #A800BF;
+ font-size: 24px;
+ font-weight: 700;
+ font-family: "Poppins", sans-serif;
+}
+.hero{
+ position: relative;
+ z-index: 0;
+}
+.hero .text{
+ color: rgba(0,0,0,.3);
+}
+.hero .text h2{
+ color: #000;
+ font-size: 34px;
+ margin-bottom: 0;
+ font-weight: 200;
+ line-height: 1.4;
+}
+.hero .text h3{
+ font-size: 24px;
+ font-weight: 300;
+}
+.hero .text h2 span{
+ font-weight: 600;
+ color: #000;
+}
+.text-author{
+ bordeR: 1px solid rgba(0,0,0,.05);
+ max-width: 50%;
+ margin: 0 auto;
+ padding: 2em;
+}
+.text-author img{
+ border-radius: 50%;
+ padding-bottom: 20px;
+}
+.text-author h3{
+ margin-bottom: 0;
+}
+ul.social{
+ padding: 0;
+}
+ul.social li{
+ display: inline-block;
+ margin-right: 10px;
+}
+.footer{
+ border-top: 1px solid rgba(0,0,0,.05);
+ color: rgba(0,0,0,.5);
+}
+.footer .heading{
+ color: #000;
+ font-size: 20px;
+}
+.footer ul{
+ margin: 0;
+ padding: 0;
+}
+.footer ul li{
+ list-style: none;
+ margin-bottom: 10px;
+}
+.footer ul li a{
+ color: rgba(0,0,0,1);
+}
+@media screen and (max-width: 500px) {
+}
+ </style>
+</head>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+ <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+   &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+ </div>
+ <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+     <!-- BEGIN BODY -->
+   <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+       <tr>
+       <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
+           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+               <tr>
+                   <td class="logo" style="text-align: center;">
+                     <h1><a href="#">AGREERENT</a></h1>
+                   </td>
+               </tr>
+           </table>
+       </td>
+       </tr><!-- end tr -->
+             <tr>
+       <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
+         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+             <tr>
+                 <td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
+                     <div class="text">
+                         <h3>Hello <b>'.$shop_name.'</b></h3>
+                         <h3>Congratulation your account has been Activated Successfully.</h3>
+                     </div>
+                 </td>
+             </tr>
+             <tr>
+                   <td style="text-align: center;">
+                       <div class="text-author">
+                           <img src="https://agreerent.in/admin/dist/img/agent_photo/'.$shop_name.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                           <h3 class="name">'.$shop_name.'</h3>
+                           <span class="position">'.$shop_name.'</span>
+                         <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 
+                            <p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
+                            <p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
+                         
+                        </div>
+                   </td>
+                 </tr>
+         </table><br>
+     <h4 class="position" align="center">for any query feel free to email us<br><a href="mailto: support@agreerent.in"> support@agreerent.in</a></h4>			  
+       </td>
+       </tr><!-- end tr -->
+   <!-- 1 Column Text + Button : END -->
+   </table>
+ </div>
+</body>
+</html>';
+
+try{
+foreach($_POST as $key => $value){
+ if(isset($fields[$key])){
+   $emailText.="$fields[$key]: $value\n";
+ }
+}
+if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$file','$location','$city','$state')");
+if($sql=1){
+  echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
+else{
+  echo "<script>swal('error','Something Wrong','error');</script>";
+}
+}else{
+ echo "eeee $sendTo $subject $emailText $from";
+}
+}
+catch(\Exception $e){
+echo "not done";
+}
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+$encode=json_encode($responseArray);
+header('content-Type: application/json');
+echo $encoded;
+}
+else{
+echo $responseArray['message'];
+}
+}
+
+else{
+echo "<script>swal('oops...','Invalid Otp','warning');</script>";
+}
+}
+}
+
+
+
+
+?>
+
+
 <script>
   function get(val){
 $.ajax({
   type:'POST',
-  url:'vendorregistration.php',
+  url:'newcheck.php',
   data:'state='+val,
   success:function(html){
-    $('#designation').html(html);
+    $('.designation').html(html);
   }
 });
   }
   </script>
-
-
 
 </body>
 </html>
