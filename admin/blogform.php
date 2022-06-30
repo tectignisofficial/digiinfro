@@ -34,7 +34,7 @@ while($arr=mysqli_fetch_array($sql)){
 
 $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
-$subject = $subj;
+$subject = "New Blog From Digiinfromatrics";
 // $fields = array( 'name' => 'name' );
 $from = 'Agreerent: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -53,11 +53,9 @@ $emailText = '
 
 </style>
 </head>
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-<div>
-<p>'.$blog_content.'</p>
-<div>congratulations</div>
-</div>
+<body>
+
+
 </body>
 </html>';
 
