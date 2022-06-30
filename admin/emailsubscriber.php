@@ -1,64 +1,3 @@
-<?php
-include"include/config.php";
-if(isset($_POST['save'])){
-  $subj=$_POST['subject'];  
-  $message=$_POST['message'];                        
-                     $sql=mysqli_query($conn,"select * from `subscriber`"); 
-                     while($arr=mysqli_fetch_array($sql)){ 
-                        $email=$arr['email'];  
-
-  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
-  $sendTo = 'Enquiry <'.$email.'>';
-  $subject = $subj;
-  // $fields = array( 'name' => 'name' );
-  $from = 'Agreerent: 1.0' . "\r\n";
-  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  
-  
-  $emailText = '
-  <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="x-apple-disable-message-reformatting"> 
-      <title></title>
-      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-      <style>
-        
-      </style>
-  </head>
-  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-     <div>
-      <p>'.$message.'</p>
-      <div>congratulations</div>
-     </div>
-  </body>
-  </html>';
-  
-  try{
-    foreach($_POST as $key => $value){
-      if(isset($fields[$key])){
-        $emailText.="$fields[$key]: $value\n";
-      }
-    }
-  mail($sendTo,$subject,$emailText, "From:" .$from);
-    
-  }
-  catch(\Exception $e){
-    echo "not done";
-  }
-  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-    $encode=json_encode($responseArray);
-    header('content-Type: application/json');
-    echo $encoded;
-  }
-  else{
-    echo $responseArray['message'];
-  }
-}
-  }
-?>
 
 
 
@@ -169,12 +108,79 @@ if(isset($_POST['save'])){
 <script src="dist/js/adminlte.min.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
   $(function () {
     //Add text editor
     $('#compose-textarea').summernote()
   })
 </script>
+<?php
+include"include/config.php";
+if(isset($_POST['save'])){
+  $subj=$_POST['subject'];  
+  $message=$_POST['message'];                        
+                     $sql=mysqli_query($conn,"select * from `subscriber`"); 
+                     while($arr=mysqli_fetch_array($sql)){ 
+                        $email=$arr['email'];  
+
+  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
+  $subject = $subj;
+  // $fields = array( 'name' => 'name' );
+  $from = 'Agreerent: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  
+  
+  $emailText = '
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="x-apple-disable-message-reformatting"> 
+      <title></title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+      <style>
+        
+      </style>
+  </head>
+  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+     <div>
+      <p>'.$message.'</p>
+      <div>congratulations</div>
+     </div>
+  </body>
+  </html>';
+  
+  try{
+    foreach($_POST as $key => $value){
+      if(isset($fields[$key])){
+        $emailText.="$fields[$key]: $value\n";
+      }
+    }
+  mail($sendTo,$subject,$emailText, "From:" .$from);
+    
+  }
+  catch(\Exception $e){
+    echo "not done";
+  }
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    $encode=json_encode($responseArray);
+    header('content-Type: application/json');
+    echo $encoded;
+  }
+  else{
+    echo $responseArray['message'];
+  }
+}
+echo"<script>swal({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success",
+});</script>";
+  }
+?>
 
 <script src="dist/js/pages/dashboard.js"></script>
 </body>
