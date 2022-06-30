@@ -532,7 +532,7 @@ button {
   font-size: 13px;
   margin-top: 2px;
   margin-left: 5px;
-  float: right;
+  float:right;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .header-navigation .main-menu ul > li.has-children > a:after {
@@ -1286,7 +1286,6 @@ button {
 .hero-wrapper-one:after {
   width: 43.5%;
   right: 0;
-  background: url(../images/hero/hero-one-bg-2.jpg) no-repeat center center;
   background-size: cover;
 }
 @media (max-width: 991px) {
