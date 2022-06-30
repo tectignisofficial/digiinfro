@@ -1,5 +1,4 @@
 <?php include("include/config.php"); ?>
-
 <?php
 if(!empty($_POST["state"])){ 
   $department_id = $_POST["state"];
