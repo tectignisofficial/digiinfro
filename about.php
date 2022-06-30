@@ -1,10 +1,18 @@
+<?php
+include("admin/include/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='about'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
+        <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
         <title>VCard - Directory & Listings HTML Template</title>
@@ -51,7 +59,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="page-title">
-                                <h1 class="title">About us</h1>
+                                <h1 class="title">About Us</h1>
                                 <ul class="breadcrumbs-link">
                                     <li><a href="index.html">Home</a></li>
                                     <li class="active">About us</li>
