@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
 
- 
+  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -25,19 +25,26 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <style>
+    label{
+        color:grey;
+        font-size:1.1rem;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="Digi Infromatrics" height="60" width="60"></div>
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
 
-    <?php include"include/header.php" ?>
+  <?php
+  include("include/header.php");
+  include("include/sidebar.php");
+  ?>
 
-  <!-- Main Sidebar Container -->
-
-  <?php include"include/sidebar.php" ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -61,22 +68,67 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        
+      <div class="row">
+          <div class="col-12">
+<div class="mb-2">
+    <button class="btn btn-primary"><i class="fa fa-bars">&nbsp;</i>Listing Category</button>
+</div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Listing Category Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+               <form method="post" action="api.php" enctype="multipart/form-data">
+                <div class="form-group">
+                <label for="catname">Name</label>
+                <input type="text" name="catname" id="catname" class="form-control"/>
+                </div>
+                <div class="form-group">
+                <label for="catslug">Slug</label>
+                <input type="text" name="catslug" id="catslug" class="form-control"/>
+                </div>
+                <div class="form-group">
+                <label for="caticon">Icon</label>
+                <input class="form-control icp icp-auto" name="caticon" id="caticon" value="fas fa-anchor" type="text"/>
+                </div>
+                <div class="form-group">
+                <label for="catimage">Image</label>
+                <input type="file" name="catimage" id="catimage" class="form-control" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                </div>
+                <div class="form-group">
+                <label for="catstatus">Status</label>
+                <select type="text" name="catstatus" id="catstatus" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <button type="submit" name="catsub" class="btn btn-success">Save
+                </button>
+                </div>
+               </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-
-    
   </div>
   <!-- /.content-wrapper -->
-
+  <?php include("include/footer.php"); ?>
 
   <!-- Control Sidebar -->
-  <?php include"include/footer.php" ?>
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
   <!-- /.control-sidebar -->
 </div>
-
-
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -109,8 +161,8 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
 </body>
 </html>

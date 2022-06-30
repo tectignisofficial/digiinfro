@@ -555,7 +555,7 @@ if(isset($_POST['subit'])){
   $file_size=$_FILES['img']['size'];  
   $file_tmp=$_FILES['img']['tmp_name'];
   $file_type=$_FILES['img']['type'];
-  if(move_uploaded_file($file_tmp,"dist/img".$file))
+  if(move_uploaded_file($file_tmp,"dist/img/".$file))
   {
     echo "file uploaded";
   }

@@ -1,3 +1,7 @@
+<?php
+include("admin/include/config.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -80,40 +84,54 @@
                                         <div class="form_group">
                                             <select class="wide">
                                                 <option data-dsplay="Category">Category</option>
-                                                <option value="01">Museums</option>
-                                                <option value="02">Restaurant</option>
+                                                <?php
+                                                $sql=mysqli_query($conn,"select * from listcategory where status='Active'");
+                                                while($arr1=mysqli_fetch_array($sql)){
+                                                ?>
+                                                <option value="<?php echo $arr1['name'] ?>"><?php echo $arr1['name'] ?></option>
+                                                <?php } ?>
+                                                <!-- <option value="02">Restaurant</option>
                                                 <option value="03">Party Center</option>
                                                 <option value="04">Fitness Zone</option>
                                                 <option value="05">Game Field</option>
                                                 <option value="06">Job & Feeds</option>
                                                 <option value="07">Shooping</option>
-                                                <option value="08">Art Gallery</option>
+                                                <option value="08">Art Gallery</option> -->
                                             </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide">
-                                                <option data-dsplay="Location">Location</option>
-                                                <option value="01">Dhaka</option>
+                                            <select class="wide" name="state" onChange="get(this.value)">
+                                                
+                                                <option >State</option>
+                                                <?php
+                                                $sql=mysqli_query($conn,"select * from state");
+                                                while($arr1=mysqli_fetch_array($sql)){
+                                                ?>
+                                                 <option value="<?php echo $arr1['state_code'];?>"><?php echo $arr1['state'];?></option>
+                                                 <?php } ?>
+                                                <!-- <option value="01">Dhaka</option>
                                                 <option value="02">Delhi</option>
                                                 <option value="03">lahore</option>
                                                 <option value="04">Rome</option>
                                                 <option value="05">New york</option>
                                                 <option value="06">Pris</option>
                                                 <option value="07">Bern</option>
-                                                <option value="08">Bangkok</option>
+                                                <option value="08">Bangkok</option> -->
                                             </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide">
-                                                <option data-dsplay="By Country">By Country</option>
-                                                <option value="01">Bangladesh</option>
+                                            <select class=" wide bycity" name="city">
+                                            <option >By city</option>
+
+                                                
+                                                <!-- <option value="01">Bangladesh</option>
                                                 <option value="02">India</option>
                                                 <option value="03">Pakistan</option>
                                                 <option value="04">Italy</option>
                                                 <option value="05">America</option>
                                                 <option value="06">London</option>
                                                 <option value="07">Swizerland</option>
-                                                <option value="08">Thailand</option>
+                                                <option value="08">Thailand</option> -->
                                             </select>
                                         </div>
                                         <div class="form_group">
@@ -130,7 +148,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="price-range-widget">
+                                    <!-- <div class="price-range-widget">
                                         <h4 class="widget-title">Around Distance: 50 km</h4>
                                         <div id="slider-range" class="mb-20"></div>
                                         <div class="price-number">
@@ -144,9 +162,9 @@
                                             <option value="04">$100-$130</option>
                                             <option value="05">$130-$150</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form_group">
-                                        <button class="main-btn icon-btn">Search Now</button>
+                                        <button class="main-btn icon-btn" type="submit" name="subsearch">Search Now</button>
                                     </div>
                                 </form>
                             </div>
@@ -171,11 +189,17 @@
                                         <div class="sorting-dropdown">
                                             <select>
                                                 <option data-dsplay="Default Sorting">Default Sorting</option>
-                                                <option value="01">Museums</option>
+                                                <?php
+                                                $sql=mysqli_query($conn,"select * from listcategory  where status='Active'");
+                                                while($arr1=mysqli_fetch_array($sql)){
+                                                ?>
+                                                <option value="<?php echo $arr1['name'] ?>"><?php echo $arr1['name'] ?></option>
+                                                <?php } ?>
+                                                <!-- <option value="01">Museums</option>
                                                 <option value="02">Restaurant</option>
                                                 <option value="03">Party Center</option>
                                                 <option value="04">Fitness Zone</option>
-                                                <option value="05">Game Field</option>
+                                                <option value="05">Game Field</option> -->
                                             </select>
                                         </div>
                                     </div>
@@ -190,6 +214,17 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        if(isset($_POST['subsearch'])){
+                            $state=$_POST['state'];
+                            $city=$_POST['city'];
+
+                            $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' and state='$state'";
+                        $result=$conn->query($query);
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                        ?>
                         <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
@@ -197,17 +232,17 @@
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                         <div class="meta-icon-title d-flex align-items-center">
                                             <div class="icon">
-                                                <i class="flaticon-government"></i>
+                                                <i class="<?php echo $row['icon'] ?>"></i>
                                             </div>
                                             <div class="title">
-                                                <h6>Art Gallery</h6>
+                                                <h6><?php echo $row['name'] ?></h6>
                                             </div>
                                         </div>
                                         <span class="status st-open">Open</span>
                                     </div>
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="title"><a href="listing-details-2.html">National Art</a></h3>
+                                    <h3 class="title"><a href="listing-details-2.html"><?php echo $row['shop_name'] ?></a></h3>
                                     <div class="ratings">
                                         <ul class="ratings ratings-three">
                                             <li class="star"><i class="flaticon-star-1"></i></li>
@@ -218,17 +253,71 @@
                                             <li><span><a href="#">(02 Reviews)</a></span></li>
                                         </ul>
                                     </div>
-                                    <span class="price">$05.00 - $80.00</span>
-                                    <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span>
+                                    <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>
                                     <div class="listing-meta">
                                         <ul>
-                                            <li><span><i class="ti-location-pin"></i>California, USA</span></li>
+                                            <li><span><i class="ti-location-pin"></i><?php echo $row['city'] ?>, <?php echo $row['state'] ?></span></li>
                                             <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+                            <?php }
+                        } else {
+                            echo "0 results";
+                        }
+                        }
+                        else{
+                        $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0'";
+                        $result=$conn->query($query);
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
+                                <div class="listing-thumbnail">
+                                    <img src="assets/images/listing/listing-list-5.jpg" alt="listing Image">
+                                    <div class="thumbnail-meta d-flex justify-content-between align-items-center">
+                                        <div class="meta-icon-title d-flex align-items-center">
+                                            <div class="icon">
+                                                <i class="<?php echo $row['icon'] ?>"></i>
+                                            </div>
+                                            <div class="title">
+                                                <h6><?php echo $row['name'] ?></h6>
+                                            </div>
+                                        </div>
+                                        <span class="status st-open">Open</span>
+                                    </div>
+                                </div>
+                                <div class="listing-content">
+                                    <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['id']; ?>"><?php echo $row['shop_name'] ?></a></h3>
+                                    <div class="ratings">
+                                        <ul class="ratings ratings-three">
+                                            <li class="star"><i class="flaticon-star-1"></i></li>
+                                            <li class="star"><i class="flaticon-star-1"></i></li>
+                                            <li class="star"><i class="flaticon-star-1"></i></li>
+                                            <li class="star"><i class="flaticon-star-1"></i></li>
+                                            <li class="star"><i class="flaticon-star-1"></i></li>
+                                            <li><span><a href="#">(02 Reviews)</a></span></li>
+                                        </ul>
+                                    </div>
+                                    <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>
+                                    <div class="listing-meta">
+                                        <ul>
+                                            <li><span><i class="ti-location-pin"></i><?php echo $row['city'] ?>, <?php echo $row['state'] ?></span></li>
+                                            <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php }
+                        } else {
+                            echo "0 results";
+                        }
+                    }
+                         ?>
+                            <!-- <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
                                     <img src="assets/images/listing/listing-list-6.jpg" alt="listing Image">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
@@ -264,8 +353,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="listing-item listing-list-item-two mb-60">
+                            </div> -->
+                            <!-- <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
                                     <img src="assets/images/listing/listing-list-7.jpg" alt="listing Image">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
@@ -301,8 +390,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="listing-item listing-list-item-two mb-60">
+                            </div> -->
+                            <!-- <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
                                     <img src="assets/images/listing/listing-list-8.jpg" alt="listing Image">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
@@ -338,8 +427,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="listing-item listing-list-item-two mb-60">
+                            </div> -->
+                            <!-- <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
                                     <img src="assets/images/listing/listing-list-9.jpg" alt="listing Image">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
@@ -375,8 +464,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="listing-item listing-list-item-two mb-60">
+                            </div> -->
+                            <!-- <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
                                     <img src="assets/images/listing/listing-list-10.jpg" alt="listing Image">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
@@ -412,7 +501,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -450,5 +539,18 @@
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        <script>
+  function get(val){
+$.ajax({
+  type:'POST',
+  url:'api.php',
+  data:'state='+val,
+  success:function(html){
+    alert(html);
+    $('.bycity').html(html);
+  }
+});
+  }
+  </script>
     </body>
 </html>
