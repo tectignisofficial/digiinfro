@@ -9,9 +9,11 @@ if(isset($_POST['subit'])){
   $authorized_person=$_POST['authorized_person'];
   $mobile_no=$_POST['mobile_no'];
   $whatsapp_no=$_POST['whatsapp_no'];
+  $city=$_POST['city'];
+  $state=$_POST['state'];
   $email=$_POST['email'];
   $website=$_POST['website'];
-  // $services=$_POST['services'];
+  $services=$_POST['services'];
   $facebook=$_POST['facebook'];
   $instagram=$_POST['instagram'];
   $linkedin=$_POST['linkedin'];
@@ -567,14 +569,14 @@ include('include/sidebar.php');
                    $query=mysqli_query($conn,"select * from state");
                    ?>
  
-                       <select class="form-control select2" name="" style="width: 100%;" onChange="get(this.value)" >
+                       <select class="form-control select2" name="state" style="width: 100%;" onChange="get(this.value)" >
                          <option selected="selected" disabled>select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
                     {
                       ?>
 
-                <option value="<?php echo $sql['state_code'];?>"><?php echo $sql['state'];?></option>
+                <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
                          <?php } ?>
                        </select>
                         
@@ -584,7 +586,7 @@ include('include/sidebar.php');
                   <label>City Name</label>
              
                    
-                       <select class="form-control select2" name="" id="designation" style="width: 100%;" >
+                       <select class="form-control select2" name="city" id="designation" style="width: 100%;" >
                          
                        </select>
                         
