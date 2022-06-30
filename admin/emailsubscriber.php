@@ -130,7 +130,7 @@ if(isset($_POST['save'])){
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  from .= "Content-Type: multipart/mixed;"; 
+  $from .= "Content-Type: multipart/mixed;"; 
   $from .= "boundary = $boundary\r\n"; 
   
   
