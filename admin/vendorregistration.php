@@ -1,19 +1,5 @@
 <?php include("include/config.php"); ?>
-<?php
-if(!empty($_POST["state"])){ 
-  $department_id = $_POST["state"];
-$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
- ?>
- <option value="" disabled>Select city</option>
-   <?php while($row = $query->fetch_assoc()){  ?>
-       <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
-  <?php  } 
-}else{ ?>
-  <option value="">designation not found</option>
-<?php }
 
-
-?>
 
 
 <!DOCTYPE html>
@@ -307,13 +293,12 @@ include('include/sidebar.php');
 
 
 
-
-                  
-          <!-- <div class="form-group">
+                   
+          <div class="form-group">
                     <label for="exampleInputFile">Image 1</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" accept="image/png,image/jpeg,,image/jpg">
+                        <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/png,image/jpeg,,image/jpg">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -322,7 +307,7 @@ include('include/sidebar.php');
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleInputFile">Image 2</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -360,7 +345,7 @@ include('include/sidebar.php');
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
 
 
@@ -538,18 +523,6 @@ let validenqName;
         });
     </script>
 
-<script>
-  function get(val){
-$.ajax({
-  type:'POST',
-  url:'vendorregistration.php',
-  data:'state='+val,
-  success:function(html){
-    $('#designation').html(html);
-  }
-});
-  }
-  </script>
 
 
 <?php
@@ -578,13 +551,18 @@ if(isset($_POST['subit'])){
   $action="1";
 
 
-  // $image=$_FILES['image']['name'];
-  // $extension=substr($image,strlen($image)-4,strlen($image));
-  // $upload_marksheet=md5($image).$extension;
-  // $dnk=$_FILES['image']['tmp_name'];
-  // $loc="img/".$upload_marksheet;
-  // move_uploaded_file($dnk,$loc);
-
+  $file=$_FILES['img']['name'];  
+  $file_size=$_FILES['img']['size'];  
+  $file_tmp=$_FILES['img']['tmp_name'];
+  $file_type=$_FILES['img']['type'];
+  if(move_uploaded_file($file_tmp,"dist/img".$file))
+  {
+    echo "file uploaded";
+  }
+  else
+  {
+    echo "file not uploaded";
+  }
 
 
 
@@ -888,7 +866,7 @@ try{
   }
  if( mail($sendTo,$subject,$emailText, "From:" .$from)){
   
-  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image1','$location')");
+  $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$file','$location','$city','$state')");
    if($sql=1){
      echo "<script>alert('vendor Registered Successfully');</script>";  }
    else{
@@ -919,6 +897,32 @@ else{
 
 ?>
 
+<?php
+if(!empty($_POST["state"])){ 
+  $department_id = $_POST["state"];
+$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
+ ?>
+ <option value="" disabled>Select city</option>
+   <?php while($row = $query->fetch_assoc()){  ?>
+       <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
+  <?php  } 
+}else{ ?>
+  <option value="">designation not found</option>
+<?php }
+?>
+
+<script>
+  function get(val){
+$.ajax({
+  type:'POST',
+  url:'vendorregistration.php',
+  data:'state='+val,
+  success:function(html){
+    $('#designation').html(html);
+  }
+});
+  }
+  </script>
 
 </body>
 </html>
