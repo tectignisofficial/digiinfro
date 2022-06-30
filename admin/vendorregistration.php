@@ -360,8 +360,9 @@ else{
 }
 }
 
+?>
 
-
+<?php
 if(!empty($_POST["state"])){ 
   $department_id = $_POST["state"];
 $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
@@ -376,7 +377,6 @@ $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_n
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -454,8 +454,9 @@ include('include/sidebar.php');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" enctype="multipart/form-data" >
+             
                 <div class="card-body">
+                <form method="POST" enctype="multipart/form-data" >
                 <div class="form-group">
                   <label>Category</label>
                   <?php 
@@ -669,7 +670,7 @@ include('include/sidebar.php');
 
 
                   
-          <div class="form-group">
+          <!-- <div class="form-group">
                     <label for="exampleInputFile">Image 1</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -756,7 +757,7 @@ include('include/sidebar.php');
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                  
 
                 <div class="card-footer">
