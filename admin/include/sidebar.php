@@ -60,21 +60,27 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="pendingapproval.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Pending Approval</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="completeappoval.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Complete Approval</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="category.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Category</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="morratingcategory.php" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>More rating</p>
             </a>
           </li>
         </ul>

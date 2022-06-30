@@ -1,3 +1,7 @@
+<?php
+include("admin/include/config.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -65,7 +69,7 @@
                                                 <li class="star"><i class="flaticon-star-1"></i></li>
                                                 <li><span><a href="#">(02 Reviews)</a></span></li>
                                             </ul>
-                                            <h3 class="title">Center Museum</h3>
+                                            <h3 class="title"><?php echo $arr['shop_name'] ?></h3>
                                             <div class="listing-meta">
                                                 <ul>
                                                     <li><span><i class="ti-location-pin"></i>California, USA</span></li>

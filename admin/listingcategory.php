@@ -1,6 +1,22 @@
-<?php
-include("include/config.php");
-?>
+<?php include("include/config.php");
+  
+  $id='';
+  $name='';
+  $slug='';
+  $icon='';
+  $image='';
+  $status='';
+  if(isset($_GET['editlistcate'])){
+  $id=$_GET['editlistcate'];
+  $sql=mysqli_query($conn,"select * from listcategory where id='$id'");
+  $row=mysqli_fetch_array($sql);
+  $id=$row['id'];
+  $name=$row['name'];
+  $slug=$row['slug'];
+  $icon=$row['icon'];
+  $image=$row['image'];
+  $status=$row['status'];
+  }?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +44,22 @@ include("include/config.php");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap4.min.css">
-  
+
+  <!--icon-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+  <!--icon-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <style>
+    label{
+        color:grey;
+        font-size:1.1rem;
+    }
+  </style>
+     <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    <link href="dist/css/fontawesome-iconpicker.min.css" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -72,60 +100,58 @@ include("include/config.php");
       <div class="row">
           <div class="col-12">
 <div class="mb-2">
-    <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <a href="category.php" class="btn btn-primary"><i class="fa fa-bars">&nbsp;</i>Listing Category</a>
 </div>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">My Listing</h3>
+                <h3 class="card-title">Listing Category Form</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $sql=mysqli_query($conn,"select * from vendor");
-                    $count=1;
-                    while($arr=mysqli_fetch_array($sql)){
-                      
-                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']==''){
-                    ?>
-                  <tr>
-                    <td><?php echo $count; ?></td>
-                    <td><?php echo $arr['id']; ?></td>
-                    <td><?php echo $arr['shop_name']; ?></td>
-                    <td><?php //echo $arr['city']; ?>add city</td>
-                    <td><?php echo $arr['category']; ?></td>
-                    <td><?php echo $arr['status']; ?></td>
-                    <td>
-                    <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="../api.php?delpending=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
-                  </tr>
-                  <?php } $count++; } ?>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
-                </table>
+               <form method="post" action="../api.php" enctype="multipart/form-data">
+                <div class="form-group">
+                <label for="catname">Name</label>
+                <input type="hidden" name="catid"  value="<?php echo $id; ?>"/>
+                <input type="text" name="catname" id="catname" value="<?php echo $name; ?>" class="form-control"/>
+                <span id="spancatname"></span>
+                </div>
+                <div class="form-group">
+                <label for="catslug">Slug</label>
+                <input type="text" name="catslug" id="catslug" value="<?php echo $slug; ?>" class="form-control"/>
+                <span id="spancatslug"></span>
+                </div>
+                <div class="form-group">
+                <label for="caticon">Icon</label>
+                <div class="input-group-prepend">
+            <span class="input-group-text h-100 selected-icon " ></span>
+            <input class="form-control iconpicker" name="caticon" value="<?php echo $icon; ?>" id="caticon" type="text" />
+        </div>
+                
+                </div>
+               
+                <div class="form-group">
+                <label for="catimage">Image</label>
+                <input type="file" name="catimage" id="catimage" class="form-control" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                </div>
+                <?php
+                if(isset($_GET['editlistcate'])){ ?>
+                    <input type="hidden" name="image" value="<?php echo $image ?>" class="mt-2"/>
+                    <img src="image/listCategoryImage/<?php echo $image ?>" width="100" height="100" class="mb-4">
+               <?php }
+                ?>
+                <div class="form-group ">
+                <label for="catstatus">Status</label>
+                <select type="text" name="catstatus" id="catstatus" class="form-control" >
+                    <option value="<?php echo $status ?>"><?php echo $status ?></option>
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <button type="submit" name="catsub" id="catsub" class="btn btn-success">Save
+                </button>
+                </div>
+               </form>
               </div>
               <!-- /.card-body -->
             </div>
@@ -151,6 +177,7 @@ include("include/config.php");
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -179,22 +206,31 @@ include("include/config.php");
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<script src="dist/js/valid.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<script src="dist/js/iconpicker.js"></script>
+    <script>
+        (async () => {
+            const response = await fetch('dist/js/bootstrap5.json')
+            const result = await response.json()
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
-<script>
- $(document).ready(function() {
-    $('#example1').dataTable();
-    
-     $("[data-toggle=tooltip]").tooltip();
-    
-} );
+            const iconpicker = new Iconpicker(document.querySelector(".iconpicker"), {
+                icons: result,
+                showSelectedIn: document.querySelector(".selected-icon"),
+                searchable: true,
+                selectedClass: "selected",
+                containerClass: "my-picker",
+                hideOnSelect: true,
+                fade: true,
+                defaultValue: 'bi-alarm',
+                valueFormat: val => `bi ${val}`
+            });
 
-</script>
+            iconpicker.set() // Set as empty
+            iconpicker.set('bi-alarm') // Reset with a value
+        })()
+        
+    </script>
 </body>
 </html>

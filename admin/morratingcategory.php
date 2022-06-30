@@ -73,7 +73,22 @@ include("include/config.php");
           <div class="col-12">
 <div class="mb-2">
     <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add
+  </button>
+  <div class="dropdown-menu">
+    <?php
+    $sql=mysqli_query($conn,"select * from vendor where action='0'");
+    while($res=mysqli_fetch_array($sql)){
+    ?>
+    <a class="dropdown-item" href="morratingcategory.php?shopid=<?php echo $res['id']; ?>"><?php echo $res['shop_name']; ?></a>
+    <?php } ?>
+  </div>
 </div>
+</div>
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">My Listing</h3>
@@ -89,16 +104,35 @@ include("include/config.php");
                     <th>City</th>
                     <th>Category</th>
                     <th>Status</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php
-                    $sql=mysqli_query($conn,"select * from vendor");
+                    if(isset($_GET['shopid'])){
+                      $shopid=$_GET['shopid'];
+                      $sql=mysqli_query($conn,"select * from vendor where action='0' and id='$shopid'");
+                      $count=1;
+                      while($arr=mysqli_fetch_array($sql)){
+                      ?>
+                    <tr>
+                      <td><?php echo $count; ?></td>
+                      <td><?php echo $arr['id']; ?></td>
+                      <td><?php echo $arr['shop_name']; ?></td>
+                      <td><?php //echo $arr['city']; ?>add city</td>
+                      <td><?php echo $arr['category']; ?></td>
+                      <td><?php if($arr['morerating']=='1'){
+                        echo "<a href='../api.php?catemoratingyes=".$arr['id']."' class='btn btn-success'>YES</a>";
+                      } else if($arr['morerating']=='0'){
+                        echo "<a href='../api.php?catemoratingno=".$arr['id']."' class='btn btn-danger'>NO</a>";
+                      }?></td>
+                      
+                    </tr>
+                    <?php $count++; }
+                    }else{
+                    $sql=mysqli_query($conn,"select * from vendor where action='0'");
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                       
-                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']==''){
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>
@@ -106,25 +140,15 @@ include("include/config.php");
                     <td><?php echo $arr['shop_name']; ?></td>
                     <td><?php //echo $arr['city']; ?>add city</td>
                     <td><?php echo $arr['category']; ?></td>
-                    <td><?php echo $arr['status']; ?></td>
-                    <td>
-                    <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="../api.php?delpending=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <td><?php if($arr['morerating']=='1'){
+                      echo "<a href='../api.php?catemoratingyes=".$arr['id']."' class='btn btn-success'>YES</a>";
+                    } else if($arr['morerating']=='0'){
+                      echo "<a href='../api.php?catemoratingno=".$arr['id']."' class='btn btn-danger'>NO</a>";
+                    }?></td>
                   </tr>
-                  <?php } $count++; } ?>
+                  <?php $count++; } } ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

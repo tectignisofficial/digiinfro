@@ -1,6 +1,3 @@
-<?php
-include("include/config.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +25,12 @@ include("include/config.php");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap4.min.css">
-  
+  <style>
+    label{
+        color:grey;
+        font-size:1.1rem;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -72,60 +71,43 @@ include("include/config.php");
       <div class="row">
           <div class="col-12">
 <div class="mb-2">
-    <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <button class="btn btn-primary"><i class="fa fa-bars">&nbsp;</i>Listing Category</button>
 </div>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">My Listing</h3>
+                <h3 class="card-title">Listing Category Form</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $sql=mysqli_query($conn,"select * from vendor");
-                    $count=1;
-                    while($arr=mysqli_fetch_array($sql)){
-                      
-                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']==''){
-                    ?>
-                  <tr>
-                    <td><?php echo $count; ?></td>
-                    <td><?php echo $arr['id']; ?></td>
-                    <td><?php echo $arr['shop_name']; ?></td>
-                    <td><?php //echo $arr['city']; ?>add city</td>
-                    <td><?php echo $arr['category']; ?></td>
-                    <td><?php echo $arr['status']; ?></td>
-                    <td>
-                    <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="../api.php?delpending=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
-                  </tr>
-                  <?php } $count++; } ?>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
-                </table>
+               <form method="post" action="api.php" enctype="multipart/form-data">
+                <div class="form-group">
+                <label for="catname">Name</label>
+                <input type="text" name="catname" id="catname" class="form-control"/>
+                </div>
+                <div class="form-group">
+                <label for="catslug">Slug</label>
+                <input type="text" name="catslug" id="catslug" class="form-control"/>
+                </div>
+                <div class="form-group">
+                <label for="caticon">Icon</label>
+                <input class="form-control icp icp-auto" name="caticon" id="caticon" value="fas fa-anchor" type="text"/>
+                </div>
+                <div class="form-group">
+                <label for="catimage">Image</label>
+                <input type="file" name="catimage" id="catimage" class="form-control" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                </div>
+                <div class="form-group">
+                <label for="catstatus">Status</label>
+                <select type="text" name="catstatus" id="catstatus" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <button type="submit" name="catsub" class="btn btn-success">Save
+                </button>
+                </div>
+               </form>
               </div>
               <!-- /.card-body -->
             </div>
@@ -182,19 +164,5 @@ include("include/config.php");
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
-<script>
- $(document).ready(function() {
-    $('#example1').dataTable();
-    
-     $("[data-toggle=tooltip]").tooltip();
-    
-} );
-
-</script>
 </body>
 </html>
