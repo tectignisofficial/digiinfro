@@ -1,7 +1,5 @@
 <?php include("include/config.php"); ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,7 +207,7 @@ include('include/sidebar.php');
                   <label>City Name</label>
              
                    
-                       <select class="form-control select2" name="city" id="designation" style="width: 100%;" >
+                       <select class="form-control select2 designation" name="city" style="width: 100%;" >
                          
                        </select>
                         
@@ -830,7 +828,7 @@ ul.social li{
              <tr>
                  <td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
                      <div class="text">
-                         <h3>Hello <b>'.$agent_name.'</b></h3>
+                         <h3>Hello <b>'.$shop_name.'</b></h3>
                          <h3>Congratulation your account has been Activated Successfully.</h3>
                      </div>
                  </td>
@@ -838,10 +836,10 @@ ul.social li{
              <tr>
                    <td style="text-align: center;">
                        <div class="text-author">
-                           <img src="https://agreerent.in/admin/dist/img/agent_photo/'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
-                           <h3 class="name">'.$agent_name.'</h3>
-                           <span class="position">'.$firm_name.'</span>
-                         <p>Client Code&nbsp;:&nbsp;<b>'.$user_id.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$pass.'</b></p> 
+                           <img src="https://agreerent.in/admin/dist/img/agent_photo/'.$shop_name.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                           <h3 class="name">'.$shop_name.'</h3>
+                           <span class="position">'.$shop_name.'</span>
+                         <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email_no.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 
                             <p><a href="https://www.agreerent.in/client/" class="btn btn-primary">Login Now</a></p>
                             <p><a href="https://www.agreerent.in/" class="btn-custom">Visit Our Website</a></p>
                          
@@ -900,27 +898,15 @@ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 
 ?>
 
-<?php
-if(!empty($_POST["state"])){ 
-  $department_id = $_POST["state"];
-$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state_code ='$department_id'"); 
- ?>
- <option value="" disabled>Select city</option>
-   <?php while($row = $query->fetch_assoc()){  ?>
-       <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
-  <?php  } 
-}else{ ?>
-  <option value="">designation not found</option>
-<?php }
-?>
+
 <script>
   function get(val){
 $.ajax({
   type:'POST',
-  url:'vendorregistration.php',
+  url:'newcheck.php',
   data:'state='+val,
   success:function(html){
-    $('#designation').html(html);
+    $('.designation').html(html);
   }
 });
   }
