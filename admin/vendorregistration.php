@@ -527,7 +527,7 @@ let validenqName;
 
 <?php
 
-if(isset($_POST['sub'])){
+if(isset($_POST['subit'])){
 
   $category=$_POST['category'];
 $shop_name=$_POST['shop_name'];
