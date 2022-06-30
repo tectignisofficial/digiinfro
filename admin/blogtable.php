@@ -111,7 +111,7 @@ include("include/sidebar.php");
                                                 <td> <?php echo $count;?> </td>
                                                 <td> <?php echo $arr['title'];?> </td>
                                                 <td> <?php echo $arr['view'];?></td>
-                                                <td> <?php echo $arr['category'];?></td>
+                                                <td> <?php echo $arr['category_id'];?></td>
                                                 <td><img src="../assets/images/blog_image/<?php echo $arr['img'];?>" style="height:150px; width:150px;"></td>
                                                 
                                                 
