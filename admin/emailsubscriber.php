@@ -110,54 +110,16 @@
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-  
-</script>
-  <script>
-
-$('#compose-textarea').summernote({
-        callbacks: {
-            onImageUpload: function(files) {
-                for(let i=0; i < files.length; i++) {
-                    $.upload(files[i]);
-                }
-            }
-        },
-        height: 500,
-    });
-
-    $.upload = function (file) {
-        let out = new FormData();
-        out.append('file', file, file.name);
-
-        $.ajax({
-            method: 'POST',
-            url: 'emailsubscriber.php',
-            contentType: false,
-            cache: false,
-            processData: false,
-            data: out,
-            success: function (img) {
-                $('#compose-textarea').summernote('insertImage', img);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error(textStatus + " " + errorThrown);
-            }
-        });
-    };
-</script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
 </script>
 <?php
 include"include/config.php";
 if(isset($_POST['save'])){
   $subj=$_POST['subject'];  
-  $message=$_POST['message'];     
-  $name = md5(rand(100, 200));
-  $ext = explode('.', $_FILES['file']['name']);
-  $filename = $name . '.' . $ext[1];
-  $destination = 'image/' . $filename; //change this directory
-  $location = $_FILES["file"]["tmp_name"];
-  move_uploaded_file($location, $destination);
-  echo 'image/' . $filename;//change this URL                   
+  $message=$_POST['message'];                        
                      $sql=mysqli_query($conn,"select * from `subscriber`"); 
                      while($arr=mysqli_fetch_array($sql)){ 
                         $email=$arr['email'];  
@@ -199,9 +161,7 @@ if(isset($_POST['save'])){
         $emailText.="$fields[$key]: $value\n";
       }
     }
-  if(mail($sendTo,$subject,$emailText, "From:" .$from)){
-    $sql=mysqli_query($conn,"insert into `emailsub` (`message`) values ('$filename')");
-  }
+  mail($sendTo,$subject,$emailText, "From:" .$from);
     
   }
   catch(\Exception $e){
