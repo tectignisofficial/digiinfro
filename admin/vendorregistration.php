@@ -889,10 +889,6 @@ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 }
 }
 }
-
-
-
-
 ?>
 
 
