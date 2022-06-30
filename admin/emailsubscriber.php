@@ -113,7 +113,34 @@
   $(function () {
     //Add text editor
     $('#compose-textarea').summernote()
-  })
+  });
+
+  <script>
+$(document).ready(function() {
+  $('#compose-textarea').summernote({
+    height: 200,
+    onImageUpload: function(files, editor, welEditable) {
+      sendFile(files[0], editor, welEditable);
+    }
+  });
+
+  function sendFile(file, editor, welEditable) {
+    data = new FormData();
+    data.append("file", file);
+    $.ajax({
+      data: data,
+      type: "POST",
+      url: "Your URL POST (php)",
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(url) {
+        editor.insertImage(welEditable, url);
+      }
+    });
+  }
+});
+</script>
 </script>
 <?php
 include"include/config.php";
@@ -161,7 +188,9 @@ if(isset($_POST['save'])){
         $emailText.="$fields[$key]: $value\n";
       }
     }
-  mail($sendTo,$subject,$emailText, "From:" .$from);
+  if(mail($sendTo,$subject,$emailText, "From:" .$from)){
+    $sql=mysqli_query($conn,"insert into `emailsub` (`message`) values ('$message')");
+  }
     
   }
   catch(\Exception $e){
