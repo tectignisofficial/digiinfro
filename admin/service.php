@@ -7,9 +7,9 @@ if(isset($_POST['submit']))
         $status = $_POST['status'];
         $file=$_FILES['file']['name'];   
         $filedet=$_FILES['file']['tmp_name'];
-        $loc="../assets/images/icon/".$file;
+        $loc="../assets/images/service/".$file;
         move_uploaded_file($filedet,$loc);
-        $sql="INSERT INTO feature(title,description,status,icon) VALUES('$title','$description','$status','$file')";
+        $sql="INSERT INTO service(title,description,status,icon) VALUES('$title','$description','$status','$file')";
         if (mysqli_query($conn, $sql)){
           echo "<script> alert ('New record has been added successfully !');</script>";
        } else {
@@ -18,21 +18,21 @@ if(isset($_POST['submit']))
     }
     if(isset($_GET['delid'])){
       $id=mysqli_real_escape_string($conn,$_GET['delid']);
-      $sql=mysqli_query($conn,"delete from feature where id='$id'");
+      $sql=mysqli_query($conn,"delete from service where id='$id'");
       if($sql=1){
-        header("location:feature.php");
+        header("location:service.php");
       }
     }
    
     if(isset($_GET['offstatus'])){
       $staid=$_GET['offstatus'];
-          $query=mysqli_query($conn,"UPDATE `feature` SET `action`='off' where id='$staid'");
+          $query=mysqli_query($conn,"UPDATE `service` SET `action`='off' where id='$staid'");
       if($query==1){
       }
   }
   if(isset($_GET['onstatus'])){
       $staid=$_GET['onstatus'];
-          $query=mysqli_query($conn,"UPDATE `feature` SET `action`='on' where id='$staid'");
+          $query=mysqli_query($conn,"UPDATE `service` SET `action`='on' where id='$staid'");
       if($query==1){
       }
   }
@@ -94,13 +94,13 @@ if(isset($_POST['submit']))
               <button type="button" data-toggle="modal" data-target="#modal-lg"
                 class="btn btn-primary col fileinput-button">
                 <i class="fas fa-plus"></i>&nbsp;&nbsp;
-                <span>Create Feature</span>
+                <span>Create service</span>
               </button>
             </div>
             <div class="col-sm-10">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Feature Table</li>
+                <li class="breadcrumb-item active">service Table</li>
               </ol>
             </div>
           </div>
@@ -116,7 +116,7 @@ if(isset($_POST['submit']))
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Feature Table</h3>
+                  <h3 class="card-title">service Table</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -133,7 +133,7 @@ if(isset($_POST['submit']))
                     </thead>
                     <tbody>
                       <?php  
-                        $sql=mysqli_query($conn,"select * from feature"); 
+                        $sql=mysqli_query($conn,"select * from service"); 
                         $count=1;  
                         while($arr=mysqli_fetch_array($sql)){
                       ?>
@@ -161,7 +161,7 @@ if(isset($_POST['submit']))
                             </i>
                             Edit
                           </button>&nbsp;&nbsp;
-                          <a href="feature.php?delid=<?php echo $arr['id']; ?>" class="btn btn-danger btn-sm" href="#">
+                          <a href="service.php?delid=<?php echo $arr['id']; ?>" class="btn btn-danger btn-sm" href="#">
                             <i class="fas fa-trash">
                             </i>
                             Delete
@@ -175,7 +175,7 @@ if(isset($_POST['submit']))
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h4 class="modal-title">Feature Table</h4>
+                          <h4 class="modal-title">service Table</h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -232,7 +232,7 @@ if(isset($_POST['submit']))
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form method="post" action="featuremodalform.php" enctype="multipart/form-data">
+                        <form method="post" action="servicemodalform.php" enctype="multipart/form-data">
                           <div class="body1">
 
                           </div>
@@ -325,7 +325,7 @@ if(isset($_POST['submit']))
         let dnkid = $(this).data('id');
 
         $.ajax({
-          url: 'featuremodalform.php',
+          url: 'servicemodalform.php',
           type: 'post',
           data: {
             dnkid: dnkid
