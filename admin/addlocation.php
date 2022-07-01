@@ -1,5 +1,7 @@
 <?php
 include("include/config.php");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,30 +73,20 @@ include("include/config.php");
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- SELECT2 EXAMPLE -->
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Add a City </h3><br>
-            <h6 class="card-title">This page allow you to edit an existing state record in the datebase</h6>
-
-
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-          <!-- /.card
+    <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add City</h3>
+              </div>
               <!-- /.card-header -->
               <!-- form start -->
-<form method="POST">
-              <div class="card-body">
-              <div class="col-md-8">
-              <div class="form-group">
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
                   <label>Select a state </label>
                   <?php 
                    $query=mysqli_query($conn,"select * from state");
@@ -121,103 +113,41 @@ include("include/config.php");
                          
                        </select>
                 </div>
-                <!-- /.form-group -->
-              
-              <!-- /.col -->
-                
-              
-                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="search">update</button>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Add Location</label>
+                    <input type="text" class="form-control" name="city" id="exampleInputPassword1" placeholder="Enter location">
+                  </div>
+               
+                 
                 </div>
-                <!-- /.form-group -->
-                    </form>
-                
-        <!-- /.container-fluid -->
-       
-        
-    </section>
-    
-    <section class="content">
-      <div class="container-fluid">
-        <!-- SELECT2 EXAMPLE -->
-        <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">List All Trainers
+                <!-- /.card-body -->
 
-
-                </h3>
-                <div class="nav-item nav-grid f-view snehal" style="float: right;"> <span class="m-r-15">
-                  </span> 
-                   
-                 
-                  
-                        </div>
-              </div>
-              
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Client Code</th>
-                    <th>Shop Name   </th>
-                    <th> city</th>
-
-                  </tr>
-                  </thead>
-                 
-                  <tbody>
-                        <?php 
-                      if(isset($_POST['search'])){
-                        $state=$_POST['state'];
-                        $city=$_POST['city'];
-                        $sql=mysqli_query($conn,"select * from vendor where state='$state' AND city='$city'");
-                        while($arr=mysqli_fetch_array($sql)){
-                      ?>
-                          <tr>
-                            <td> <?php echo $arr['id'];?> </td>
-                            <td> <?php echo $arr['shop_name'];?></td>
-                            <td><?php echo $arr['city'];?>  </td>
-                          </tr>
-                          <?php } }?>
-                        </tbody>
-                        
-                    </table>
-                  <tfoot>
-                 
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
             </div>
-                         </div>
-        <!--  
-                <!-- /.form-group -->
-         
-                
-        <!-- /.container-fluid -->
-       
-        
-    </section>
-        
-             
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+            <!-- /.card -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
+            <!-- general form elements -->
+           
+            <!-- /.card -->
+
+            <!-- Input addon -->
+           
+            <!-- /.card -->
+            <!-- Horizontal Form -->
+           
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div>
 
 
 <!-- ./wrapper -->

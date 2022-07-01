@@ -1,15 +1,6 @@
 <?php
 include("include/config.php");
-if(isset($_POST["submit"])){
 
-  $meta_title=$_POST['meta_title'];
-  $meta_discription=$_POST['meta_discription'];
-  
-  
-  $sql = "UPDATE seo SET meta_title = '$meta_title', meta_description = '$meta_discription' WHERE page_name = 'home'";
-  $result=mysqli_query($conn, $sql);
-  
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +83,7 @@ if(isset($_POST["submit"])){
             </div>
           </form>
         </div>
-      </li>
+      </li>+
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -591,7 +582,7 @@ if(isset($_POST["submit"])){
           <!-- /.card
               <!-- /.card-header -->
               <!-- form start -->
-
+<form method="POST">
               <div class="card-body">
               <div class="col-md-8">
                 <div class="form-group">
@@ -600,14 +591,14 @@ if(isset($_POST["submit"])){
                    $query=mysqli_query($conn,"select * from state");
                    ?>
  
-                       <select class="form-control select2" name="" style="width: 100%;" required>
+                       <select class="form-control select2" name="state" style="width: 100%;" required>
                          <option selected="selected">select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
                     {
                       ?>
 
-                <option value=""><?php echo $sql['state'];?></option>
+                <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
                          <?php } ?>
                        </select>
                 </div>
@@ -643,11 +634,11 @@ if(isset($_POST["submit"])){
                   </select>
                 </div>
                  <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="submit">update</button>
+                  <button type="submit" class="btn btn-primary" name="search">update</button>
                 </div>
                 <!-- /.form-group -->
          
-                
+                    </form>
         <!-- /.container-fluid -->
        
         
@@ -684,21 +675,24 @@ if(isset($_POST["submit"])){
                  
                   <tbody>
                         <?php 
+                        if(isset($_POST['search'])){
+                          $state=$_POST['state'];
+                          $sql=mysqli_query($conn,"select * from vendor where state='$state' ");
+                          while($arr=mysqli_fetch_array($sql)){
                         
-                        $sql=mysqli_query($conn,"select * from vendor");
-                         while($arr=mysqli_fetch_array($sql)){
+                      
                         ?>
                           <tr>
                             
                             
-                            <td> </td>
+                            <td> <?php echo $arr['id'];?></td>
                             
                             <td> <?php echo $arr['shop_name'];?> </td>
-                                <td>  </td>
+                            <td> <?php echo $arr['state'];?> </td>
                               
                                                      
                           </tr>
-                          <?php } ?>
+                          <?php } }?>
                         </tbody>
                         
                     </table>
