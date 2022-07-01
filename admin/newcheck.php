@@ -122,4 +122,20 @@ $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_n
 }else{ ?>
   <option value="">designation not found</option>
 <?php }
+
+
+?>
+
+<?php
+if(!empty($_POST["city"])){ 
+  $department_id = $_POST["city"];
+$query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_name,search_location.location_name as loc_name,search_location.city_code from all_cities inner join search_location on search_location.city_name=all_cities.city_name WHERE all_cities.city_name ='$department_id'"); 
+ ?>
+ <option disabled>Select location</option>
+   <?php while($row = $query->fetch_assoc()){  ?>
+       <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name']?></option> 
+  <?php  } 
+}else{ ?>
+  <option value="">designation not found</option>
+<?php }
 ?>
