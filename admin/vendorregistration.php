@@ -167,7 +167,7 @@ include('include/sidebar.php');
                   <div class="form-group">
                   <label>Services</label>
                   <?php 
-                  $query=mysqli_query($conn,"select * from vendor");
+                  $query=mysqli_query($conn,"select * from service");
                 
                   ?>
 
@@ -178,7 +178,7 @@ include('include/sidebar.php');
                    while($sql=mysqli_fetch_array($query))
                    {
                      ?>
-                <option value="<?php echo $sql['services'];?>"><?php echo $sql['services'];?></option>
+                <option value="<?php echo $sql['title'];?>"><?php echo $sql['title'];?></option>
                         <?php }  ?>
                       </select>
                   </div>
@@ -215,31 +215,13 @@ include('include/sidebar.php');
 
                 <div class="form-group">
                   <label>location</label>
-                  <?php 
-                  $query=mysqli_query($conn,"select * from location");
-                
-                  ?>
-
-
-                      <select class="form-control select2" name="location" id="location" style="width: 100%;" >
-                        <option selected="selected" disabled>select</option>
-                        <?php
-                   while($sql=mysqli_fetch_array($query))
-                   {
-                     ?>
-                        <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
-                        <?php
-                    }
-                    ?>
-                      </select>
-
+             
+                   
+                       <select class="form-control select2 designation" name="location" id="designation" style="width: 100%;" >
+                         
+                       </select>
                         
                 </div>
-
-
-                
-                
-
 
                   <div class="row">
                   <h5> Social Media </h5>
@@ -318,11 +300,11 @@ include('include/sidebar.php');
                     </div>
                   </div>
 
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <label for="exampleInputFile">Image 3</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <input type="file" name="img3" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -336,14 +318,14 @@ include('include/sidebar.php');
                     <label for="exampleInputFile">Image 4</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <input type="file" name="img4" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
-                  </div>  -->
+                  </div>  
 
 
 
@@ -547,6 +529,18 @@ $action="1";
 $image=$_FILES['img']['name'];
 $tmp_name = $_FILES['img']['tmp_name']; 
 $loc="dist/img/vender_image/".basename($image);
+
+$image1=$_FILES['img2']['name'];
+$tmp_name = $_FILES['img2']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($image1);
+
+$image2=$_FILES['img3']['name'];
+$tmp_name = $_FILES['img3']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($image2);
+
+$image3=$_FILES['img4']['name'];
+$tmp_name = $_FILES['img4']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($image3);
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
@@ -832,7 +826,7 @@ ul.social li{
              <tr>
                    <td style="text-align: center;">
                        <div class="text-author">
-                           <img src="dist/img/vender_image/"'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                           <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/"'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
                            <h3 class="name">'.$shop_name.'</h3>
                            <span class="position">'.$shop_name.'</span>
                          <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 
@@ -860,7 +854,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
@@ -897,6 +891,20 @@ $.ajax({
   type:'POST',
   url:'newcheck.php',
   data:'state='+val,
+  success:function(html){
+    $('.designation').html(html);
+  }
+});
+  }
+  </script>
+
+
+<script>
+  function get(val){
+$.ajax({
+  type:'POST',
+  url:'newcheck.php',
+  data:'city='+val,
   success:function(html){
     $('.designation').html(html);
   }
