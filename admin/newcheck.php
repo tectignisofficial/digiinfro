@@ -128,7 +128,7 @@ $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_n
 
 <?php
 if(!empty($_POST["city"])){ 
-  $department_id = $_POST["city"];
+$department_id = $_POST["city"];
 $query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_name,search_location.location_name as loc_name,search_location.city_code from all_cities inner join search_location on search_location.city_name=all_cities.city_name WHERE all_cities.city_name ='$department_id'"); 
  ?>
  <option disabled>Select location</option>
