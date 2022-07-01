@@ -27,6 +27,178 @@ if(isset($_POST['submit'])){
 
   $sql=mysqli_query($conn,"INSERT INTO `blog`(`title`,`blog_content`,`category_id`,`img`,`meta_title`,`meta_description`,`status`) 
   VALUES ('$title','$blog_content','$category','$file','$meta_title','$meta_description','$status')");
+
+$sql=mysqli_query($conn,"select * from `subscriber`"); 
+while($arr=mysqli_fetch_array($sql)){ 
+   $email=$arr['email'];  
+
+$from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+$sendTo = 'Enquiry <'.$email.'>';
+$subject = "New Blog From Digiinfromatrics";
+// $fields = array( 'name' => 'name' );
+$from = 'Agreerent: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+
+$emailText = '
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting"> 
+<title></title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+<style>
+
+</style>
+</head>
+<body>
+
+
+<!-- big image section -->
+<table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
+<?php 
+                      
+                      $sql=mysqli_query($conn,"select * from `blog`");
+                   $count=1;
+                       while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <tr>
+        <td align="center">
+            <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
+                <tr>
+
+                    <td align="center" class="section-img">
+                        <a href=""
+                            style=" border-style: none !important; display: block; border: 0 !important;"><img src="../assets/images/blog_image/'.$file.'"
+                                style="display: block; width: 590px;" width="590" border="0" alt="" /></a>
+
+
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="center"
+                        style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
+                        class="main-header">
+
+
+                        <div style="line-height: 35px">
+
+                        '.$title.'
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <table border="0" width="40" align="center" cellpadding="0" cellspacing="0"
+                            bgcolor="eeeeee">
+                            <tr>
+                                <td height="2" style="font-size: 2px; line-height: 2px;">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <table border="0" width="400" align="center" cellpadding="0" cellspacing="0"
+                            class="container590">
+                            <tr>
+                                <td align="center"
+                                    style="color: #888888; font-size: 16px; font-family: Work Sans, Calibri, sans-serif; line-height: 24px;">
+
+
+                                    <div style="line-height: 24px">
+
+                                    '.$meta_description.'
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <?php    } ?>
+                <tr>
+                    <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <table border="0" align="center" width="160" cellpadding="0" cellspacing="0"
+                            bgcolor="5caad2" style="">
+
+                            <tr>
+                                <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td align="center"
+                                    style="color: #ffffff; font-size: 14px; font-family: Work Sans, Calibri, sans-serif; line-height: 26px;">
+
+
+                                    <div style="line-height: 26px;">
+                                        <a href="blog-details.php" style="color: #ffffff; text-decoration: none;">READ MORE</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>';
+
+try{
+foreach($_POST as $key => $value){
+if(isset($fields[$key])){
+$emailText.="$fields[$key]: $value\n";
+}
+}
+if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+echo "<script>alert('submit');</script>";}
+}
+catch(\Exception $e){
+echo "not done";
+}
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+$encode=json_encode($responseArray);
+header('content-Type: application/json');
+echo $encoded;
+}
+else{
+echo $responseArray['message'];
+}
+}
 }
 
 
