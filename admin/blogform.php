@@ -41,14 +41,18 @@ $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
 $emailText = '
-<html>
+<html xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting"> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
 <title></title>
 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
 <style type="text/css">
 body {
     width: 100%;
@@ -188,8 +192,7 @@ table {
 }
 </style>
 </head>
-<body>
-
+<body class="respond" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
 <!-- big image section -->
 <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
@@ -204,15 +207,7 @@ table {
             <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
                 <tr>
 
-                    <td align="center" class="section-img">
-                        <a href=""
-                            style=" border-style: none !important; display: block; border: 0 !important;"><img src="../assets/images/blog_image/'.$file.'"
-                                style="display: block; width: 590px;" width="590" border="0" alt="" /></a>
-
-
-
-
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
