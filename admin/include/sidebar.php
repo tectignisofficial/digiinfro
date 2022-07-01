@@ -296,13 +296,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="category.php" class="nav-link">
+            <a href="categoryblog.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Category</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/mailbox/compose.html" class="nav-link">
+            <a href="blogform.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Blog</p>
             </a>

@@ -83,8 +83,8 @@ include("admin/include/config.php");
                         
                         $sql=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id");
             
-                        // $sql1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
-                        // $count1=mysqli_num_rows($sql1);
+                        $sql1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
+                        $count1=mysqli_num_rows($sql1);
                             
                                      while($arr=mysqli_fetch_array($sql)){
                                         
