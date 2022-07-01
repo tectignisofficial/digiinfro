@@ -1,5 +1,22 @@
 <?php
 include("admin/include/config.php");
+if($_POST['submit']){
+    $firstname=$_POST['fname'];
+    $lastname=$_POST['lname'];
+    $phone=$_POST['phone'];
+    $email=$_POST['email'];
+    $subject=$_POST['subject'];
+    $yourmessage=$_POST['message'];
+
+    $sql="insert into contact(firstname,lastname,phone,email,subject,yourmessage) values('$firstname','$lastname','$phone','$email',' $subject','$yourmessage')";
+    $query=mysqli_query($conn,$sql);
+
+    if($query==1){
+        echo '<script>alert("Thank you for contacting us we will reply as soon as possible");</script>';
+    }else {
+        echo '<script>alert("oops...somthing went wrong");</script>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,16 +139,16 @@ include("admin/include/config.php");
                         <form>
                         <div class="contact-wrapper-one mb-30">
                             <div class="contact-form">
-                                <form>
+                                <form method="POST">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="First Name" name="name" required>
+                                                <input type="text" class="form_control" placeholder="First Name" name="fname" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="Last Name" name="name" required>
+                                                <input type="text" class="form_control" placeholder="Last Name" name="lname" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -156,7 +173,7 @@ include("admin/include/config.php");
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <button name="submit" type="submit" class="main-btn">Send Message</button>
+                                                <button type="submit" name="submit" class="main-btn">Send Message</button>
                                             </div>
                                         </div>
                                     </div>
