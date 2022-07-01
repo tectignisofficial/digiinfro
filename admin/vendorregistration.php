@@ -354,7 +354,7 @@ include('include/sidebar.php');
                     <label for="exampleInputPassword1">Pan card Document Upload</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input type="file" class="custom-file-input" name="pan" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -541,6 +541,16 @@ $loc="dist/img/vender_image/".basename($image2);
 $image3=$_FILES['img4']['name'];
 $tmp_name = $_FILES['img4']['tmp_name']; 
 $loc="dist/img/vender_image/".basename($image3);
+
+$license=$_FILES['license']['name'];
+$tmp_name = $_FILES['license']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($license);
+
+$pan=$_FILES['pan']['name'];
+$tmp_name = $_FILES['pan']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($pan);
+
+
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
@@ -854,7 +864,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
