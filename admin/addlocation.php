@@ -2,6 +2,24 @@
 include("include/config.php");
 
 
+if(isset($_POST['submit']))
+{
+    $state = $_POST['state_code'];
+    $city = $_POST['city_name'];
+    $location = $_POST['location'];
+
+
+
+  
+
+    $sql="INSERT INTO `search_location`(`state_code`,`city_name`,`location_name`) VALUES ('$state','$city','$location');";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   } else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +102,7 @@ include("include/config.php");
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="POST">
                 <div class="card-body">
                   <div class="form-group">
                   <label>Select a state </label>
@@ -92,14 +110,14 @@ include("include/config.php");
                    $query=mysqli_query($conn,"select * from state");
                    ?>
  
-                       <select class="form-control select2" name="state" style="width: 100%;" onChange="get(this.value)" required>
+                       <select class="form-control select2" name="state_code" style="width: 100%;" onChange="get(this.value)" required>
                          <option selected="selected" disabled>select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
                     {
                       ?>
 
-                <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
+                <option value="<?php echo $sql['state_code'];?>"><?php echo $sql['state'];?></option>
                          <?php } ?>
                        </select>
                 </div>
@@ -109,13 +127,13 @@ include("include/config.php");
                 <label>City Name</label>
              
  
-                       <select class="form-control select2" name="city" id="designation" style="width: 100%;" required>
+                       <select class="form-control select2" name="city_name" id="designation" style="width: 100%;" required>
                          
                        </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Add Location</label>
-                    <input type="text" class="form-control" name="city" id="exampleInputPassword1" placeholder="Enter location">
+                    <input type="text" class="form-control" name="location" id="exampleInputPassword1" placeholder="Enter location">
                   </div>
                
                  
@@ -160,7 +178,7 @@ include("include/config.php");
 $.ajax({
   type:'POST',
   url:'check.php',
-  data:'state='+val,
+  data:'state_code='+val,
   success:function(html){
     $('#designation').html(html);
   }

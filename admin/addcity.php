@@ -3,12 +3,13 @@ include("include/config.php");
 
 if(isset($_POST['submit']))
 {
-    $state = $_POST['state'];
-    $last_name	 = $_POST['last_name'];
+    $state = $_POST['state_code'];
+    $city = $_POST['city_name'];
+
 
   
 
-    $sql="INSERT INTO `all_cities`(`state`) VALUES ('$state')";
+    $sql="INSERT INTO `all_cities`(`state_code`,`city_name`) VALUES ('$state','$city')";
     if (mysqli_query($conn, $sql)){
       echo "<script> alert ('New record has been added successfully !');</script>";
    } else {
@@ -106,20 +107,20 @@ if(isset($_POST['submit']))
                    $query=mysqli_query($conn,"select * from state");
                    ?>
  
-                       <select class="form-control select2" name="state" style="width: 100%;" onChange="get(this.value)" required>
+                       <select class="form-control select2" name="state_code" style="width: 100%;" onChange="get(this.value)" required>
                          <option selected="selected" disabled>select</option>
                          <?php
                     while($sql=mysqli_fetch_array($query))
                     {
                       ?>
 
-                <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
+                <option value="<?php echo $sql['state_code'];?>"><?php echo $sql['state'];?></option>
                          <?php } ?>
                        </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Add City</label>
-                    <input type="text" class="form-control" name="city" id="exampleInputPassword1" placeholder="Enter City">
+                    <input type="text" class="form-control" name="city_name" id="exampleInputPassword1" placeholder="Enter City">
                   </div>
                
                  
