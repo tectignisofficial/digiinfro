@@ -1,6 +1,6 @@
 <?php
 include("admin/include/config.php");
-if($_POST['submit']){
+if(isset($_POST['submit'])){
     $firstname=$_POST['fname'];
     $lastname=$_POST['lname'];
     $phone=$_POST['phone'];
@@ -8,11 +8,12 @@ if($_POST['submit']){
     $subject=$_POST['subject'];
     $yourmessage=$_POST['message'];
 
-    $sql="insert into contact(firstname,lastname,phone,email,subject,yourmessage) values('$firstname','$lastname','$phone','$email',' $subject','$yourmessage')";
-    $query=mysqli_query($conn,$sql);
+    $sql=mysqli_query($conn,"insert into contact( `Firstname`, `Lastname`, `Phone`, `Email`, `Subject`, `Yourmessage`) values('$firstname','$lastname','$phone','$email',' $subject','$yourmessage')");
+    
 
-    if($query==1){
+    if($sql==1){
         echo '<script>alert("Thank you for contacting us we will reply as soon as possible");</script>';
+        header("location:contact.php");
     }else {
         echo '<script>alert("oops...somthing went wrong");</script>';
     }
@@ -136,24 +137,27 @@ if($_POST['submit']){
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <form>
+                        
                         <div class="contact-wrapper-one mb-30">
                             <div class="contact-form">
                                 <form method="POST">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="First Name" name="fname" required>
+                                                <input type="text" class="form_control" placeholder="First Name" name="fname" id="fname" required>
+                                                <span id="fnamespan" class="mb-4"></span>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="Last Name" name="lname" required>
+                                                <input type="text" class="form_control" placeholder="Last Name" name="lname" id="lname" required>
+                                                <span id="lnamespan" class="mb-4"></span>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_group">
-                                                <input type="text" class="form_control" placeholder="Phone" name="phone" required>
+                                                <input type="text" minlength="10" maxlength="10" class="form_control phone1" placeholder="Phone" name="phone" id="phone1" required>
+                                                <span id="phone1Span" class="mb-4"></span>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -173,14 +177,14 @@ if($_POST['submit']){
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <button type="submit" name="submit" class="main-btn">Send Message</button>
+                                                <button type="submit" name="submit" id="submit" class="main-btn">Send Message</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-               </form>
+               
                     </div>
                 </div>
             </div>
@@ -223,5 +227,96 @@ if($_POST['submit']){
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+             $("#phone1Span").hide();
+	    $(".phone1").keyup(function(){
+	     mobile_check();
+	   });
+	   function mobile_check(){
+		   let mobileno=$(".phone1").val();
+		   let vali =/^\d{10}$/; 
+		   if(!vali.test(mobileno)){
+        validenqtMobile="no";
+			    $("#phone1Span").show().html("*Invalid Mobile No").css("color","red").focus();
+				mobile_err=false;
+			 return false;
+		   }
+		   else{
+        validenqtMobile="yes";
+		       $("#phone1Span").hide(); 
+		   }
+	   }
+
+            $("#fnamespan").hide();
+	    $("#fname").keyup(function(){
+	     txt_check();
+	   });
+	   function txt_check(){
+      validenqName="no";
+		   let txt=$("#fname").val();
+		   let vali =/^[A-Za-z ]+$/;
+		   if(!vali.test(txt)){
+			  $("#fnamespan").show().html("Enter Alphabets only").css("color","red").focus();
+			  txt_err=false;
+			  return false;
+		   }
+		   else{
+        validenqName="yes";
+		       $("#fnamespan").hide();
+		       
+		   }
+	   }
+
+       $("#lnamespan").hide();
+	    $("#lname").keyup(function(){
+	     last_check();
+	   });
+	   function last_check(){
+        validenqtlast="no";
+		   let txt=$("#lname").val();
+		   let vali =/^[A-Za-z ]+$/;
+		   if(!vali.test(txt)){
+			  $("#lnamespan").show().html("Enter Alphabets only").css("color","red").focus();
+			  last_err=false;
+			  return false;
+		   }
+		   else{
+            validenqtlast="yes";
+		       $("#lnamespan").hide();
+		       
+		   }
+	   }
+
+      
+
+
+	   $("#submit").click(function(){
+       txt_err = true;
+       last_err = true;
+       mobile_err=true;
+             txt_check();
+             last_check();
+             mobile_check();
+			   
+			   if((txt_err==true) && (last_err==true) && (mobile_err=true)){
+			      return true;
+			   }
+			   else{return false;}
+		  });
+
+        let  validenqName,validenqtlast, validenqtMobile;
+
+ let submitenant = document.getElementById("submit");
+     submitenant.addEventListener("click", function(){
+
+     if(validenqName == "no" || validenqtlast =="no"){
+         swal("Oops...", "Please fill all the fields", "error");
+     }
+         else{
+             swal("Saved!", " Thank you for contacting us we will reply as soon as possible", "success");
+         }
+     });
+        </script>
     </body>
 </html>
