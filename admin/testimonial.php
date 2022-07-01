@@ -298,7 +298,6 @@ if(isset($_POST['submit']))
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
   <!-- Bootstrap Switch -->
   <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
