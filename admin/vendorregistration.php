@@ -546,7 +546,7 @@ $action="1";
 
 $image=$_FILES['img']['name'];
 $tmp_name = $_FILES['img']['tmp_name']; 
-$loc="admin/dist/img/vender_image/".basename($image);
+$loc="dist/img/vender_image/".basename($image);
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
