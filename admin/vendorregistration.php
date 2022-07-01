@@ -305,11 +305,11 @@ include('include/sidebar.php');
                     </div>
                   </div>
 
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <label for="exampleInputFile">Image 2</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <input type="file" name="img2" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -318,7 +318,7 @@ include('include/sidebar.php');
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleInputFile">Image 3</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -343,7 +343,7 @@ include('include/sidebar.php');
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
-                  </div> -->
+                  </div>  -->
 
 
 
@@ -476,7 +476,6 @@ let validenqName;
 		   else{
             validenqName="yes";
 		       $("#spanpersonname").hide();
-		       
 		   }
 	   }
        $("#submit").click(function(){
@@ -521,8 +520,6 @@ let validenqName;
         });
     </script>
 
-
-
 <?php
 
 if(isset($_POST['subit'])){
@@ -547,6 +544,10 @@ $veriotp=$_POST['veriotp'];
 $status="open";
 $action="1";
 
+$image=$_FILES['img']['name'];
+$tmp_name = $_FILES['img']['tmp_name']; 
+$loc="dist/img/vender_image/".basename($image);
+
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
 $otp=$otprow['otp'];
@@ -554,9 +555,7 @@ if($veriotp == ""){
  echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
 }else{
 if($otp==$veriotp){
-$image=$_FILES['img']['name'];
-$tmp_name = $_FILES['img']['tmp_name']; 
-$loc="admin/dist/img/vender_image/".basename($image);
+
 if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
  echo "<script>swal('oops','please fill all the fields','success');</script>";
 
@@ -861,7 +860,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$file','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`action`,`image1`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$upload_license','$action','$image','$location','$city','$state')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
