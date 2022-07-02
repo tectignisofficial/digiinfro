@@ -48,35 +48,35 @@ if(isset($_POST['savevender'])){
   }
   else if(!empty($_FILES['img1']['tmp_name']) && ($_POST['image2']) || !empty($_FILES['img1']['tmp_name']) && (empty($_POST['image2']))){
     $filedet=$_FILES['img1']['tmp_name'];
-    $loc="dist/img/vendor_image/".$img1;
+    $loc="dist/img/vender_image/".$img1;
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$img1',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
   }
   else if(!empty($_FILES['img2']['tmp_name']) && ($_POST['image3']) || !empty($_FILES['img2']['tmp_name']) && (empty($_POST['image3']))){
     $filedet=$_FILES['img2']['tmp_name'];
-    $loc="dist/img/vendor_image/".$img2;
+    $loc="dist/img/vender_image/".$img2;
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$img2',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
   }
   else if(!empty($_FILES['img3']['tmp_name']) && ($_POST['image4']) || !empty($_FILES['img3']['tmp_name']) && (empty($_POST['image4']))){
     $filedet=$_FILES['img3']['tmp_name'];
-    $loc="dist/img/vendor_image/".$img3;
+    $loc="dist/img/vender_image/".$img3;
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$img3',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
   }
   else if(!empty($_FILES['img5']['tmp_name']) && ($_POST['image5']) || !empty($_FILES['img5']['tmp_name']) && (empty($_POST['image5']))){
     $filedet=$_FILES['img5']['tmp_name'];
-    $loc="dist/img/vendor_image/".$img5;
+    $loc="dist/img/vender_image/".$img5;
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$img5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
   }
   else if(!empty($_FILES['img6']['tmp_name']) && ($_POST['image6']) || !empty($_FILES['img6']['tmp_name']) && (empty($_POST['image6']))){
     $filedet=$_FILES['img6']['tmp_name'];
-    $loc="dist/img/vendor_image/".$img6;
+    $loc="dist/img/vender_image/".$img6;
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$img6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
