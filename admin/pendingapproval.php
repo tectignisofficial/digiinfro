@@ -35,11 +35,11 @@ if(isset($_POST['savevender'])){
 
   if(empty(($_FILES['img']['tmp_name'])) && empty(($_FILES['img1']['tmp_name']))  && empty(($_FILES['img2']['tmp_name']))  && empty(($_FILES['img3']['tmp_name']))  && empty(($_FILES['img5']['tmp_name']))  && empty(($_FILES['img6']['tmp_name'])) && ($_POST['image1']) && ($_POST['image2']) && ($_POST['image3']) && ($_POST['image4']) && ($_POST['image5']) && ($_POST['image6'])){
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully1');</script>";
+    echo "<script>alert('Vendor Updated Successfully');</script>";
     }
     else if(empty($_POST['image1']) && empty($_POST['image2'])  && empty($_POST['image3'])  && empty($_POST['image4'])  && empty($_POST['image5'])  && empty($_POST['image6']) && ($_FILES['img']['tmp_name']) && ($_FILES['img1']['tmp_name']) && ($_FILES['img2']['tmp_name']) && ($_FILES['img3']['tmp_name']) && ($_FILES['img5']['tmp_name']) && ($_FILES['img6']['tmp_name'])){
       $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$img2',`pan_card`='$img3',`status`='$status',`image1`='$img',`image2`='$img1',`image3`='$img5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-      echo "<script>alert('Vendor Updated Successfully2');</script>";
+      echo "<script>alert('Vendor Updated Successfully');</script>";
       }
     else if(!empty($_FILES['img']['tmp_name']) && ($_POST['image1']) || !empty($_FILES['img']['tmp_name']) && (empty($_POST['image1']))){
     $filedet=$_FILES['img']['tmp_name'];
@@ -47,7 +47,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$img',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully3');</script>";
+    echo "<script>alert('Vendor Image 1 Updated Successfully');</script>";
   }
   else if(!empty($_FILES['img1']['tmp_name']) && ($_POST['image2']) || !empty($_FILES['img1']['tmp_name']) && (empty($_POST['image2']))){
     $filedet=$_FILES['img1']['tmp_name'];
@@ -55,7 +55,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$img1',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully4');</script>";
+    echo "<script>alert('Vendor Image 2 Updated Successfully');</script>";
   }
   else if(!empty($_FILES['img2']['tmp_name']) && ($_POST['image3']) || !empty($_FILES['img2']['tmp_name']) && (empty($_POST['image3']))){
     $filedet=$_FILES['img2']['tmp_name'];
@@ -63,7 +63,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$img2',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully5');</script>";
+    echo "<script>alert('Vendor License Updated Successfully');</script>";
   }
   else if(!empty($_FILES['img3']['tmp_name']) && ($_POST['image4']) || !empty($_FILES['img3']['tmp_name']) && (empty($_POST['image4']))){
     $filedet=$_FILES['img3']['tmp_name'];
@@ -71,7 +71,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$img3',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully6');</script>";
+    echo "<script>alert('Vendor Pen Card Updated Successfully');</script>";
   }
   else if(!empty($_FILES['img5']['tmp_name']) && ($_POST['image5']) || !empty($_FILES['img5']['tmp_name']) && (empty($_POST['image5']))){
     $filedet=$_FILES['img5']['tmp_name'];
@@ -79,7 +79,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$img5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully7');</script>";
+    echo "<script>alert('Vendor Image 3 Updated Successfully');</script>";
   }
   else if(!empty($_FILES['img6']['tmp_name']) && ($_POST['image6']) || !empty($_FILES['img6']['tmp_name']) && (empty($_POST['image6']))){
     $filedet=$_FILES['img6']['tmp_name'];
@@ -87,7 +87,7 @@ if(isset($_POST['savevender'])){
     move_uploaded_file($filedet,$loc);
   
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$img6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
-    echo "<script>alert('Vendor Updated Successfully8');</script>";
+    echo "<script>alert('Vendor Image 4 Updated Successfully');</script>";
   }
 }
 ?>
@@ -196,7 +196,7 @@ if(isset($_POST['savevender'])){
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                       
-                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']==''){
+                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']=='' || $arr['shop_name']=='' || $arr['category']=='' || $arr['image1']=='' || $arr['image2']=='' || $arr['image3']=='' || $arr['image4']=='' || $arr['city']=='' || $arr['state']==''){
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>
