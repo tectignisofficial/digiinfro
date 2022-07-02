@@ -109,61 +109,7 @@ include("admin/include/config.php");
                             </div>
                         </div>
                         <?php } ?>
-                        <!-- <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-serving-dish"></i>
-                                    </div>
-                                    <h6>Restaurant</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-game-controller"></i>
-                                    </div>
-                                    <h6>Game Field</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-suitcase"></i>
-                                    </div>
-                                    <h6>Job & Feed</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-gift-box"></i>
-                                    </div>
-                                    <h6>Party Center</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 category-column">
-                            <div class="category-item category-item-one">
-                                <div class="info text-center">
-                                    <div class="icon">
-                                        <i class="flaticon-dumbbell"></i>
-                                    </div>
-                                    <h6>Fitness Zone</h6>
-                                </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
-                            </div>
-                        </div> -->
+
                     </div>
                 </div>
             </div>
@@ -206,7 +152,7 @@ include("admin/include/config.php");
                                 </div>
                             </div>
                             <div class="listing-content">
-                                <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['id']; ?>"><?php echo $row['shop_name'] ?></a></h3>
+                                <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['shop_code']; ?>"><?php echo $row['shop_name'] ?></a></h3>
                                 <div class="ratings">
                                     <ul class="ratings ratings-three">
                                         <li class="star"><i class="flaticon-star-1"></i></li>
@@ -518,83 +464,9 @@ include("admin/include/config.php");
                         </div>
                     </div>
                     <?php } ?>
-                    <div class="listing-item listing-grid-item-two">
-                        <div class="listing-thumbnail">
-                            <img src="assets/images/listing/listing-grid-8.jpg" alt="Listing Image">
-                            <a href="#" class="cat-btn"><i class="flaticon-dumbbell"></i></a>
-                            <ul class="ratings ratings-three">
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li><span><a href="#">(02 Reviews)</a></span></li>
-                            </ul>
-                        </div>
-                        <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.html">Gym Ground</a></h3>
-                            <p>Popular restaurant in california</p>
-                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">close</span></span>
-                            <div class="listing-meta">
-                                <ul>
-                                    <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                    <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="listing-item listing-grid-item-two">
-                        <div class="listing-thumbnail">
-                            <img src="assets/images/listing/listing-grid-9.jpg" alt="Listing Image">
-                            <a href="#" class="cat-btn"><i class="flaticon-government"></i></a>
-                            <span class="featured-btn">Featured</span>
-                            <ul class="ratings ratings-five">
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li><span><a href="#">(02 Reviews)</a></span></li>
-                            </ul>
-                        </div>
-                        <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.html">City Palace</a></h3>
-                            <p>Popular restaurant in california</p>
-                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
-                            <div class="listing-meta">
-                                <ul>
-                                    <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                    <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="listing-item listing-grid-item-two">
-                        <div class="listing-thumbnail">
-                            <img src="assets/images/listing/listing-grid-1.jpg" alt="Listing Image">
-                            <a href="#" class="cat-btn"><i class="flaticon-chef"></i></a>
-                            <span class="featured-btn">Featured</span>
-                            <ul class="ratings ratings-two">
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li><span><a href="#">(02 Reviews)</a></span></li>
-                            </ul>
-                        </div>
-                        <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
-                            <p>Popular restaurant in california</p>
-                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
-                            <div class="listing-meta">
-                                <ul>
-                                    <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                    <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    
+                   
+                    
                 </div>
             </div>
         </section>

@@ -3,6 +3,7 @@ let catdnkname,catdnkslug
    //TEXT VALIDATION
    $("#spancatname").hide();
    $("#spancatslug").hide();
+   
 	    $("#catname").keyup(function(){
 	     txt_check();
 	   });
