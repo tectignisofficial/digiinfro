@@ -200,7 +200,192 @@ if(isset($_POST['id'])){
 </div>';
 }
 
+//complete
+if(isset($_POST['compid'])){
 
+  $sql=mysqli_query($conn,"select * from vendor where shop_code='".$_POST['compid']."'");
+  $arr=mysqli_fetch_array($sql);
+  echo '<div class="card-body">
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <h6>Category</h6>';
+   echo ' <input type="hidden" name="id" id="id" value="'.$_POST['compid'].'">
+    <select class="form-control select2" style="width: 100%;" name="category">
+    <option value="'.$arr['category'].'" selected="selected">'.$arr['category'].'</option>';
+    $query=mysqli_query($conn,"select * from listcategory");
+    while($sql=mysqli_fetch_array($query)){
+      echo '<option value="'.$sql['name'].'">'.$sql['name'].'</option>';
+    }
+  echo ' </select>
+  </div>
+  <div class="form-group col-md-6">
+    <h6>Shop Name</h6>
+    <input type="text" class="form-control" name="shop_name" value="'.$arr['shop_name'].'" id="shop_name" placeholder="Enter shop name">
+  </div>
+  </div>
+
+  
+  <div class="form-group">
+    <h6>Shop Address</h6>
+        <textarea class="form-control" name="shop_address" id="shop_address" placeholder="Enter shop address">'.$arr['shop_address'].'</textarea>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <h6>Shop Name</label>
+    <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Enter shop name" value="'.$arr['shop_name'].'">
+  </div>
+    <div class="form-group col-md-6">
+    <h6>Authorized Person Name</h6>
+    <input type="text" class="form-control" value="'.$arr['authorized_person'].'" name="authorized_person" id="example1" placeholder="Enter autorized person name">
+    <span id="spanpersonname"></span>
+  </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <h6>Mobile No.</h6>
+        <input type="tel" class="form-control" name="mobile_no" value="'.$arr['mobile_no'].'" id="mobile_no" placeholder="Enter mobile number" minlength="10"  maxlength="10" >
+  </div>
+  <div class="form-group col-md-6">
+    <h6>WhatsApp No.</label></h6>
+    <input type="tel" class="form-control" name="whatsapp_no" value="'.$arr['whatsapp_no'].'" id="whatsapp_no" placeholder="Enter whatsapp number" minlength="10"  maxlength="10">
+  </div>
+  </div>
+
+  <div class="form-row ">
+  <div class="form-group  col-md-6">
+  <h6>Email ID<label style="color:Red">*</label></h6>
+      <input type="email" class="form-control" name="email" value="'.$arr['email'].'" id="email" placeholder="Enter Email ID" >               
+</div>
+  <div class="form-group  col-md-6">
+    <h6>Website</h6>
+    <input type="url" class="form-control" name="website" id="website" value="'.$arr['website'].'" placeholder="Enter website">
+  </div>
+</div>
+
+<div class="form-row ">
+  <div class="form-group col-md-6">
+  <h6>Services</h6>
+  <select class="form-control select2" style="width: 100%;" name="services">
+    <option  value="'.$arr['services'].'" selected="selected">'.$arr['services'].'</option>';
+    $query1=mysqli_query($conn,"select * from service");
+    while($sql1=mysqli_fetch_array($query1)){
+      echo '<option value="'.$sql1['title'].'">'.$sql1['title'].'</option>';
+    }
+   echo '</select>
+</div>
+<div class="form-group col-md-6">
+<h6>Select a state </h6>
+       <select class="form-control select2" name="state" style="width: 100%;" onChange="get1(this.value)">
+       <option  value="'.$arr['state'].'" selected="selected">'.$arr['state'].'</option>';  
+       $query2=mysqli_query($conn,"select * from state");   
+       while($sql2=mysqli_fetch_array($query2)){
+        echo '<option value="'.$sql2['state'].'">'.$sql2['state'].'</option>';
+      }
+      echo '</select>
+</div>
+</div>
+
+<div class="form-row ">
+<div class="form-group col-md-6">
+  <h6>City Name</h6>
+       <select class="form-control select2 designation"  name="city" style="width: 100%;" onChange="get2(this.value)">
+       <option value="'.$arr['city'].'" selected="selected" >'.$arr['city'].'</option>
+       </select>
+</div>
+<div class="form-group col-md-6">
+  <h6>location</h6>
+      <select class="form-control select2 location" name="location" id="location" style="width: 100%;" >
+        <option value="'.$arr['location'].'" selected="selected" >'.$arr['location'].'</option>
+      </select>
+</div>
+</div>
+
+
+  <div class="form-group">
+  <h6> Social Media </h6>
+</div>
+<div class="row">
+<div class="col-12 col-sm-6">
+<div class="form-group">
+  <h6>Facebook</h6>
+  <input type="url" class="form-control" value="'.$arr['facebook'].'" name="facebook" id="facebook">
+</div>
+<!-- /.form-group -->
+</div>
+<!-- /.col -->
+<div class="col-12 col-sm-6">
+<div class="form-group">
+  <h6>Instagram</h6>
+  <input type="url" class="form-control" value="'.$arr['instagram'].'" name="instagram" id="instagram">
+</div>
+<!-- /.form-group -->
+</div>
+<div class="col-12 col-sm-6">
+<div class="form-group">
+  <h6>LinkedIn</h6>
+  <input type="url" class="form-control" value="'.$arr['LinkedIn'].'" name="linkedin" id="linkedin" >
+</div>
+<!-- /.form-group -->
+</div>
+<!-- /.col -->
+<div class="col-12 col-sm-6">
+<div class="form-group">
+  <h6>YouTube</h6>
+  <input type="url" class="form-control" value="'.$arr['youtube'].'" name="youtube" id="youtube">
+</div>
+<!-- /.form-group -->
+</div>
+<!-- /.col -->
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group col-sm-6">
+    <h6>Image 1</h6>
+      <img src="dist/img/vender_image/'.$arr['image1'].'" width="50" height="50">
+      <input type="hidden" name="image1" value="'.$arr['image1'].'">
+        <input type="file" name="img" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+  <div class="form-group col-sm-6">
+    <h6>Image 2</h6>
+      <img src="dist/img/vender_image/'.$arr['image2'].'" width="50" height="50">
+      <input type="hidden" name="image2" value="'.$arr['image1'].'">
+        <input type="file" name="img1" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+  </div>
+
+  <div class="form-row">
+<div class="form-group col-sm-6">
+    <h6>Image 1</h6>
+      <img src="dist/img/vender_image/'.$arr['image3'].'" width="50" height="50">
+      <input type="hidden" name="image5" value="'.$arr['image3'].'">
+        <input type="file" name="img5" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+  <div class="form-group col-sm-6">
+    <h6>Image 2</h6>
+      <img src="dist/img/vender_image/'.$arr['image4'].'" width="50" height="50">
+      <input type="hidden" name="image6" value="'.$arr['image4'].'">
+        <input type="file" name="img6" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-sm-6">
+    <h6>Shop Act License Document Upload</h6>
+      <img src="dist/img/vender_image/'.$arr['shop_act_license'].'" width="50" height="50">
+      <input type="hidden" name="image3" value="'.$arr['image1'].'">
+        <input type="file" name="img2" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+  <div class="form-group col-sm-6">
+    <h6>Pan card Document Upload</h6>
+      <img src="dist/img/vender_image/'.$arr['pan_card'].'" width="50" height="50">
+      <input type="hidden" name="image4" value="'.$arr['image1'].'">
+        <input type="file" name="img3" class="" accept="image/png,image/jpeg,image/jpg">
+  </div>
+</div>
+</div>';
+}
 
 if(!empty($_POST["editstate"])){ 
   $state = $_POST["editstate"];
