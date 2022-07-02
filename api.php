@@ -2,13 +2,15 @@
 include("admin/include/config.php");
 
 if(isset($_POST['id'])){
-  $sql=mysqli_query($conn,"select * from vendor where id='".$_POST['id']."'");
+
+  $sql=mysqli_query($conn,"select * from vendor where shop_code='".$_POST['id']."'");
   $arr=mysqli_fetch_array($sql);
   echo '<div class="card-body">
   <div class="form-row">
   <div class="form-group col-md-6">
-    <h6>Category</h6>
-    <input type="hidden" name="id" id="id" value="'.$_POST['id'].'">
+    <h6>Category</h6>';
+    echo $_POST['id'];
+   echo ' <input type="hidden" name="id" id="id" value="'.$_POST['id'].'">
     <select class="form-control select2" style="width: 100%;" name="category">
     <option value="'.$arr['category'].'" selected="selected">'.$arr['category'].'</option>';
     $query=mysqli_query($conn,"select * from listcategory");
