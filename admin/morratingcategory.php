@@ -66,32 +66,58 @@ include("include/config.php");
     </div>
     <!-- /.content-header -->
 
+<!--modal-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="../api.php">
+      <div class="modal-body">
+        <select class="form-control" name="shopname">
+        <?php
+    $sql=mysqli_query($conn,"select * from vendor where action='0'");
+    while($res=mysqli_fetch_array($sql)){
+    ?>
+    <option value="<?php echo $res['shop_code']; ?>"><?php echo $res['shop_name']; ?></option>
+    
+          <li></li>
+          <?php } ?>
+    </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="saverat">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<!--modal-->
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
       <div class="row">
           <div class="col-12">
 <div class="mb-2">
-    <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <button class="btn btn-primary" ><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
     <!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Add
-  </button>
-  <div class="dropdown-menu">
-    <?php
-    $sql=mysqli_query($conn,"select * from vendor where action='0'");
-    while($res=mysqli_fetch_array($sql)){
-    ?>
-    <a class="dropdown-item" href="morratingcategory.php?shopid=<?php echo $res['id']; ?>"><?php echo $res['shop_name']; ?></a>
-    <?php } ?>
-  </div>
-</div>
 </div>
 
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">My Listing</h3>
+                <div class="btn-group float-right">
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+    Add
+  </button>
+   
+</div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -104,39 +130,20 @@ include("include/config.php");
                     <th>City</th>
                     <th>Category</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php
-                    if(isset($_GET['shopid'])){
-                      $shopid=$_GET['shopid'];
-                      $sql=mysqli_query($conn,"select * from vendor where action='0' and id='$shopid'");
-                      $count=1;
-                      while($arr=mysqli_fetch_array($sql)){
-                      ?>
-                    <tr>
-                      <td><?php echo $count; ?></td>
-                      <td><?php echo $arr['id']; ?></td>
-                      <td><?php echo $arr['shop_name']; ?></td>
-                      <td><?php //echo $arr['city']; ?>add city</td>
-                      <td><?php echo $arr['category']; ?></td>
-                      <td><?php if($arr['morerating']=='1'){
-                        echo "<a href='../api.php?catemoratingyes=".$arr['id']."' class='btn btn-success'>YES</a>";
-                      } else if($arr['morerating']=='0'){
-                        echo "<a href='../api.php?catemoratingno=".$arr['id']."' class='btn btn-danger'>NO</a>";
-                      }?></td>
-                      
-                    </tr>
-                    <?php $count++; }
-                    }else{
-                    $sql=mysqli_query($conn,"select * from vendor where action='0'");
+                    <?php 
+                    
+                    $sql=mysqli_query($conn,"select * from vendor where action='0' and morerating='1'");
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                       
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>
-                    <td><?php echo $arr['id']; ?></td>
+                    <td><?php echo $arr['shop_code']; ?></td>
                     <td><?php echo $arr['shop_name']; ?></td>
                     <td><?php //echo $arr['city']; ?>add city</td>
                     <td><?php echo $arr['category']; ?></td>
@@ -145,8 +152,9 @@ include("include/config.php");
                     } else if($arr['morerating']=='0'){
                       echo "<a href='../api.php?catemoratingno=".$arr['id']."' class='btn btn-danger'>NO</a>";
                     }?></td>
+                    <td><a href="../api.php?catemoratingyes=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                   </tr>
-                  <?php $count++; } } ?>
+                  <?php $count++; } ?>
                   </tbody>
                   
                 </table>

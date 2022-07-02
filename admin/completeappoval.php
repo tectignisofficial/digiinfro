@@ -74,19 +74,6 @@ include("include/config.php");
 <div class="mb-2">
     <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
     <!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Add
-  </button>
-  <div class="dropdown-menu">
-    <?php
-    $sql=mysqli_query($conn,"select * from vendor where action='0'");
-    while($res=mysqli_fetch_array($sql)){
-    ?>
-    <a class="dropdown-item" href="morratingcategory.php?shopid=<?php echo $res['id']; ?>"><?php echo $res['shop_name']; ?></a>
-    <?php } ?>
-  </div>
-</div>
 </div>
 
             <div class="card">
@@ -116,19 +103,19 @@ include("include/config.php");
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>
-                    <td><?php echo $arr['id']; ?></td>
+                    <td><?php echo $arr['shop_code']; ?></td>
                     <td><?php echo $arr['shop_name']; ?></td>
                     <td><?php //echo $arr['city']; ?>add city</td>
                     <td><?php echo $arr['category']; ?></td>
                     <td><?php if($arr['action']=='1'){
-                      echo "<a href='../api.php?catonstatus=".$arr['id']."' class='btn btn-danger'>Deactive</a>";
+                      echo "<a href='../api.php?catonstatus=".$arr['shop_code']."' class='btn btn-danger'>Deactive</a>";
                     } else if($arr['action']=='0'){
-                      echo "<a href='../api.php?catzestatus=".$arr['id']."' class='btn btn-success'>Active</a>";
+                      echo "<a href='../api.php?catzestatus=".$arr['shop_code']."' class='btn btn-success'>Active</a>";
                     }?></td>
                     <td>
                     <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="../api.php?delcom=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['shop_code']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                    <a href="../api.php?delcom=<?php echo $arr['shop_code']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                   </tr>
                   <?php } $count++; } ?>
                   </tbody>
