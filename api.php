@@ -163,7 +163,7 @@ if(isset($_POST['id'])){
   <div class="form-group col-sm-6">
     <h6>Image 2</h6>
       <img src="dist/img/vender_image/'.$arr['image2'].'" width="50" height="50">
-      <input type="hidden" name="image2" value="'.$arr['image1'].'">
+      <input type="hidden" name="image2" value="'.$arr['image2'].'">
         <input type="file" name="img1" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
   </div>
@@ -187,13 +187,13 @@ if(isset($_POST['id'])){
   <div class="form-group col-sm-6">
     <h6>Shop Act License Document Upload</h6>
       <img src="dist/img/vender_image/'.$arr['shop_act_license'].'" width="50" height="50">
-      <input type="hidden" name="image3" value="'.$arr['image1'].'">
+      <input type="hidden" name="image3" value="'.$arr['shop_act_license'].'">
         <input type="file" name="img2" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
   <div class="form-group col-sm-6">
     <h6>Pan card Document Upload</h6>
       <img src="dist/img/vender_image/'.$arr['pan_card'].'" width="50" height="50">
-      <input type="hidden" name="image4" value="'.$arr['image1'].'">
+      <input type="hidden" name="image4" value="'.$arr['pan_card'].'">
         <input type="file" name="img3" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
 </div>
@@ -350,7 +350,7 @@ if(isset($_POST['compid'])){
   <div class="form-group col-sm-6">
     <h6>Image 2</h6>
       <img src="dist/img/vender_image/'.$arr['image2'].'" width="50" height="50">
-      <input type="hidden" name="image2" value="'.$arr['image1'].'">
+      <input type="hidden" name="image2" value="'.$arr['image2'].'">
         <input type="file" name="img1" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
   </div>
@@ -374,13 +374,13 @@ if(isset($_POST['compid'])){
   <div class="form-group col-sm-6">
     <h6>Shop Act License Document Upload</h6>
       <img src="dist/img/vender_image/'.$arr['shop_act_license'].'" width="50" height="50">
-      <input type="hidden" name="image3" value="'.$arr['image1'].'">
+      <input type="hidden" name="image3" value="'.$arr['shop_act_license'].'">
         <input type="file" name="img2" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
   <div class="form-group col-sm-6">
     <h6>Pan card Document Upload</h6>
       <img src="dist/img/vender_image/'.$arr['pan_card'].'" width="50" height="50">
-      <input type="hidden" name="image4" value="'.$arr['image1'].'">
+      <input type="hidden" name="image4" value="'.$arr['pan_card'].'">
         <input type="file" name="img3" class="" accept="image/png,image/jpeg,image/jpg">
   </div>
 </div>
