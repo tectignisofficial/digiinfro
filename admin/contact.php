@@ -30,7 +30,19 @@ $sql=mysqli_query($conn,"select * from contact");
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <style>
+    .dt-button{
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 4px 20px;
+    margin-right: -5px;
+    }
+    .dt-button:hover {
+  background-color: #2F4F4F;
+}
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -67,20 +79,27 @@ $sql=mysqli_query($conn,"select * from contact");
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-        <tr>
-                <th>Id</th>
+     
+    <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                  <th>Id</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Yourmessage</th>
-            </tr>
-        </thead>
-        <tbody>
-          <?php
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
         while ($row=mysqli_fetch_array($sql)){ 
           ?>
             <tr>
@@ -93,8 +112,11 @@ $sql=mysqli_query($conn,"select * from contact");
                 <td><?php echo $row['Yourmessage']; ?></td>
             </tr>
        <?php } ?>
-        </tbody>
-    </table>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
         
       </div><!-- /.container-fluid -->
     </section>
@@ -159,15 +181,24 @@ $sql=mysqli_query($conn,"select * from contact");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
+
 <script>
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
 </body>
 </html>
