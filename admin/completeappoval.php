@@ -32,9 +32,16 @@ if(isset($_POST['savevender'])){
   $img3=$_FILES['img3']['name'];
   $img5=$_FILES['img5']['name'];
   $img6=$_FILES['img6']['name'];
-
+  $errors= array();
+  $iuyt="";
   $file_ext = explode('.',$file_name)[1];
+  $extensions= array("jpeg","jpg","png");
+  if(in_array($file_ext,$extensions)=== false){
+     $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+  }
+  if(empty($errors)==true){
   $iuyt=str_replace($file_ext, 'webp', $img);
+  }
 
   if(empty(($_FILES['img']['tmp_name'])) && empty(($_FILES['img1']['tmp_name']))  && empty(($_FILES['img2']['tmp_name']))  && empty(($_FILES['img3']['tmp_name']))  && empty(($_FILES['img5']['tmp_name']))  && empty(($_FILES['img6']['tmp_name'])) && ($_POST['image1']) && ($_POST['image2']) && ($_POST['image3']) && ($_POST['image4']) && ($_POST['image5']) && ($_POST['image6'])){
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
