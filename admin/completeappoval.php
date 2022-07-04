@@ -32,7 +32,13 @@ if(isset($_POST['savevender'])){
   $img3=$_FILES['img3']['name'];
   $img5=$_FILES['img5']['name'];
   $img6=$_FILES['img6']['name'];
-  $errors= array();
+
+  $im = imagecreatefromjpeg($img);
+  $file_ext = explode('.',$img)[1];
+  $newImagePath = str_replace($file_ext, "webp", $img);
+  $quality = 100;
+  $iuyt= imagewebp($im, $newImagePath, $quality);
+
   $file_ext = explode('.',$img)[1];
   $iuyt= str_replace($file_ext,"webp",$img);
 
@@ -56,7 +62,7 @@ if(isset($_POST['savevender'])){
     echo "<script>alert('Vendor Updated Successfully');</script>";
     }
     else if(empty($_POST['image1']) && empty($_POST['image2'])  && empty($_POST['image3'])  && empty($_POST['image4'])  && empty($_POST['image5'])  && empty($_POST['image6']) && ($_FILES['img']['tmp_name']) && ($_FILES['img1']['tmp_name']) && ($_FILES['img2']['tmp_name']) && ($_FILES['img3']['tmp_name']) && ($_FILES['img5']['tmp_name']) && ($_FILES['img6']['tmp_name'])){
-      $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$img2',`pan_card`='$img3',`status`='$status',`image1`='$img',`image2`='$img1',`image3`='$img5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+      $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$iuyt3',`pan_card`='$iuyt4',`status`='$status',`image1`='$iuyt',`image2`='$iuyt2',`image3`='$iuyt5',`image4`='$iuyt6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
       echo "<script>alert('Vendor Updated Successfully');</script>";
       }
     else if(!empty($_FILES['img']['tmp_name']) && ($_POST['image1']) || !empty($_FILES['img']['tmp_name']) && (empty($_POST['image1']))){

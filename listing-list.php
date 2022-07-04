@@ -321,7 +321,6 @@ $.ajax({
   url:'api.php',
   data:'state='+val,
   success:function(html){
-    alert(html);
     $('.bycity').html(html);
   }
 });
