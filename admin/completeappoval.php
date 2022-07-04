@@ -81,6 +81,7 @@ if(isset($img)){
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$output_image',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
     echo "<script>alert('Vendor Image 1 Updated Successfully');</script>";
   }
+}
   }
   else if(!empty($_FILES['img1']['tmp_name']) && ($_POST['image2']) || !empty($_FILES['img1']['tmp_name']) && (empty($_POST['image2']))){
 
