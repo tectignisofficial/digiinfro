@@ -32,6 +32,13 @@ if(isset($_POST['savevender'])){
   $img3=$_FILES['img3']['name'];
   $img5=$_FILES['img5']['name'];
   $img6=$_FILES['img6']['name'];
+
+  $im = imagecreatefromjpeg($img);
+  $file_ext = explode('.',$img)[1];
+  $newImagePath = str_replace($file_ext, "webp", $img);
+  $quality = 100;
+  $iuyt= imagewebp($im, $newImagePath, $quality);
+
   $file_ext = explode('.',$img)[1];
   $iuyt= str_replace($file_ext,"webp",$img);
 
