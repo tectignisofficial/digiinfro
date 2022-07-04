@@ -72,7 +72,7 @@ if(isset($info['mime'])){
 }
 if(isset($img)){
   $output_image=time().'.webp';
-  $imagewebp($img,$output_image,50); 
+  imagewebp($img,$output_image,50); 
 
     $filedet=$_FILES['img']['tmp_name'];
     $loc="dist/img/vender_image/".$output_image;
