@@ -33,12 +33,6 @@ if(isset($_POST['savevender'])){
   $img5=$_FILES['img5']['name'];
   $img6=$_FILES['img6']['name'];
 
-  $im = imagecreatefromjpeg($_FILES['img']['tmp_name']);
-  $file_ext = explode('.',$_FILES['img']['tmp_name'])[1];
-  $newImagePath = str_replace($file_ext, "webp", $img);
-  $quality = 40;
-  $iuyt= imagewebp($im, $newImagePath, $quality);
-
   $file_ext = explode('.',$img)[1];
   $iuyt= str_replace($file_ext,"webp",$img);
 
@@ -66,14 +60,30 @@ if(isset($_POST['savevender'])){
       echo "<script>alert('Vendor Updated Successfully');</script>";
       }
     else if(!empty($_FILES['img']['tmp_name']) && ($_POST['image1']) || !empty($_FILES['img']['tmp_name']) && (empty($_POST['image1']))){
+
+$info=getimagesize($_FILES['img']['tmp_name']);
+if(isset($info['mime'])){
+  if($info['mime']=='image/jpeg'){
+    $img=imagecreatefromjpeg($_FILES['img']['tmp_name']);
+  }else if($info['mime']=='image/png'){
+    $img=imagecreatefrompng($_FILES['img']['tmp_name']);
+  }else if($info['mime']=='image/gif'){
+    $img=imagecreatefromgif($_FILES['img']['tmp_name']);
+}
+if(isset($img)){
+  $output_image=time().'.webp';
+  $imagewebp($img,$output_image,50); 
+
     $filedet=$_FILES['img']['tmp_name'];
-    $loc="dist/img/vender_image/".$newImagePath;
+    $loc="dist/img/vender_image/".$output_image;
     move_uploaded_file($filedet,$loc);
   
-    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$newImagePath',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$output_image',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
     echo "<script>alert('Vendor Image 1 Updated Successfully');</script>";
   }
+  }
   else if(!empty($_FILES['img1']['tmp_name']) && ($_POST['image2']) || !empty($_FILES['img1']['tmp_name']) && (empty($_POST['image2']))){
+
     $filedet=$_FILES['img1']['tmp_name'];
     $loc="dist/img/vender_image/".$iuyt2;
     move_uploaded_file($filedet,$loc);
