@@ -170,7 +170,7 @@ if(isset($_POST['savevender'])){
       <div class="row">
           <div class="col-12">
 <div class="mb-2">
-    <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <a class="btn btn-primary" href="vendorregistration.php"><i class="fa fa-plus">&nbsp;</i>Create Listing</a>
 </div>
             <div class="card">
               <div class="card-header">
