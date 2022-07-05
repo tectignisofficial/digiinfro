@@ -80,7 +80,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Shop Name" id="shop_name" name="shop_name" >
+                                            <input type="text" class="form_control shop_name" placeholder="Shop Name" id="shop_name" name="shop_name" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form_group">
-                                            <input type="email" class="form_control" placeholder="Email" id="email" name="email" >
+                                            <input type="email" class="form_control email" placeholder="Email" id="email" name="email" >
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -401,9 +401,8 @@ $.ajax({
             let email = $("#email").val();
             let name = $("#shop_name").val();
             let otp = $("#otp").val();
-            
                 $.ajax({
-                    type:"GET",
+                    type:"POST",
                     url: "ch.php",
                     data:{
                         email:email,
@@ -414,7 +413,7 @@ $.ajax({
                     success: function(datadnk)
                     {
                         $(".getotp").show();
-                        alert('fhgfhgf');
+                        alert(datadnk);
                     }
                 });
             });

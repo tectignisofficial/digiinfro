@@ -1,5 +1,4 @@
 <?php 
-include("admin/include/config.php");
 if(isset($_GET['otp'])){
 $email=$_GET['email'];
 $name=$_GET['name'];
