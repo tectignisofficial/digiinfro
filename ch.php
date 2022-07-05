@@ -14,7 +14,7 @@ $from = 'Enquiry <naiduvedant@gmail.com>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
 $subject = 'Your OTP for Verification Email';
 // $fields = array( 'name' => 'name' );
-$from = 'Agreerent: 1.0' . "\r\n";
+$from = 'Tectignis IT Solution: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
