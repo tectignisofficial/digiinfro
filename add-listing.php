@@ -418,7 +418,7 @@ $.ajax({
                     cache: false,
                     success: function(datadnk)
                     {
-                        (datadnk);
+                        alert(datadnk);
                     }
                 });
             });
