@@ -403,7 +403,7 @@ $.ajax({
             let otp = $("#otp").val();
                 $.ajax({
                     type:"POST",
-                    url: "api.php",
+                    url: "ch.php",
                     data:{
                         email:email,
                         otp:otp,
