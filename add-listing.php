@@ -403,18 +403,18 @@ $.ajax({
             let otp = $("#otp").val();
             
                 $.ajax({
-                    type:"POST",
-                    url: "api.php",
+                    type:"GET",
+                    url: "ch.php",
                     data:{
                         email:email,
                         otp:otp,
-                        name:name,
+                        name:name
                     },
                     cache: false,
                     success: function(datadnk)
                     {
                         $(".getotp").show();
-                        alert(datadnk);
+                        alert('fhgfhgf');
                     }
                 });
             });
