@@ -118,8 +118,18 @@ include("admin/include/config.php");
                                         <div class="form_group">
                                             <select class=" wide form_control bycity" name="city">
                                             <option >By city</option>
+
+                                                
+                                                 <option value="01">Bangladesh</option>
+                                                <option value="02">India</option>
+                                                <option value="03">Pakistan</option>
+                                                <option value="04">Italy</option>
+                                                <option value="05">America</option>
+                                                <option value="06">London</option>
+                                                <option value="07">Swizerland</option>
+                                                <option value="08">Thailand</option> 
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <div class="form_group">
                                             <select class="wide form_control">
                                                 <option data-dsplay="By place">By place</option>
