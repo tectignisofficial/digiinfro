@@ -197,7 +197,7 @@ include("admin/include/config.php");
                         <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
-                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image" width="370" height="290">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                         <div class="meta-icon-title d-flex align-items-center">
                                             <div class="icon">
@@ -246,7 +246,7 @@ include("admin/include/config.php");
                         <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
-                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image" width="370" height="290">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                         <div class="meta-icon-title d-flex align-items-center">
                                             <div class="icon">

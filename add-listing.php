@@ -449,29 +449,35 @@ $loc="dist/img/vender_image/".basename($image);
 
 $image1=$_FILES['img2']['name'];
 $tmp_name = $_FILES['img2']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($image1);
+$loc1="dist/img/vender_image/".basename($image1);
 
 $image2=$_FILES['img3']['name'];
 $tmp_name = $_FILES['img3']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($image2);
+$loc2="dist/img/vender_image/".basename($image2);
 
 $image3=$_FILES['img4']['name'];
 $tmp_name = $_FILES['img4']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($image3);
+$loc3="dist/img/vender_image/".basename($image3);
 
 $video=$_FILES['video']['name'];
 $tmp_name = $_FILES['video']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($video);
+$loc4="dist/img/vender_image/".basename($video);
 
 $license=$_FILES['license']['name'];
 $tmp_name = $_FILES['license']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($license);
+$loc5="dist/img/vender_image/".basename($license);
 
 $pan=$_FILES['pan']['name'];
 $tmp_name = $_FILES['pan']['tmp_name']; 
-$loc="dist/img/vender_image/".basename($pan);
+$loc6="dist/img/vender_image/".basename($pan);
 
-
+move_uploaded_file($tmp_name, $loc);
+ move_uploaded_file($tmp_name, $loc1);
+ move_uploaded_file($tmp_name, $loc2);
+ move_uploaded_file($tmp_name, $loc3);
+ move_uploaded_file($tmp_name, $loc4);
+ move_uploaded_file($tmp_name, $loc5);
+ move_uploaded_file($tmp_name, $loc6);
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
@@ -485,7 +491,7 @@ if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_pers
  echo "<script>swal('oops','please fill all the fields','success');</script>";
 
 }
- move_uploaded_file($tmp_name, $loc);
+ 
 
 $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
