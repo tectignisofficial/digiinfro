@@ -545,14 +545,41 @@ $query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_na
 }
 ?>
 
+<?php
+if(!empty($_POST["state"])){ 
+$department_id = $_POST["state"];
+$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state ='$department_id'"); 
+?>
+<option disabled>Select city</option>
+ <?php while($row = mysqli_fetch_array($query)){ ?>
+     <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
+<?php } 
+}else{ ?>
+<option value="">designation not found</option>
+<?php }
+
+
+?>
+
+<?php
+if(!empty($_POST["city"])){ 
+$department_id = $_POST["city"];
+$query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_name,search_location.location_name as loc_name,search_location.city_code from all_cities inner join search_location on search_location.city_name=all_cities.city_name WHERE all_cities.city_name ='$department_id'"); 
+?>
+<option disabled>Select location</option>
+ <?php while($row = $query->fetch_assoc()){  ?>
+     <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name']?></option> 
+<?php  } 
+}else{ ?>
+<option value="">designation not found</option>
+<?php }
+?>
+
 <?php 
 if(isset($_POST['otp'])){
-
-  
 $email=$_POST['email'];
 $name=$_POST['name'];
 $otp= rand(100000, 999999);
-
 
 $query=mysqli_query($conn,"select * from vendor where email='$email'");
 if(mysqli_num_rows($query)>0){
@@ -652,34 +679,3 @@ echo $responseArray['message'];
 
 }
 ?>
-<?php
-if(!empty($_POST["state"])){ 
-$department_id = $_POST["state"];
-$query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_name as cname, all_cities.state_code as ccode from state inner join all_cities on all_cities.state_code=state.state_code WHERE state.state ='$department_id'"); 
-?>
-<option disabled>Select city</option>
- <?php while($row = mysqli_fetch_array($query)){ ?>
-     <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
-<?php } 
-}else{ ?>
-<option value="">designation not found</option>
-<?php }
-
-
-?>
-
-<?php
-if(!empty($_POST["city"])){ 
-$department_id = $_POST["city"];
-$query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_name,search_location.location_name as loc_name,search_location.city_code from all_cities inner join search_location on search_location.city_name=all_cities.city_name WHERE all_cities.city_name ='$department_id'"); 
-?>
-<option disabled>Select location</option>
- <?php while($row = $query->fetch_assoc()){  ?>
-     <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name']?></option> 
-<?php  } 
-}else{ ?>
-<option value="">designation not found</option>
-<?php }
-?>
-
-
