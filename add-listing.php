@@ -403,7 +403,7 @@ $.ajax({
             let otp = $("#otp").val();
                 $.ajax({
                     type:"POST",
-                    url: "ch.php",
+                    url: "api.php",
                     data:{
                         email:email,
                         otp:otp,
@@ -495,9 +495,9 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
 $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
-$subject = 'Agreerent';
+$subject = 'Tectignis';
 // $fields = array( 'name' => 'name' );
-$from = 'Agreerent: 1.0' . "\r\n";
+$from = 'Tectignis It Solution: 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $from .= "Content-Type: multipart/mixed;"; 
 $from .= "boundary = $boundary\r\n"; 
@@ -785,7 +785,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
