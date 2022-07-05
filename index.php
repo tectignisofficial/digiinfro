@@ -137,7 +137,7 @@ include("admin/include/config.php");
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="listing-item listing-grid-one mb-45">
                             <div class="listing-thumbnail">
-                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Listing Image">
+                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Listing Image"  width="370" height="290">
                                 <span class="featured-btn">Featured</span>
                                 <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                     <div class="meta-icon-title d-flex align-items-center">
@@ -439,7 +439,7 @@ include("admin/include/config.php");
                         ?>
                     <div class="listing-item listing-grid-item-two">
                         <div class="listing-thumbnail">
-                            <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Listing Image">
+                            <img src="admin/dist/img/vender_image/<?php echo $arr['image1'] ?>" alt="Listing Image" width="370" height="290">
                             <a href="#" class="cat-btn"><i class="<?php echo $arr['icon'] ?>"></i></a>
                             <span class="featured-btn">Featured</span>
                             <ul class="ratings ratings-four">
