@@ -1,7 +1,7 @@
 <?php 
-if(isset($_GET['otp'])){
-$email=$_GET['email'];
-$name=$_GET['name'];
+if(isset($_POST['otp'])){
+$email=$_POST['email'];
+$name=$_POST['name'];
 $otp= rand(100000, 999999);
 
 $query=mysqli_query($conn,"select * from vendor where email='$email'");
