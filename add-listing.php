@@ -401,6 +401,7 @@ $.ajax({
             let email = $("#email").val();
             let name = $("#shop_name").val();
             let otp = $("#otp").val();
+            $(".getotp").show();
                 $.ajax({
                     type:"POST",
                     url: "ch.php",
@@ -412,7 +413,6 @@ $.ajax({
                     cache: false,
                     success: function(datadnk)
                     {
-                        $(".getotp").show();
                         alert(datadnk);
                     }
                 });
