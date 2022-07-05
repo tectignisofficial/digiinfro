@@ -67,7 +67,7 @@
         <section class="listing-grid-area pt-120 pb-90">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="sidebar-widget-area">
                             <div class="widget search-listing-widget mb-30">
                                 <h4 class="widget-title">Filter Search</h4>
@@ -159,8 +159,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8">
+                    </div> -->
+                    <div class="col-lg-12">
                         <div class="listing-search-filter mb-40">
                             <div class="row">
                                 <div class="col-md-8">
@@ -192,7 +192,7 @@
                         </div>
                         <div class="listing-grid-wrapper">
                             <div class="row">
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-16.jpg" alt="Listing Image">
@@ -220,7 +220,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-17.jpg" alt="Listing Image">
@@ -247,7 +247,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-18.jpg" alt="Listing Image">
@@ -274,7 +274,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-19.jpg" alt="Listing Image">
@@ -302,7 +302,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-20.jpg" alt="Listing Image">
@@ -330,7 +330,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-21.jpg" alt="Listing Image">
@@ -357,7 +357,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-22.jpg" alt="Listing Image">
@@ -384,7 +384,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-4 col-sm-12">
                                     <div class="listing-item listing-grid-item-two mb-30">
                                         <div class="listing-thumbnail">
                                             <img src="assets/images/listing/listing-grid-23.jpg" alt="Listing Image">

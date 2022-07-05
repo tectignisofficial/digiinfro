@@ -183,8 +183,8 @@
                                 <div class="col-md-4">
                                     <div class="filter-right">
                                         <ul class="filter-nav">
-                                            <li><a href="listing-grid.html" class="active"><i class="ti-view-grid"></i></a></li>
-                                            <li><a href="listing-list.html"><i class="ti-view-list-alt"></i></a></li>
+                                            <li><a href="listing-grid.html"><i class="ti-view-grid"></i></a></li>
+                                            <li><a href="listing-list.html"  class="active"><i class="ti-view-list-alt"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
