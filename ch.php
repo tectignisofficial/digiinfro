@@ -1,4 +1,5 @@
 <?php 
+ include("admin/include/config.php");
 if(isset($_POST['otp'])){
 $email=$_POST['email'];
 $name=$_POST['name'];
