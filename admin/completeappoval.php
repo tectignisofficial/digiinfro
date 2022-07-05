@@ -1,5 +1,130 @@
 <?php
 include("include/config.php");
+if(isset($_POST['savevender'])){
+  $id=$_POST['id'];
+  $category=$_POST['category'];
+  $shop_name=$_POST['shop_name'];
+  $shop_address=$_POST['shop_address'];
+  $shop_name=$_POST['shop_name'];
+  $authorized_person=$_POST['authorized_person'];
+  $mobile_no=$_POST['mobile_no'];
+  $whatsapp_no=$_POST['whatsapp_no'];
+  $email=$_POST['email'];
+  $website=$_POST['website'];
+  $services=$_POST['services'];
+  $state=$_POST['state'];
+  $city=$_POST['city'];
+  $location=$_POST['location'];
+  $facebook=$_POST['facebook'];
+  $instagram=$_POST['instagram'];
+  $linkedin=$_POST['linkedin'];
+  $youtube=$_POST['youtube'];
+  $status="Closed";
+  $image1=$_POST['image1'];
+  $image2=$_POST['image2'];
+  $image3=$_POST['image3'];
+  $image4=$_POST['image4'];
+  $image5=$_POST['image5'];
+  $image6=$_POST['image6'];
+  $img=$_FILES['img']['name'];
+  $img1=$_FILES['img1']['name'];
+  $img2=$_FILES['img2']['name'];
+  $img3=$_FILES['img3']['name'];
+  $img5=$_FILES['img5']['name'];
+  $img6=$_FILES['img6']['name'];
+
+  $file_ext = explode('.',$img)[1];
+  $iuyt= str_replace($file_ext,"webp",$img);
+
+  $file_ext2 = explode('.',$img1)[1];
+  $iuyt2= str_replace($file_ext2,"webp",$img1);
+
+  $file_ext3 = explode('.',$img2)[1];
+  $iuyt3= str_replace($file_ext3,"webp",$img2);
+
+  $file_ext4 = explode('.',$img3)[1];
+  $iuyt4= str_replace($file_ext4,"webp",$img3);
+
+  $file_ext5 = explode('.',$img5)[1];
+  $iuyt5= str_replace($file_ext5,"webp",$img5);
+
+  $file_ext6 = explode('.',$img6)[1];
+  $iuyt6= str_replace($file_ext6,"webp",$img6);
+  
+  if(empty(($_FILES['img']['tmp_name'])) && empty(($_FILES['img1']['tmp_name']))  && empty(($_FILES['img2']['tmp_name']))  && empty(($_FILES['img3']['tmp_name']))  && empty(($_FILES['img5']['tmp_name']))  && empty(($_FILES['img6']['tmp_name'])) && ($_POST['image1']) && ($_POST['image2']) && ($_POST['image3']) && ($_POST['image4']) && ($_POST['image5']) && ($_POST['image6'])){
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Updated Successfully');</script>";
+    }
+    else if(empty($_POST['image1']) && empty($_POST['image2'])  && empty($_POST['image3'])  && empty($_POST['image4'])  && empty($_POST['image5'])  && empty($_POST['image6']) && ($_FILES['img']['tmp_name']) && ($_FILES['img1']['tmp_name']) && ($_FILES['img2']['tmp_name']) && ($_FILES['img3']['tmp_name']) && ($_FILES['img5']['tmp_name']) && ($_FILES['img6']['tmp_name'])){
+      $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$iuyt3',`pan_card`='$iuyt4',`status`='$status',`image1`='$iuyt',`image2`='$iuyt2',`image3`='$iuyt5',`image4`='$iuyt6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+      echo "<script>alert('Vendor Updated Successfully');</script>";
+      }
+    else if(!empty($_FILES['img']['tmp_name']) && ($_POST['image1']) || !empty($_FILES['img']['tmp_name']) && (empty($_POST['image1']))){
+
+$info=getimagesize($_FILES['img']['tmp_name']);
+if(isset($info['mime'])){
+  if($info['mime']=='image/jpeg'){
+    $img=imagecreatefromjpeg($_FILES['img']['tmp_name']);
+  }else if($info['mime']=='image/png'){
+    $img=imagecreatefrompng($_FILES['img']['tmp_name']);
+  }else if($info['mime']=='image/gif'){
+    $img=imagecreatefromgif($_FILES['img']['tmp_name']);
+}
+if(isset($img)){
+  $output_image=time().'.webp';
+  imagewebp($img,$output_image,50); 
+
+    $filedet=$_FILES['img']['tmp_name'];
+    $loc="dist/img/vender_image/".$output_image;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$output_image',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Image 1 Updated Successfully');</script>";
+  }
+}
+  }
+  else if(!empty($_FILES['img1']['tmp_name']) && ($_POST['image2']) || !empty($_FILES['img1']['tmp_name']) && (empty($_POST['image2']))){
+
+    $filedet=$_FILES['img1']['tmp_name'];
+    $loc="dist/img/vender_image/".$iuyt2;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$iuyt2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Image 2 Updated Successfully');</script>";
+  }
+  else if(!empty($_FILES['img2']['tmp_name']) && ($_POST['image3']) || !empty($_FILES['img2']['tmp_name']) && (empty($_POST['image3']))){
+    $filedet=$_FILES['img2']['tmp_name'];
+    $loc="dist/img/vender_image/".$iuyt3;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$iuyt3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor License Updated Successfully');</script>";
+  }
+  else if(!empty($_FILES['img3']['tmp_name']) && ($_POST['image4']) || !empty($_FILES['img3']['tmp_name']) && (empty($_POST['image4']))){
+    $filedet=$_FILES['img3']['tmp_name'];
+    $loc="dist/img/vender_image/".$iuyt4;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$iuyt4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Pen Card Updated Successfully');</script>";
+  }
+  else if(!empty($_FILES['img5']['tmp_name']) && ($_POST['image5']) || !empty($_FILES['img5']['tmp_name']) && (empty($_POST['image5']))){
+    $filedet=$_FILES['img5']['tmp_name'];
+    $loc="dist/img/vender_image/".$iuyt5;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$iuyt5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Image 3 Updated Successfully');</script>";
+  }
+  else if(!empty($_FILES['img6']['tmp_name']) && ($_POST['image6']) || !empty($_FILES['img6']['tmp_name']) && (empty($_POST['image6']))){
+    $filedet=$_FILES['img6']['tmp_name'];
+    $loc="dist/img/vender_image/".$iuyt6;
+    move_uploaded_file($filedet,$loc);
+  
+    $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$iuyt6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
+    echo "<script>alert('Vendor Image 4 Updated Successfully');</script>";
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +157,14 @@ include("include/config.php");
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap4.min.css">
   
+  <style>
+    @media (min-width: 576px){
+.modal-dialog {
+    max-width: 900px;
+    margin: 1.75rem auto;
+}
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -72,21 +205,8 @@ include("include/config.php");
       <div class="row">
           <div class="col-12">
 <div class="mb-2">
-    <button class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Create Listing</button>
+    <a class="btn btn-primary" href="vendorregistration.php"><i class="fa fa-plus">&nbsp;</i>Create Listing</a>
     <!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Add
-  </button>
-  <div class="dropdown-menu">
-    <?php
-    $sql=mysqli_query($conn,"select * from vendor where action='0'");
-    while($res=mysqli_fetch_array($sql)){
-    ?>
-    <a class="dropdown-item" href="morratingcategory.php?shopid=<?php echo $res['id']; ?>"><?php echo $res['shop_name']; ?></a>
-    <?php } ?>
-  </div>
-</div>
 </div>
 
             <div class="card">
@@ -116,19 +236,19 @@ include("include/config.php");
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>
-                    <td><?php echo $arr['id']; ?></td>
+                    <td><?php echo $arr['shop_code']; ?></td>
                     <td><?php echo $arr['shop_name']; ?></td>
                     <td><?php //echo $arr['city']; ?>add city</td>
                     <td><?php echo $arr['category']; ?></td>
                     <td><?php if($arr['action']=='1'){
-                      echo "<a href='../api.php?catonstatus=".$arr['id']."' class='btn btn-danger'>Deactive</a>";
+                      echo "<a href='../api.php?catonstatus=".$arr['shop_code']."' class='btn btn-danger'>Deactive</a>";
                     } else if($arr['action']=='0'){
-                      echo "<a href='../api.php?catzestatus=".$arr['id']."' class='btn btn-success'>Active</a>";
+                      echo "<a href='../api.php?catzestatus=".$arr['shop_code']."' class='btn btn-success'>Active</a>";
                     }?></td>
                     <td>
-                    <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="../api.php?delcom=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <button class="btn btn-primary editshop" data-id='<?php echo $arr['shop_code']; ?>'><i class="fa fa-edit"></i></button>
+                    <a href="../listing-details-2.php?detailpen=<?php echo $arr['shop_code']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                    <a href="../api.php?delcom=<?php echo $arr['shop_code']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                   </tr>
                   <?php } $count++; } ?>
                   </tbody>
@@ -154,6 +274,30 @@ include("include/config.php");
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
+    <!--modal-->
+    <div class="modal" id="editmodal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Vender Registration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="" enctype="multipart/form-data">
+              <div class="modal-body bodymodal" id="odymodalb">
+        
+            
+              </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name="savevender">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+    <!--modal-->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -208,11 +352,28 @@ include("include/config.php");
 <script>
  $(document).ready(function() {
     $('#example1').dataTable();
-    
      $("[data-toggle=tooltip]").tooltip();
-    
 } );
-
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".editshop").click(function(){
+  let compid=$(this).data("id");
+  
+  $.ajax({
+    url:"../api.php",
+    method:"POST",
+    data:{compid:compid},
+    success:function(data){
+      $("#odymodalb").html(data);
+      $("#editmodal").modal("show");
+    }
+  });
+ 
+});
+});
 </script>
 </body>
 </html>
