@@ -107,10 +107,30 @@ include("admin/include/config.php");
                                             </select>
                                         </div>
                                         <div class="form_group">
+                                            <select class="wide" style="/* display: none; */">
+                                            </select>
+                                            <div class="nice-select wide" tabindex="0">
+                                                <span class="current">City</span>
+                                                <ul class="list bycity">
+                                                    <option class="option selected">City</option>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form_group">
                                             <select class=" wide bycity" name="city">
                                             <option >By city</option>
+
+                                                
+                                                 <option value="01">Bangladesh</option>
+                                                <option value="02">India</option>
+                                                <option value="03">Pakistan</option>
+                                                <option value="04">Italy</option>
+                                                <option value="05">America</option>
+                                                <option value="06">London</option>
+                                                <option value="07">Swizerland</option>
+                                                <option value="08">Thailand</option> 
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <div class="form_group">
                                             <select class="wide">
                                                 <option data-dsplay="By place">By place</option>
