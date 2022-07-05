@@ -554,10 +554,7 @@ $query = mysqli_query($conn,"SELECT state.state_code as stcode,all_cities.city_n
  <?php while($row = mysqli_fetch_array($query)){ ?>
      <option value="<?php echo $row['cname'] ?>"><?php echo $row['cname']?></option> 
 <?php } 
-}else{ ?>
-<option value="">designation not found</option>
-<?php }
-
+}
 
 ?>
 
@@ -570,9 +567,7 @@ $query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_na
  <?php while($row = $query->fetch_assoc()){  ?>
      <option value="<?php echo $row['loc_name'] ?>"><?php echo $row['loc_name']?></option> 
 <?php  } 
-}else{ ?>
-<option value="">designation not found</option>
-<?php }
+}
 ?>
 
 <?php 
