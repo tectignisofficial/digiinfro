@@ -1,3 +1,7 @@
+
+<?php include("admin/include/config.php"); 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,6 +52,13 @@
         <section class="page-breadcrumbs page-breadcrumbs-two bg_cover" style="background-image: url(assets/images/bg/listing-breadcrumbs-1.jpg);"></section>
         <!--====== End breadcrumbs Section ======-->
         <!--====== Start Listing Details Section ======-->
+        <?php
+        if(isset($_GET['detailpen'])){
+            $id=$_GET['detailpen'];
+            $sql=mysqli_query($conn,"select * from vendor where shop_code='$id'");
+            $row=mysqli_fetch_array($sql);          
+          }
+        ?>
         <section class="listing-details-section pt-120 pb-90">
             <div class="container">
                 <div class="row">
@@ -65,11 +76,11 @@
                                                 <li class="star"><i class="flaticon-star-1"></i></li>
                                                 <li><span><a href="#">(02 Reviews)</a></span></li>
                                             </ul>
-                                            <h3 class="title">Center Museum</h3>
+                                            <h3 class="title"><?php echo $row['shop_name']; ?></h3>
                                             <div class="listing-meta">
                                                 <ul>
-                                                    <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                                    <li><span><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a></span></li>
+                                                    <li><span><i class="ti-location-pin"></i><?php echo $row['city']." , ".$row['state'] ?></span></li>
+                                                    <li><span><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no']; ?></a></span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -84,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="listing-thumbnail mb-30">
-                                <img src="assets/images/listing/listing-single-1.jpg" alt="listing image">
+                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing image">
                             </div>
                             <div class="listing-content mb-30">
                                 <h3 class="title">World's Quality Museum</h3>
@@ -163,79 +174,22 @@
                                 <h4 class="title">Photo Gallery</h4>
                                 <div class="gallery-slider-one">
                                     <div class="gallery-item">
-                                        <img src="assets/images/listing/gallery-5.jpg" alt="gallery image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                        <img src="assets/images/listing/gallery-6.jpg" alt="gallery image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                        <img src="assets/images/listing/gallery-7.jpg" alt="gallery image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                        <img src="assets/images/listing/gallery-8.jpg" alt="gallery image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                        <img src="assets/images/listing/gallery-6.jpg" alt="gallery image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="listing-tag-box mb-30">
-                                <h4 class="title">Popular Tag</h4>
-                                <a href="#">Delivery</a>
-                                <a href="#">Restaurant</a>
-                                <a href="#">Free Internet</a>
-                                <a href="#">Shopping</a>
-                                <a href="#">Car Parking</a>
-                            </div>
-                            <div class="listing-rating-box">
-                                <h4 class="title">Average Review (10 Reviews)</h4>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="single-average-rating">
-                                            <h5 class="title">Service</h5>
-                                            <div class="single-average-wrap d-flex align-items-center">
-                                                <div class="progress flex-grow-1">
-                                                    <div class="progress-bar" style="width: 80%"></div>
-                                                </div>
-                                                <span class="rating">4.5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="single-average-rating">
-                                            <h5 class="title">Quality</h5>
-                                            <div class="single-average-wrap d-flex align-items-center">
-                                                <div class="progress flex-grow-1">
-                                                    <div class="progress-bar" style="width: 80%"></div>
-                                                </div>
-                                                <span class="rating">4.5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="single-average-rating">
-                                            <h5 class="title">Location</h5>
-                                            <div class="single-average-wrap d-flex align-items-center">
-                                                <div class="progress flex-grow-1">
-                                                    <div class="progress-bar" style="width: 80%"></div>
-                                                </div>
-                                                <span class="rating">4.5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="single-average-rating">
-                                            <h5 class="title">Price</h5>
-                                            <div class="single-average-wrap d-flex align-items-center">
-                                                <div class="progress flex-grow-1">
-                                                    <div class="progress-bar" style="width: 80%"></div>
-                                                </div>
-                                                <span class="rating">4.5</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="listing-review-box mb-50">
                                 <h4 class="title">Customer Review</h4>
                                 <ul class="review-list">
@@ -358,11 +312,15 @@
                             </div>
                         </div>
                         <div class="releted-listing-area">
-                            <h3 class="title mb-20">Similar Restaurant</h3>
+                            <h3 class="title mb-20">Similar <?php echo $row['category']; ?></h3>
                             <div class="releted-listing-slider-one">
+                                <?php
+                                $cat=$row['category'];
+                                $query=mysqli_query($conn,"select * from vendor where category='$cat'");
+                                while($arr=mysqli_fetch_array($query)){ ?>
                                 <div class="listing-item listing-grid-item-two">
                                     <div class="listing-thumbnail">
-                                        <img src="assets/images/listing/listing-grid-7.jpg" alt="Listing Image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $arr['image1'] ?>" alt="Listing Image">
                                         <a href="#" class="cat-btn"><i class="flaticon-chef"></i></a>
                                         <span class="featured-btn">Featured</span>
                                         <ul class="ratings ratings-four">
@@ -375,68 +333,18 @@
                                         </ul>
                                     </div>
                                     <div class="listing-content">
-                                        <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
-                                        <p>Popular restaurant in california</p>
-                                        <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
+                                        <h3 class="title"><a href="listing-details-2.html"><?php echo $arr['shop_name'] ?></a></h3>
+                                        <p>Popular <?php echo $arr['category'] ?>in <?php echo $arr['state'] ?></p>
+                                        <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $arr['mobile_no'] ?></a><span class="status st-open">Open</span></span>
                                         <div class="listing-meta">
                                             <ul>
-                                                <li><span><i class="ti-location-pin"></i>California, USA</span></li>
+                                                <li><span><i class="ti-location-pin"></i><?php echo $arr['city'].' , '.$arr['city'] ?></span></li>
                                                 <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="listing-item listing-grid-item-two">
-                                    <div class="listing-thumbnail">
-                                        <img src="assets/images/listing/listing-grid-8.jpg" alt="Listing Image">
-                                        <a href="#" class="cat-btn"><i class="flaticon-dumbbell"></i></a>
-                                        <ul class="ratings ratings-three">
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li><span><a href="#">(02 Reviews)</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="listing-content">
-                                        <h3 class="title"><a href="listing-details-2.html">Gym Ground</a></h3>
-                                        <p>Popular restaurant in california</p>
-                                        <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">close</span></span>
-                                        <div class="listing-meta">
-                                            <ul>
-                                                <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                                <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="listing-item listing-grid-item-two">
-                                    <div class="listing-thumbnail">
-                                        <img src="assets/images/listing/listing-grid-9.jpg" alt="Listing Image">
-                                        <a href="#" class="cat-btn"><i class="flaticon-government"></i></a>
-                                        <span class="featured-btn">Featured</span>
-                                        <ul class="ratings ratings-five">
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li><span><a href="#">(02 Reviews)</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="listing-content">
-                                        <h3 class="title"><a href="listing-details-2.html">City Palace</a></h3>
-                                        <p>Popular restaurant in california</p>
-                                        <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
-                                        <div class="listing-meta">
-                                            <ul>
-                                                <li><span><i class="ti-location-pin"></i>California, USA</span></li>
-                                                <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

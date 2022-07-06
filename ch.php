@@ -1,5 +1,5 @@
 <?php 
- include("admin/include/config.php");
+include("admin/include/config.php");
 if(isset($_POST['otp'])){
 $email=$_POST['email'];
 $name=$_POST['name'];
@@ -72,14 +72,28 @@ foreach($_POST as $key => $value){
   }
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
-
-$sql=mysqli_query($conn,"INSERT INTO `otp`(`shop_name`,`email`, `otp`,`date`) VALUES ('$name','$email','$otp','$date')");}
- if($sql=1){
-   echo "Otp send in your email";    }
- else{
-   echo "Something Wrong";
+$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
+$otprow=mysqli_fetch_assoc($otpsql);
+$emailotp=$otprow['email'];
+ if($emailotp==$email){
+  $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email'");
+  if($sql=1){
+    echo "Otp send in your email";    }
+  else{
+    echo "Something Wrong";
+  }
  }
-
+ else{
+  $sql=mysqli_query($conn,"INSERT INTO `otp`(`shop_name`,`email`, `otp`,`date`) VALUES ('$name','$email','$otp','$date')");
+  if($sql=1){
+    echo "Otp send in your email";    }
+  else{
+    echo "Something Wrong";
+  }}
+ 
+}else{
+  echo "eeee $sendTo $subject $emailText $from";
+}
 }
 catch(\Exception $e){
 echo "not done";
@@ -97,3 +111,4 @@ echo $responseArray['message'];
 
 }
 ?>
+
