@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="listing-thumbnail mb-30">
-                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing image">
+                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing image" width="770" height="500">
                             </div>
                             <div class="listing-content mb-30">
                                 <h3 class="title">World's Quality Museum</h3>
@@ -320,7 +320,7 @@
                                 while($arr=mysqli_fetch_array($query)){ ?>
                                 <div class="listing-item listing-grid-item-two">
                                     <div class="listing-thumbnail">
-                                        <img src="admin/dist/img/vender_image/<?php echo $arr['image1'] ?>" alt="Listing Image">
+                                        <img src="admin/dist/img/vender_image/<?php echo $arr['image1'] ?>" alt="Listing Image" width="370" height="290">
                                         <a href="#" class="cat-btn"><i class="flaticon-chef"></i></a>
                                         <span class="featured-btn">Featured</span>
                                         <ul class="ratings ratings-four">
