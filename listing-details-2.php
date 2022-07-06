@@ -168,20 +168,20 @@
                                 </div>
                                 <p>Cras vivamus dui cubilia placerat netus lorem vivamus inceptos sollicitudin non inceptos mi dui vulputate donec sed etiam turpis varius a porta natoque nullam tincidunt in nec cubilia hac netus and class pharetra Commodo convallis pharetra tortor facilisis dapibus maecenas nunc nascetur arcu quam vel non varius egestas fusce aced molestie adipiscing curae ante tellus cursus ut blandit</p>
                             </div>
-                            <div class="listing-play-box mb-30">
+                            <!-- <div class="listing-play-box mb-30">
                                 <h4 class="title">Documentary</h4>
                                 <div class="play-content bg_cover text-center" style="background-image: url(assets/images/bg/video-bg-3.jpg);">
                                     <a href="https://www.youtube.com/watch?v=lJyzByVH1oQ" class="video-popup"><i class="flaticon-play-button"></i></a>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="listing-gallery-box mb-30">
                                 <h4 class="title">Photo Gallery</h4>
                                 <div class="gallery-slider-one">
                                     <div class="gallery-item">
-                                        <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="gallery image" width="170" height="170">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                        <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
                                         <img src="admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170">
@@ -356,7 +356,7 @@
                         <div class="sidebar-widget-area">
                             <div class="widget reservation-form-widget mb-30">
                                 <h4 class="widget-title">Enquiry</h4>
-                                <form method="post" action="ch.php">
+                                <form method="post">
                                     <div class="form_group">
                                         <input type="hidden" name="shopmail" value="<?php echo $row['email'] ?>">
                                         <input type="text" class="form_control" placeholder="Name" name="name" required>
