@@ -185,11 +185,11 @@ if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 $sql=mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`,`shop_email`,`date`) VALUES ('$name','$phone','$Email','$message','$shopmail','$date')");
 if($sql=1){
   echo "<script>swal('success','Thanks For Contacting us','success').then function({
-    window.location.href = 'listing-details-2.php';
+    window.location.href = 'listing-list.php';
   })</script>";}
 else{
   echo "<script>swal('error','Something Wrong','error').then function({
-    window.location.href = 'listing-details-2.php';
+    window.location.href = 'listing-list.php';
   })</script>";
 }
 }else{
