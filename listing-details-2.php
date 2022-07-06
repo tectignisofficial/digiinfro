@@ -35,7 +35,11 @@
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<style>
+    .slick-track{
+        width:auto !important;
+    }
+</style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -88,7 +92,6 @@
                                     <div class="col-md-4">
                                         <div class="button">
                                             <a href="listing-grid.html" class="icon-btn"><i class="ti-mobile"></i></a>
-                                            <a href="listing-grid.html" class="icon-btn"><i class="ti-heart"></i></a>
                                             <a href="listing-grid.html" class="icon-btn"><i class="ti-share"></i></a>
                                         </div>
                                     </div>
@@ -316,9 +319,9 @@
                             <div class="releted-listing-slider-one">
                                 <?php
                                 $cat=$row['category'];
-                                $query=mysqli_query($conn,"select * from vendor where category='$cat'");
+                                $query=mysqli_query($conn,"select * from vendor where category='$cat' and action='0'");
                                 while($arr=mysqli_fetch_array($query)){ ?>
-                                <div class="listing-item listing-grid-item-two">
+                                <div class="listing-item listing-grid-item-one">
                                     <div class="listing-thumbnail">
                                         <img src="admin/dist/img/vender_image/<?php echo $arr['image1'] ?>" alt="Listing Image" width="370" height="290">
                                         <a href="#" class="cat-btn"><i class="flaticon-chef"></i></a>
@@ -352,8 +355,9 @@
                         <div class="sidebar-widget-area">
                             <div class="widget reservation-form-widget mb-30">
                                 <h4 class="widget-title">Enquiry</h4>
-                                <form>
+                                <form method="post" action="ch.php">
                                     <div class="form_group">
+                                        <input type="hidden" name="shopmail" value="<?php echo $row['email'] ?>">
                                         <input type="text" class="form_control" placeholder="Name" name="name" required>
                                         <i class="ti-user"></i>
                                     </div>
@@ -369,7 +373,7 @@
                                                 <textarea class="form_control" placeholder="Write Message" name="message"></textarea>
                                             </div>
                                     <div class="form_group">
-                                        <button class="main-btn icon-btn">Book Now</button>
+                                        <button class="main-btn icon-btn" type="submit" name="subbook">Book Now</button>
                                     </div>
                                 </form>
                             </div>
