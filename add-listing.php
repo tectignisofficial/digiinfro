@@ -294,7 +294,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <button type="submit" name="subit" class="main-btn  btn-warning">Registeration</button>
+                                        <button type="submit" name="subit" class="main-btn  btn-warning">Registration</button>
                                     </div>
                                 </div>
                             </div>
