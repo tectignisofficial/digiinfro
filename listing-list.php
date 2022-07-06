@@ -116,22 +116,14 @@ include("admin/include/config.php");
                                             </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class=" wide form_control bycity" name="city">
+                                            <select class=" wide form_control bycity" name="city" onChange="gett(this.value)">
                                             <option >By city</option>
 
                                                 </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide form_control">
+                                            <select class="wide form_control location">
                                                 <option data-dsplay="By place">By place</option>
-                                                <option value="01">Dhaka</option>
-                                                <option value="02">Delhi</option>
-                                                <option value="03">lahore</option>
-                                                <option value="04">Rome</option>
-                                                <option value="05">New york</option>
-                                                <option value="06">Pris</option>
-                                                <option value="07">Bern</option>
-                                                <option value="08">Bangkok</option>
                                             </select>
                                         </div>
                                     </div>
@@ -336,7 +328,18 @@ $.ajax({
 });
   }
   </script>
-
+<script>
+  function gett(val){
+$.ajax({
+  type:'POST',
+  url:'api.php',
+  data:'place='+val,
+  success:function(html){
+    $('.location').html(html);
+  }
+});
+  }
+  </script>
   
     </body>
 </html>
