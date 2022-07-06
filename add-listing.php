@@ -792,7 +792,7 @@ foreach($_POST as $key => $value){
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
 $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
-if($sql=1){
+if($sql){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
   echo "<script>swal('error','Something Wrong','error');</script>";

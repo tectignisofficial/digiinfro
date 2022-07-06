@@ -77,7 +77,7 @@ $otprow=mysqli_fetch_assoc($otpsql);
 $emailotp=$otprow['email'];
  if($emailotp==$email){
   $sql=mysqli_query($conn,"UPDATE `otp` SET `otp`='$otp' WHERE email='$email'");
-  if($sql=1){
+  if($sql){
     echo "Otp send in your email";    }
   else{
     echo "Something Wrong";

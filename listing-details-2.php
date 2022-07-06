@@ -36,11 +36,6 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<style>
-    .slick-track{
-        width:auto !important;
-    }
-</style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -508,11 +503,11 @@ background: #f1f1f1;
 <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
 <div style="margin:50px auto;width:70%;padding:20px 0">
 <div style="border-bottom:1px solid #eee">
-<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Agreerent</a>
+<a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Enquiry</a>
 </div>
 <p style="font-size:1.1em">Hi '.$name.'</p>
-<p>Please enter below OTP to verify your Email id.</p>
-<h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">'.$otp.'</h2>
+<p>Enquiry</p>
+<h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">'. $message.'</h2>
 <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
 <hr style="border:none;border-top:1px solid #eee" />
 <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
@@ -533,7 +528,7 @@ if(isset($fields[$key])){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 $sql=mysqli_query($conn,"INSERT INTO `enquiry`(`name`, `phonenumber`, `email`, `message`,`shop_email`,`date`) VALUES ('$name','$phone','$Email','$message','$shopmail','$date')");
-if($sql=1){
+if($sql){
   echo "<script>swal('success','Thanks For Contacting us','success').then function({
     window.location.href = 'listing-list.php';
   })</script>";}
