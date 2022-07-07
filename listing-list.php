@@ -35,12 +35,19 @@ include("admin/include/config.php");
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link href="src/select-mania.css" rel="stylesheet" type="text/css">
+        <link href="src/themes/select-mania-theme-darkblue.css" rel="stylesheet" type="text/css">
+        <link href="src/themes/select-mania-theme-green.css" rel="stylesheet" type="text/css">
+        <link href="src/themes/select-mania-theme-orange.css" rel="stylesheet" type="text/css">
+        <link href="src/themes/select-mania-theme-red.css" rel="stylesheet" type="text/css">
+        <link href="src/themes/select-mania-theme-square.css" rel="stylesheet" type="text/css">
         <style>
         .wide{
             background: white;
         }
         .default{
-    border: solid 1px #e8e8e8;
+            border: solid 1px #e8e8e8;
             background: white;
             margin-left:15px;
         }
@@ -84,6 +91,7 @@ include("admin/include/config.php");
                         <div class="sidebar-widget-area">
                             <div class="widget search-listing-widget mb-30">
                                 <h4 class="widget-title">Filter Search</h4>
+                             
                                 <form>
                                     <div class="search-form">
                                         <div class="form_group">
@@ -99,7 +107,6 @@ include("admin/include/config.php");
                                                 ?>
                                                 <option value="<?php echo $arr1['name'] ?>"><?php echo $arr1['name'] ?></option>
                                                 <?php } ?>
-                                            
                                             </select>
                                         </div>
                                         <div class="form_group">
@@ -316,6 +323,49 @@ include("admin/include/config.php");
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="src/select-mania.js"></script>
+<script>
+$('.demo-1').selectMania({
+    size: 'small', 
+    themes: ['square','red'], 
+    placeholder: 'Please select me!',
+	removable: true,
+			search: true,
+});
+$('.demo-2').selectMania({
+    size: 'large', 
+    themes: ['darkblue'], 
+    placeholder: 'Please select me!',
+	removable: true,
+			search: true
+});
+$('.demo-3').selectMania({
+    themes: ['orange'], 
+    placeholder: 'Please select me!',
+	removable: true,
+			search: true
+});
+$('.demo-4').selectMania({
+    themes: ['green'], 
+    placeholder: 'Please select me!'
+});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
         <script>
   function get(val){
 $.ajax({
