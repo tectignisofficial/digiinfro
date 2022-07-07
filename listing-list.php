@@ -35,7 +35,16 @@ include("admin/include/config.php");
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <style>
+        .wide{
+            background: white;
+        }
+        .default{
+    border: solid 1px #e8e8e8;
+            background: white;
+            margin-left:15px;
+        }
+       </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -82,7 +91,7 @@ include("admin/include/config.php");
                                             <i class="ti-search"></i>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide">
+                                            <select class="wide form_control">
                                                 <option data-dsplay="Category">Category</option>
                                                 <?php
                                                 $sql=mysqli_query($conn,"select * from listcategory where status='Active'");
@@ -94,54 +103,27 @@ include("admin/include/config.php");
                                             </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide" name="state" onChange="get(this.value)">
+                                            <select class="wide form_control" name="state" onChange="get(this.value)">
                                                 
                                                 <option >State</option>
                                                 <?php
                                                 $sql=mysqli_query($conn,"select * from state");
                                                 while($arr1=mysqli_fetch_array($sql)){
                                                 ?>
-                                                 <option value="<?php echo $arr1['state_code'];?>"><?php echo $arr1['state'];?></option>
+                                                 <option value="<?php echo $arr1['state'];?>"><?php echo $arr1['state'];?></option>
                                                  <?php } ?>
                                                
                                             </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide" style="/* display: none; */">
-                                            </select>
-                                            <div class="nice-select wide" tabindex="0">
-                                                <span class="current">City</span>
-                                                <ul class="list bycity">
-                                                    <option class="option selected">City</option>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="form_group">
-                                            <select class=" wide bycity" name="city">
+                                            <select class=" wide form_control bycity" name="city" onChange="gett(this.value)">
                                             <option >By city</option>
 
-                                                
-                                                 <option value="01">Bangladesh</option>
-                                                <option value="02">India</option>
-                                                <option value="03">Pakistan</option>
-                                                <option value="04">Italy</option>
-                                                <option value="05">America</option>
-                                                <option value="06">London</option>
-                                                <option value="07">Swizerland</option>
-                                                <option value="08">Thailand</option> 
-                                            </select>
-                                        </div> -->
+                                                </select>
+                                        </div>
                                         <div class="form_group">
-                                            <select class="wide">
+                                            <select class="wide form_control location">
                                                 <option data-dsplay="By place">By place</option>
-                                                <option value="01">Dhaka</option>
-                                                <option value="02">Delhi</option>
-                                                <option value="03">lahore</option>
-                                                <option value="04">Rome</option>
-                                                <option value="05">New york</option>
-                                                <option value="06">Pris</option>
-                                                <option value="07">Bern</option>
-                                                <option value="08">Bangkok</option>
                                             </select>
                                         </div>
                                     </div>
@@ -170,7 +152,7 @@ include("admin/include/config.php");
                                             <span>Showing Result 1-09</span>
                                         </div>
                                         <div class="sorting-dropdown">
-                                            <select>
+                                            <select class="default form_control">
                                                 <option data-dsplay="Default Sorting">Default Sorting</option>
                                                 <?php
                                                 $sql=mysqli_query($conn,"select * from listcategory  where status='Active'");
@@ -207,7 +189,7 @@ include("admin/include/config.php");
                         <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
-                                    <img src="assets/images/listing/listing-list-5.jpg" alt="listing Image">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image" width="370" height="290">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                         <div class="meta-icon-title d-flex align-items-center">
                                             <div class="icon">
@@ -256,7 +238,7 @@ include("admin/include/config.php");
                         <div class="listing-list-wrapper">
                             <div class="listing-item listing-list-item-two mb-60">
                                 <div class="listing-thumbnail">
-                                    <img src="assets/images/listing/listing-list-5.jpg" alt="listing Image">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing Image" width="370" height="290">
                                     <div class="thumbnail-meta d-flex justify-content-between align-items-center">
                                         <div class="meta-icon-title d-flex align-items-center">
                                             <div class="icon">
@@ -323,7 +305,7 @@ include("admin/include/config.php");
         <!--====== Imagesloaded js ======-->
         <script src="assets/js/imagesloaded.pkgd.min.js"></script>
         <!--====== Nice-select js ======-->
-        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!-- <script src="assets/js/jquery.nice-select.min.js"></script> -->
         <!--====== counterup js ======-->
         <script src="assets/js/jquery.counterup.min.js"></script>
         <!--====== waypoints js ======-->
@@ -346,5 +328,18 @@ $.ajax({
 });
   }
   </script>
+<script>
+  function gett(val){
+$.ajax({
+  type:'POST',
+  url:'api.php',
+  data:'place='+val,
+  success:function(html){
+    $('.location').html(html);
+  }
+});
+  }
+  </script>
+  
     </body>
 </html>
