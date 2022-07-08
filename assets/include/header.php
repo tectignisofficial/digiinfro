@@ -49,9 +49,9 @@
                                             <li class="menu-item "><a href="listing-list.php">Listings</a>
                                                 
                                             </li>
-                                            <!-- <li class="menu-item"><a href="pricing.php">Pricing</a>
+                                            <li class="menu-item"><a href="pricing.php">Pricing</a>
 
-                                            </li> -->
+                                            </li>
                                             <li class="menu-item"><a href="add-listing.php">Vendor Registration</a>
                                             </li>
                                             <li class="menu-item has-children"><a href="#">Article</a>
