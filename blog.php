@@ -225,5 +225,6 @@ include("admin/include/config.php");
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        
     </body>
 </html>
