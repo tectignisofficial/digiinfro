@@ -8,10 +8,15 @@ include("admin/include/config.php");
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='listing-list'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -44,7 +49,19 @@ include("admin/include/config.php");
             background: white;
             margin-left:15px;
         }
+        <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='21'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
+            background-size: 945px 400px;
+        }
+    <?php }  ?>
        </style>
+      
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -86,12 +103,12 @@ include("admin/include/config.php");
                                 <h4 class="widget-title">Filter Search</h4>
                                 <form>
                                     <div class="search-form">
-                                        <div class="form_group">
+                                        <!-- <div class="form_group">
                                             <input type="search" class="form_control" placeholder="Search keyword" name="search" required>
                                             <i class="ti-search"></i>
-                                        </div>
+                                        </div> -->
                                         <div class="form_group">
-                                            <select class="wide form_control">
+                                            <select class="wide form_control" name="category">
                                                 <option data-dsplay="Category">Category</option>
                                                 <?php
                                                 $sql=mysqli_query($conn,"select * from listcategory where status='Active'");
@@ -122,7 +139,7 @@ include("admin/include/config.php");
                                                 </select>
                                         </div>
                                         <div class="form_group">
-                                            <select class="wide form_control location">
+                                            <select class="wide form_control location" name="location">
                                                 <option data-dsplay="By place">By place</option>
                                             </select>
                                         </div>
@@ -133,21 +150,21 @@ include("admin/include/config.php");
                                     </div>
                                 </form>
                             </div>
-                            <div class="widget newsletter-widget mb-30">
+                            <!-- <div class="widget newsletter-widget mb-30">
                                 <div class="newsletter-widget-wrap bg_cover" style="background-image: url(assets/images/newsletter-widget-1.jpg);">
                                     <i class="flaticon-email-1"></i>
                                     <h3>Subscribe Our
                                         Newsletter</h3>
                                     <button class="main-btn icon-btn">Subscribe</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="listing-search-filter mb-40">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="filter-left d-flex align-items-center">
+                                    <!-- <div class="filter-left d-flex align-items-center">
                                         <div class="show-text">
                                             <span>Showing Result 1-09</span>
                                         </div>
@@ -163,13 +180,13 @@ include("admin/include/config.php");
                                     
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-md-4">
                                     <div class="filter-right">
                                         <ul class="filter-nav">
-                                            <li><a href="listing-grid.html" class="active"><i class="ti-view-grid"></i></a></li>
-                                            <li><a href="listing-list.html"><i class="ti-view-list-alt"></i></a></li>
+                                            <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li>
+                                            <li><a href="listing-list.php"><i class="ti-view-list-alt"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -180,7 +197,7 @@ include("admin/include/config.php");
                             $state=$_POST['state'];
                             $city=$_POST['city'];
 
-                            $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' and state='$state'";
+                            $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' or state='$state' or category='category' or location='location'";
                         $result=$conn->query($query);
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -203,7 +220,7 @@ include("admin/include/config.php");
                                     </div>
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="title"><a href="listing-details-2.html"><?php echo $row['shop_name'] ?></a></h3>
+                                    <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['shop_code']; ?>"><?php echo $row['shop_name'] ?></a></h3>
                                     <div class="ratings">
                                         <ul class="ratings ratings-three">
                                             <li class="star"><i class="flaticon-star-1"></i></li>

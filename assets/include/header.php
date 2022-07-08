@@ -57,7 +57,7 @@
                                             <li class="menu-item has-children"><a href="#">Article</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item"><a href="blog.php">Our Blog</a></li>
-                                                    <li class="menu-item"><a href="blog-details.php">Blog details</a></li>
+                                                    <!-- <li class="menu-item"><a href="blog-details.php">Blog details</a></li> -->
                                                 </ul>
                                             </li>
                                             <li class="menu-item"><a href="contact.php">Contact</a></li>
