@@ -1,13 +1,83 @@
+<?php
+include("admin/include/config.php");
+if(isset($_POST['signup'])){
+    $status=1;
+    $email=$_POST['email'];  
+  $from = 'Enquiry <'.$email.'>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
+  $subject = 'Agreerent';
+  // $fields = array( 'name' => 'name' );
+  $from = 'Agreerent: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  
+  
+  $emailText = '
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="x-apple-disable-message-reformatting"> 
+      <title></title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+      <style>
+        
+      </style>
+  </head>
+  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+     <div>
+     <h1>'.$email.'</h1>
+     </div>
+  </body>
+  </html>';
+  
+  try{
+    foreach($_POST as $key => $value){
+      if(isset($fields[$key])){
+        $emailText.="$fields[$key]: $value\n";
+      }
+    }
+   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+  
+    $sql=mysqli_query($conn,"INSERT INTO `subscriber`(`email`,`status`) 
+     VALUES ('$email','$status')");
+     if($sql=1){
+       echo "<script>alert('Agent Registered Successfully');</script>";    }
+     else{
+       echo "<script>alert('Something Wrong');</script>";
+     }
+   }else{
+      echo "$sendTo $subject $emailText $from";
+   }
+  }
+  catch(\Exception $e){
+    echo "not done";
+  }
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    $encode=json_encode($responseArray);
+    header('content-Type: application/json');
+    echo $encoded;
+  }
+  else{
+    echo $responseArray['message'];
+  }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='about'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>VCard - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -31,7 +101,18 @@
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='11'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <style>
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
+            background-size: 945px 400px;
+        }
+    </style>
+    <?php }  ?>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -188,8 +269,12 @@
         </section>
         <!--====== End Features Section ======-->
         <!--====== Start CTA Section ======-->
+        <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='12'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
         <section class="cta-area">
-            <div class="cta-wrapper-two bg_cover b" style="background-image: url(assets/images/bg/cta-bg-2.jpg);">
+            <div class="cta-wrapper-two bg_cover b" style="background-image: url(assets/images/banner/<?php echo $arr['file']; ?>);">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
@@ -206,6 +291,7 @@
                 </div>
             </div>
         </section>
+        <?php } ?>
         <!--====== End CTA Section ======-->
         <!--====== Start Testimonial Section ======-->
         <section class="testimonial-area bg_cover pt-110 pb-265" style="background-image: url(assets/images/bg/testimonial-bg-2.jpg);">
@@ -223,60 +309,30 @@
                         <div class="testimonial-wrapper-one text-center">
                             <div class="testimonial-review-area">
                                 <div class="testimonial-thumb-slider-one">
+                                    <?php $sqltesti="select * from testimonial";
+                                    $result=$conn->query($sqltesti);
+                                    while($row=mysqli_fetch_array($result)){ ?>
                                     <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-1.jpg" alt="testimonial thumb">
+                                        <img src="assets/images/testimonial/<?php echo $row['image'] ?>" alt="testimonial">
                                     </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-2.jpg" alt="testimonial thumb">
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-3.jpg" alt="testimonial thumb">
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-2.jpg" alt="testimonial thumb">
-                                    </div>
+                                    <?php } ?>
+                                    
                                 </div>
                                 <div class="testimonial-content-slider-one">
+                                <?php $sqltestimonial="select * from testimonial";
+                                    $result1=$conn->query($sqltestimonial);
+                                    while($arr=mysqli_fetch_array($result1)){ ?>
                                     <div class="testimonial-item">
                                         <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
+                                            <p><?php echo $arr['description'] ?></p>
                                             <div class="author-info">
-                                                <h4>Melisa Powels</h4>
-                                                <span class="position">Sr. Designer</span>
+                                                <h4><?php echo $arr['name'] ?></h4>
+                                                <span class="position"><?php echo $arr['designation'] ?></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <h4>Martyn Decode</h4>
-                                                <span class="position">Sr. Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <h4>Alesha Mature</h4>
-                                                <span class="position">Sr. Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <h4>Martyn Decode</h4>
-                                                <span class="position">Sr. Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php } ?>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -286,7 +342,7 @@
         </section>
         <!--====== End Testimonial Section ======-->
         <!--====== Start Newsletter Section ======-->
-        <section class="newsletter-area">
+        <section class="newsletter-area mb-5">
             <div class="container">
                 <div class="newsletter-wrapper newsletter-wrapper-one bg_cover" style="background-image: url(assets/images/bg/newsletter-bg-1.jpg);">
                     <div class="row">
@@ -303,11 +359,13 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="newsletter-form">
+                                <form method="POST" action="#">
                                 <div class="form_group">
                                     <input type="email" class="form_control" placeholder="Enter Address" name="email" required>
                                     <i class="ti-location-pin"></i>
-                                    <button class="main-btn icon-btn">Subscribe</button>
+                                    <button class="main-btn" name="signup">Subscribe +</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -315,78 +373,7 @@
             </div>
         </section>
         <!--====== End Newsletter Section ======-->
-        <!--====== Start Team Section ======-->
-        <section class="team-area pt-115 pb-85">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="section-title text-center mb-50">
-                            <span class="sub-title">Team Member</span>
-                            <h2>Meet Our Executive</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="team-item team-item-one mb-30">
-                            <div class="team-img">
-                                <img src="assets/images/team/team-1.jpg" alt="Team Image">
-                                <div class="team-social">
-                                    <ul class="social-link">
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-info text-center">
-                                <h3 class="title">Alesha Mature</h3>
-                                <span class="position">Sr. Executive</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="team-item team-item-one mb-30">
-                            <div class="team-img">
-                                <img src="assets/images/team/team-2.jpg" alt="Team Image"><div class="team-social">
-                                    <ul class="social-link">
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-info text-center">
-                                <h3 class="title">Martyn Decode</h3>
-                                <span class="position">Sr. Executive</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="team-item team-item-one mb-30">
-                            <div class="team-img">
-                                <img src="assets/images/team/team-3.jpg" alt="Team Image">
-                                <div class="team-social">
-                                    <ul class="social-link">
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-info text-center">
-                                <h3 class="title">Alesha Mature</h3>
-                                <span class="position">Sr. Executive</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--====== End Team Section ======-->
+        
         <!--====== Start Footer ======-->
         <?php include("assets/include/Footer.php")?> 
        <!--====== End Footer ======-->

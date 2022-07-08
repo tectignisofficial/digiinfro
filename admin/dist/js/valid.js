@@ -67,15 +67,5 @@ let catdnkname,catdnkslug
                 
            });
     });
-    // let subm = document.getElementById("catsub");
-    // subm.addEventListener("click", function(){
+
     
-    // if(catdnkname =="no" ||catdnkslug=="no"){
-    //   swal("Oops...", "Please fill all the fields", "error");
-    // }
-    //     else{
-    //     swal("Saved!", "Agreement Save", "success");
-    //   }
-    // });
-
-

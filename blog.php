@@ -1,13 +1,21 @@
+<?php
+include("admin/include/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='blog'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -31,7 +39,18 @@
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='41'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <style>
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
+            background-size: 945px 400px;
+        }
+        </style>
+    <?php }  ?>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -51,7 +70,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="page-title">
-                                <h1 class="title">Our Blog</h1>
+                                    <h1 class="title">Our Blog</h1>
                                 <ul class="breadcrumbs-link">
                                     <li><a href="index.html">Home</a></li>
                                     <li class="active">Our Blog</li>
@@ -70,162 +89,96 @@
                     <div class="col-lg-8">
                         <div class="blog-standard-wrapper pb-50">
                             <div class="blog-post-item blog-post-item-four mb-50">
+                            <?php 
+                        
+                        $sql=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id");
+            
+                        $sql1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
+                        $count1=mysqli_num_rows($sql1);
+                            
+                                     while($arr=mysqli_fetch_array($sql)){
+                                        
+                                    ?>
                                 <div class="post-thumbnail">
-                                    <a href="blog-details.html"><img src="assets/images/blog/blog-standard-1.jpg" alt="Blog Image"></a>
+                                <a href="blog-details.php?id=<?php echo $arr['id'];?>"><img src="assets/images/blog_image/<?php echo $arr['img'];?>" style="height:450px; width:780px;"></a>
                                 </div>
                                 <div class="entry-content">
                                     <a href="#" class="cat-btn">02 Sep - 2021</a>
                                     <div class="post-meta">
                                         <ul>
-                                            <li><span><i class="ti-bookmark-alt"></i><a href="#">Tours & Travel</a></span></li>
-                                            <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
+                                            <li><span><i class="ti-bookmark-alt"></i><a href="#"><?php echo $arr['name'];?></a></span></li>
+                                            <li><span><i class="ti-comments-smiley"></i><a href="#"><?php echo $count1;?> Comment</a></span></li>
                                             <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
+                                            <li><span><i class="ti-calendar"></i><a href="#"><?php echo $arr['date'];?></a></span></li>
                                         </ul>
                                     </div>
-                                    <h3 class="title"><a href="blog-details.html">Duis nonumer socios gem mattis</a></h3>
-                                    <p>Penatibus cursus Luctus taciti nibh congue sollicitudin placerat an tempus turpis magnis tempus inte vivamus rhoncus roin habitasse diam</p>
-                                    <a href="#" class="btn-link">Continue Reading</a>
+                                    <h3 class="title"><a href="blog-details.php?id=<?php echo $arr['id'];?>"><?php echo $arr['title'];?></h3>
+                                    <p><?php echo $arr['blog_content'];?></p>
+                                    <!-- <a href="#" class="btn-link">Continue Reading</a> -->
                                 </div>
+                                <?php } ?>
                             </div>
-                            <div class="blog-post-item blog-post-item-four mb-50">
-                                <div class="post-thumbnail">
-                                    <a href="blog-details.html"><img src="assets/images/blog/blog-standard-2.jpg" alt="Blog Image"></a>
-                                </div>
-                                <div class="entry-content">
-                                    <a href="#" class="cat-btn">02 Sep - 2021</a>
-                                    <div class="post-meta">
-                                        <ul>
-                                            <li><span><i class="ti-bookmark-alt"></i><a href="#">Tours & Travel</a></span></li>
-                                            <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                            <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title"><a href="blog-details.html">Duis nonumer socios gem mattis</a></h3>
-                                    <p>Penatibus cursus Luctus taciti nibh congue sollicitudin placerat an tempus turpis magnis tempus inte vivamus rhoncus roin habitasse diam</p>
-                                    <a href="#" class="btn-link">Continue Reading</a>
-                                </div>
-                            </div>
-                            <div class="blog-post-item blog-post-item-four mb-50">
-                                <div class="post-thumbnail">
-                                    <a href="blog-details.html"><img src="assets/images/blog/blog-standard-3.jpg" alt="Blog Image"></a>
-                                </div>
-                                <div class="entry-content">
-                                    <a href="#" class="cat-btn">02 Sep - 2021</a>
-                                    <div class="post-meta">
-                                        <ul>
-                                            <li><span><i class="ti-bookmark-alt"></i><a href="#">Tours & Travel</a></span></li>
-                                            <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                            <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title"><a href="blog-details.html">Duis nonumer socios gem mattis</a></h3>
-                                    <p>Penatibus cursus Luctus taciti nibh congue sollicitudin placerat an tempus turpis magnis tempus inte vivamus rhoncus roin habitasse diam</p>
-                                    <a href="#" class="btn-link">Continue Reading</a>
-                                </div>
-                            </div>
-                            <div class="blog-post-item blog-post-item-four blog-post-with-bg mb-50 bg_cover" style="background-image: url(assets/images/blog/blog-standard-4.jpg);">
-                                <div class="entry-content">
-                                    <a href="#" class="cat-btn">02 Sep - 2021</a>
-                                    <div class="post-meta">
-                                        <ul>
-                                            <li><span><i class="ti-bookmark-alt"></i><a href="#">Tours & Travel</a></span></li>
-                                            <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                            <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title"><a href="#">Duis nonumer socios gem mattis</a></h3>
-                                    <p>Penatibus cursus Luctus taciti nibh congue sollicitudin placerat an tempus turpis magnis tempus inte vivamus rhoncus roin habitasse diam</p>
-                                    <a href="#" class="btn-link">Continue Reading</a>
-                                </div>
-                            </div>
-                            <div class="blog-post-item blog-post-item-four blog-post-video mb-50">
-                                <div class="post-thumbnail">
-                                    <a href="blog-details.html"><img src="assets/images/blog/blog-standard-5.jpg" alt="Blog Image"></a>
-                                    <div class="play-content play-content-two text-center">
-                                        <a href="https://www.youtube.com/watch?v=lJyzByVH1oQ" class="video-popup"><i class="flaticon-play-button"></i></a>
-                                        <h5>Play Video</h5>
-                                    </div>
-                                </div>
-                                <div class="entry-content">
-                                    <a href="#" class="cat-btn">02 Sep - 2021</a>
-                                    <div class="post-meta">
-                                        <ul>
-                                            <li><span><i class="ti-bookmark-alt"></i><a href="#">Tours & Travel</a></span></li>
-                                            <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                            <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title"><a href="blog-details.html">Duis nonumer socios gem mattis</a></h3>
-                                    <p>Penatibus cursus Luctus taciti nibh congue sollicitudin placerat an tempus turpis magnis tempus inte vivamus rhoncus roin habitasse diam</p>
-                                    <a href="#" class="btn-link">Continue Reading</a>
-                                </div>
-                            </div>
-                            <div class="fioxen-pagination text-center">
+                           
+                           
+                           
+                           
+                            <!-- <div class="fioxen-pagination text-center">
                                 <ul class="pagination-list">
                                     <li><a href="#">1</a></li>
                                     <li><a href="#">2</a></li>
                                     <li><a href="#">3</a></li>
                                     <li><a href="#" class="active"><i class="ti-arrow-right"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar-widget-area mb-20">
-                            <div class="widget search-widget mb-30">
-                                <h4 class="widget-title">Search</h4>
-                                <form>
-                                    <div class="form_group">
-                                        <input type="email" class="form_control" placeholder="Search..." name="email" required>
-                                        <i class="ti-location-arrow"></i>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="widget categories-widget mb-30">
+                            
+                        <div class="widget categories-widget mb-30">
                                 <h4 class="widget-title">Categories</h4>
+                              
+
                                 <ul class="categories-nav">
-                                    <li><a href="#">Restaurant <span>(10)</span></a></li>
-                                    <li><a href="#">Museums <span>(12)</span></a></li>
-                                    <li><a href="#">Business <span>(05)</span></a></li>
-                                    <li><a href="#">Tour & Travel <span>(10)</span></a></li>
-                                    <li><a href="#">Uncategory <span>(03)</span></a></li>
+                                <?php 
+                                    $query=mysqli_query($conn,"select * from blog_category");
+                                    $sql2=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id;
+                                    ");
+                                    $count2=mysqli_num_rows($sql2);
+                                    while($sql=mysqli_fetch_array($query))
+                                    {
+                                    ?>
+                                    <li><a href="#"><?php echo $sql['name']  ?> <span><?php echo $count2 ?> </span></a>
+                                    </li> 
+                                    <?php   } ?>
                                 </ul>
+                              
                             </div>
                             <div class="widget recent-post-widget mb-30">
                                 <h4 class="widget-title">Popular Post</h4>
                                 <ul class="recent-post-list">
+                                <?php 
+                        
+                        $sql=mysqli_query($conn,"select * from `blog`");
+                     $count=1;
+                         while($arr=mysqli_fetch_array($sql)){
+                        ?>
                                     <li class="post-thumbnail-content">
-                                        <img src="assets/images/elements/thumb-1.jpg" class="img-fluid" alt="">
+                                    <img src="assets/images/blog_image/<?php echo $arr['img'];?>">
                                         <div class="post-title-date">
-                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
-                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
-                                                tusto scelerisque</a></h6>
+                                        <span class="posted-on"><i class="ti-calendar"></i><a href="#"><?php echo $arr['date'];?></a></span>
+                                        <h6><a href="blog-details.php?id=<?php echo $arr['id'];?>"><?php echo $arr['title'];?></a></h6>
                                         </div>
                                     </li>
-                                    <li class="post-thumbnail-content">
-                                        <img src="assets/images/elements/thumb-2.jpg" class="img-fluid" alt="">
-                                        <div class="post-title-date">
-                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
-                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
-                                                tusto scelerisque</a></h6>
-                                        </div>
-                                    </li>
-                                    <li class="post-thumbnail-content">
-                                        <img src="assets/images/elements/thumb-3.jpg" class="img-fluid" alt="">
-                                        <div class="post-title-date">
-                                            <span class="posted-on"><i class="ti-calendar"></i><a href="#">02 Sep - 2021</a></span>
-                                            <h6><a href="blog-details.html">Inceptos pharetra accusan
-                                                tusto scelerisque</a></h6>
-                                        </div>
-                                    </li>
+                                    <?php   } ?>
                                 </ul>
                             </div>
                             <div class="widget add-widget mb-30">
-                                <div class="add-img-box">
+                                <!-- <div class="add-img-box">
                                     <img src="assets/images/elements/add-1.jpg" alt="Add Image">
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="widget tag-cloud-widget mb-30">
+                            <!-- <div class="widget tag-cloud-widget mb-30">
                                 <h4 class="widget-title">Popular Tag</h4>
                                 <a href="#">Decor</a>
                                 <a href="#">Love</a>
@@ -234,7 +187,7 @@
                                 <a href="#">Architect</a>
                                 <a href="#">Feature</a>
                                 <a href="#">Modern</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
