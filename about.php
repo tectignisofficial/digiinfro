@@ -1,5 +1,6 @@
 <?php
 include("admin/include/config.php");
+
 if(isset($_POST['signup'])){
     $status=1;
     $email=$_POST['email'];  
@@ -62,6 +63,8 @@ if(isset($_POST['signup'])){
     echo $responseArray['message'];
   }
   }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +76,10 @@ if(isset($_POST['signup'])){
             $sql=mysqli_query($conn,"Select * from seo where page_name='about'");
                while($arr=mysqli_fetch_array($sql)){
              ?>
-        <meta name="description" content="<?php echo $arr['meta_description'];?>">
+
+        <meta name="description" content="<?php echo $arr['meta_description'];?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <!--====== Title ======-->
         <title><?php echo $arr['meta_title'];?></title>
         <?php } ?>
@@ -132,7 +138,7 @@ if(isset($_POST['signup'])){
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="page-title">
-                                <h1 class="title">About us</h1>
+                                <h1 class="title">About Us</h1>
                                 <ul class="breadcrumbs-link">
                                     <li><a href="index.html">Home</a></li>
                                     <li class="active">About us</li>

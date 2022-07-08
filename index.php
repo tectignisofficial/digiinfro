@@ -139,7 +139,7 @@ if(isset($_POST['searchlist'])){
         <!--====== Start Hero Section ======-->
         <section class="hero-area">
             <div class="hero-wrapper-one">
-                <div class="container">
+                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="hero-content">

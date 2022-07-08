@@ -8,7 +8,7 @@
                                     <li><span>Follow us:</span></li>
                                     <li><a href="#"><i class="ti-facebook"></i></a></li>
                                     <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                   <li><a href="#"><i class="ti-linkedin"></i></a></li>
                                     <li><a href="#"><i class="ti-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
 
@@ -49,9 +49,9 @@
                                             <li class="menu-item "><a href="listing-list.php">Listings</a>
                                                 
                                             </li>
-                                            <li class="menu-item"><a href="pricing.php">Pricing</a>
+                                            <!-- <li class="menu-item"><a href="pricing.php">Pricing</a>
 
-                                            </li>
+                                            </li> -->
                                             <li class="menu-item"><a href="add-listing.php">Vendor Registration</a>
                                             </li>
                                             <li class="menu-item has-children"><a href="#">Article</a>
