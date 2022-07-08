@@ -1,5 +1,5 @@
 <?php
-include("include/config.php");
+include("admin/include/config.php");
 
 ?>
 <!DOCTYPE html>
@@ -14,50 +14,60 @@ include("include/config.php");
         <title>Fioxen - Directory & Listings HTML Template</title>
         
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="..\assets/images/favicon.ico" type="image/png">
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
-        <link rel="stylesheet" href="..\assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!--====== FontAwesoem css ======-->
-        <link rel="stylesheet" href="..\assets/fonts/themify-icons/themify-icons.css">
+        <link rel="stylesheet" href="assets/fonts/themify-icons/themify-icons.css">
         <!--====== Flaticon css ======-->
-        <link rel="stylesheet" href="..\assets/fonts/flaticon/flaticon.css">
+        <link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
         <!--====== Magnific Popup css ======-->
-        <link rel="stylesheet" href="..\assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <!--====== Slick css ======-->
-        <link rel="stylesheet" href="..\assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
         <!--====== Nice-select css ======-->
-        <link rel="stylesheet" href="..\assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
         <!--====== Jquery ui css ======-->
-        <link rel="stylesheet" href="..\assets/css/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
         <!--====== Animate css ======-->
-        <link rel="stylesheet" href="..\assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
         <!--====== Default css ======-->
-        <link rel="stylesheet" href="..\assets/css/default.css">
+        <link rel="stylesheet" href="assets/css/default.css">
         <!--====== Style css ======-->
-        <link rel="stylesheet" href="..\assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
          <!-- Select2 -->
-    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <!-- <link rel="stylesheet" href="plugins/scss/_bootstrap-variables.scss"> -->
+    <link rel="stylesheet" href="admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="admin/plugins/scss/_bootstrap-variables.scss">
 
+    <link rel="stylesheet" href="Dropdown.css">
     
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <!------ Include the above in your HEAD tag ---------->
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
         <style>
         .wide{
             background: white;
         }
         .default{
-    border: solid 1px #e8e8e8;
-            background: white;
-            margin-left:15px;
+            border: solid 1px #e8e8e8 !important;
+            background: white !important;
+            margin-left:15px !important;
+        }
+        span{
+            display: block;
+        }
+        .form_control {
+            width: 100% !important;
+            padding: 0 25px !important;
+            height: 60px !important;
+            /* border: none !important; */
         }
        </style>
     </head>
@@ -65,12 +75,12 @@ include("include/config.php");
         <!--====== Start Preloader ======-->
         <div class="preloader">
             <div class="loader">
-                <img src="..\assets/images/loader.png" alt="loader">
+                <img src="assets/images/loader.png" alt="loader">
             </div>
         </div>
         <!--====== End Preloader ======-->
         <!--====== Start Header Section ======-->
-        <?php include("..\assets/include/header.php") ?>
+        <?php include("assets/include/header.php") ?>
         <!--====== End Header Section ======-->
         <!--====== Start Hero Section ======-->
         <section class="hero-area">
@@ -118,7 +128,7 @@ include("include/config.php");
                                             </select>
                                         </div>
                                         <div class="form_group my-2">
-                                            <select class="form-control select2" name="state" onChange="get(this.value)">
+                                            <select class="form-control select2 form_control" name="state" onChange="get(this.value)">
                                                 
                                                 <option >State</option>
                                                 <?php
@@ -130,13 +140,13 @@ include("include/config.php");
                                                
                                             </select>
                                         </div>
-                                        <div class="form_group my-2">
-                                            <select class="form-control select2 bycity" name="city" onChange="gett(this.value)">
+                                        <div class="">
+                                            <select class="select2 bycity form_control" name="city" style="width:100%;" onChange="gett(this.value)">
                                               <option >By city</option>
                                            </select>
                                         </div>
                                         <div class="form_group my-2">
-                                            <select class="form-control select2 location">
+                                            <select class="form_control select2 location">
                                                 <option data-dsplay="By place">By place</option>
                                             </select>
                                         </div>
@@ -148,7 +158,7 @@ include("include/config.php");
                                 </form>
                             </div>
                             <div class="widget newsletter-widget mb-30">
-                                <div class="newsletter-widget-wrap bg_cover" style="background-image: url(..\assets/images/newsletter-widget-1.jpg);">
+                                <div class="newsletter-widget-wrap bg_cover" style="background-image: url(assets/images/newsletter-widget-1.jpg);">
                                     <i class="flaticon-email-1"></i>
                                     <h3>Subscribe Our
                                         Newsletter</h3>
@@ -162,11 +172,11 @@ include("include/config.php");
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="filter-left d-flex align-items-center">
-                                        <div class="show-text">
+                                        <div class="show-text mr-3">
                                             <span>Showing Result 1-09</span>
                                         </div>
                                         <div class="sorting-dropdown">
-                                            <select class="default form_control">
+                                            <select class="default select2 form_control" style="border:  1px #e8e8e8 !important;">
                                                 <option data-dsplay="Default Sorting">Default Sorting</option>
                                                 <?php
                                                 $sql=mysqli_query($conn,"select * from listcategory  where status='Active'");
@@ -300,38 +310,38 @@ include("include/config.php");
         </section>
         <!--====== End Listing Section ======-->
         <!--====== Start Footer ======-->
-        <?php include("..\assets/include/Footer.php") ?>
+        <?php include("assets/include/Footer.php") ?>
         <!--====== End Footer ======-->
         <!--====== back-to-top ======-->
         <a href="#" class="back-to-top" ><i class="ti-angle-up"></i></a>
         <!--====== Jquery js ======-->
-        <script src="..\assets/js/vendor/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
         <!--====== Popper js ======-->
-        <script src="..\assets/js/popper.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
         <!--====== Bootstrap js ======-->
-        <script src="..\assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
         <!--====== Slick js ======-->
-        <script src="..\assets/js/slick.min.js"></script>
+        <script src="assets/js/slick.min.js"></script>
         <!--====== Magnific Popup js ======-->
-        <script src="..\assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <!--====== Isotope js ======-->
-        <script src="..\assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
         <!--====== Imagesloaded js ======-->
-        <script src="..\assets/js/imagesloaded.pkgd.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
         <!--====== Nice-select js ======-->
         <!-- <script src="assets/js/jquery.nice-select.min.js"></script> -->
         <!--====== counterup js ======-->
-        <script src="..\assets/js/jquery.counterup.min.js"></script>
+        <script src="assets/js/jquery.counterup.min.js"></script>
         <!--====== waypoints js ======-->
-        <script src="..\assets/js/jquery.waypoints.js"></script>
+        <script src="assets/js/jquery.waypoints.js"></script>
         <!--====== Ui js ======-->
-        <script src="..\assets/js/jquery-ui.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
         <!--====== Wow js ======-->
-        <script src="..\assets/js/wow.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
-        <script src="..\assets/js/main.js"></script>
+        <script src="assets/js/main.js"></script>
     <!-- Select2 -->
-    <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="admin/plugins/select2/js/select2.full.min.js"></script>
         <script>
              $(function () {
                 //Initialize Select2 Elements

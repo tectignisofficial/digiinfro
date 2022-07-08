@@ -141,7 +141,7 @@ img {
 body {
   font-weight: normal;
   font-style: normal;
-  color: #676767;
+  color: #676767 !important;
   font-family: "Mulish", sans-serif;
   font-size: 15px;
   line-height: 24px;
