@@ -41,6 +41,7 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+       
         <style>
             <?php if($_GET['categories']);{ ?>
             .cateShop{
@@ -53,17 +54,6 @@ include("admin/include/config.php");
             }
             <?php } ?>
 
-            <?php  
-        $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
-        while($arr=mysqli_fetch_array($sql)){
-                      ?>
-    
-        .breadcrumbs-wrapper:after{
-            right: 0;
-            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
-            background-size: 945px 400px;
-        }
-    <?php }  ?>
         </style>
 
     </head>
