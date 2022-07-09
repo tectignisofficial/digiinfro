@@ -214,7 +214,7 @@ if(isset($_POST['savevender'])){
                     $count=1;
                     while($arr=mysqli_fetch_array($sql)){
                       
-                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']=='' || $arr['shop_name']=='' || $arr['category']=='' || $arr['image1']=='' || $arr['image2']=='' || $arr['image3']=='' || $arr['image4']=='' || $arr['city']=='' || $arr['state']==''){
+                      if($arr['shop_address']=='' || $arr['authorized_person']=='' || $arr['mobile_no']=='' || $arr['whatsapp_no']=='' || $arr['email']=='' || $arr['services']=='' || $arr['shop_act_license']=='' || $arr['pan_card']=='' || $arr['shop_name']=='' || $arr['category']=='' || $arr['image1']=='' || $arr['image2']=='' || $arr['image3']=='' || $arr['image4']=='' || $arr['city']=='' || $arr['state']==''  || $arr['location']=='' || $arr['post']=='' || $arr['description']=='' || $arr['profile_img']==''){
                     ?>
                   <tr>
                     <td><?php echo $count; ?></td>

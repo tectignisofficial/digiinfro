@@ -1,5 +1,7 @@
 <?php
 include("include/config.php");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,11 +150,11 @@ include("include/config.php");
                     <td><?php //echo $arr['city']; ?>add city</td>
                     <td><?php echo $arr['category']; ?></td>
                     <td><?php if($arr['morerating']=='1'){
-                      echo "<a href='../api.php?catemoratingyes=".$arr['id']."' class='btn btn-success'>YES</a>";
+                      echo "<a href='../api.php?catemoratingyes=".$arr['shop_code']."' class='btn btn-success'>YES</a>";
                     } else if($arr['morerating']=='0'){
-                      echo "<a href='../api.php?catemoratingno=".$arr['id']."' class='btn btn-danger'>NO</a>";
+                      echo "<a href='../api.php?catemoratingno=".$arr['shop_code']."' class='btn btn-danger'>NO</a>";
                     }?></td>
-                    <td><a href="../api.php?catemoratingyes=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <td><a href="../api.php?catemoratingyes=<?php echo $arr['shop_code']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                   </tr>
                   <?php $count++; } ?>
                   </tbody>
