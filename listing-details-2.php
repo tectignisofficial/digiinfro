@@ -8,10 +8,15 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='listing-list'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -36,6 +41,63 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <style>
+            .sidebar-widget-area .widget.contact-info-widget {
+    padding: 0px 30px;
+}
+
+.social .fbtn {
+    width: 50px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+    float: left;
+}
+.social .fa {
+    padding: 15px 0px
+}
+.facebook {
+    background-color: #3b5998;
+}
+.gplus {
+    background-color: #dd4b39;
+}
+.twitter {
+    background-color: #55acee;
+}
+.stumbleupon {
+    background-color: #eb4924;
+}
+.pinterest {
+    background-color: #cc2127;
+}
+.linkedin {
+    background-color: #0077b5;
+}
+.buffer {
+    background-color: #323b43;
+}
+
+.share-button.sharer .social.active.top {
+    transform: scale(1) translateY(-10px);
+}
+.share-button.sharer .social.active {
+    opacity: 1;
+    transition: all 0.4s ease 0s;
+    visibility: visible;
+}
+.share-button.sharer .social.networks-5 {} .share-button.sharer .social.top {
+    margin-top: -80px;
+    transform-origin: 0 0 0;
+}
+.share-button.sharer .social {
+    margin-left: -65px;
+    opacity: 0;
+    transition: all 0.4s ease 0s;
+    visibility: hidden;
+}
+        </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -87,8 +149,31 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="button">
-                                            <a href="listing-grid.html" class="icon-btn"><i class="ti-mobile"></i></a>
-                                            <a href="listing-grid.html" class="icon-btn"><i class="ti-share"></i></a>
+                                            <a href="card/card.php?cardid=<?php echo $row['shop_code']; ?>" class="icon-btn"><i class="ti-mobile"></i></a>
+
+                                           
+                                            <div class="share-button sharer" style="    display: contents;background: white;">
+    <button type="button" class="icon-btn share_btn " style="background: white;"><i class="ti-share"></i></button>
+    <div class="social top center networks-5 d-flex">
+        <!-- Facebook Share Button -->
+        <a class="fbtn share twitter" href="http://www.facebook.com/sharer.php?u=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a> 
+        
+        <!-- Google Plus Share Button -->
+        <a class="fbtn share twitter" href="https://twitter.com/share?url=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a> 
+        
+        <!-- Twitter Share Button -->
+        <a class="fbtn share twitter" href="https://wa.me/whatsappphonenumber/?text=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a>
+       
+        <!-- Pinterest Share Button -->
+        <a class="fbtn share pinterest" href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a>
+        
+       
+        <!-- LinkedIn Share Button -->
+        <a class="fbtn share linkedin" href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a>
+    </div>
+</div>
+                                            <!---->
+
                                         </div>
                                     </div>
                                 </div>
@@ -97,71 +182,8 @@
                                 <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing image" width="770" height="500">
                             </div>
                             <div class="listing-content mb-30">
-                                <h3 class="title">World's Quality Museum</h3>
-                                <p>Parturient varius elementum maecenas faucibus maecenas inceptos commodo metus vitae ac pretium magnis. Ridiculus aenean diam duis montes mattis curae dis platea cubilia fames justo nullam per incepto Accumsan mollis, semper nisl nulla per curae ante tellus cursus ut blandit eleifend ut adipiscing fringilla Sociosqu penatibus nascetur senectus, molestie sed habitant adipiscing maecenas ultrices curae sociis mi eros ultrices euismod risus cubilia eget habitasse facilisic</p>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-credit-card"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Card Payment</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-paint-bucket"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Air-conditioned</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-rss-alt"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Wireless Internet</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-trash"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Serves Alcohol</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-car"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Parking Street</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="icon-box icon-box-one">
-                                            <div class="icon">
-                                                <i class="ti-credit-card"></i>
-                                            </div>
-                                            <div class="info">
-                                                <h6>Outdoor Seating</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>Cras vivamus dui cubilia placerat netus lorem vivamus inceptos sollicitudin non inceptos mi dui vulputate donec sed etiam turpis varius a porta natoque nullam tincidunt in nec cubilia hac netus and class pharetra Commodo convallis pharetra tortor facilisis dapibus maecenas nunc nascetur arcu quam vel non varius egestas fusce aced molestie adipiscing curae ante tellus cursus ut blandit</p>
+                                <h3 class="title">World's Quality <?php echo $row['category'] ?></h3>
+                                <p><?php echo $row['description'] ?></p>
                             </div>
                             <!-- <div class="listing-play-box mb-30">
                                 <h4 class="title">Documentary</h4>
@@ -332,7 +354,7 @@
                                         </ul>
                                     </div>
                                     <div class="listing-content">
-                                        <h3 class="title"><a href="listing-details-2.html"><?php echo $arr['shop_name'] ?></a></h3>
+                                        <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $arr['shop_code']; ?>"><?php echo $arr['shop_name'] ?></a></h3>
                                         <p>Popular <?php echo $arr['category'] ?>in <?php echo $arr['state'] ?></p>
                                         <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $arr['mobile_no'] ?></a><span class="status st-open">Open</span></span>
                                         <div class="listing-meta">
@@ -374,24 +396,29 @@
                                 </form>
                             </div>
                             <div class="widget contact-info-widget mb-30">
-                                <div class="contact-info-widget-wrap">
-                                    <div class="contact-map">
+                                <div class="contact-info-widget-wrap mb-4">
+                                    <!-- <div class="contact-map">
                                         <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                                         <a href="#" class="support-icon"><i class="flaticon-headphone"></i></a>
-                                    </div>
+                                    </div> -->
                                     <div class="contact-info-content">
                                         <h4 class="widget-title">Contact Info</h4>
                                         <div class="info-list">
-                                            <p><i class="ti-tablet"></i><a href="tel:+98265365205">+98 (265) 3652 - 05</a></p>
-                                            <p><i class="ti-location-pin"></i>45/A Natura, Barcelona, Spain</p>
-                                            <p><i class="ti-email"></i><a href="mailto:contact@example.com">contact@example.com</a></p>
-                                            <p><i class="ti-world"></i><a href="www.fioxen.com">www.fioxen.com</a></p>
+                                            <p><i class="ti-tablet"></i><a href="tel:+98265365205"><?php echo $row['mobile_no'] ?></a></p>
+                                            <p><i class="ti-location-pin"></i><?php echo $row['shop_address'].' , '.$row['city'].' , '.$row['state']; ?></p>
+                                            <p><i class="ti-email"></i><a href="mailto:<?php echo $row['email'] ?>"><?php echo $row['email'] ?></a></p>
+                                            <p  style="overflow:hidden;display: -webkit-box;"><i class="ti-world"></i><a href="<?php echo $row['website'] ?>" style="display:block"><?php echo $row['website'] ?></a></p>
                                         </div>
                                         <ul class="social-link">
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-youtube"></i></a></li>
+                                            <?php if($row['facebook']!=null){?>
+                                            <li><a href="<?php echo $row['facebook'] ?>"><i class="ti-facebook"></i></a></li>
+                                            <?php } if($row['instagram']!=null){?>
+                                            <li><a href="<?php echo $row['instagram'] ?>"><i class="ti-instagram"></i></a></li>
+                                            <?php } if($row['LinkedIn']!=null){ ?>
+                                            <li><a href="<?php echo $row['LinkedIn'] ?>"><i class="ti-linkedin"></i></a></li>
+                                            <?php } if($row['youtube']!=null){?>
+                                            <li><a href="<?php echo $row['youtube'] ?>"><i class="ti-youtube"></i></a></li>
+                                            <?php } ?>
                                             <!-- <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li> -->
                                         </ul>
                                     </div>
@@ -400,29 +427,58 @@
                             <div class="widget business-hour-widget mb-30">
                                 <h4 class="widget-title">Business Hour</h4>
                                 <ul class="time-info">
-                                    <li><span class="day">Monday</span><span class="time">08:00 - 21:00</span></li>
-                                    <li><span class="day">Tuesday</span><span class="time">08:00 - 21:00</span></li>
-                                    <li><span class="day">Wednesday</span><span class="time">08:00 - 21:00</span></li>
-                                    <li><span class="day">Thursday</span><span class="time">08:00 - 21:00</span></li>
-                                    <li><span class="day">Friday</span><span class="time">08:00 - 21:00</span></li>
-                                    <li><span class="day">Saturday</span><span class="time">08:00 - 21:00</span></li>
+                                <?php if($row['monday'] != "00:00"){?>
+                                    <li><span class="day">Monday</span><span class="time"><?php echo $row['monday'] ?> - <?php echo $row['end_mon'] ?></span></li>
+                                    <?php }else{ ?>
                                     <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['tuesday'] != "00:00"){?>
+                                    <li><span class="day">Tuesday</span><span class="time"><?php echo $row['tuesday'] ?> - <?php echo $row['end_tue'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['wednesday'] != "00:00"){?>
+                                    <li><span class="day">Wednesday</span><span class="time"><?php echo $row['wednesday'] ?> - <?php echo $row['end_wed'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['thursday'] != "00:00"){?>
+                                    <li><span class="day">Thursday</span><span class="time"><?php echo $row['thursday'] ?> - <?php echo $row['end_thur'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['friday'] != "00:00"){?>
+                                    <li><span class="day">Friday</span><span class="time"><?php echo $row['friday'] ?> - <?php echo $row['end_fri'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['saturday'] != "00:00"){ ?>
+                                    <li><span class="day">Saturday</span><span class="time"><?php echo $row['saturday'] ?> - <?php echo $row['end_sat'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
+                                    <?php if($row['sunday'] != "00:00"){ ?>
+                                        <li><span class="day">Saturday</span><span class="time"><?php echo $row['sunday'] ?> - <?php echo $row['end_sun'] ?></span></li>
+                                    <?php }else{ ?>
+                                    <li><span class="day">Sunday</span><span class="time st-close">Close</span></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
-                            <div class="widget newsletter-widget mb-30">
+                            <!-- <div class="widget newsletter-widget mb-30">
                                 <div class="newsletter-widget-wrap bg_cover" style="background-image: url(assets/images/newsletter-widget-1.jpg);">
                                     <i class="flaticon-email-1"></i>
                                     <h3>Subscribe Our
                                         Newsletter</h3>
                                    <a href="#subscribe"><button class="main-btn icon-btn">Subscribe</button></a> 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </section><!--====== End Listing Details Section ======-->
         <!--====== Start Footer ======-->
+        
         <?php include("assets/include/Footer.php") ?>
        <!--====== End Footer ======-->
         <!--====== back-to-top ======-->
@@ -455,6 +511,17 @@
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        <script>
+            $( document ).ready(function() {
+     //custom button for homepage
+     $( ".share_btn" ).click(function(e) {
+          $('.networks-5').not($(this).next( ".networks-5" )).each(function(){
+             $(this).removeClass("active");
+         });
+         $(this).next( ".networks-5" ).toggleClass( "active" );
+    });   
+});
+        </script>
 
 
 <?php

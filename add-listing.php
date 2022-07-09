@@ -5,10 +5,15 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='add-listing'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -33,10 +38,48 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@v1.0.2-rc2/mdtimepicker.min.css">
        <style>
         .wide{
             background: white;
         }
+        .picker3{
+            border:none;
+            width:70px;
+            color:black !important;
+        }
+        .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+label{
+    height: 60px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d0d0d;
+    border-radius: 5px;
+    width:  100%;;
+    background: white;
+    padding: 0 25px;
+    line-height:60px;
+}
+<?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='31'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
+            background-size: 945px 400px;
+        }
+    <?php }  ?>
        </style>
     </head>
     <body>
@@ -85,24 +128,24 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide form_control" name="category">
+                                            <select class="wide form_control" name="category" id="category">
                                                 <option value="00" selected disabled>Category</option>
                                                 <?php 
-                  $query=mysqli_query($conn,"select * from listcategory");
-                  while($sql=mysqli_fetch_array($query)){ ?>
-                       <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
-                       <?php  }  ?>
+                                                $query=mysqli_query($conn,"select * from listcategory");
+                                                while($sql=mysqli_fetch_array($query)){ ?>
+                                                    <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                                                    <?php  }  ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Phone No" name="mobile_no" >
+                                            <input type="text" class="form_control" placeholder="Phone No" name="mobile_no" id="mobile_no" >
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form_group">
-                                            <textarea class="form_control" placeholder="Shop Address" name="shop_address"></textarea>
+                                            <textarea class="form_control" placeholder="Shop Address" name="shop_address" id="shop_address"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -112,12 +155,12 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Authorized Person Name" name="authorized_person" >
+                                            <input type="text" class="form_control" placeholder="Authorized Person Name" name="authorized_person" id="authorized_person">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="WhatsApp No" name="whatsapp_no" >
+                                            <input type="text" class="form_control" placeholder="WhatsApp No" name="whatsapp_no" id="whatsapp_no">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -132,25 +175,43 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <select class="wide form_control" name="services">
+                                            <select class="wide form_control" name="services" id="services">
                                                 <option value="00" selected disabled>Services</option>
                                                 <?php 
-                  $query=mysqli_query($conn,"select * from service");
-                  while($sql=mysqli_fetch_array($query)){ ?>
-               <option value="<?php echo $sql['title'];?>"><?php echo $sql['title'];?></option>
-                       <?php }  ?>
+                                                $query=mysqli_query($conn,"select * from service");
+                                                while($sql=mysqli_fetch_array($query)){ ?>
+                                            <option value="<?php echo $sql['title'];?>"><?php echo $sql['title'];?></option>
+                                                    <?php }  ?>
                                             </select> 
                                         </div>
                                     </div>
+                                    <!--new-->
+                                    <div class="col-lg-6">
+                                        <div class="form_group">
+                                        <input type="text" class="form_control" placeholder="Post" name="Post" id=""> 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form_group">
+                                        <input type="file" name="profileimage" id="file" class="inputfile form_control" />
+                                        <label for="file">Choose a Profile Image</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form_group">
+                                            <textarea class="form_control" placeholder="Description" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--new-->
                                     <div class="col-lg-4">
                                         <div class="form_group">
                                             <select class="wide form_control"  onChange="get(this.value)" name="state">
                                                 <option selected disabled>State</option>
                                                 <?php 
-                   $query=mysqli_query($conn,"select * from state");
-                   while($sql=mysqli_fetch_array($query)){ ?>
-               <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
-                        <?php } ?>
+                                                    $query=mysqli_query($conn,"select * from state");
+                                                    while($sql=mysqli_fetch_array($query)){ ?>
+                                                <option value="<?php echo $sql['state'];?>"><?php echo $sql['state'];?></option>
+                                                            <?php } ?>
                                                 <option value="01">Maharashtra</option>
                                                 <option value="02">Delhi</option>
                                             </select> 
@@ -293,41 +354,48 @@
 											</div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button type="submit" name="subit" class="main-btn  btn-warning">Registration</button>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="add-listing-form map-form mb-60">
+                            <!-- <div class="add-listing-form map-form mb-60">
                                 <div class="map-box">
                                     <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe> 
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="add-listing-form timing-listing-form mb-60">
                                 <h4 class="title">Opening Hours</h4>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="timeing-list">
-                                            <h5>Monday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Monday<span class="d-flex time">
+                                                <input type="text" class="picker3"  placeholder="08 am" name="monopen" value="00:00 am">-&nbsp;<input type="text" name="monend" class="picker3"  placeholder="08 pm" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Tuesday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Tuesday<span class="d-flex time">
+                                                <input type="text" name="tueopen" class="picker3"  placeholder="08 am" value="00:00 am">-&nbsp;<input type="text" name="tueend" class="picker3"  placeholder="08 pm" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Wednesday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Wednesday<span class="d-flex time">
+                                                <input type="text" name="wedopen" class="picker3"  placeholder="08 am" value="00:00 am">-&nbsp;<input type="text" name="wedend" class="picker3"  placeholder="08 pm" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Thursday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Thursday<span class="d-flex time">
+                                                <input type="text" class="picker3"  placeholder="08 am" name="thuropen" value="00:00 am">-&nbsp;<input type="text" class="picker3"  placeholder="08 pm" name="thurend" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Friday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Friday<span class="d-flex time">
+                                                <input type="text" class="picker3"  placeholder="08 am" name="friopen" value="00:00 am">-&nbsp;<input type="text" class="picker3"  placeholder="08 pm" name="friend" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Saturday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Saturday<span class="d-flex time">
+                                                <input type="text" class="picker3"  placeholder="08 am" name="satopen" value="00:00 am">-&nbsp;<input type="text" class="picker3"  placeholder="08 pm" name="satend" value="00:00 pm"></span></h5>
                                         </div>
                                         <div class="timeing-list">
-                                            <h5>Saturday<span class="time">08 am - 05 pm</span></h5>
+                                            <h5>Sunday<span class="d-flex time">
+                                                <input type="text" class="picker3"  placeholder="08 am" name="sunopen" value="00:00 am">-&nbsp;<input type="text" class="picker3"  placeholder="08 pm" name="sunend" value="00:00 pm"></span></h5>
                                         </div>
+                                    </div>
+                                    <div>
+                                        <button type="submit" name="subit" class="main-btn  btn-warning">Registration</button>
                                     </div>
                                 </div>
                             </div>
@@ -370,6 +438,21 @@
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        <!--time-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--====== Jquery js ======-->
+<script src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@v1.0.2-rc2/mdtimepicker.min.js"></script>
+        <script type="text/javascript">
+	$(document).ready(function(){
+        $('.picker1, .picker4, .picker5, .picker6').mdtimepicker();
+        $('.picker2').mdtimepicker({ readOnly: false, hourPadding: true })
+            .on('timechanged', function (e) {
+                console.log(e.time, e.value);
+        });
+        $('.picker3').mdtimepicker({ is24hour: true });
+    });
+</script>
+        <!--time-->
         <script>
   function get(val){
 $.ajax({
@@ -421,13 +504,13 @@ $.ajax({
   </script>
 
 <?php
-if(isset($_POST['subit'])){
+if(isset($_POST['subit'])){ 
 
   $category=$_POST['category'];
 $shop_name=$_POST['shop_name'];
 $shop_address=$_POST['shop_address'];
 $authorized_person=$_POST['authorized_person'];
-$mobile_no=$_POST['mobile_no'];
+$mobile_no="91".$_POST['mobile_no'];
 $whatsapp_no=$_POST['whatsapp_no'];
 $city=$_POST['city'];
 $state=$_POST['state'];
@@ -440,6 +523,24 @@ $linkedin=$_POST['linkedin'];
 $youtube=$_POST['youtube'];
 $location=$_POST['location'];
 $veriotp=$_POST['veriotp'];
+$veriotp=$_POST['veriotp'];
+$monopen=$_POST['monopen'];
+$monend=$_POST['monend'];
+$tueopen=$_POST['tueopen'];
+$tueend=$_POST['tueend'];
+$wedopen=$_POST['wedopen'];
+$wedend=$_POST['wedend'];
+$thuopen=$_POST['thuopen'];
+$thuend=$_POST['thuend'];
+$friopen=$_POST['friopen'];
+$friend=$_POST['friend'];
+$satopen=$_POST['satopen'];
+$satend=$_POST['satend'];
+$sunopen=$_POST['sunopen'];
+$sunend=$_POST['sunend'];
+$Post=$_POST['Post'];
+$description=$_POST['description'];
+
 $status="open";
 $action="1";
 
@@ -471,6 +572,10 @@ $pan=$_FILES['pan']['name'];
 $tmp_name = $_FILES['pan']['tmp_name']; 
 $loc6="dist/img/vender_image/".basename($pan);
 
+$profileimage=$_FILES['profileimage']['name'];
+$tmp_name = $_FILES['pprofileimagean']['tmp_name']; 
+$loc6="dist/img/vender_image/".basename($profileimage);
+
 move_uploaded_file($tmp_name, $loc);
  move_uploaded_file($tmp_name, $loc1);
  move_uploaded_file($tmp_name, $loc2);
@@ -487,7 +592,7 @@ if($veriotp == ""){
 }else{
 if($otp==$veriotp){
 
-if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
+    if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $services=="" || $location==""  || $veriotp=="" || $monopen=="" || $monend=="" || $tueopen=="" || $tueend=="" || $wedopen=="" || $wedend=="" || $thuopen=="" || $thuend=="" || $friopen=="" || $friend=="" || $satopen=="" || $satend=="" || $sunopen=="" || $sunend== "" || $Post=="" || $description=="" || $profileimage==""){
  echo "<script>swal('oops','please fill all the fields','success');</script>";
 
 }
@@ -791,7 +896,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `end_mon`, `end_tue`, `end_wed`, `end_thur`, `end_fri`, `end_sat`, `end_sun`, `post`, `description`, `profile_img`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state','$monopen','$tueopen','$wedopen','$thuropen','$friopen','$satopen','$sunopen','$endmon','$endtue','$endwed','$endthur','$endfri','$endsat','$endsun','$Post','$description','$profileimage')");
 if($sql){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
@@ -820,5 +925,7 @@ echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 }
 }
 ?>
+<script src="/path/to/bootstrap-material-datetimepicker.js"></script>
+<script>$('#time').bootstrapMaterialDatePicker({ date: false });</script>
     </body>
 </html>

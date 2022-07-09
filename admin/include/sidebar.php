@@ -52,12 +52,24 @@
             <a href="pendingapproval.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Pending Approval</p>
+             <span style="color:red;border: 2px solid white;border-radius:50%;background:white;padding: 0 2px;"> <?php
+                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NULL or authorized_person IS NULL or mobile_no IS NULL or whatsapp_no IS NULL or email IS NULL or services IS NULL or shop_act_license IS NULL or pan_card IS NULL or shop_name IS NULL or category IS NULL or image1 IS NULL or image2 IS NULL or image3 IS NULL or image4 IS NULL or city IS NULL or state IS NULL or location IS NULL or post IS NULL or description IS NULL or profile_img IS NULL;");
+                    $count=$sql->num_rows;
+                    echo $count;
+                    ?>
+                    </span>
             </a>
           </li>
           <li class="nav-item">
             <a href="completeappoval.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Complete Approval</p>
+              <span style="color:red;border: 2px solid white;border-radius:50%;background:white;padding: 0 2px;"> <?php
+                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NOT NULL and authorized_person IS NOT NULL and mobile_no IS NOT NULL and whatsapp_no IS NOT NULL and email IS NOT NULL and services IS NOT NULL and shop_act_license IS NOT NULL and pan_card IS NOT NULL and shop_name IS NOT NULL and category IS NOT NULL and image1 IS NOT NULL and image2 IS NOT NULL and image3 IS NOT NULL and image4 IS NOT NULL and city IS NOT NULL and state IS NOT NULL and location IS NOT NULL and post IS NOT NULL and description IS NOT NULL and profile_img IS NOT NULL;");
+                    $count=$sql->num_rows;
+                    echo $count;
+                    ?>
+                    </span>
             </a>
           </li>
           <li class="nav-item">

@@ -18,6 +18,8 @@ if(isset($_POST['submit'])){
         echo '<script>alert("oops...somthing went wrong");</script>';
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,15 +28,15 @@ if(isset($_POST['submit'])){
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <?php
-            $sql=mysqli_query($conn,"Select * from seo");
+            $sql=mysqli_query($conn,"Select * from seo where page_name='contact'");
                while($arr=mysqli_fetch_array($sql)){
              ?>
-        <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
+        <!--====== Title ======-->
+        <title><?php echo $arr['meta_title'];?></title>
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <!--====== Title ======-->
-        <title>Vcard - Directory & Listings HTML Template</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -58,7 +60,18 @@ if(isset($_POST['submit'])){
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='51'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <style>
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url('assets/images/banner/<?php echo $arr['file'];?>') no-repeat center center ;
+            background-size: 945px 400px;
+        }
+        </style>
+    <?php }  ?>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -104,14 +117,17 @@ if(isset($_POST['submit'])){
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="contact-information-list">
+                            <?php
+                            $query=mysqli_query($conn,"select * from general_settings");
+                            $arr=mysqli_fetch_array($query);
+                            ?>
                             <div class="information-item mb-30">
                                 <div class="icon">
                                     <i class="ti-location-pin"></i>
                                 </div>
                                 <div class="info">
                                     <h5>Address</h5>
-                                    <p>46 suvastu arcade 3rd Floor
-                                        palace road, London.</p>
+                                    <p><?php echo $arr['address'] ?></p>
                                 </div>
                             </div>
                             <div class="information-item mb-30">
@@ -120,8 +136,8 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="info">
                                     <h5>Phone</h5>
-                                    <p><a href="tel:445555552580">44 (555) 555 2580</a></p>
-                                    <p><a href="tel:445555552580">31 (555) 222 2560</a></p>
+                                    <p><a href="tel:<?php echo $arr['contact_phone'] ?>"><?php echo $arr['contact_phone'] ?></a></p>
+                                    
                                 </div>
                             </div>
                             <div class="information-item mb-30">
@@ -130,8 +146,8 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="info">
                                     <h5>Email</h5>
-                                    <p><a href="mailto:info@fioxen20.com">info@fioxen20.com</a></p>
-                                    <p><a href="mailto:info@fioxen20.com">info@fioxen22.com</a></p>
+                                    <p><a href="mailto:<?php echo $arr['contact_email'] ?>"><?php echo $arr['contact_email'] ?></a></p>
+                                   
                                 </div>
                             </div>
                         </div>

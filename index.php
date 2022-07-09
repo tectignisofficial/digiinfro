@@ -1,5 +1,74 @@
 <?php
 include("admin/include/config.php");
+if(isset($_POST['signup'])){
+    $status=1;
+    $email=$_POST['email'];  
+  $from = 'Enquiry <'.$email.'>' . "\r\n";
+  $sendTo = 'Enquiry <'.$email.'>';
+  $subject = 'Agreerent';
+  // $fields = array( 'name' => 'name' );
+  $from = 'Agreerent: 1.0' . "\r\n";
+  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  
+  
+  $emailText = '
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="x-apple-disable-message-reformatting"> 
+      <title></title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+      <style>
+        
+      </style>
+  </head>
+  <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+     <div>
+     <h1>'.$email.'</h1>
+     </div>
+  </body>
+  </html>';
+  
+  try{
+    foreach($_POST as $key => $value){
+      if(isset($fields[$key])){
+        $emailText.="$fields[$key]: $value\n";
+      }
+    }
+   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+  
+    $sql=mysqli_query($conn,"INSERT INTO `subscriber`(`email`,`status`) 
+     VALUES ('$email','$status')");
+     if($sql=1){
+       echo "<script>alert('Agent Registered Successfully');</script>";    }
+     else{
+       echo "<script>alert('Something Wrong');</script>";
+     }
+   }else{
+      echo "$sendTo $subject $emailText $from";
+   }
+  }
+  catch(\Exception $e){
+    echo "not done";
+  }
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    $encode=json_encode($responseArray);
+    header('content-Type: application/json');
+    echo $encoded;
+  }
+  else{
+    echo $responseArray['message'];
+  }
+  }
+?>
+<?php
+if(isset($_POST['searchlist'])){
+    $category=$_POST['category'];
+    header("location:categorylist.php?category=$category");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +76,16 @@ include("admin/include/config.php");
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php
+            $sql=mysqli_query($conn,"Select * from seo where page_name='home'");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
         <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
+        <title><?php echo $arr['meta_title'];?></title>
+        <?php } ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -35,6 +110,20 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+        <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='1'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <style>
+        .hero-wrapper-one:after {
+            width: 43.5%;
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+    <?php }  ?>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -58,29 +147,35 @@ include("admin/include/config.php");
                                     Discover</h1>
                                 <h3>People Don’t Take,Trips Take People</h3>
                                 <div class="hero-search-wrapper">
-                                    <form>
+                                    <form method="post">
                                         <div class="row">
-                                            <div class="col-lg-5 col-md-4 col-sm-12">
+                                            <div class="col-lg-9 col-md-8 col-sm-12">
                                                 <div class="form_group">
-                                                    <input type="search" class="form_control" placeholder="Search By Category" name="search" required>
-                                                    <i class="ti-ink-pen"></i>
+                                                <select class="wide form_control" name="category" id="category" required>
+                                                <option value="00" selected disabled>Search By Category</option>
+                                                <?php 
+                                                $query=mysqli_query($conn,"select * from listcategory");
+                                                while($sql=mysqli_fetch_array($query)){ ?>
+                                                    <option value="<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                                                    <?php  }  ?>
+                                            </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                            <!-- <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <div class="form_group">
                                                     <input type="text" class="form_control" placeholder="Location" name="location" required>
                                                     <i class="ti-location-pin"></i>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="col-lg-3 col-md-4 col-sm-12">
                                                 <div class="form_group">
-                                                    <button class="main-btn icon-btn">Search Now</button>
+                                                    <button class="main-btn icon-btn" type="submit" name="searchlist">Search Now</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <p class="tags"><span>Popular:</span><a href="#">Saloon</a>,<a href="#">Restaurant</a>,<a href="#">Game</a>,<a href="#">Counter</a>,<a href="#">Train Station</a>,<a href="#">Parking</a>,<a href="#">Shooping</a></p>
+                                <!-- <p class="tags"><span>Popular:</span><a href="#">Saloon</a>,<a href="#">Restaurant</a>,<a href="#">Game</a>,<a href="#">Counter</a>,<a href="#">Train Station</a>,<a href="#">Parking</a>,<a href="#">Shooping</a></p> -->
                             </div>
                         </div>
                     </div>
@@ -105,7 +200,7 @@ include("admin/include/config.php");
                                     </div>
                                     <h6><?php echo $arr['name'] ?></h6>
                                 </div>
-                                <a href="index.html" class="category-btn"><i class="ti-arrow-right"></i></a>
+                                <a href="categorylist.php?category=<?php echo $arr['name'] ?>" class="category-btn"><i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
                         <?php } ?>
@@ -194,8 +289,12 @@ include("admin/include/config.php");
         
         <!--====== End Listing Section ======-->
         <!--====== Start offer Section ======-->
+        <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='2'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
         <section class="cta-area">
-            <div class="cta-wrapper-one bg_cover" style="background-image: url(assets/images/bg/cta-bg-1.jpg);">
+            <div class="cta-wrapper-one bg_cover" style="background:url('assets/images/banner/<?php echo $arr['file'];?>');">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -210,6 +309,7 @@ include("admin/include/config.php");
                 </div>
             </div>
         </section>
+        <?php }  ?>
         <!--====== End offer Section ======-->
         <!--====== Start Features Section ======-->
         <section class="features-area">
@@ -269,84 +369,9 @@ include("admin/include/config.php");
             </div>
         </section>
         <!--====== End Features Section ======-->
-        <!--====== Start Place Section ======-->
-        <section class="place-area pt-115 pb-110">
-            <div class="container-fluid place-container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center mb-60">
-                            <span class="sub-title">Feature Places</span>
-                            <h2>Explore By Destination</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="place-slider-one">
-                    <div class="place-item place-item-one">
-                        <div class="place-thumbnail">
-                            <img src="assets/images/place/place-1.jpg" alt="Place Image">
-                            <div class="place-overlay">
-                                <div class="place-content text-center">
-                                    <span class="listing">10 Listing</span>
-                                    <h3 class="title">Australia</h3>
-                                    <a href="listing-grid.html" class="arrow-btn"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-item place-item-one">
-                        <div class="place-thumbnail">
-                            <img src="assets/images/place/place-2.jpg" alt="Place Image">
-                            <div class="place-overlay">
-                                <div class="place-content text-center">
-                                    <span class="listing">10 Listing</span>
-                                    <h3 class="title">Australia</h3>
-                                    <a href="listing-grid.html" class="arrow-btn"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-item place-item-one">
-                        <div class="place-thumbnail">
-                            <img src="assets/images/place/place-3.jpg" alt="Place Image">
-                            <div class="place-overlay">
-                                <div class="place-content text-center">
-                                    <span class="listing">10 Listing</span>
-                                    <h3 class="title">Australia</h3>
-                                    <a href="listing-grid.html" class="arrow-btn"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-item place-item-one">
-                        <div class="place-thumbnail">
-                            <img src="assets/images/place/place-4.jpg" alt="Place Image">
-                            <div class="place-overlay">
-                                <div class="place-content text-center">
-                                    <span class="listing">10 Listing</span>
-                                    <h3 class="title">Australia</h3>
-                                    <a href="listing-grid.html" class="arrow-btn"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="place-item place-item-one">
-                        <div class="place-thumbnail">
-                            <img src="assets/images/place/place-2.jpg" alt="Place Image">
-                            <div class="place-overlay">
-                                <div class="place-content text-center">
-                                    <span class="listing">10 Listing</span>
-                                    <h3 class="title">Australia</h3>
-                                    <a href="listing-grid.html" class="arrow-btn"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--====== End Place Section ======-->
+       
         <!--====== Start Download Section ======-->
-        <section class="download-app">
+        <section class="download-app mt-4">
             <div class="download-wrapper-one pt-115">
                 <div class="container">
                     <div class="row">
@@ -420,7 +445,7 @@ include("admin/include/config.php");
                     </div>
                 </div>
             </div>
-        </section><!--====== End Download Section ======-->
+        </section><!--====== End Dowvendornload Section ======-->
         <!--====== Start Popular Listing Section ======-->
         <section class="listing-grid-area pt-75 pb-110">
             <div class="container">
@@ -472,8 +497,12 @@ include("admin/include/config.php");
         </section>
         <!--====== End Popular Listing Section ======-->
         <!--====== Start Intro Video Section ======-->
+        <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='3'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
         <section class="intro-video">
-            <div class="intro-wrapper-one bg_cover pt-115" style="background-image: url(assets/images/bg/video-bg-1.jpg);">
+            <div class="intro-wrapper-one bg_cover pt-115" style="background-image: url('assets/images/banner/<?php echo $arr['file'] ?>');">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-5">
@@ -498,6 +527,7 @@ include("admin/include/config.php");
                 </div>
             </div>  
         </section>
+        <?php } ?>
         <!--====== End Intro Video Section ======-->
         <!--====== Start Newsletter Section ======-->
         <section class="newsletter-area">
@@ -517,11 +547,13 @@ include("admin/include/config.php");
                         </div>
                         <div class="col-lg-7">
                             <div class="newsletter-form">
+                                <form method="POST" action="#">
                                 <div class="form_group">
                                     <input type="email" class="form_control" placeholder="Enter Address" name="email" required>
                                     <i class="ti-location-pin"></i>
-                                    <button class="main-btn">Subscribe +</button>
+                                    <button class="main-btn" name="signup">Subscribe +</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -530,7 +562,7 @@ include("admin/include/config.php");
         </section>
         <!--====== End Newsletter Section ======-->
         <!--====== Start Client Section ======-->
-        <section class="client-area pt-120">
+        <!-- <section class="client-area pt-120">
             <div class="client-wrapper-one pb-120">
                 <div class="container">
                     <div class="client-slider-one">
@@ -562,7 +594,7 @@ include("admin/include/config.php");
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!--====== End Client Section ======-->
         <!--====== Start Blog Section ======-->
         <section class="blog-area pt-115 pb-120">
@@ -576,68 +608,38 @@ include("admin/include/config.php");
                     </div>
                 </div>
                 <div class="row">
+                    <?php
+                     $sqlblog=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id limit 3");
+
+                     $sqlcom1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
+                     $count1=mysqli_num_rows($sqlcom1);
+                     while($arr=mysqli_fetch_array($sqlblog)){
+                    ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="blog-post-item blog-post-item-one mb-40">
                             <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
+                                <a href="blog-details.php?id=<?php echo $arr['id'];?>"><img src="assets/images/blog_image/<?php echo $arr['img'];?>" alt="Blog Image" width="370" height="375"></a>
+                                <div class="post-date"><a href="#"><?php $date=$arr['date']; echo date("d",strtotime($date))?> <span><?php $date=$arr['date']; echo date("F",strtotime($date))?></span></a></div>
                             </div>
                             <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i>Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Duis nonummy socios mattis
-                                    tempus penatibus</a></h3>
+                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i><?php echo $arr['name'];?></a>
+                                <h3 class="title"><a href="blog-details.php?id=<?php echo $arr['id'];?>"><?php echo $arr['title'];?></a></h3>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
+                                        <li><span><i class="ti-comments-smiley"></i><a href="#"><?php echo $count1;?> Comment</a></span></li>
                                         <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="blog-post-item blog-post-item-one mb-40">
-                            <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-2.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
-                            </div>
-                            <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i>Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Litora phasellus in phasellus
-                                    curabitur porta eun</a></h3>
-                                <div class="post-meta">
-                                    <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                        <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="blog-post-item blog-post-item-one mb-40">
-                            <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-3.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
-                            </div>
-                            <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i> Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Mattis parturent tortor lectus
-                                    lestie sapien Dapus</a></h3>
-                                <div class="post-meta">
-                                    <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                        <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+                   
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="button text-center mt-40">
-                            <a href="blog.html" class="main-btn icon-btn">View Blog</a>
+                            <a href="blog.php" class="main-btn icon-btn">View Blog</a>
                         </div>
                     </div>
                 </div>

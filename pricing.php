@@ -1,5 +1,5 @@
 <?php
-include("include/config.php");
+include("admin/include/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +8,14 @@ include("include/config.php");
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <?php
-            $sql=mysqli_query($conn,"Select * from seo");
+            $sql=mysqli_query($conn,"Select * from seo where page_name='pricing'");
                while($arr=mysqli_fetch_array($sql)){
              ?>
-        <meta name=<?php echo $arr['meta_title'];?> content=<?php echo $arr['meta_description'];?>>
+        <meta name="description" content="<?php echo $arr['meta_description'];?>">
+        <!--====== Title ======-->
+        <title><?php echo $arr['meta_title'];?></title>
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!--====== Title ======-->
-        <title>Fioxen - Directory & Listings HTML Template</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
         <!--====== Bootstrap css ======-->
@@ -39,7 +39,18 @@ include("include/config.php");
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='52'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    <style>
+        .breadcrumbs-wrapper:after  {
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+    <?php }  ?>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -163,69 +174,31 @@ include("include/config.php");
                     <div class="col-lg-8">
                         <div class="testimonial-wrapper-one text-center">
                             <div class="testimonial-review-area">
-                                <div class="testimonial-thumb-slider-one">
+                            <div class="testimonial-thumb-slider-one">
+                                    <?php $sqltesti="select * from testimonial";
+                                    $result=$conn->query($sqltesti);
+                                    while($row=mysqli_fetch_array($result)){ ?>
                                     <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-1.jpg" alt="testimonial thumb">
+                                        <img src="assets/images/testimonial/<?php echo $row['image'] ?>" alt="testimonial">
                                     </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-2.jpg" alt="testimonial thumb">
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-3.jpg" alt="testimonial thumb">
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img src="assets/images/testimonial/tm-thumb-2.jpg" alt="testimonial thumb">
-                                    </div>
+                                    <?php } ?>
+                                    
                                 </div>
                                 <div class="testimonial-content-slider-one">
+                                <?php $sqltestimonial="select * from testimonial";
+                                    $result1=$conn->query($sqltestimonial);
+                                    while($arr=mysqli_fetch_array($result1)){ ?>
                                     <div class="testimonial-item">
                                         <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
+                                            <p><?php echo $arr['description'] ?></p>
                                             <div class="author-info">
-                                                <div class="author-title">
-                                                    <h4>Melisa Powels</h4>
-                                                    <span class="position">Sr. Designer</span>
-                                                </div>
+                                                <h4><?php echo $arr['name'] ?></h4>
+                                                <span class="position"><?php echo $arr['designation'] ?></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <div class="author-title">
-                                                    <h4>Martyn Decode</h4>
-                                                    <span class="position">Sr. Designer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <div class="author-title">
-                                                    <h4>Alesha Mature</h4>
-                                                    <span class="position">Sr. Designer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-content">
-                                            <p>multiply given all hath given may meat god abundant appear lioud
-                                                fourth madman mane said god dominion great gathering called very shall after cre ated from fruitful place over the mitual </p>
-                                            <div class="author-info">
-                                                <div class="author-title">
-                                                    <h4>Martyn Decode</h4>
-                                                    <span class="position">Sr. Designer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php } ?>
+
                                 </div>
                             </div>
                         </div>
@@ -235,7 +208,7 @@ include("include/config.php");
         </section>
         <!--====== End Testimonial Section ======-->
         <!--====== Start Blog Section ======-->
-        <section class="blog-area pt-115 pb-80">
+        <section class="blog-area pt-115 pb-120">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
@@ -246,61 +219,38 @@ include("include/config.php");
                     </div>
                 </div>
                 <div class="row">
+                    <?php
+                     $sqlblog=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id limit 3");
+
+                     $sqlcom1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
+                     $count1=mysqli_num_rows($sqlcom1);
+                     while($arr=mysqli_fetch_array($sqlblog)){
+                    ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="blog-post-item blog-post-item-one mb-40">
                             <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
+                                <a href="blog-details.php?id=<?php echo $arr['id'];?>"><img src="assets/images/blog_image/<?php echo $arr['img'];?>" alt="Blog Image" width="370" height="375"></a>
+                                <div class="post-date"><a href="#"><?php $date=$arr['date']; echo date("d",strtotime($date))?> <span><?php $date=$arr['date']; echo date("F",strtotime($date))?></span></a></div>
                             </div>
                             <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i>Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Duis nonummy socios mattis
-                                    tempus penatibus</a></h3>
+                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i><?php echo $arr['name'];?></a>
+                                <h3 class="title"><a href="blog-details.php?id=<?php echo $arr['id'];?>"><?php echo $arr['title'];?></a></h3>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
+                                        <li><span><i class="ti-comments-smiley"></i><a href="#"><?php echo $count1;?> Comment</a></span></li>
                                         <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="blog-post-item blog-post-item-one mb-40">
-                            <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-2.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
-                            </div>
-                            <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i>Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Litora phasellus in phasellus
-                                    curabitur porta eun</a></h3>
-                                <div class="post-meta">
-                                    <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                        <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="blog-post-item blog-post-item-one mb-40">
-                            <div class="post-thumbnail">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-3.jpg" alt="Blog Image"></a>
-                                <div class="post-date"><a href="#">20 <span>Oct</span></a></div>
-                            </div>
-                            <div class="entry-content">
-                                <a href="#" class="cat-btn"><i class="ti-bookmark-alt"></i> Tours & Travel</a>
-                                <h3 class="title"><a href="blog-details.html">Mattis parturent tortor lectus
-                                    lestie sapien Dapus</a></h3>
-                                <div class="post-meta">
-                                    <ul>
-                                        <li><span><i class="ti-comments-smiley"></i><a href="#">0 Comment</a></span></li>
-                                        <li><span><i class="ti-id-badge"></i><a href="#">By admin</a></span></li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <?php } ?>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="button text-center mt-40">
+                            <a href="blog.php" class="main-btn icon-btn">View Blog</a>
                         </div>
                     </div>
                 </div>
