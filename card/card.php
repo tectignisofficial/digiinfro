@@ -301,7 +301,8 @@ ul li{
 .header img{
     margin:0 auto;
     display:block;
-    width:100%;
+    width:100px;
+    height:100px;
 }
 .bottom-header{
     -moz-box-shadow: 0 15px 25px -15px #ccc;
@@ -831,13 +832,13 @@ div.hopscotch-bubble h3{
                 <h4>Image 2 </h4>
             </a>
             <a href="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2"
+            <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                <h4>Image 3</h4>
             </a>
-            <a href="babasaheb.chitalkar/photos/4.jpg" data-toggle="lightbox" data-gallery="example-gallery">
+            <!-- <a href="babasaheb.chitalkar/photos/4.jpg" data-toggle="lightbox" data-gallery="example-gallery">
                <img src="https://via.placeholder.com/1x1/"class="img-fluid w-100 my-2" alt="gallery-image" data-src="babasaheb.chitalkar/photos/4.jpg"/>
                <h4>image 4</h4>
-            </a>
+            </a> -->
             
         </div>
       </div>
