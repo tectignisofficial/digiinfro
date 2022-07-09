@@ -5,7 +5,7 @@ $sql=mysqli_query($conn,"select * from vendor inner join listcategory on listcat
 $row=mysqli_fetch_array($sql);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
         <script>
@@ -166,7 +166,8 @@ ul li{
     display: block;
 }
 #main-icon h5 i{
-    color:#ff344f;;
+    color:#ff344f;
+    margin-right: 7px;
 }
 #main-icon h6 i{
     color:#fc0;
@@ -568,6 +569,99 @@ div.hopscotch-bubble .hopscotch-actions {
 div.hopscotch-bubble h3{
     margin-right: 0px;
 }
+#google_translate_element {
+   
+  margin-bottom:2px
+}
+.goog-te-gadget {
+  font-family: Roboto, 'Open Sans', sans-serif!important;
+  text-transform: uppercase;
+}
+.goog-te-gadget-simple  {
+  background: #ff344f!important;
+  border: 5px solid #ff344f;
+  padding: 8px!important;
+	width:60px;
+	height:60px;
+  border-radius: 50%!important;
+  font-size: 1rem!important;
+  line-height:2rem!important;
+  display: inline-block;
+  cursor: pointer;
+  zoom: 1;
+  margin: 5px 5px;
+}
+/* language box */
+.goog-te-menu2 {
+  max-width: 10%;
+  padding:0
+}
+.goog-te-menu-value {
+  color: #fff !important;
+    &:before {
+    font-family: 'Material Icons';
+    content: "\E927";
+    margin-right: 16px;
+    font-size: 2rem;
+    vertical-align: -10px;
+		
+    // width:32px!important;
+  } 
+}
+.goog-te-menu-value span{
+	opacity:0;
+}
+.goog-te-menu-value span:nth-child(5) {
+  display:none;
+}
+.goog-te-menu-value span:nth-child(3) {
+  border:none!important;
+  font-family: 'Material Icons';
+  &:after {
+    font-family: 'Material Icons';
+    content: "\E5C5";
+    font-size: 1.5rem;
+    vertical-align: -6px;
+		display:hidden;
+		opacity:0;
+  }  
+}
+
+.goog-te-gadget-icon {
+    background-image: url(https://placehold.it/32)!important;
+    background-position: 0px 0px;
+    height: 32px!important;
+    width: 32px!important;
+    margin-right: 8px!important;
+    //     OR
+    display: none;
+}
+
+// ============ HIDE TOP BAR ============ 
+.goog-te-banner-frame.skiptranslate {display: none!important;} 
+body {top: 0px!important;}
+
+/* ================================== *\
+    Mediaqueries
+\* ================================== */
+@media (max-width: 667px) {
+	#google_translate_element {
+		bottom: calc(100% - 50% - 53px);
+		left: 16px!important;
+		width: 100%!important;
+		goog-te-gadget {
+			width:50%!important;
+		}
+		.skiptranslate {
+			width:100%!important;			
+		}
+		.goog-te-gadget-simple {
+			width: calc(100% - 32px)!important;
+			text-align: center;
+		}	
+	}
+}
+
         </style>
     </head>
     <body>
@@ -575,6 +669,7 @@ div.hopscotch-bubble h3{
         <div class="mobile"> 
             <div class="header">
             <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
+            
             </div>
             <div class="bottom-header">
                 <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
@@ -617,9 +712,7 @@ div.hopscotch-bubble h3{
                         </div>
                     </li>
                     <li>
-                        <div class="icon-single" id="hs-5">
-                            <a href="marathi.php" ><i class="fa fa-language"></i></a>
-                        </div>
+                        <div id="google_translate_element"><i class="fa fa-language" style="position: relative;top: 55px;color: white;font-size:xx-large;"></i></div>
                     </li>
                     <li>
                         <div class="icon-single" id="hs-6">
@@ -1178,6 +1271,73 @@ div.hopscotch-bubble h3{
                 });
             }
         </script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en,es,jv,ko,pa,pt,ru,zh-CN,hi,mr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    // WORK IN PROGRESS BELOW
+      	
+$('document').ready(function () {
+
+
+// RESTYLE THE DROPDOWN MENU
+$('#google_translate_element').on("click", function () {
+
+// Change font family and color
+$("iframe").contents().find(".goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div, .goog-te-menu2 *")
+    .css({
+        'color': '#544F4B',
+        'font-family': 'Roboto',
+                        'width':'100%'
+    });
+// Change menu's padding
+$("iframe").contents().find('.goog-te-menu2-item-selected').css ('display', 'none');
+    
+        // Change menu's padding
+$("iframe").contents().find('.goog-te-menu2').css ('padding', '0px');
+
+// Change the padding of the languages
+$("iframe").contents().find('.goog-te-menu2-item div').css('padding', '20px');
+
+// Change the width of the languages
+$("iframe").contents().find('.goog-te-menu2-item').css('width', '100%');
+$("iframe").contents().find('td').css('width', '100%');
+
+// Change hover effects
+$("iframe").contents().find(".goog-te-menu2-item div").hover(function () {
+    $(this).css('background-color', '#4385F5').find('span.text').css('color', 'white');
+}, function () {
+    $(this).css('background-color', 'white').find('span.text').css('color', '#544F4B');
+});
+
+// Change Google's default blue border
+$("iframe").contents().find('.goog-te-menu2').css('border', 'none');
+
+// Change the iframe's box shadow
+$(".goog-te-menu-frame").css('box-shadow', '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3)');
+
+
+
+// Change the iframe's size and position?
+$(".goog-te-menu-frame").css({
+    'height': '100%',
+    'width': '100%',
+    'top': '0px'
+});
+// Change iframes's size
+$("iframe").contents().find('.goog-te-menu2').css({
+    'height': '100%',
+    'width': '100%'
+});
+});
+});
+
+</script>
         
         <!-- Tutorial Edit End #4 -->
     </body>

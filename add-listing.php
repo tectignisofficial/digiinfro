@@ -523,7 +523,6 @@ $linkedin=$_POST['linkedin'];
 $youtube=$_POST['youtube'];
 $location=$_POST['location'];
 $veriotp=$_POST['veriotp'];
-$veriotp=$_POST['veriotp'];
 $monopen=$_POST['monopen'];
 $monend=$_POST['monend'];
 $tueopen=$_POST['tueopen'];

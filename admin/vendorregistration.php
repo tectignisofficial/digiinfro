@@ -28,6 +28,9 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@v1.0.2-rc2/mdtimepicker.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -205,20 +208,27 @@ include('include/sidebar.php');
 
                   <div class="form-group">
                   <label>City Name</label>
-             
-                   
                        <select class="form-control select2 designation" name="city" style="width: 100%;" >
-                         
+                       </select>
+                </div>
+
+                <div class="form-group">
+                  <label>location</label>
+                       <select class="form-control select2 designation" name="location" id="designation" style="width: 100%;" >
                        </select>
                         
                 </div>
 
                 <div class="form-group">
-                  <label>location</label>
-             
-                   
-                       <select class="form-control select2 designation" name="location" id="designation" style="width: 100%;" >
-                         
+                  <label>Post</label>
+                       <select class="form-control select2 " name="Post" style="width: 100%;" >
+                       </select>
+                        
+                </div>
+
+                <div class="form-group">
+                  <label>Description</label>
+                       <select class="form-control select2 " name="description" style="width: 100%;" >
                        </select>
                         
                 </div>
@@ -262,20 +272,11 @@ include('include/sidebar.php');
               <!-- /.col -->
             </div>
                   
-               
                 <!-- /.card-body -->
-
-               
-             
-           
-
           </div>
 
-
-
-                   
           <div class="form-group">
-                    <label for="exampleInputFile">Image 1</label>
+                    <label for="exampleInputFile">Logo</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="img" class="custom-file-input" id="exampleInputFile" accept="image/png,image/jpeg,,image/jpg">
@@ -288,7 +289,7 @@ include('include/sidebar.php');
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputFile">Image 2</label>
+                    <label for="exampleInputFile">Image 1</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="img2" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
@@ -301,7 +302,7 @@ include('include/sidebar.php');
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputFile">Image 3</label>
+                    <label for="exampleInputFile">Image 2</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="img3" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
@@ -315,7 +316,7 @@ include('include/sidebar.php');
 
 
                   <div class="form-group">
-                    <label for="exampleInputFile">Image 4</label>
+                    <label for="exampleInputFile">Image 3</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="img4" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
@@ -326,10 +327,19 @@ include('include/sidebar.php');
                       </div>
                     </div>
                   </div>  
-
-
-
-
+                  
+                  <div class="form-group">
+                    <label for="exampleInputFile">Profile Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="profileimage" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg" >
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>  
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Shop Act License Document Upload</label>
@@ -345,11 +355,6 @@ include('include/sidebar.php');
                   </div>
 
 
-
-
-
-
-
                   <div class="form-group">
                     <label for="exampleInputPassword1">Pan card Document Upload</label>
                     <div class="input-group">
@@ -363,7 +368,42 @@ include('include/sidebar.php');
                     </div>
                   </div> 
                  
-
+                  <div class="add-listing-form timing-listing-form mb-60">
+                                <h4 class="title">Opening Hours</h4>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="timeing-list">
+                                            <h5>Monday<span class="d-flex time">
+                                                <input type="text" class="picker3 form-control"  placeholder="08 am" name="monopen" value="00:00 am">-&nbsp;<input type="text" name="monend" class="picker3 form-control"  placeholder="08 pm" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Tuesday<span class="d-flex time">
+                                                <input type="text" name="tueopen" class="picker3 form-control"  placeholder="08 am" value="00:00 am">-&nbsp;<input type="text" name="tueend" class="picker3 form-control"  placeholder="08 pm" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Wednesday<span class="d-flex time">
+                                                <input type="text" name="wedopen" class="picker3 form-control"  placeholder="08 am" value="00:00 am">-&nbsp;<input type="text" name="wedend" class="picker3 form-control"  placeholder="08 pm" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Thursday<span class="d-flex time">
+                                                <input type="text" class="picker3 form-control"  placeholder="08 am" name="thuropen" value="00:00 am">-&nbsp;<input type="text" class="picker3 form-control"  placeholder="08 pm" name="thurend" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Friday<span class="d-flex time">
+                                                <input type="text" class="picker3 form-control"  placeholder="08 am" name="friopen" value="00:00 am">-&nbsp;<input type="text" class="picker3 form-control"  placeholder="08 pm" name="friend" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Saturday<span class="d-flex time">
+                                                <input type="text" class="picker3 form-control"  placeholder="08 am" name="satopen" value="00:00 am">-&nbsp;<input type="text" class="picker3 form-control"  placeholder="08 pm" name="satend" value="00:00 pm"></span></h5>
+                                        </div>
+                                        <div class="timeing-list">
+                                            <h5>Sunday<span class="d-flex time">
+                                                <input type="text" class="picker3 form-control"  placeholder="08 am" name="sunopen" value="00:00 am">-&nbsp;<input type="text" class="picker3 form-control"  placeholder="08 pm" name="sunend" value="00:00 pm"></span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" name="subit" id="submit" style="float:right;">Register</button>
                 </div>
@@ -435,7 +475,17 @@ include('include/sidebar.php');
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-
+<script src="https://cdn.jsdelivr.net/gh/dmuy/MDTimePicker@v1.0.2-rc2/mdtimepicker.min.js"></script>
+        <script type="text/javascript">
+	$(document).ready(function(){
+        $('.picker1, .picker4, .picker5, .picker6').mdtimepicker();
+        $('.picker2').mdtimepicker({ readOnly: false, hourPadding: true })
+            .on('timechanged', function (e) {
+                console.log(e.time, e.value);
+        });
+        $('.picker3').mdtimepicker({ is24hour: true });
+    });
+</script>
 <!-- <script>
 
 let validenqName;
@@ -525,6 +575,22 @@ $location=$_POST['location'];
 $veriotp=$_POST['veriotp'];
 $status="open";
 $action="1";
+$monopen=$_POST['monopen'];
+$monend=$_POST['monend'];
+$tueopen=$_POST['tueopen'];
+$tueend=$_POST['tueend'];
+$wedopen=$_POST['wedopen'];
+$wedend=$_POST['wedend'];
+$thuopen=$_POST['thuopen'];
+$thuend=$_POST['thuend'];
+$friopen=$_POST['friopen'];
+$friend=$_POST['friend'];
+$satopen=$_POST['satopen'];
+$satend=$_POST['satend'];
+$sunopen=$_POST['sunopen'];
+$sunend=$_POST['sunend'];
+$Post=$_POST['Post'];
+$description=$_POST['description'];
 
 $image=$_FILES['img']['name'];
 $tmp_name = $_FILES['img']['tmp_name']; 
@@ -550,7 +616,9 @@ $pan=$_FILES['pan']['name'];
 $tmp_name = $_FILES['pan']['tmp_name']; 
 $loc="dist/img/vender_image/".basename($pan);
 
-
+$profileimage=$_FILES['profileimage']['name'];
+$tmp_name = $_FILES['pprofileimagean']['tmp_name']; 
+$loc6="dist/img/vender_image/".basename($profileimage);
 
 $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
 $otprow=mysqli_fetch_assoc($otpsql);
@@ -864,7 +932,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `end_mon`, `end_tue`, `end_wed`, `end_thur`, `end_fri`, `end_sat`, `end_sun`, `post`, `description`, `profile_img`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state','$monopen','$tueopen','$wedopen','$thuropen','$friopen','$satopen','$sunopen','$endmon','$endtue','$endwed','$endthur','$endfri','$endsat','$endsun','$Post','$description','$profileimage')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
