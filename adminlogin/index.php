@@ -1,7 +1,12 @@
 
 <?php
 session_start();
-include("../admin/include/config.php");
+$conn=mysqli_connect("151.106.124.51","u188140722_digiinfroma","@Dm!n$2025","u188140722_digiinfroma");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+
 if(isset($_POST['login'])){
 $email=$_POST['email'];
 $password1=$_POST['password'];
@@ -15,7 +20,7 @@ if($row>0){
     $hashpassword=password_verify($password1,$password);
     if($hashpassword){
       $_SESSION['id']=$row['id'];
-      $_SESSION['name']=$row['name'];
+      // $_SESSION['name']=$row['name'];
         $_SESSION['email']=$email;
         $_SESSION['password']=$password;
         header("location:../admin/index.php");
@@ -33,7 +38,6 @@ else{
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from www.bootstrapdash.com/demo/login-template-free-2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Jul 2022 05:46:41 GMT -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

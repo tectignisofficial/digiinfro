@@ -52,6 +52,18 @@ include("admin/include/config.php");
                 display:none;
             }
             <?php } ?>
+
+            <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    
+        .breadcrumbs-wrapper:after{
+            right: 0;
+            background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
+            background-size: 945px 400px;
+        }
+    <?php }  ?>
         </style>
 
     </head>

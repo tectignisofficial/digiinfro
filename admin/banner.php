@@ -154,6 +154,34 @@ if(isset($_POST['price52']))
       echo "<script> alert ('connection failed !');</script>";
    }
 }
+
+if(isset($_POST['listDetail53']))
+{
+    $file=$_FILES['file']['name'];   
+    $filedet=$_FILES['file']['tmp_name'];
+    $loc="../assets/images/banner/".$file;
+    move_uploaded_file($filedet,$loc);
+    $sql="UPDATE banner_image SET file='$file' where id='53'";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   } else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
+
+if(isset($_POST['listcate53']))
+{
+    $file=$_FILES['file']['name'];   
+    $filedet=$_FILES['file']['tmp_name'];
+    $loc="../assets/images/banner/".$file;
+    move_uploaded_file($filedet,$loc);
+    $sql="UPDATE banner_image SET file='$file' where id='53'";
+    if (mysqli_query($conn, $sql)){
+      echo "<script> alert ('New record has been added successfully !');</script>";
+   } else {
+      echo "<script> alert ('connection failed !');</script>";
+   }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -863,6 +891,124 @@ if(isset($_POST['price52']))
         </div>
       </section>
       <!-- pricing -->
+
+      <!--listing detail-->
+      <section class="content ">
+        <div class="container-fluid">
+          <section class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Listing Detail</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <form method="post" enctype="multipart/form-data" action="">
+                    <div class="card-body">
+                      <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='53'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+                      <div class="form-group col-md-12">
+                        <label for="inputName">Existing Banner Image</label>
+                      </div>
+                      <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="card mb-2 bg-gradient-dark">
+                          <img class="card-img-top" src="../assets/images/banner/<?php echo $arr['file'];?>" alt="file">
+                          <div class="card-img-overlay d-flex flex-column justify-content-end">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <div class="form-group col-md-12">
+                          <label for="inputName">New Banner Image</label>
+                        </div>
+
+                        <div class="custom-file">
+                          <input type="file" name="file" class="custom-file-input" id="formFileMultiple">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group" style="margin-top:2%">
+                          <input type="submit" name="listDetail53" value="submit" class="btn btn-success ">
+                        </div>
+
+                      </div>
+                      <?php }  ?>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+        </div>
+      </section>
+      <!--listing detail-->
+
+      <!--listing category-->
+      <section class="content ">
+        <div class="container-fluid">
+          <section class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Listing Categoty</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <form method="post" enctype="multipart/form-data" action="">
+                    <div class="card-body">
+                      <?php  
+                        $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
+                        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+                      <div class="form-group col-md-12">
+                        <label for="inputName">Existing Banner Image</label>
+                      </div>
+                      <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="card mb-2 bg-gradient-dark">
+                          <img class="card-img-top" src="../assets/images/banner/<?php echo $arr['file'];?>" alt="file">
+                          <div class="card-img-overlay d-flex flex-column justify-content-end">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <div class="form-group col-md-12">
+                          <label for="inputName">New Banner Image</label>
+                        </div>
+
+                        <div class="custom-file">
+                          <input type="file" name="file" class="custom-file-input" id="formFileMultiple">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group" style="margin-top:2%">
+                          <input type="submit" name="listcate53" value="submit" class="btn btn-success ">
+                        </div>
+
+                      </div>
+                      <?php }  ?>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+        </div>
+      </section>
+      <!--listing category-->
 
     </div>
     <!-- /.content-wrapper -->
