@@ -15,7 +15,6 @@ if($row>0){
     $hashpassword=password_verify($password1,$password);
     if($hashpassword){
       $_SESSION['id']=$row['id'];
-      $_SESSION['name']=$row['name'];
         $_SESSION['email']=$email;
         $_SESSION['password']=$password;
         header("location:../admin/index.php");
