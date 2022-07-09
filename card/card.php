@@ -574,10 +574,10 @@ div.hopscotch-bubble h3{
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
+            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
             </div>
             <div class="bottom-header">
-                <img src="../../admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
+                <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
                 <span>
                     <h4><?php echo $row['authorized_person']; ?></h4>
                     <address>
@@ -823,16 +823,16 @@ div.hopscotch-bubble h3{
             </button>
           </div>
           <div id="lazyLoadDiv" class="modal-body" style="max-height:500px; overflow-y:auto; overflow-x:hidden">
-            <a href="../../admin/dist/img/vender_image/<?php echo $row['image2'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
+            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
                 <h4>Image 1 </h4>
             </a>
-            <a href="../../admin/dist/img/vender_image/<?php echo $row['image3'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
+            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                 <h4>Image 2 </h4>
             </a>
-            <a href="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
+            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                <h4>Image 3</h4>
             </a>
             <!-- <a href="babasaheb.chitalkar/photos/4.jpg" data-toggle="lightbox" data-gallery="example-gallery">
