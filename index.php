@@ -201,7 +201,7 @@ if(isset($_POST['searchlist'])){
                                     </div>
                                     <h6><?php echo $arr['name'] ?></h6>
                                 </div>
-                                <a href="categorylist.php?category=<?php echo $arr['name'] ?>" class="category-btn"><i class="ti-arrow-right"></i></a>
+                                <a href="categorylist.php?categories=<?php echo $arr['name'] ?>" class="category-btn"><i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
                         <?php } ?>

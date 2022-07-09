@@ -185,7 +185,7 @@ include("admin/include/config.php");
                                 <div class="col-md-4">
                                     <div class="filter-right">
                                         <ul class="filter-nav">
-                                            <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li>
+                                            <!-- <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li> -->
                                             <li><a href="listing-list.php"><i class="ti-view-list-alt"></i></a></li>
                                         </ul>
                                     </div>

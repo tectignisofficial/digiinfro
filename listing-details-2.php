@@ -111,7 +111,12 @@
         <?php include("assets/include/header.php") ?>
         <!--====== End Header Section ======-->
         <!--====== Start breadcrumbs Section ======-->
-        <section class="page-breadcrumbs page-breadcrumbs-two bg_cover" style="background-image: url(assets/images/bg/listing-breadcrumbs-1.jpg);"></section>
+    
+        <section class="page-breadcrumbs page-breadcrumbs-two bg_cover" <?php  
+        $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
+        while($arr=mysqli_fetch_array($sql)){
+                      ?>
+    style="background-image: url(assets/images/banner/<?php echo $arr['file'];?>);" <?php }  ?> ></section>
         <!--====== End breadcrumbs Section ======-->
         <!--====== Start Listing Details Section ======-->
         <?php
