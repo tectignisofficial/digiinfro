@@ -1,10 +1,12 @@
 
 <?php
 session_start();
+
 $conn=mysqli_connect("151.106.124.51","u188140722_digiinfroma","@Dm!n$2025","u188140722_digiinfroma");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
+
 
 
 if(isset($_POST['login'])){
@@ -20,7 +22,9 @@ if($row>0){
     $hashpassword=password_verify($password1,$password);
     if($hashpassword){
       $_SESSION['id']=$row['id'];
+
       // $_SESSION['name']=$row['name'];
+
         $_SESSION['email']=$email;
         $_SESSION['password']=$password;
         header("location:../admin/index.php");
