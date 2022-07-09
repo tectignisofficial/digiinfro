@@ -6,7 +6,7 @@ if(isset($_POST["submit"])){
   $meta_discription=$_POST['meta_discription'];
   
   
-  $sql = "UPDATE seo SET meta_title = '$meta_title', meta_description = '$meta_discription' WHERE page_name = 'home'";
+  $sql = "UPDATE seo SET meta_title = '$meta_title', meta_description = '$meta_discription' WHERE page_name = 'about'";
   $result=mysqli_query($conn, $sql);
   
   }
@@ -47,14 +47,8 @@ if(isset($_POST["submit"])){
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-  <!-- Navbar -->
-  
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
- <?php include("include/header.php")?>
- <?php include("include/sidebar.php")?>
-
+ <?php include("include/header.php");
+ include("include/sidebar.php") ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -88,6 +82,8 @@ if(isset($_POST["submit"])){
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              <?php
+              ?>
               <form method="POST">
                 <div class="card-body">
                   <div class="form-group">
@@ -164,7 +160,6 @@ if(isset($_POST["submit"])){
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 </body>

@@ -98,23 +98,26 @@ include("include/config.php");
                 <th>Email</th>
                 <th>Subject</th>
                 <th>Yourmessage</th>
+                <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
                   $sql=mysqli_query($conn,"select * from contact");
+                  $count=1;
         while ($row=mysqli_fetch_array($sql)){ 
           ?>
             <tr>
-                <td><?php echo $row['Id']; ?></td>
+                <td><?php echo $count; ?></td>
                 <td><?php echo $row['Firstname']; ?></td>
                 <td><?php echo $row['Lastname']; ?></td>
                 <td><?php echo $row['Phone']; ?></td>
                 <td><?php echo $row['Email']; ?></td>
                 <td><?php echo $row['Subject']; ?></td>
                 <td><?php echo $row['Yourmessage']; ?></td>
+                <td><a href=""><i class="fa fa-trash" ></i></a></td>
             </tr>
-       <?php } ?>
+       <?php $count++; } ?>
                   </tbody>
                 </table>
               </div>
