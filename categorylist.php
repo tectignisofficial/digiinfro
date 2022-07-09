@@ -47,7 +47,7 @@ include("admin/include/config.php");
                 display:none;
             }
             <?php } ?>
-            <?php else if($_GET['category']);{ ?>
+            <?php if($_GET['category']);{ ?>
             .category{
                 display:none;
             }
