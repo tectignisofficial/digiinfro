@@ -315,13 +315,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="blogform.php" class="nav-link">
+            <a href="blog.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Blog</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/mailbox/read-mail.html" class="nav-link">
+            <a href="commentblog.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Comment</p>
             </a>
@@ -329,7 +329,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="contact.php" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
           <p>
             Contact
@@ -337,7 +337,7 @@
         </a>
       </li>
           <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="" class="nav-link">
           <i class="nav-icon fas fa-table"></i>
           <p>
             Subscriber
@@ -346,13 +346,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="pages/tables/simple.html" class="nav-link">
+            <a href="subscriber.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p> Subscriber</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/tables/data.html" class="nav-link">
+            <a href="emailsubscriber.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Email with Subscriber</p>
             </a>
