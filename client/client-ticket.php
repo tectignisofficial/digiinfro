@@ -1,19 +1,12 @@
 <?php
-
-
 include("../admin/include/config.php");
-
-
 if(isset($_POST['submit'])){
-    
-    
     $ticket_no=$_POST['ticket_no'];
    $shop_name=$_POST['shop_name'];
     $subject=$_POST['subject'];
     $description=$_POST['description'];
     $comment=$_POST['comment'];
     $status=$_POST['status'];
-
 
     $sql=mysqli_query($conn,"INSERT INTO `ticket_raise`(`ticket_no`,`shop_name`,`subject`,`description`,`comment`,`status`)
      VALUES('$ticket_no','$shop_name','$subject','$description','$comment','$status')");
@@ -104,8 +97,8 @@ if(isset($_POST['submit'])){
                                         </div>
 
                                     <div class="form-group row">
-                                            <label for="exampleticketno" class="col-sm-2 col-form-label">Ticket No</label>
-                                            <label style="color:Red">*</label>
+                                            <label for="exampleticketno" class="col-sm-2 col-form-label">Ticket No<label style="color:Red">*</label>
+                                            </label>
                                             <div class="col-sm-4">
                                                 <input type="text" name="ticket_no" class="form-control" id="ticket no"
                                               placeholder="ticket no"  required>

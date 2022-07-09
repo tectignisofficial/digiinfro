@@ -1,6 +1,6 @@
 <?php
 include("admin/include/config.php");
-if(isset($_GET['category'])){
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +111,7 @@ if(isset($_GET['category'])){
                         <div class="listing-grid-wrapper">
                             <div class="row">
                                 <?php
-                                
+                                if(isset($_GET['category'])){
                                     $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['category']."'";
                                     $row=$conn->query($query);
                                     if($row->num_rows > 0){
@@ -148,7 +148,48 @@ if(isset($_GET['category'])){
                                 </div>
                                 <?php
                                 }  } else{
-                                echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }?>
+                                echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }
+                            }
+                            else if(($_GET['category']) && ($_GET['shopName'])){
+                                $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['category']."' and vendor.shop_name='".$_GET['shopName']."'";
+                                $row=$conn->query($query);
+                                while($result = $row->fetch_assoc()) {
+                                    ?>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="listing-item listing-grid-item-two mb-30">
+                                            <div class="listing-thumbnail">
+                                                <img src="admin/dist/img/vender_image/<?php echo $result['image1'] ?>" alt="Listing Image"   width="370" height="290">
+                                                <a href="#" class="cat-btn"><i class="<?php echo $result['icon'] ?>"></i></a>
+                                                <span class="featured-btn">Featured</span>
+                                                <ul class="ratings ratings-four">
+                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li><span><a href="#">(02 Reviews)</a></span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="listing-content">
+                                                <h3 class="title"><a href="listing-details-2.html"><?php echo $result['shop_name'] ?></a></h3>
+                                                <p>Popular <?php echo $result['category'] ?> in <?php echo $result['city'] ?></p>
+                                                <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $result['image1'] ?></a><span class="status st-open">Open</span></span>
+                                                <div class="listing-meta">
+                                                    <ul>
+                                                        <li><span><i class="ti-location-pin"></i><?php echo $result['city'].' , '.$result['state'] ?></span></li>
+                                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    } 
+                                    }
+                            
+                                else{
+                                    echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }
+                            ?>
                                 
                             </div>
                         </div>
@@ -190,10 +231,3 @@ if(isset($_GET['category'])){
         <script src="assets/js/main.js"></script>
     </body>
 </html>
-<?php
-}
-else
-{
-    header("location:index.php");
-}
-?>

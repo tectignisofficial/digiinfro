@@ -67,7 +67,7 @@ if(isset($_POST['signup'])){
 if(isset($_POST['searchlist'])){
     $category=$_POST['category'];
     $shopName=$_POST['shopName'];
-    header("location:categorylist.php?category=$category");
+    header("location:categorylist.php?category=$category&&shopName=$shopName");
 }
 
 ?>
