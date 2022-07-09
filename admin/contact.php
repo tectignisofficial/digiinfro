@@ -2,7 +2,7 @@
 
 <?php
 include("include/config.php");
-$sql=mysqli_query($conn,"select * from contact");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,6 +102,7 @@ $sql=mysqli_query($conn,"select * from contact");
                   </thead>
                   <tbody>
                   <?php
+                  $sql=mysqli_query($conn,"select * from contact");
         while ($row=mysqli_fetch_array($sql)){ 
           ?>
             <tr>

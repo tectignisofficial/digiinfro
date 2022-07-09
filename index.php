@@ -66,6 +66,7 @@ if(isset($_POST['signup'])){
 <?php
 if(isset($_POST['searchlist'])){
     $category=$_POST['category'];
+    $shopName=$_POST['shopName'];
     header("location:categorylist.php?category=$category");
 }
 
@@ -149,7 +150,7 @@ if(isset($_POST['searchlist'])){
                                 <div class="hero-search-wrapper">
                                     <form method="post">
                                         <div class="row">
-                                            <div class="col-lg-9 col-md-8 col-sm-12">
+                                            <div class="col-lg-5 col-md-4 col-sm-12">
                                                 <div class="form_group">
                                                 <select class="wide form_control" name="category" id="category" required>
                                                 <option value="00" selected disabled>Search By Category</option>
@@ -161,12 +162,12 @@ if(isset($_POST['searchlist'])){
                                             </select>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-lg-4 col-md-4 col-sm-12">
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <div class="form_group">
-                                                    <input type="text" class="form_control" placeholder="Location" name="location" required>
+                                                    <input type="text" class="form_control" placeholder="Shop Name" name="shopName" required>
                                                     <i class="ti-location-pin"></i>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <div class="col-lg-3 col-md-4 col-sm-12">
                                                 <div class="form_group">
                                                     <button class="main-btn icon-btn" type="submit" name="searchlist">Search Now</button>
