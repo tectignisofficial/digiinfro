@@ -33,7 +33,6 @@ $row=mysqli_fetch_array($sql);
 <script src="http://commonfiles.visitingcardpro.com/js/lightbox.js"></script>
 <link rel="stylesheet" href="http://commonfiles.visitingcardpro.com/css/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
 <link rel="icon" href="babasaheb.chitalkar/icon.png">
-<link rel="stylesheet" href="css/style.css">
         <meta name="og:title" content="Mr. Babasaheb Chitalkar - Chitalkar Bandhu"/>
         <meta name="og:type" content="Digital Card"/>
         <meta name="og:url" content=""/>
@@ -342,8 +341,8 @@ ul li{
     max-height:470px;
 }
 #lazyLoadDiv img{
-  opacity:0;
-  transform:translateX(50%);
+  /* opacity:0;
+  transform:translateX(50%); */
   transition:all .5s
 }
 #lazyLoadDiv img.fade-in-left{
@@ -823,15 +822,15 @@ div.hopscotch-bubble h3{
             </button>
           </div>
           <div id="lazyLoadDiv" class="modal-body" style="max-height:500px; overflow-y:auto; overflow-x:hidden">
-            <a href="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
+            <a href="../../admin/dist/img/vender_image/<?php echo $row['image2'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="../../admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
                 <h4>Image 1 </h4>
             </a>
-            <a href="babasaheb.chitalkar/photos/2.jpg" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
+            <a href="../../admin/dist/img/vender_image/<?php echo $row['image3'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="../../admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                 <h4>Image 2 </h4>
             </a>
-            <a href="babasaheb.chitalkar/photos/3.jpg" data-toggle="lightbox" data-gallery="example-gallery">
+            <a href="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
             <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2"
                <h4>Image 3</h4>
             </a>
