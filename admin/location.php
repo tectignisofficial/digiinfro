@@ -408,7 +408,7 @@ include("include/sidebar.php");
   function get(val){
 $.ajax({
   type:'POST',
-  url:'locaajax.php',
+  url:'../api.php',
   data:'city='+val,
   success:function(html){
     $('.designation').html(html);
@@ -421,7 +421,7 @@ $.ajax({
   function get1(val){
 $.ajax({
   type:'POST',
-  url:'locaajax.php',
+  url:'../api.php',
   data:'state='+val,
   success:function(html){
     $('#city').html(html);
