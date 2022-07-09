@@ -83,16 +83,18 @@ if(isset($_POST["submit"])){
               <!-- /.card-header -->
               <!-- form start -->
               <?php
+              $sql=mysqli_query($conn,"SELECT * FROM seo WHERE page_name='about'");
+              $row=mysqli_fetch_array($sql);
               ?>
               <form method="POST">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
-                    <input type="text" class="form-control" name="meta_title" id="example1" placeholder="Enter Title">
+                    <input type="text" class="form-control" name="meta_title" id="example1" placeholder="Enter Title" value="<?php echo  $row['meta_title'] ?>">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Meta Description</label>
-                         <textarea type="text" class="form-control" name="meta_discription" id="example2" placeholder="Enter Description"></textarea>
+                         <textarea type="text" class="form-control" name="meta_discription" id="example2" placeholder="Enter Description"><?php echo $row['meta_description'] ?></textarea>
                   </div>
                  
                 </div>

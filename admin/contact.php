@@ -2,7 +2,10 @@
 
 <?php
 include("include/config.php");
-
+if(isset($_GET['delid'])){
+$del=$_GET['delid'];
+$sql=mysqli_query($conn,"DELETE FROM contact WHERE Id='$del'");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +118,7 @@ include("include/config.php");
                 <td><?php echo $row['Email']; ?></td>
                 <td><?php echo $row['Subject']; ?></td>
                 <td><?php echo $row['Yourmessage']; ?></td>
-                <td><a href=""><i class="fa fa-trash" ></i></a></td>
+                <td><a href="?delid=<?php  echo $row['Id'] ?>"><i class="fa fa-trash" ></i></a></td>
             </tr>
        <?php $count++; } ?>
                   </tbody>

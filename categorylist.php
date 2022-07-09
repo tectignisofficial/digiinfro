@@ -41,6 +41,19 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <style>
+            <?php if($_GET['categories']);{ ?>
+            .cateShop{
+                display:none;
+            }
+            <?php } ?>
+            <?php if($_GET['category']);{ ?>
+            .category{
+                display:none;
+            }
+            <?php } ?>
+        </style>
+
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -91,7 +104,7 @@ include("admin/include/config.php");
                                                 <?php 
                                                 $query=mysqli_query($conn,"select * from listcategory");
                                                 while($sql=mysqli_fetch_array($query)){ ?>
-                                               <option value="categorylist.php?category=<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
+                                               <option value="categorylist.php?categories=<?php echo $sql['name'];?>"><?php echo $sql['name'];?></option>
                                                 <?php  }  ?>
                                                 
                                             </select>
@@ -101,57 +114,18 @@ include("admin/include/config.php");
                                 <div class="col-md-4">
                                     <div class="filter-right">
                                         <ul class="filter-nav">
-                                            <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li>
+                                            <!-- <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li> -->
                                             <li><a href="listing-list.php"><i class="ti-view-list-alt"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="listing-grid-wrapper">
+                        <div class="listing-grid-wrapper cateShop">
                             <div class="row">
                                 <?php
-                                if(isset($_GET['category'])){
-                                    $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['category']."'";
-                                    $row=$conn->query($query);
-                                    if($row->num_rows > 0){
-                                    
-                                    while($result = $row->fetch_assoc()) {
-                                ?>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="listing-item listing-grid-item-two mb-30">
-                                        <div class="listing-thumbnail">
-                                            <img src="admin/dist/img/vender_image/<?php echo $result['image1'] ?>" alt="Listing Image"   width="370" height="290">
-                                            <a href="#" class="cat-btn"><i class="<?php echo $result['icon'] ?>"></i></a>
-                                            <span class="featured-btn">Featured</span>
-                                            <ul class="ratings ratings-four">
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li><span><a href="#">(02 Reviews)</a></span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="listing-content">
-                                            <h3 class="title"><a href="listing-details-2.html"><?php echo $result['shop_name'] ?></a></h3>
-                                            <p>Popular <?php echo $result['category'] ?> in <?php echo $result['city'] ?></p>
-                                            <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $result['image1'] ?></a><span class="status st-open">Open</span></span>
-                                            <div class="listing-meta">
-                                                <ul>
-                                                    <li><span><i class="ti-location-pin"></i><?php echo $result['city'].' , '.$result['state'] ?></span></li>
-                                                    <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                                }  } else{
-                                echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }
-                            }
-                            else if(($_GET['category']) && ($_GET['shopName'])){
-                                $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['category']."' and vendor.shop_name='".$_GET['shopName']."'";
+                            if(($_GET['category']) && ($_GET['shopName'])){
+                                $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['category']."' and vendor.shop_name like '%".$_GET['shopName']."%'";
                                 $row=$conn->query($query);
                                 while($result = $row->fetch_assoc()) {
                                     ?>
@@ -185,14 +159,62 @@ include("admin/include/config.php");
                                     </div>
                                     <?php
                                     } 
-                                    }
-                            
+                                    }                                   
                                 else{
                                     echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }
                             ?>
                                 
                             </div>
                         </div>
+                        <!--category and shop-->
+                        <div class="listing-grid-wrapper category">
+                            <div class="row">
+                                <?php
+                           if(isset($_GET['categories'])){
+                            $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and vendor.category='".$_GET['categories']."'";
+                            $row=$conn->query($query);
+                            if($row->num_rows > 0){
+                            
+                            while($result = $row->fetch_assoc()) {
+                        ?>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="listing-item listing-grid-item-two mb-30">
+                                <div class="listing-thumbnail">
+                                    <img src="admin/dist/img/vender_image/<?php echo $result['image1'] ?>" alt="Listing Image"   width="370" height="290">
+                                    <a href="#" class="cat-btn"><i class="<?php echo $result['icon'] ?>"></i></a>
+                                    <span class="featured-btn">Featured</span>
+                                    <ul class="ratings ratings-four">
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        <li><span><a href="#">(02 Reviews)</a></span></li>
+                                    </ul>
+                                </div>
+                                <div class="listing-content">
+                                    <h3 class="title"><a href="listing-details-2.html"><?php echo $result['shop_name'] ?></a></h3>
+                                    <p>Popular <?php echo $result['category'] ?> in <?php echo $result['city'] ?></p>
+                                    <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $result['image1'] ?></a><span class="status st-open">Open</span></span>
+                                    <div class="listing-meta">
+                                        <ul>
+                                            <li><span><i class="ti-location-pin"></i><?php echo $result['city'].' , '.$result['state'] ?></span></li>
+                                            <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        }  } else{
+                        echo "<div style='font-size: -webkit-xxx-large;color: goldenrod;width: 100%;text-align: center;line-height: 10pc;'>No shop</div>"; }
+                        }
+                        
+                            ?>
+                                
+                            </div>
+                        </div>
+                        <!--category and shop-->
                     </div>
                 </div>
             </div>
