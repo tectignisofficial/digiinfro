@@ -574,10 +574,10 @@ div.hopscotch-bubble h3{
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-                <img src="babasaheb.chitalkar/logo.png" alt="logo">
+            <img src="../../admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
             </div>
             <div class="bottom-header">
-                <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
+                <img src="../../admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
                 <span>
                     <h4><?php echo $row['authorized_person']; ?></h4>
                     <address>
@@ -607,7 +607,7 @@ div.hopscotch-bubble h3{
                     </li>
                     <li>
                         <div class="icon-single" id="hs-4">
-                            <a href="http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank" download><i class="fa fa-download"></i>
+                            <a href="http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank" download><i class="fa fa-download"></i>
                             </a>
                         </div>
                     </li>
@@ -725,7 +725,7 @@ div.hopscotch-bubble h3{
                     </a>
                   </div>
                   <div class="col m-2 p-0">
-                    <a href="#" data-toggle="modal" data-target = "galleryModal"target="_blank" class="btn btn-md rounded-lg btn-danger-custom w-100 h-100"><strong class=" flex-fill mx-2 text-nowrap">Gallery</strong><i class="fas fa-images fa-lg"></i>
+                    <a href="#" data-toggle="modal" data-target = "galleryM"target="_blank" class="btn btn-md rounded-lg btn-danger-custom w-100 h-100"><strong class=" flex-fill mx-2 text-nowrap">Gallery</strong><i class="fas fa-images fa-lg"></i>
                     </a>  
                   </div>
                 </div>
@@ -770,58 +770,19 @@ div.hopscotch-bubble h3{
                     <!-- Modal body -->
                     <div class="modal-body">
                         <ul class="share">
-                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
+                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
                             
-                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
-                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
+                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
+                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
                             
-                            <li><a href="http://www.facebook.com/sharer.php?u=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
-                            <li><a href="https://twitter.com/share?url=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
+                            <li><a href="http://www.facebook.com/sharer.php?u=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
+                            <li><a href="https://twitter.com/share?url=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!--
-        |-------------
-        |PAYMENT MODAL
-        |-------------
-        -->
-        <!-- <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="paymentModalLabel">Bank Account Details</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <div class="upi-div container-fluid">
-                  <div class="row border rounded-lg text-center py-3 flex-column align-items-center justify-content-center">
-                      <div class="w-100 bg-secondary py-3 text-center mb-3">
-                          <p class="h5 text-center text-light m-0 "> BY UPI </p>
-                      </div>
-                      <img src="https://via.placeholder.com/1x1/" class=" w-50 qr-here d-block m-auto img-fluid" data-src="babasaheb.chitalkar/photos/qr.jpg">
-                      <p id="vpa" style = ""class=" h6 text-dark py-3 m-0 text-center">9834454987</p>
-                  </div>
-                  <div class="upi-pl row py-3 text-center">
-                      <div class="col mx-auto text-center">
-                          <img src = "http://commonfiles.visitingcardpro.com/social_logos/p-pay.png"/>
-                      </div>
-                  </div>
-                  <div class="row py-3">
-                      <a href= "#" id="copy-vpa"class="btn btn-md rounded-lg btn-danger mx-auto text-light" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
-                          Copy Mobile Number
-                      </a>
-                  </div>
-                 
-              </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-        
+       
         <!--
         |-------------
         |ABOUT MODAL
@@ -852,7 +813,7 @@ div.hopscotch-bubble h3{
     |GALLERY MODAL
     |-------------
     -->
-    <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryLabel" aria-hidden="true">
+    <div class="modal fade" id="galleryM" tabindex="-1" role="dialog" aria-labelledby="galleryLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -862,8 +823,8 @@ div.hopscotch-bubble h3{
             </button>
           </div>
           <div id="lazyLoadDiv" class="modal-body" style="max-height:500px; overflow-y:auto; overflow-x:hidden">
-            <a href="babasaheb.chitalkar/photos/1.jpg" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
+            <a href="../../admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
                 <h4>Image 1 </h4>
             </a>
             <a href="babasaheb.chitalkar/photos/2.jpg" data-toggle="lightbox" data-gallery="example-gallery">

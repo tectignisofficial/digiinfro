@@ -157,7 +157,7 @@ include("admin/include/config.php");
                                                 </ul>
                                             </div>
                                             <div class="listing-content">
-                                                <h3 class="title"><a href="listing-details-2.html"><?php echo $result['shop_name'] ?></a></h3>
+                                                <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $result['shop_code']; ?>"><?php echo $result['shop_name'] ?></a></h3>
                                                 <p>Popular <?php echo $result['category'] ?> in <?php echo $result['city'] ?></p>
                                                 <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $result['image1'] ?></a><span class="status st-open">Open</span></span>
                                                 <div class="listing-meta">
@@ -205,7 +205,7 @@ include("admin/include/config.php");
                                     </ul>
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="title"><a href="listing-details-2.html"><?php echo $result['shop_name'] ?></a></h3>
+                                    <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $result['shop_code']; ?>"><?php echo $result['shop_name'] ?></a></h3>
                                     <p>Popular <?php echo $result['category'] ?> in <?php echo $result['city'] ?></p>
                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $result['image1'] ?></a><span class="status st-open">Open</span></span>
                                     <div class="listing-meta">

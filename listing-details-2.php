@@ -161,20 +161,20 @@
     <button type="button" class="icon-btn share_btn " style="background: white;"><i class="ti-share"></i></button>
     <div class="social top center networks-5 d-flex">
         <!-- Facebook Share Button -->
-        <a class="fbtn share twitter" href="http://www.facebook.com/sharer.php?u=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a> 
+        <a class="fbtn share twitter" href="http://www.facebook.com/sharer.php?u=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a> 
         
         <!-- Google Plus Share Button -->
-        <a class="fbtn share twitter" href="https://twitter.com/share?url=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a> 
+        <a class="fbtn share twitter" href="https://twitter.com/share?url=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a> 
         
         <!-- Twitter Share Button -->
-        <a class="fbtn share twitter" href="https://wa.me/whatsappphonenumber/?text=http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a>
+        <a class="fbtn share twitter" href="https://wa.me/whatsappphonenumber/?text=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a>
        
         <!-- Pinterest Share Button -->
-        <a class="fbtn share pinterest" href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a>
+        <a class="fbtn share pinterest" href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a>
         
        
         <!-- LinkedIn Share Button -->
-        <a class="fbtn share linkedin" href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://localhost/digiinfro/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a>
+        <a class="fbtn share linkedin" href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a>
     </div>
 </div>
                                             <!---->

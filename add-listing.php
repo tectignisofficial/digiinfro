@@ -287,7 +287,7 @@ label{
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
                                                     <img src="assets/images/elements/input-1.png" alt="Image">
-                                                    <span>Image +</span>
+                                                    <span>Logo +</span>
 												</div>
 											</div>
                                         </div>
