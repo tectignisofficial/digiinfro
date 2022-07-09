@@ -1,4 +1,10 @@
-  <!-- Navbar -->
+<?php
+if(!isset($_SESSION['id']))
+{
+  header("location:../adminlogin/index.php");
+}
+?>
+<!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">

@@ -5,9 +5,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
 
-if(!isset($_SESSION['id']))
-{
-  header("location:../adminlogin/index.php");
-}
+
 
 ?>
