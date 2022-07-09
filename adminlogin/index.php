@@ -15,6 +15,7 @@ if($row>0){
     $hashpassword=password_verify($password1,$password);
     if($hashpassword){
       $_SESSION['id']=$row['id'];
+      $_SESSION['name']=$row['name'];
         $_SESSION['email']=$email;
         $_SESSION['password']=$password;
         header("location:../admin/index.php");
@@ -29,7 +30,6 @@ else{
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,25 +61,60 @@ else{
                 <img src="assets/images/logo.svg" alt="logo" class="logo">
               </div>
               <p class="login-card-description">Sign into your account</p>
-              <form action="post">
+              <!-- <form action="post">
                   <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email address">
                   </div>
+
+                  <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email address" required>
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
                   <div class="form-group mb-4">
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="***********">
                   </div>
                   <!-- <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="login"></button> -->
                   <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="login" name="login" id="login" value="login">Login</button>
+
+                </form> -->
+
+                <form method="post">
+                  <p align="center">Please login to your account</p><br>
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email address" required>
+                    <label class="form-label">Email</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required>
+                    <label class="form-label">Password</label>
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="login" name="login" id="login" value="login">Login</button>
+                    <a class="text-muted" href="forgetpassword.php">Forgot password?</a>
+                  </div>
                 </form>
+
+
                 <!-- <a href="#!" class="forgot-password-link">Forgot password?</a>
                 <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
                 <nav class="login-card-footer-nav">
                   <a href="#!">Terms of use.</a>
                   <a href="#!">Privacy policy</a> -->
                 </nav>
-            </div>
+            
+            
+            
+            
+              
+              
+              
+              
+              
+              
+              </div>
           </div>
         </div>
       </div>
