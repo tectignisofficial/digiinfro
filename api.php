@@ -459,7 +459,7 @@ if($sql==1){
 
 if(isset($_GET['delistcate'])){
     $delistcate=$_GET['delistcate'];
-    $sql=mysqli_query($conn,"delete from listcategory where shop_code='$delistcate'");
+    $sql=mysqli_query($conn,"delete from listcategory where id='$delistcate'");
     if($sql==1){
         header("location:admin/category.php");
     }else{
