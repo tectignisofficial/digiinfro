@@ -252,17 +252,7 @@ if(isset($img)){
                   </tr>
                   <?php } $count++; } ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>SN</th>
-                    <th>Reference No.</th>
-                    <th>Shop Name</th>
-                    <th>City</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
@@ -344,7 +334,7 @@ if(isset($img)){
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
@@ -355,7 +345,7 @@ if(isset($img)){
      $("[data-toggle=tooltip]").tooltip();
 } );
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 $(document).ready(function(){
