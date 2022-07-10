@@ -32,8 +32,8 @@ $row=mysqli_fetch_array($sql);
 <script src="http://commonfiles.visitingcardpro.com/js/bootbox.all.js"></script>
 <script src="http://commonfiles.visitingcardpro.com/js/lightbox.js"></script>
 <link rel="stylesheet" href="http://commonfiles.visitingcardpro.com/css/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
-<link rel="icon" href="babasaheb.chitalkar/icon.png">
-        <meta name="og:title" content="Mr. Babasaheb Chitalkar - Chitalkar Bandhu"/>
+<link rel="icon" href="digicard/icon.png">
+        <meta name="og:title" content="Digiinfromatrics"/>
         <meta name="og:type" content="Digital Card"/>
         <meta name="og:url" content=""/>
         <meta property="og:image" content="dist/img/vender_image/<?php echo $row['profile_img'] ?>" />
@@ -118,13 +118,13 @@ ul li{
     background-image: linear-gradient(to right,#ccc , #fff);
 }
 .fa-contact-plus::before{
-    content:url('babasaheb.chitalkar/contact-plus.svg');
+    content:url('digicard/contact-plus.svg');
     display: inline-block;
     width: 32px;
     margin: auto;
 }
 .fa-instagram-square{
-    content:url('babasaheb.chitalkar/instagram.svg');
+    content:url('digicard/instagram.svg');
     display: inline-block;
     width: 1.5rem;
     margin-bottom: -2px;
@@ -494,7 +494,7 @@ background-color: #027de7;
 }
 @media (min-width:375px) and  (max-width:567px){
     .fa-contact-plus::before{
-        content:url('babasaheb.chitalkar/contact-plus.svg');
+        content:url('digicard/contact-plus.svg');
         display: inline-block;
         width: 25px;
         margin: auto;
@@ -505,7 +505,7 @@ background-color: #027de7;
 }
 @media (max-width:375px){
     .fa-contact-plus::before{
-        content:url('babasaheb.chitalkar/contact-plus.svg');
+        content:url('digicard/contact-plus.svg');
         display: inline-block;
         width: 23px;
         margin: auto;
@@ -928,10 +928,6 @@ body {top: 0px!important;}
             <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                <h4>Image 3</h4>
             </a>
-            <!-- <a href="babasaheb.chitalkar/photos/4.jpg" data-toggle="lightbox" data-gallery="example-gallery">
-               <img src="https://via.placeholder.com/1x1/"class="img-fluid w-100 my-2" alt="gallery-image" data-src="babasaheb.chitalkar/photos/4.jpg"/>
-               <h4>image 4</h4>
-            </a> -->
             
         </div>
       </div>
@@ -1102,8 +1098,11 @@ body {top: 0px!important;}
     // |--------------------
     // |LAZY LOADING GALLERY ENDS
     // |--------------------
+
+    //solve it 
     function go() {
       window.location.assign("whatsapp://send?text=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu%0Ahttp%3A%2F%2Fbabasaheb.chitalkar.visitingcardpro.com%2F");
+
     }
     $(document).on("click", ".show-alert", function(e) {
       bootbox.dialog({
