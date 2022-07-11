@@ -5,7 +5,7 @@ if(isset($_POST['signup'])){
     $email=$_POST['email'];  
   $from = 'Enquiry <'.$email.'>' . "\r\n";
   $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Agreerent';
+  $subject = 'Digiinfromatrics';
   // $fields = array( 'name' => 'name' );
   $from = 'Agreerent: 1.0' . "\r\n";
   $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -42,7 +42,7 @@ if(isset($_POST['signup'])){
     $sql=mysqli_query($conn,"INSERT INTO `subscriber`(`email`,`status`) 
      VALUES ('$email','$status')");
      if($sql=1){
-       echo "<script>alert('Agent Registered Successfully');</script>";    }
+       echo "<script>alert('Shop Registered Successfully');</script>";    }
      else{
        echo "<script>alert('Something Wrong');</script>";
      }
@@ -301,9 +301,8 @@ if(isset($_POST['searchlist'])){
                         <div class="col-lg-8">
                             <div class="cta-content-box text-center">
                                 <img src="assets/images/icon-1.png" alt="offer icon">
-                                <h2>Splash Yourself Bigger
-                                    Offer on Everyday</h2>
-                                <a href="how-work.html" class="main-btn icon-btn">Explore Now</a>
+                                <h2>Expand your business by enhancing the reach</h2>
+                                <a href="add-listing.php" class="main-btn icon-btn">Register Now</a>
                             </div>
                         </div>
                     </div>
@@ -326,8 +325,7 @@ if(isset($_POST['searchlist'])){
                             <div class="features-content-box features-content-box-one">
                                 <div class="section-title section-title-left mb-25">
                                     <span class="sub-title">Our Speciality</span>
-                                    <h2>Comprehnsive All Great
-                                        Destination Here</h2>
+                                    <h2>How do we help local customers?</h2>
                                 </div>
                                 <h5>Risus urnas Iaculis per amet vestibulum luctus.tincidunt ultricies aenean
                                     quam eros eleifend sodales cubilia mattis quam.</h5>
@@ -337,19 +335,17 @@ if(isset($_POST['searchlist'])){
                                             <i class="flaticon-find"></i>
                                         </div>
                                         <div class="content">
-                                            <h5>Find What You Want</h5>
-                                            <p>Rhoncus dolor quam etiam mattis, tincidunt nec lobortis sociis
-                                                facilisi aenean netus tempor duis.</p>
+                                            <h5>Find reputable businesses.</h5>
+                                            <p>Discover the best local businesses in your area and view valuable information about them including photos, hours of operation, menus, testimonials and more. You can even contact them right from their listing.</p>
                                         </div>
                                     </li>
                                     <li class="list-item">
                                         <div class="icon">
-                                            <i class="flaticon-place"></i>
+                                            <img src="assets/homeimages/rupee.png" >
                                         </div>
                                         <div class="content">
-                                            <h5>Easy Choose Your Place</h5>
-                                            <p>Rhoncus dolor quam etiam mattis, tincidunt nec lobortis sociis
-                                                facilisi aenean netus tempor duis.</p>
+                                            <h5>Save money.</h5>
+                                            <p>Everyone loves a good deal! We made it easy to find money-saving coupons and deals from participating merchants and share the savings with family and friends.</p>
                                         </div>
                                     </li>
                                     <li class="list-item">
@@ -357,9 +353,8 @@ if(isset($_POST['searchlist'])){
                                             <i class="flaticon-social-care"></i>
                                         </div>
                                         <div class="content">
-                                            <h5>Live Online Assistance</h5>
-                                            <p>Rhoncus dolor quam etiam mattis, tincidunt nec lobortis sociis
-                                                facilisi aenean netus tempor duis.</p>
+                                            <h5>Stay connected</h5>
+                                            <p>Stay connected to the community you love and discover upcoming local events. Support the local economy simply by shopping local at your favorite businesses.</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -372,7 +367,7 @@ if(isset($_POST['searchlist'])){
         <!--====== End Features Section ======-->
        
         <!--====== Start Download Section ======-->
-        <section class="download-app mt-4">
+        <!-- <section class="download-app mt-4">
             <div class="download-wrapper-one pt-115">
                 <div class="container">
                     <div class="row">
@@ -446,7 +441,9 @@ if(isset($_POST['searchlist'])){
                     </div>
                 </div>
             </div>
-        </section><!--====== End Dowvendornload Section ======-->
+        </section> -->
+        
+        <!--====== End Dowvendornload Section ======-->
         <!--====== Start Popular Listing Section ======-->
         <section class="listing-grid-area pt-75 pb-110">
             <div class="container">
