@@ -1,8 +1,14 @@
 <?php
 include("include/config.php");
 if(isset($_POST['submit'])){
-  $select_logo = $_POST['select_logo'];
-  $select_favicon = $_POST['select_favicon'];
+  $select_logo = $_FILES['select_logo']['name'];
+  $select_favicon = $_FILES['select_favicon']['name'];
+  $filedet=$_FILES['select_logo']['tmp_name'];
+  $loc="../assets/images/bg/".$select_logo;
+  move_uploaded_file($filedet,$loc);
+  $filedett=$_FILES['select_favicon']['tmp_name'];
+  $loc1="../assets/images/bg/".$select_favicon;
+  move_uploaded_file($filedett,$loc1);
   $sidebar_header = $_POST['sidebar_header'];
   $sidebar_header_icon = $_POST['sidebar_header_icon'];
   $contact_email_message = $_POST['contact_email_message'];
@@ -11,15 +17,51 @@ if(isset($_POST['submit'])){
   $contact_email = $_POST['contact_email'];
   $google_map = $_POST['google_map'];
   $time_zone = $_POST['time_zone'];
+  $favicimage=$_POST['favicimage'];
+  $logoimage=$_POST['logoimage'];
   
-  move_uploaded_file($_FILES["select_favicon"]["tmp_name"],"../assets/images/".$_FILES["select_favicon"]["name"]);
-  $sql="UPDATE `general_settings` SET select_logo='$select_logo',select_favicon='$select_favicon',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'";
-  if(mysqli_query($conn, $sql)){
-    echo"<script>alert('Successfully Updated');</script>";
+  if(empty(($_FILES['select_logo']['tmp_name'])) && empty(($_FILES['select_favicon']['tmp_name'])) && ($_POST['favicimage']) && ($_POST['logoimage'])){
+    $sql=mysqli_query($conn,"UPDATE `general_settings` SET select_logo='$logoimage',select_favicon='$favicimage',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'");
+        if($sql=1){
+          echo"<script>alert('Successfully Updated');</script>";
+        }else{
+            mysqli_error($conn);
+        }
+    
+    }
+    else if(!empty($_FILES['select_favicon']['tmp_name']) && ($_POST['favicimage']) || !empty($_FILES['select_favicon']['tmp_name']) && (empty($_POST['favicimage']))){
+      $file_size =$_FILES['select_favicon']['size'];
+    $filedet=$_FILES['select_favicon']['tmp_name'];
+    move_uploaded_file($filedet,$$loc1);
+  
+    $sql=mysqli_query($conn,"UPDATE `general_settings` SET select_logo='$logoimage',select_favicon='$select_favicon',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'");
+    
+    if($sql==1){
+      echo"<script>alert('Successfully Updated');</script>";
+    }else{
+        mysqli_error($conn);
+    }
   }
-  else{
-    echo"<script>alert('Not Updated');</script>";
-  }
+  else if(!empty($_FILES['select_logo']['tmp_name']) && ($_POST['logoimage']) || !empty($_FILES['select_logo']['tmp_name']) && (empty($_POST['logoimage']))){
+   $file_size =$_FILES['select_logo']['size'];
+ $filedet=$_FILES['select_logo']['tmp_name'];
+ move_uploaded_file($filedet,$loc);
+
+ $sql=mysqli_query($conn,"UPDATE `general_settings` SET select_logo='$select_logo',select_favicon='$favicimage',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'");
+ 
+ if($sql==1){
+  echo"<script>alert('Successfully Updated');</script>";
+ }else{
+     mysqli_error($conn);
+ }
+}
+  // $sql="UPDATE `general_settings` SET select_logo='$select_logo',select_favicon='$select_favicon',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'";
+  // if(mysqli_query($conn, $sql)){
+  //   echo"<script>alert('Successfully Updated');</script>";
+  // }
+  // else{
+  //   echo"<script>alert('Not Updated');</script>";
+  // }
 }
 ?>
 <!DOCTYPE html>
@@ -97,7 +139,7 @@ if(isset($_POST['submit'])){
           ?>
           <div class="row">
             <div class="col-12">
-              <form method="POST">
+              <form method="POST" enctype="multipart/form-data">
              <div class="card card-primary">
                 <div class="card-header">
                   <h3 class="card-title">General Settings</h3>
@@ -105,7 +147,8 @@ if(isset($_POST['submit'])){
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1" class="col-12">Existing Logo</label>
-                    <img src="#">
+                    <img src="../assets/images/bg/<?php echo $arr['select_logo'];?>" alt="select_logo" width="50" height="50">
+                    <input type="hidden" name="logoimage" value="<?php echo $arr['select_logo'];?>">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Select Logo</label>
@@ -113,7 +156,8 @@ if(isset($_POST['submit'])){
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1" class="col-12">Existing Favicon</label>
-                    <img src="#">
+                    <img src="../assets/images/bg/<?php echo $arr['select_favicon'];?>" alt="select_favicon"  width="100" height="100">
+                    <input type="hidden" name="favicimage" value="<?php echo $arr['select_logo'];?>">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Select Favicon</label>
