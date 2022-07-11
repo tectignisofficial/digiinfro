@@ -18,7 +18,12 @@ include("admin/include/config.php");
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+        <?php
+            $sql=mysqli_query($conn,"Select * from general_settings");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <link rel="shortcut icon" href="assets/images/bg/<?php echo $arr['select_favicon'] ?>" type="image/png">
+        <?php } ?>
         <!--====== Bootstrap css ======-->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!--====== FontAwesoem css ======-->

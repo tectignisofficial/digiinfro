@@ -222,7 +222,7 @@ if(isset($_POST['savevender'])){
                     echo str_replace("DIMSC","DIMPL",$id) 
                      ?></td>
                     <td><?php echo $arr['shop_name']; ?></td>
-                    <td><?php //echo $arr['city']; ?>add city</td>
+                    <td><?php echo $arr['city']; ?></td>
                     <td><?php echo $arr['category']; ?></td>
                     <td><?php echo $arr['status']; ?></td>
                     <td>

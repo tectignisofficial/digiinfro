@@ -238,7 +238,7 @@ if(isset($img)){
                     <td><?php echo $count; ?></td>
                     <td><?php echo $arr['shop_code']; ?></td>
                     <td><?php echo $arr['shop_name']; ?></td>
-                    <td><?php //echo $arr['city']; ?>add city</td>
+                    <td><?php echo $arr['city']; ?></td>
                     <td><?php echo $arr['category']; ?></td>
                     <td><?php if($arr['action']=='1'){
                       echo "<a href='../api.php?catonstatus=".$arr['shop_code']."' class='btn btn-danger'>Deactive</a>";

@@ -1,6 +1,18 @@
 
 <?php include("admin/include/config.php"); 
+if(isset($_POST['commentSubmit'])){
 
+    $message=$_POST['message'];
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $checkbox=$_POST['checkbox'];
+    $rating=$_POST['rating'];
+    $comid=$_POST['comid'];
+    date_default_timezone_set('Asia/Kolkata');
+    $date=date('d-m-Y h:i:s A');
+  
+    $sql=mysqli_query($conn,"INSERT INTO `list_comment`(`name`, `email`, `message`, `detail_id`, `checkbox`, `date`,`rating`) VALUES ('$name','$email','$message','$comid','$checkbox','$date','$rating')");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +30,12 @@
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+        <?php
+            $sql=mysqli_query($conn,"Select * from general_settings");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <link rel="shortcut icon" href="assets/images/bg/<?php echo $arr['select_favicon'] ?>" type="image/png">
+        <?php } ?>
         <!--====== Bootstrap css ======-->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!--====== FontAwesoem css ======-->
@@ -96,6 +113,78 @@
     opacity: 0;
     transition: all 0.4s ease 0s;
     visibility: hidden;
+}
+.rate{
+    display:flex;
+    transform:translate(-50%,-50%) rotateY(180deg);
+}
+.rate label{
+    display:block;
+    cursor: pointer;
+    width:20px;
+    background:white;
+}
+.rate label:before{
+    content:'\f005';
+    font-family: FontAwesome;
+    position: relative;
+    display: block;
+    font-size:15px;
+}
+.rate label:after{
+    content:'\f005';
+    font-family: FontAwesome;
+    position: absolute;
+    display: block;
+    font-size:15px;
+    color:#ff344f;
+    top:0;
+    opacity:0;
+    transition:.5s;
+    text-shadow:0 2px 5px rgba(0,0,0,.5);
+}
+.rate label:hover:after,
+.rate label:hover ~ label:after,
+.rate input:checked ~ label:after{
+    opacity:1;
+}
+.rate input{
+    display:none;
+}
+.ratingCheck{
+display:flex;
+transform: rotateY(180deg);
+}
+.ratingCheck label{
+    display:block;
+    cursor: pointer;
+    width:20px;
+    background:white;
+}
+.ratingCheck label:before{
+    content:'\f005';
+    font-family: FontAwesome;
+    position: relative;
+    display: block;
+    font-size:15px;
+}
+.ratingCheck label:after{
+    content:'\f005';
+    font-family: FontAwesome;
+    position: absolute;
+    display: block;
+    font-size:15px;
+    color:#ff344f;
+    top:0;
+    opacity:0;
+    transition:.5s;
+    text-shadow:0 2px 5px rgba(0,0,0,.5);
+}
+.ratingCheck input{
+    display:none;
+}
+.ratingCheck>.fff {
+    color:#ff344f;
 }
         </style>
     </head>
@@ -184,7 +273,7 @@
                                 </div>
                             </div>
                             <div class="listing-thumbnail mb-30">
-                                <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="listing image" width="770" height="500">
+                                <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="listing image" width="770" height="500">
                             </div>
                             <div class="listing-content mb-30">
                                 <h3 class="title">World's Quality <?php echo $row['category'] ?></h3>
@@ -200,7 +289,7 @@
                                 <h4 class="title">Photo Gallery</h4>
                                 <div class="gallery-slider-one">
                                     <div class="gallery-item">
-                                    <img src="admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="gallery image" width="170" height="170">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
                                     <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
@@ -219,94 +308,77 @@
                             <div class="listing-review-box mb-50">
                                 <h4 class="title">Customer Review</h4>
                                 <ul class="review-list">
+                                    <?php
+                                    $id=$_GET['detailpen'];
+                                    $commentsql=mysqli_query($conn,"select * from list_comment where detail_id='$id'");
+                                    while($commentrow=mysqli_fetch_array($commentsql))
+                                    {
+                                    ?>
                                     <li class="review">
-                                        <div class="thumb">
-                                            <img src="assets/images/listing/review-1.jpg" alt="review image">
-                                        </div>
-                                        <div class="review-content">
-                                            <h5>Moriana Steve</h5>
-                                            <span class="date">Sep 02, 2021</span>
-                                            <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum verra cubilia ipsum duis amet nullam sit ut ornare mattis urna. </p>
-                                            <div class="content-meta d-flex align-items-center justify-content-between">
-                                                <ul class="ratings ratings-three">
-                                                    <li><span class="av-rate">4.5</span></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                </ul>
-                                                <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="review">
-                                        <div class="thumb">
-                                            <img src="assets/images/listing/review-2.jpg" alt="review image">
-                                        </div>
-                                        <div class="review-content">
-                                            <h5>Moriana Steve</h5>
-                                            <span class="date">Sep 02, 2021</span>
-                                            <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum verra cubilia ipsum duis amet nullam sit ut ornare mattis urna. </p>
-                                            <div class="content-meta d-flex align-items-center justify-content-between">
-                                                <ul class="ratings ratings-three">
-                                                    <li><span class="av-rate">4.5</span></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                </ul>
-                                                <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="review">
-                                        <div class="thumb">
+                                        <!-- <div class="thumb">
                                             <img src="assets/images/listing/review-3.jpg" alt="review image">
-                                        </div>
+                                        </div> -->
                                         <div class="review-content">
-                                            <h5>Moriana Steve</h5>
-                                            <span class="date">Sep 02, 2021</span>
-                                            <p>Musutrum orci montes hac at neque mollis taciti parturient vehicula interdum verra cubilia ipsum duis amet nullam sit ut ornare mattis urna. </p>
+                                            <h5><?php echo $commentrow['name'] ?></h5>
+                                            <span class="date"><?php echo $commentrow['date']; ?></span>
+                                            <p><?php echo $commentrow['message'] ?></p>
                                             <div class="content-meta d-flex align-items-center justify-content-between">
                                                 <ul class="ratings ratings-three">
                                                     <li><span class="av-rate">4.5</span></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li class="star"><i class="flaticon-star-1"></i></li>
+                                                    <li class="ratingCheck">
+                                                    <input type="radio" id="stars5" name="rate" value="5">
+                                                    <label for="stars5" <?php if( ($commentrow['rating'] >=5)){ ?>class="fff"<?php } ?>></label>
+                                                    <input type="radio" id="stars4" name="rate" value="4">
+                                                    <label for="stars4" <?php if( ($commentrow['rating'] >= 4)){ ?>class="fff"<?php } ?>></label>
+                                                    <input type="radio" id="stars3" name="rate" value="3" >
+                                                    <label for="stars3" <?php if( ($commentrow['rating'] >= 3)){ ?>class="fff"<?php } ?>></label>
+                                                    <input type="radio" id="stars2" name="rate" value="2">
+                                                    <label for="stars2" <?php if( ($commentrow['rating'] >= 2)){ ?>class="fff"<?php } ?>></label>
+                                                    <input type="radio" id="stars1" name="rate" value="1" >
+                                                    <label for="stars1" <?php if( ($commentrow['rating'] >= 1)){ ?>class="fff"<?php } ?>></label>
+                                                    </li>
                                                 </ul>
                                                 <!-- <a href="#" class="reply"><i class="ti-share-alt"></i>Reply</a> -->
                                             </div>
                                         </div>
                                     </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                             <div class="listing-review-form mb-30">
+                            <form method='post'>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h4 class="title">Write a Review</h4>
                                     </div>
+                                    
                                     <div class="col-md-6">
                                         <div class="form-rating">
                                             <ul class="ratings">
                                                 <li><span>Rate Here:</span></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                            </ul>
+                                                
+                                                <li class="rate">
+                                                <input type="radio" id="star1" name="rating" value="5" >
+                                                    <label for="star1"></label>
+                                                    <input type="radio" id="star2" name="rating" value="4" >
+                                                    <label for="star2"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3" >
+                                                    <label for="star3"></label>
+                                                    <input type="radio" id="star4" name="rating" value="2">
+                                                    <label for="star4"></label>
+                                                    <input type="radio" id="star5" name="rating" value="1">
+                                                    <label for="star5"></label>
+                                    </li>
+                                    </ul>   
                                             <span>(02 Reviews)</span>
                                         </div>
                                     </div>
                                 </div>
-                                <form>
+                                
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form_group">
+                                                <input type="hidden" name="comid" value="<?php echo $_GET['detailpen']; ?>">
                                                 <textarea class="form_control" placeholder="Write Message" name="message"></textarea>
                                             </div>
                                         </div>
@@ -323,19 +395,20 @@
                                         <div class="col-lg-12">
                                             <div class="form_group">
                                                 <div class="single-checkbox d-flex">
-                                                    <input type="checkbox" id="check4" name="checkbox">
+                                                    <input type="checkbox" id="check4" name="checkbox" value="1">
                                                     <label for="check4"><span>Save my name, email, and website in this browser for the next time i comment.</span></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_group">
-                                                <button class="main-btn icon-btn">Submit Review</button>
+                                                <button class="main-btn icon-btn" name="commentSubmit">Submit Review</button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                
                             </div>
+                            </form>
                         </div>
                         <div class="releted-listing-area">
                             <h3 class="title mb-20">Similar <?php echo $row['category']; ?></h3>

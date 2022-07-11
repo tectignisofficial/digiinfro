@@ -39,6 +39,14 @@
           </p>
         </a>
       </li>
+      <li class="nav-item">
+        <a href="digitalcard.php" class="nav-link">
+          <i class="nav-icon fas fa-th"></i>
+          <p>
+            Digital Card
+          </p>
+        </a>
+      </li>
         <li class="nav-item menu-open">
         <a href="" class="nav-link ">
           <i class="nav-icon fas fa-tachometer-alt"></i>

@@ -32,7 +32,7 @@ $row=mysqli_fetch_array($sql);
 <script src="http://commonfiles.visitingcardpro.com/js/bootbox.all.js"></script>
 <script src="http://commonfiles.visitingcardpro.com/js/lightbox.js"></script>
 <link rel="stylesheet" href="http://commonfiles.visitingcardpro.com/css/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
-<link rel="icon" href="digicard/icon.png">
+<link rel="shortcut icon" href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" type="image/png">
         <meta name="og:title" content="Digiinfromatrics"/>
         <meta name="og:type" content="Digital Card"/>
         <meta name="og:url" content=""/>
@@ -700,12 +700,12 @@ body {top: 0px!important;}
                             <a href="tel:<?php echo $row['mobile_no']; ?>"><i class="fas fa-phone-alt"></i></a>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="icon-single" id="hs-4">
                             <a href="http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank" download><i class="fa fa-download"></i>
                             </a>
                         </div>
-                    </li>
+                    </li> -->
                     <li>
                         <div class="icon-single" id="hs-3">
                             <a href="https://goo.gl/maps/GzFpDi7fEnTe1htq9" target="_blank"><i class="fas fa-map-marker-alt"></i></a>

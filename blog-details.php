@@ -4,13 +4,11 @@ $id=$_GET['id'];
 
 if(isset($_POST['save'])){
 
- 
-  $comment=$_POST['comment'];
+    $comment=$_POST['comment'];
   $vname=$_POST['vname'];
   $email=$_POST['email'];
   $phone=$_POST['phone'];
   $status=1;
-  
 
   $sql=mysqli_query($conn,"INSERT INTO `blog_comment`(`comment`,`vname`,`email`,`status`,`phone`) 
   VALUES ('$comment','$vname','$email','$status','$phone')");
@@ -35,7 +33,12 @@ if(isset($_POST['save'])){
         <?php } ?>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+        <?php
+            $sql=mysqli_query($conn,"Select * from general_settings");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+        <link rel="shortcut icon" href="assets/images/bg/<?php echo $arr['select_favicon'] ?>" type="image/png">
+        <?php } ?>
         <!--====== Bootstrap css ======-->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!--====== FontAwesoem css ======-->
