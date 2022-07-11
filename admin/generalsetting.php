@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
   $google_map = $_POST['google_map'];
   $time_zone = $_POST['time_zone'];
   
-  
+  move_uploaded_file($_FILES["select_favicon"]["tmp_name"],"../assets/images/".$_FILES["select_favicon"]["name"]);
   $sql="UPDATE `general_settings` SET select_logo='$select_logo',select_favicon='$select_favicon',sidebar_header='$sidebar_header',      sidebar_header_icon='$sidebar_header_icon', contact_email_message='$contact_email_message', address='$address',contact_phone='$contact_phone',contact_email='$contact_email', google_map='$google_map', time_zone='$time_zone'";
   if(mysqli_query($conn, $sql)){
     echo"<script>alert('Successfully Updated');</script>";

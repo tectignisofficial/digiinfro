@@ -54,14 +54,7 @@ if(isset($_POST['signup'])){
   catch(\Exception $e){
     echo "not done";
   }
-  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-    $encode=json_encode($responseArray);
-    header('content-Type: application/json');
-    echo $encoded;
-  }
-  else{
-    echo $responseArray['message'];
-  }
+  
   }
 
 

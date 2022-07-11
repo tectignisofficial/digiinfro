@@ -108,13 +108,13 @@ if(isset($_POST['save'])){
                         <div class="blog-details-wrapper mb-30">
                             <div class="blog-post-item">
                             <?php 
-                        
-            $sql=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id where blog.id='$id'");
+                 $eid=$_GET['id'];       
+            $sql=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id where blog.category_id='$eid'");
 
             $sql1 = mysqli_query($conn,"select blog.*, blog_comment.* from blog inner join blog_comment on blog_comment.blog=blog.id" );
             $count1=mysqli_num_rows($sql1);
                      $count=1;
-                         while($arr=mysqli_fetch_array($sql)){
+                         $arr=mysqli_fetch_array($sql)
                             
                         ?>
                             <div class="post-thumbnail">
@@ -141,7 +141,7 @@ if(isset($_POST['save'])){
                                         <a href="#">Musemus</a>
                                     </div> -->
                                 </div>
-                                <?php } ?>
+                                <?php  ?>
                             </div>
                             <div class="comments-area">
                                 <h4 class="comments-title mb-35">Comment </h4>
