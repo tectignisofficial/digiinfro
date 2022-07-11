@@ -22,7 +22,7 @@ include("admin/include/config.php");
             $sql=mysqli_query($conn,"Select * from general_settings");
                while($arr=mysqli_fetch_array($sql)){
              ?>
-        <link rel="shortcut icon" href="assets/images/<?php echo $arr[''] ?>" type="image/png">
+        <link rel="shortcut icon" href="assets/images/bg/<?php echo $arr['select_favicon'] ?>" type="image/png">
         <?php } ?>
         <!--====== Bootstrap css ======-->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
