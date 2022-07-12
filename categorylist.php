@@ -47,7 +47,7 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            <?php if($_GET['categories']){ ?>
+            <?php if(isset($_GET['categories'])){ ?>
             .cateShop{
                 display:none;
             }
@@ -55,7 +55,7 @@ include("admin/include/config.php");
                 display:block;
             }
             <?php } ?>
-            <?php if($_GET['category']){ ?>
+            <?php if(isset($_GET['category'])){ ?>
             .category{
                 display:none;
             }
