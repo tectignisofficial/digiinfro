@@ -154,7 +154,7 @@ if(isset($_GET['id'])){
                     <td><?php echo $arr['mobile_no']; ?></td>
                     <td><?php echo $arr['email'];?></td>
                     <td>
-                    <button class="btn btn-primary editshop"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-primary editshop" data-id="<?php echo $arr['id'] ?>"><i class="fa fa-edit"></i></button>
                     <a href="" class="btn btn-success"><i class="fa fa-eye"></i></a>
                     <a href="digitalcard.php?id=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                   </tr>
@@ -183,7 +183,7 @@ if(isset($_GET['id'])){
         </button>
       </div>
       <form method="post" action="" enctype="multipart/form-data">
-              <div class="modal-body bodymodal" id="odymodalb">
+              <div class="modal-body bodymodal">
         
             
               </div>
@@ -329,18 +329,17 @@ if(isset($_GET['id'])){
 <script>
 $(document).ready(function(){
   $(".editshop").click(function(){
-  let compid=$(this).data("id");
+  let digiid=$(this).data("id");
   
   $.ajax({
     url:"../api.php",
     method:"POST",
-    data:{compid:compid},
+    data:{digiid:digiid},
     success:function(data){
-      $("#odymodalb").html(data);
+      $(".bodymodal").html(data);
       $("#editmodal").modal("show");
     }
   });
- 
 });
 });
 </script>

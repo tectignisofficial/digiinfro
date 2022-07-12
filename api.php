@@ -533,6 +533,68 @@ if(!empty($_POST["state"])){
   }
 ?>
 
+<?php
+if(isset($_POST['digiid'])){
+  $sql=mysqli_query($conn,"select * from digitalcard where id='$_POST[digiid]'");
+  $row=mysqli_fetch_array($sql);
+  echo '<div class="form-group">
+  <label for="email1">Name</label>
+  <input type="text" class="form-control" value="'.$row['name'].'" id="name" name="name" placeholder="Enter Name">
+</div>
+<div class="form-group">
+  <label for="email1">Email</label>
+  <input type="email" class="form-control" name="email" id="email1" placeholder="Enter email" value="'.$row['email'].'">
+  <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+</div>
+<div class="form-group">
+  <label for="Post">Post</label>
+  <input type="text" class="form-control" id="post" placeholder="Post" name="Post" value="'.$row['post'].'">
+</div>
+<div class="form-group">
+  <label for="whatsapp_no">Whatsapp no</label>
+  <input type="text" class="form-control" id="whatsapp_no" name="whatsapp_no" placeholder="Whatsapp no" value="'.$row['whatsapp_no'].'">
+</div>
+<div class="form-group">
+  <label for="mobile_no">Mobile no</label>
+  <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Mobile no" value="'.$row['mobile_no'].'">
+</div>
+<div class="form-group">
+  <label for="address">Address</label>
+  <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="'.$row['address'].'">
+</div>
+<div class="form-group">
+  <label for="website">Website</label>
+  <input type="text" class="form-control" name="website" id="website" placeholder="website" value="'.$row['website'].'">
+</div>
+<div class="form-group">
+  <label for="facebook_link">facebook link</label>
+  <input type="text" class="form-control" id="facebook_link" placeholder="Facebook link" name="facebook" value="'.$row['facebook_link'].'">
+</div>
+<div class="form-group">
+  <label for="instagram_link">Instagram link </label>
+  <input type="text" class="form-control" id="instagram_link" placeholder="Instagram link " name="insta" value="'.$row['instagram_link'].'">
+</div>
+<div class="form-group">
+  <label for="linkedIn_link">LinkedIn link</label>
+  <input type="text" class="form-control" name="linkedin" id="linkedIn_link" placeholder="LinkedIn link" value="'.$row['linkedIn_link'].'">
+</div>
+<div class="form-group">
+  <label for="profile">Profile image</label>
+  <img src="admin/image/card_image/'.$row['profile_img'].'" width="100px" height="100px">
+  <input type="hidden" name="oldimg" value="'.$row['profile_img'].'">
+  <input type="file" name="profile" class="form-control" id="profile" placeholder="Logo">
+</div>
+<div class="form-group">
+  <label for="logo">Logo</label>
+  <img src="admin/image/card_image/'.$row['logo'].'" width="100px" height="100px">
+  <input type="hidden" name="oldlogo" value="'.$row['logo'].'">
+  <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo" >
+</div>
+</div>
+';
+}
+?>
+
 <?php 
 if(!empty($_POST["city"])){ 
 $city = $_POST["city"];
@@ -583,7 +645,6 @@ $query = mysqli_query($conn,"SELECT all_cities.city_code,search_location.city_na
 ?>
 
 <?php
-include("include/config.php");
 if(!empty($_POST["state"])){ 
   $states = $_POST["state"];
 $query = mysqli_query($conn,"SELECT * from all_cities inner join state on state.state_code=all_cities.state_code WHERE state.state ='$states'"); 
