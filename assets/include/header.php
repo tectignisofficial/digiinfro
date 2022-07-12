@@ -35,7 +35,12 @@
                         <div class="row">
                             <div class="col-lg-2 col-5">
                                 <div class="site-branding">
+                                <?php
+            $sql=mysqli_query($conn,"Select * from general_settings");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
                                     <a href="index.php" class="brand-logo" style="background-color:white"><img src="assets/images/bg/<?php echo $arr['select_logo'] ?>" alt="Brand Logo"></a>
+               <?php } ?>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-2">
