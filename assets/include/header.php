@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-lg-2 col-5">
                                 <div class="site-branding">
-                                    <a href="index.php" class="brand-logo" style="background-color:white"><img src="assets/images/companylogo.png" alt="Brand Logo"></a>
+                                    <a href="index.php" class="brand-logo" style="background-color:white"><img src="assets/images/bg/<?php echo $arr['select_logo'] ?>" alt="Brand Logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-2">
