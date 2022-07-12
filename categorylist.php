@@ -47,22 +47,9 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            <?php if($_GET['categories']);{ ?>
-            .cateShop{
-                display:none;
-            }
-            <?php } ?>
-            <?php if($_GET['category']);{ ?>
-            .category{
-                display:none;
-            }
-            <?php } ?>
-
             <?php  
         $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
-        while($arr=mysqli_fetch_array($sql)){
-                      ?>
-    
+        while($arr=mysqli_fetch_array($sql)){ ?>
         .breadcrumbs-wrapper:after{
             right: 0;
             background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center ;
@@ -138,7 +125,7 @@ include("admin/include/config.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="listing-grid-wrapper cateShop">
+                        <div class="listing-grid-wrapper" <?php if($_GET['categories']);{ ?>style="display:none;"<?php } ?> >
                             <div class="row">
                                 <?php
                             if(($_GET['category']) && ($_GET['shopName'])){
@@ -184,7 +171,7 @@ include("admin/include/config.php");
                             </div>
                         </div>
                         <!--category and shop-->
-                        <div class="listing-grid-wrapper category">
+                        <div class="listing-grid-wrapper"  <?php if($_GET['category']);{ ?>style="display:none;" <?php } ?>>
                             <div class="row">
                                 <?php
                            if(isset($_GET['categories'])){
