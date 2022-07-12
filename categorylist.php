@@ -47,6 +47,8 @@ include("admin/include/config.php");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
+             <?php if($_GET['categories']);{ ?>.category{display:block;}<?php } ?>
+             <?php if($_GET['category']);{ ?>.categories{display:block;}<?php } ?>
             <?php  
         $sql=mysqli_query($conn,"select * from banner_image where id='54'");   
         while($arr=mysqli_fetch_array($sql)){ ?>
@@ -125,7 +127,7 @@ include("admin/include/config.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="listing-grid-wrapper" <?php if($_GET['categories']);{ ?>style="display:none;"<?php } ?> >
+                        <div class="listing-grid-wrapper categories" <?php if($_GET['categories']);{ ?>style="display:none;"<?php } ?> >
                             <div class="row">
                                 <?php
                             if(($_GET['category']) && ($_GET['shopName'])){
@@ -171,7 +173,7 @@ include("admin/include/config.php");
                             </div>
                         </div>
                         <!--category and shop-->
-                        <div class="listing-grid-wrapper"  <?php if($_GET['category']);{ ?>style="display:none;" <?php } ?>>
+                        <div class="listing-grid-wrapper category" <?php if($_GET['category']);{ ?>style="display:none;" <?php } ?> >
                             <div class="row">
                                 <?php
                            if(isset($_GET['categories'])){
