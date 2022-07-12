@@ -145,7 +145,8 @@ label{
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="Phone No" name="mobile_no" id="mobile_no" >
+                                            <input type="tel" class="form_control" placeholder="Phone No" minlength="10" maxlength="10" name="mobile_no" id="mobile_no" >
+                                            <span id="spanmobile"></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -443,6 +444,7 @@ label{
         <script src="assets/js/wow.min.js"></script>
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
+        <script src="aassets/js/validation.js"></script>
         <!--time-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--====== Jquery js ======-->
