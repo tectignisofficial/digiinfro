@@ -553,11 +553,11 @@ if(isset($_POST['digiid'])){
 </div>
 <div class="form-group">
   <label for="whatsapp_no">Whatsapp no</label>
-  <input type="text" class="form-control" id="whatsapp_no" name="whatsapp_no" placeholder="Whatsapp no" value="'.$row['whatsapp_no'].'">
+  <input type="text" minlength="10" maxlength="10" class="form-control" id="whatsapp_no" name="whatsapp_no" placeholder="Whatsapp no" value="'.$row['whatsapp_no'].'">
 </div>
 <div class="form-group">
   <label for="mobile_no">Mobile no</label>
-  <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Mobile no" value="'.$row['mobile_no'].'">
+  <input type="text"  minlength="10" maxlength="10"  class="form-control" id="mobile_no" name="mobile_no" placeholder="Mobile no" value="'.$row['mobile_no'].'">
 </div>
 <div class="form-group">
   <label for="address">Address</label>
