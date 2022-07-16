@@ -580,13 +580,13 @@ if(isset($_POST['digiid'])){
 </div>
 <div class="form-group">
   <label for="profile">Profile image</label>
-  <img src="admin/image/card_image/'.$row['profile_img'].'" width="100px" height="100px">
+  <img src="image/card_image/'.$row['profile_img'].'" width="100px" height="100px">
   <input type="hidden" name="oldimg" value="'.$row['profile_img'].'">
   <input type="file" name="profile" class="form-control" id="profile" placeholder="Logo">
 </div>
 <div class="form-group">
   <label for="logo">Logo</label>
-  <img src="admin/image/card_image/'.$row['logo'].'" width="100px" height="100px">
+  <img src="image/card_image/'.$row['logo'].'" width="100px" height="100px">
   <input type="hidden" name="oldlogo" value="'.$row['logo'].'">
   <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo" >
 </div>
