@@ -51,7 +51,7 @@ if(isset($_POST['savevender'])){
   $file_ext6 = explode('.',$img6)[1];
   $iuyt6= str_replace($file_ext6,"webp",$img6);
   
-  if(empty(($_FILES['img']['tmp_name'])) && empty(($_FILES['img1']['tmp_name']))  && empty(($_FILES['img2']['tmp_name']))  && empty(($_FILES['img3']['tmp_name']))  && empty(($_FILES['img5']['tmp_name']))  && empty(($_FILES['img6']['tmp_name'])) && ($_POST['image1']) && ($_POST['image2']) && ($_POST['image3']) && ($_POST['image4']) && ($_POST['image5']) && ($_POST['image6'])){
+  if(empty($_FILES['img']['tmp_name']) && empty($_FILES['img1']['tmp_name'])  && empty(($_FILES['img2']['tmp_name']))  && empty(($_FILES['img3']['tmp_name']))  && empty(($_FILES['img5']['tmp_name']))  && empty(($_FILES['img6']['tmp_name'])) && ($_POST['image1']) && ($_POST['image2']) && ($_POST['image3']) && ($_POST['image4']) && ($_POST['image5']) && ($_POST['image6'])){
     $sql=mysqli_query($conn,"UPDATE `vendor` SET `shop_name`='$shop_name',`category`='$category',`shop_address`='$shop_address',`authorized_person`='$authorized_person',`mobile_no`='$mobile_no',`whatsapp_no`='$whatsapp_no',`email`='$email',`services`='$services',`website`='$website',`facebook`='$facebook',`instagram`='$instagram',`LinkedIn`='$linkedin',`youtube`='$youtube',`shop_act_license`='$image3',`pan_card`='$image4',`status`='$status',`image1`='$image1',`image2`='$image2',`image3`='$image5',`image4`='$image6',`city`='$city',`state`='$state',`location`='$location' WHERE shop_code='$id'");
     echo "<script>alert('Vendor Updated Successfully');</script>";
     }

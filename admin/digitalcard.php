@@ -38,6 +38,41 @@ if(isset($_GET['id'])){
       echo "<script>window.location.href='digitalcard.php';</script>";
   }
 }
+
+if(isset($_GET['savedigitaleditsave'])){
+  $logo=$_FILES['logo']['name'];
+  $profile=$_FILES['profile']['name'];
+  $linkedin=$_POST['linkedin'];
+  $insta=$_POST['insta'];
+  $facebook=$_POST['facebook'];
+  $website=$_POST['website'];
+  $address=$_POST['address'];
+  $mobile_no=$_POST['mobile_no'];
+  $whatsapp_no=$_POST['whatsapp_no'];
+  $Post=$_POST['Post'];
+  $email=$_POST['email'];
+  $name=$_POST['name'];
+  $editid=$_POST['editid'];
+  $oldlogo=$_POST['oldlogo'];
+  $oldimg=$_POST['oldimg'];
+
+  if(empty($_FILES['logo']['tmp_name']) && empty($_FILES['profile']) && ($oldlogo) &&($oldimg)){
+    $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$oldimg',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$editid'");
+  }else if(!empty($logo) && ($oldlogo) || !empty($logo) && empty($oldlogo)){
+    $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$oldimg',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$logo' WHERE `id`='$editid'");
+  }
+  else if(!empty($profile) && ($oldimg) || !empty($profile) && empty($oldimg)){
+  $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$profile',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$id'");
+  }
+  if($sql){
+      echo "<script>alert('Digital Card Updated Successfully');</script>";
+      echo "<script>window.location.href='digitalcard.php';</script>";
+  }
+  else{
+      echo "<script>alert('Digital Card Not Updated');</script>";
+      echo "<script>window.location.href='digitalcard.php';</script>";
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -188,7 +223,7 @@ if(isset($_GET['id'])){
             
               </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" name="savevender">Save</button>
+        <button type="submit" class="btn btn-primary" name="savedigitaleditsave">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </form>

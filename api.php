@@ -539,6 +539,7 @@ if(isset($_POST['digiid'])){
   $row=mysqli_fetch_array($sql);
   echo '<div class="form-group">
   <label for="email1">Name</label>
+  <input type="hidden" value="'.$row['id'].'" name="editid">
   <input type="text" class="form-control" value="'.$row['name'].'" id="name" name="name" placeholder="Enter Name">
 </div>
 <div class="form-group">
