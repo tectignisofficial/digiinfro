@@ -179,7 +179,7 @@ include("admin/include/config.php");
                                                 <div class="listing-meta">
                                                     <ul>
                                                         <li><span><i class="ti-location-pin"></i><?php echo $result['city'].' , '.$result['state'] ?></span></li>
-                                                        <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                                        <!-- <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -232,7 +232,7 @@ include("admin/include/config.php");
                                     <div class="listing-meta">
                                         <ul>
                                             <li><span><i class="ti-location-pin"></i><?php echo $result['city'].' , '.$result['state'] ?></span></li>
-                                            <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li>
+                                            <!-- <li><span><i class="ti-heart"></i><a href="#">Save</a></span></li> -->
                                         </ul>
                                     </div>
                                 </div>

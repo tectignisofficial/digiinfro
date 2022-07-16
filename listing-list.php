@@ -65,6 +65,13 @@ include("admin/include/config.php");
             background-size: 945px 400px;
         }
     <?php }  ?>
+    .pagination .active{
+        background: #ff344f!important;
+        color: white;
+    }
+    .pagination li:hover{
+        background: #ff344f!important;
+        color: white;}
        </style>
       
     </head>
@@ -106,7 +113,7 @@ include("admin/include/config.php");
                         <div class="sidebar-widget-area">
                             <div class="widget search-listing-widget mb-30">
                                 <h4 class="widget-title">Filter Search</h4>
-                                <form>
+                                <form method="post">
                                     <div class="search-form">
                                         <!-- <div class="form_group">
                                             <input type="search" class="form_control" placeholder="Search keyword" name="search" required>
@@ -198,11 +205,27 @@ include("admin/include/config.php");
                             </div>
                         </div>
                         <?php
+                        if (isset($_GET['pageno'])) {
+                            $pageno = $_GET['pageno'];
+                        } else {
+                            $pageno = 1;
+                        }
+                        $no_of_records_per_page = 10;
+                        $offset = ($pageno-1) * $no_of_records_per_page;
+                        $total_pages_sql = "SELECT COUNT(*) FROM vendor";
+                        $result = mysqli_query($conn,$total_pages_sql);
+                        $total_rows = mysqli_fetch_array($result)[0];
+                        $total_pages = ceil($total_rows / $no_of_records_per_page);
+
                         if(isset($_POST['subsearch'])){
+                            
                             $state=$_POST['state'];
                             $city=$_POST['city'];
+                            $category=$_POST['category'];
+                            $location=$_POST['location'];
 
-                            $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' or state='$state' or category='category' or location='location'";
+                            $query="select * from  vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' or state='$state' or category='$category' or location='$location'";
+                           
                         $result=$conn->query($query);
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -256,7 +279,7 @@ include("admin/include/config.php");
                         }
                         }
                         else{
-                        $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0'";
+                        $query="select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' LIMIT $offset, $no_of_records_per_page";
                         $result=$conn->query($query);
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -305,13 +328,33 @@ include("admin/include/config.php");
                                 </div>
                             </div>
                             <?php }
-                        } else {
-                            echo "0 results";
-                        }
-                    }
+                            } else {
+                                echo "0 results";
+                            }
+                          }
                          ?>
                            
                         </div>
+                        <!--pagination-->
+                        <ul class="pagination" style="justify-content:center">
+        <li class="mr-2"><a href="?pageno=1">First</a></li>
+        <!-- <li class="<?php //if($pageno <= 1){ echo 'disabled'; } ?>">
+            <a href="<?php// if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+        </li> -->
+        <?php
+        for($i=1;$i<=$total_pages;$i++)
+        {
+            ?>
+            <li class="<?php if($pageno == $i){ echo 'active'; } ?> mr-1" style="border-radius:50%;width: 25px;height: 25px;text-align: center;background: gainsboro;"><a href="?pageno=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php
+        }
+        ?>
+        <!-- <li class="<?php// if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+            <a href="<?php// if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+        </li> -->
+        <li class="ml-2"><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+    </ul>
+    <!--pagination-->
                     </div>
                 </div>
             </div>
