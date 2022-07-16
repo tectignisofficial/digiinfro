@@ -233,7 +233,12 @@ include("admin/include/config.php");
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li><span><a href="#">(02 Reviews)</a></span></li>
+                                            <?php
+                                            $checkreview=$row['shop_code'];
+                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
+                                            $rfetch=mysqli_num_rows($rsql);
+                                            ?>
+                                            <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                         </ul>
                                     </div>
                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>
@@ -282,7 +287,12 @@ include("admin/include/config.php");
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li><span><a href="#">(02 Reviews)</a></span></li>
+                                            <?php
+                                            $checkreview=$row['shop_code'];
+                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
+                                            $rfetch=mysqli_num_rows($rsql);
+                                            ?>
+                                            <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                         </ul>
                                     </div>
                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>

@@ -164,7 +164,12 @@ include("admin/include/config.php");
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
                                                     <li class="star"><i class="flaticon-star-1"></i></li>
-                                                    <li><span><a href="#">(02 Reviews)</a></span></li>
+                                                    <?php
+                                            $checkreview=$result['shop_code'];
+                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
+                                            $rfetch=mysqli_num_rows($rsql);
+                                            ?>
+                                                    <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                                 </ul>
                                             </div>
                                             <div class="listing-content">
@@ -212,7 +217,12 @@ include("admin/include/config.php");
                                         <li class="star"><i class="flaticon-star-1"></i></li>
                                         <li class="star"><i class="flaticon-star-1"></i></li>
                                         <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li><span><a href="#">(02 Reviews)</a></span></li>
+                                        <?php
+                                            $checkreview=$result['shop_code'];
+                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
+                                            $rfetch=mysqli_num_rows($rsql);
+                                            ?>
+                                        <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                     </ul>
                                 </div>
                                 <div class="listing-content">

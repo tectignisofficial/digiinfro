@@ -9,10 +9,13 @@ if(isset($_POST['commentSubmit'])){
     $rating=$_POST['rating'];
     $comid=$_POST['comid'];
     date_default_timezone_set('Asia/Kolkata');
-    $date=date('d-m-Y h:i:s A');
+    $date=date('d-m-Y h:i A');
   
     $sql=mysqli_query($conn,"INSERT INTO `list_comment`(`name`, `email`, `message`, `detail_id`, `checkbox`, `date`,`rating`) VALUES ('$name','$email','$message','$comid','$checkbox','$date','$rating')");
   }
+  $detailpen=$_GET['detailpen'];
+  $reviewsql=mysqli_query($conn,"select * from list_comment where detail_id='DIMSC0004'");
+  $reviewfetch=mysqli_num_rows($reviewsql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +119,7 @@ if(isset($_POST['commentSubmit'])){
 }
 .rate{
     display:flex;
-    transform:translate(-50%,-50%) rotateY(180deg);
+    transform:rotateY(180deg);
 }
 .rate label{
     display:block;
@@ -230,7 +233,7 @@ transform: rotateY(180deg);
                                                 <li class="star"><i class="flaticon-star-1"></i></li>
                                                 <li class="star"><i class="flaticon-star-1"></i></li>
                                                 <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li><span><a href="#">(02 Reviews)</a></span></li>
+                                                <li><span><a href="#">( <?php echo $reviewfetch; ?> Reviews)</a></span></li>
                                             </ul>
                                             <h3 class="title"><?php echo $row['shop_name']; ?></h3>
                                             <div class="listing-meta">
@@ -370,7 +373,7 @@ transform: rotateY(180deg);
                                                     <label for="star5"></label>
                                     </li>
                                     </ul>   
-                                            <span>(02 Reviews)</span>
+                                            <span>( <?php echo $reviewfetch; ?> Reviews)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -428,7 +431,12 @@ transform: rotateY(180deg);
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
                                             <li class="star"><i class="flaticon-star-1"></i></li>
-                                            <li><span><a href="#">(02 Reviews)</a></span></li>
+                                            <?php
+                                            $checkreview=$arr['shop_code'];
+                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
+                                            $rfetch=mysqli_num_rows($rsql);
+                                            ?>
+                                            <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                         </ul>
                                     </div>
                                     <div class="listing-content">
