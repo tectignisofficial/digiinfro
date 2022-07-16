@@ -56,12 +56,15 @@ if(isset($_GET['savedigitaleditsave'])){
   $oldlogo=$_POST['oldlogo'];
   $oldimg=$_POST['oldimg'];
 
-  if(empty($_FILES['logo']['tmp_name']) && empty($_FILES['profile']) && ($oldlogo) &&($oldimg)){
+  if(empty($_FILES['logo']['tmp_name']) && empty($_FILES['profile']['tmp_name']) && ($oldlogo) &&($oldimg)){
     $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$oldimg',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$editid'");
-  }else if(!empty($logo) && ($oldlogo) || !empty($logo) && empty($oldlogo)){
+  }else if(!empty($_FILES['logo']['tmp_name']) && ($oldlogo) || !empty($_FILES['logo']['tmp_name']) && empty($oldlogo)){
+    move_uploaded_file($_FILES['logo']['tmp_name'],"image/card_image/".$logo);
     $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$oldimg',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$logo' WHERE `id`='$editid'");
   }
-  else if(!empty($profile) && ($oldimg) || !empty($profile) && empty($oldimg)){
+  else if(!empty($_FILES['profile']['tmp_name']) && ($oldimg) || !empty($_FILES['profile']['tmp_name']) && empty($oldimg)){
+    move_uploaded_file($_FILES['profile']['tmp_name'],"image/card_image/".$profile);
+
   $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$profile',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$id'");
   }
   if($sql){
