@@ -212,7 +212,7 @@ include("admin/include/config.php");
                         }
                         $no_of_records_per_page = 10;
                         $offset = ($pageno-1) * $no_of_records_per_page;
-                        $total_pages_sql = "SELECT COUNT(*) FROM vendor";
+                        $total_pages_sql = "SELECT COUNT(*) FROM vendor where vendor.action='0'";
                         $result = mysqli_query($conn,$total_pages_sql);
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows / $no_of_records_per_page);
@@ -224,7 +224,7 @@ include("admin/include/config.php");
                             $category=$_POST['category'];
                             $location=$_POST['location'];
 
-                            $query="select * from  vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' or state='$state' or category='$category' or location='$location'";
+                            $query="select * from  vendor inner join listcategory on listcategory.name=vendor.category where vendor.action='0' and city='$city' or state='$state' or category='$category' or location='$location'  LIMIT $offset, $no_of_records_per_page";
                            
                         $result=$conn->query($query);
                         if ($result->num_rows > 0) {

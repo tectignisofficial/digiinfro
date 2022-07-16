@@ -189,6 +189,9 @@ transform: rotateY(180deg);
 .ratingCheck>.fff {
     color:#ff344f;
 }
+.pagination .active .fa-circle{
+  color:#ff344f !important;
+}
         </style>
     </head>
     <body>
@@ -308,12 +311,25 @@ transform: rotateY(180deg);
                                     </div>
                                 </div>
                             </div>
+                            <!--comment-->
                             <div class="listing-review-box mb-50">
                                 <h4 class="title">Customer Review</h4>
                                 <ul class="review-list">
                                     <?php
-                                    $id=$_GET['detailpen'];
-                                    $commentsql=mysqli_query($conn,"select * from list_comment where detail_id='$id'");
+                                     $id=$_GET['detailpen'];
+                                    if (isset($_GET['pageno'])) {
+                                        $pageno = $_GET['pageno'];
+                                    } else {
+                                        $pageno = 1;
+                                    }
+                                    $no_of_records_per_page = 4;
+                                    $offset = ($pageno-1) * $no_of_records_per_page;
+                                    $total_pages_sql = "SELECT COUNT(*) FROM list_comment  where detail_id='$id'";
+                                    $result = mysqli_query($conn,$total_pages_sql);
+                                    $total_rows = mysqli_fetch_array($result)[0];
+                                    $total_pages = ceil($total_rows / $no_of_records_per_page);
+                                   
+                                    $commentsql=mysqli_query($conn,"select * from list_comment where detail_id='$id'  LIMIT $offset, $no_of_records_per_page");
                                     while($commentrow=mysqli_fetch_array($commentsql))
                                     {
                                     ?>
@@ -348,6 +364,21 @@ transform: rotateY(180deg);
                                     <?php } ?>
                                 </ul>
                             </div>
+                            <!--pagination-->
+                        <ul class="pagination" style="justify-content:center">
+        <!-- <li class="mr-2"><a href="?pageno=1">First</a></li> -->
+        <?php
+        for($i=1;$i<=$total_pages;$i++)
+        {
+            ?>
+            <li class="<?php if($pageno == $i){ echo 'active'; } ?> mr-1" style="border-radius:50%;width: 25px;height: 25px;text-align:center;background:gainsboro;font-size: x-small;"><a href="?detailpen=<?php echo $row['shop_code'] ?>&pageno=<?php echo $i; ?>"><i class="fa fa-circle" aria-hidden="true" style="color: burlywood;"></i></li>
+            <?php
+        }
+        ?>
+        <!-- <li class="ml-2"><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li> -->
+    </ul>
+    <!--pagination-->
+                            <!--comment-->
                             <div class="listing-review-form mb-30">
                             <form method='post'>
                                 <div class="row">
