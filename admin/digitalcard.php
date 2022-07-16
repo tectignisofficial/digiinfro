@@ -66,7 +66,7 @@ if(isset($_POST['savedigitaleditsave'])){
   else if(!empty($_FILES['profile']['tmp_name']) && ($oldimg) || !empty($_FILES['profile']['tmp_name']) && empty($oldimg)){
     move_uploaded_file($_FILES['profile']['tmp_name'],"image/card_image/".$profile);
 
-  $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$profile',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$id'");
+  $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `name`='$name',`profile_img`='$profile',`email`='$email',`post`='$Post',`whatsapp_no`='$whatsapp_no',`mobile_no`='$mobile_no',`address`='$address',`website`='$website',`facebook_link`='$facebook',`instagram_link`='$insta',`linkedIn_link`='$linkedin',`logo`='$oldlogo' WHERE `id`='$editid'");
   }
   if($sql){
       echo "<script>alert('Digital Card Updated Successfully');</script>";
