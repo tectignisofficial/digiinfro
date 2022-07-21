@@ -8,7 +8,7 @@
                                     <li><span>Follow us:</span></li>
                                     <li><a href="#"><i class="ti-facebook"></i></a></li>
                                     <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                   <li><a href="#"><i class="ti-linkedin"></i></a></li>
                                     <li><a href="#"><i class="ti-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
 
@@ -35,7 +35,12 @@
                         <div class="row">
                             <div class="col-lg-2 col-5">
                                 <div class="site-branding">
-                                    <a href="index.php" class="brand-logo" style="background-color:white"><img src="assets/images/companylogo.png" alt="Brand Logo"></a>
+                                <?php
+            $sql=mysqli_query($conn,"Select * from general_settings");
+               while($arr=mysqli_fetch_array($sql)){
+             ?>
+                                    <a href="index.php" class="brand-logo" style="background-color:white"><img src="assets/images/bg/<?php echo $arr['select_logo'] ?>" alt="Brand Logo" width="100" height="50"></a>
+               <?php } ?>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-2">
@@ -57,7 +62,7 @@
                                             <li class="menu-item has-children"><a href="#">Article</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item"><a href="blog.php">Our Blog</a></li>
-                                                    <li class="menu-item"><a href="blog-details.php">Blog details</a></li>
+                                                    <!-- <li class="menu-item"><a href="blog-details.php">Blog details</a></li> -->
                                                 </ul>
                                             </li>
                                             <li class="menu-item"><a href="contact.php">Contact</a></li>
