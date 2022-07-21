@@ -34,11 +34,11 @@
                             <div class="footer-social">
                                 <h4>Follow Us</h4>
                                 <ul class="social-link">
-                                    <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
+                                    <li><a href="https://www.facebook.com"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="https://www.twitter.com"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="https://www.linkedin.com"><i class="ti-linkedin"></i></a></li>
+                                    <li><a href="https://www.instagram.com"><i class="ti-instagram"></i></a></li>
+                                    <li><a href="https://www.whatsapp.com"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -69,12 +69,12 @@
                             <h4 class="widget-title">Categories</h4>
                             <ul class="categories-link">
                                 <li><a href="how-work.php">How Work</a></li>
-                                <li><a href="#">Restaurant</a></li>
-                                <li><a href="#">Museum</a></li>
-                                <li><a href="#">Party Center</a></li>
-                                <li><a href="#">Game Field</a></li>
-                                <li><a href="#">Shopping</a></li>
-                                <li><a href="#">Art & Gallery</a></li>
+                                <li><a href="categorylist.php">Restaurant</a></li>
+                                <li><a href="categorylist.php">Museum</a></li>
+                                <li><a href="categorylist.php">Party Center</a></li>
+                                <li><a href="categorylist.php">Game Field</a></li>
+                                <li><a href="categorylist.php">Shopping</a></li>
+                                <li><a href="categorylist.php">Art & Gallery</a></li>
                             </ul>
                         </div>
                     </div>
@@ -101,15 +101,15 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="copyright-text">
-                            <p>Copyright &copy; All Rights Reserved, Share By <a href="https://nullphpscript.com"><span>HTML Template</span></a></p>
+                            <p>Copyright &copy; <span>Digiinfromatrics</span> All Rights Reserved <a href="https://nullphpscript.com"></a></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="copyright-link">
                             <ul>
                                 <li><a href="#">Terms & Conditins</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                
                             </ul>
                         </div>
                     </div>
