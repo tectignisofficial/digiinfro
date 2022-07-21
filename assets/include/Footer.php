@@ -1,4 +1,5 @@
- <!--====== Start Footer ======-->
+
+<!--====== Start Footer ======-->
  <footer class="footer-area">
     <div class="footer-wrapper-one dark-black pt-90">
         <div class="footer-widget pb-60">
@@ -65,12 +66,13 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-12">
+                     
                         <div class="widget categories-widget mb-40">
                             <h4 class="widget-title">Categories</h4>
                             <ul class="categories-link">
                                 <li><a href="how-work.php">How Work</a></li>
                                 <li><a href="#">Restaurant</a></li>
-                                <li><a href="#">Museum</a></li>
+                                <li><a href="#">Museums</a></li>
                                 <li><a href="#">Party Center</a></li>
                                 <li><a href="#">Game Field</a></li>
                                 <li><a href="#">Shopping</a></li>
@@ -89,7 +91,9 @@
                                 </div>
                                 <div class="form_group">
                                     <button class="main-btn">Subscribe</button>
+                                    
                                 </div>
+                                
                             </form>
                         </div>
                     </div>
@@ -101,15 +105,15 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="copyright-text">
-                            <p>Copyright &copy; All Rights Reserved, Share By <a href="https://nullphpscript.com"><span>HTML Template</span></a></p>
+                            <p>Copyright &copy; <span>Digiinfro</span> All Rights Reserved <a href="https://nullphpscript.com"></a></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="copyright-link">
                             <ul>
-                                <li><a href="#">Terms & Conditins</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                
                             </ul>
                         </div>
                     </div>
