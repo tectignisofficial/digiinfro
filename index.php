@@ -345,7 +345,7 @@ if(isset($_POST['searchlist'])){
                                             <i class="flaticon-find"></i>
                                         </div>
                                         <div class="content">
-                                            <h5>Find reputable businesses.</h5>
+                                            <h5>Find reputable busines  .</h5>
                                             <p>Discover the best local businesses in your area and view valuable information about them including photos, hours of operation, menus, testimonials and more. You can even contact them right from their listing.</p>
                                         </div>
                                     </li>
