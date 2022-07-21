@@ -194,16 +194,9 @@ if(isset($_POST['submit'])){
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtext1">Time Zone</label>
-                    <select class="form-control" value="<?php echo $arr['time_zone'];?>" id="exampleInputtext1" name="time_zone" placeholder="text">
-                                            <option>Select</option>
-
-                      <option>skjefnlfnsdfn</option>
-                      <option>skjefnlfnsdfn</option>
-                      <option>skjefnlfnsdfn</option>
-
-
-                    </select>
-
+                    
+                    <input type="time" id="appt" name="time_zone" value="<?php echo $arr['time_zone'];?>"
+                      min="09:00" max="18:00" >
                   </div>
                  
                 </div>

@@ -221,16 +221,12 @@ include('include/sidebar.php');
 
                 <div class="form-group">
                   <label>Post</label>
-                       <select class="form-control select2 " name="Post" style="width: 100%;" >
-                       </select>
-                        
+                  <input type="text" class="form-control" name="post" id="post"> 
                 </div>
 
                 <div class="form-group">
                   <label>Description</label>
-                       <select class="form-control select2 " name="description" style="width: 100%;" >
-                       </select>
-                        
+                  <input type="text" class="form-control" name="description" id="description">
                 </div>
 
                   <div class="row">

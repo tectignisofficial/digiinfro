@@ -210,7 +210,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="index.html" class="nav-link">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Home
@@ -218,7 +218,7 @@
             </a>
           </li>
 			<li class="nav-item">
-            <a href="vendorregistration.html" class="nav-link">
+            <a href="vendorregistration.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Vendor Registration
@@ -235,19 +235,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pendingapproval.html" class="nav-link">
+                <a href="pendingapproval.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending Approval</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="completeappoval.html" class="nav-link">
+                <a href="completeappoval.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Complete Approval</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="category.html" class="nav-link">
+                <a href="category.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
@@ -255,7 +255,7 @@
             </ul>
           </li>
 			<li class="nav-item">
-            <a href="ticket.html" class="nav-link ">
+            <a href="ticket.php" class="nav-link ">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Ticket
@@ -272,37 +272,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="banner.html" class="nav-link">
+                <a href="banner.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Banner</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="feature.html" class="nav-link">
+                <a href="feature.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Feature</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="services.html" class="nav-link">
+                <a href="services.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Services</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="testimonial.html" class="nav-link">
+                <a href="testimonial.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Testimonial</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="partners.html" class="nav-link">
+                <a href="partners.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Partners</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="offer.html" class="nav-link">
+                <a href="offer.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Offer</p>
                 </a>
@@ -319,43 +319,43 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="seohome.html" class="nav-link">
+                <a href="seohome.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="seolisting.html" class="nav-link">
+                <a href="seolisting.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listing</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="seoaboutus.html" class="nav-link">
+                <a href="seoaboutus.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>About us</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pricing.html" class="nav-link">
+                <a href="pricing.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pricing</p>
                 </a>
               </li>
 			  <li class="nav-item">
-                <a href="seoblog.html" class="nav-link">
+                <a href="seoblog.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blog</p>
                 </a>
               </li>
 				<li class="nav-item">
-                <a href="contactus.html" class="nav-link">
+                <a href="contactus.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact us</p>
                 </a>
               </li>
 				<li class="nav-item">
-                <a href="seovender.html" class="nav-link">
+                <a href="seovender.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vendor Registration</p>
                 </a>
@@ -372,19 +372,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="about.html" class="nav-link">
+                <a href="about.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>About</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tnc.html" class="nav-link active">
+                <a href="tnc.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Terms & Condition</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="errorpage.html" class="nav-link">
+                <a href="errorpage.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error Page</p>
                 </a>
@@ -401,13 +401,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="state.html" class="nav-link">
+                <a href="state.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>State</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="city.html" class="nav-link">
+                <a href="city.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>City</p>
                 </a>
@@ -424,37 +424,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="generalsetting.html" class="nav-link">
+                <a href="generalsetting.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General Setting</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="blogsetting.html" class="nav-link">
+                <a href="blogsetting.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blog</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="paymentaccount.html" class="nav-link">
+                <a href="paymentaccount.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Payment Account</p>
                 </a>
               </li>
 				<li class="nav-item">
-                <a href="googleanalytics.html" class="nav-link">
+                <a href="googleanalytics.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Google Analytics</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="emailconfiguration.html" class="nav-link">
+                <a href="emailconfiguration.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Email Configuration</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="emailtemplate.html" class="nav-link">
+                <a href="emailtemplate.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Email Template</p>
                 </a>
@@ -471,19 +471,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="categoryblog.html" class="nav-link">
+                <a href="categoryblog.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="blog.html" class="nav-link">
+                <a href="blog.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blog</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="commentblog.html" class="nav-link">
+                <a href="commentblog.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Comment</p>
                 </a>
@@ -491,7 +491,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="contact.html" class="nav-link">
+            <a href="contact.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Contact
@@ -508,13 +508,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="subscriber.html" class="nav-link">
+                <a href="subscriber.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Subscriber</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="emailsubscriber.html" class="nav-link">
+                <a href="emailsubscriber.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Email with Subscriber</p>
                 </a>
