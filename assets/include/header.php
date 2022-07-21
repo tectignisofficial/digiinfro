@@ -6,11 +6,11 @@
                             <div class="top-social">
                                 <ul class="social-link">
                                     <li><span>Follow us:</span></li>
-                                    <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                   <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
+                                    <li><a href="https://www.facebook.com"><i class="ti-facebook"></i></a></li>
+                                    <li><a href="https://www.twitter.com"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="https://www.linkedin.com"><i class="ti-linkedin"></i></a></li>
+                                    <li><a href="https://www.instagram.com"><i class="ti-instagram"></i></a></li>
+                                    <li><a href="https://www.whatsapp.com"><i class="fa fa-whatsapp" style="font-size:18px;"></i></a></li>
 
                                     <!-- <li><a href="#" id="whatsappIcon"><img src="../HTML/assets/images/whatsapp.png" style="width:16px; margin-bottom: 3px;" alt=""></a></li> -->
                                 </ul>
@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="top-content text-center">
-                                <p>We Have Special Offers Every <a href="index.html">Find your offer</a></p>
+                                <p>We Have Special Offers Every <a href="index.php`">Find your offer</a></p>
                             </div>
                         </div>
                         <div class="col-md-4">
