@@ -201,8 +201,8 @@
                                     <div class="col-md-4">
                                         <div class="filter-right">
                                             <ul class="filter-nav">
-                                                <li><a href="listing-grid.html" class="active"><i class="ti-view-grid"></i></a></li>
-                                                <li><a href="listing-list.html"><i class="ti-view-list-alt"></i></a></li>
+                                                <li><a href="listing-grid.php" class="active"><i class="ti-view-grid"></i></a></li>
+                                                <li><a href="listing-list.php"><i class="ti-view-list-alt"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -253,7 +253,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Party Corner</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Party Corner</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -281,7 +281,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">City Palace</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">City Palace</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -309,7 +309,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Easter Plaza</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Easter Plaza</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -336,7 +336,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Gym Ground</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Gym Ground</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -364,7 +364,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Miyami Sea</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Miyami Sea</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -391,7 +391,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Sky Center</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Sky Center</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -418,7 +418,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Gym Ground</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Gym Ground</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -446,7 +446,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Coffee Time</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Coffee Time</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -477,7 +477,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -505,7 +505,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -532,7 +532,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -564,7 +564,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -591,7 +591,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -618,7 +618,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -649,7 +649,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -676,7 +676,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -704,7 +704,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -736,7 +736,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -763,7 +763,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -790,7 +790,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -821,7 +821,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -849,7 +849,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -876,7 +876,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -908,7 +908,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -935,7 +935,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-open">Open</span></span>
                                                     <div class="listing-meta">
@@ -963,7 +963,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="listing-content">
-                                                    <h3 class="title"><a href="listing-details-2.html">Pizza Recipe</a></h3>
+                                                    <h3 class="title"><a href="listing-details-2.php">Pizza Recipe</a></h3>
                                                     <p>Popular restaurant in california</p>
                                                     <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05">+98 (265) 3652 - 05</a><span class="status st-close">Close</span></span>
                                                     <div class="listing-meta">
@@ -979,7 +979,7 @@
                                 </div>
                             </div>
                             <div class="button text-center mt-30">
-                                <a href="listing-map.html" class="main-btn icon-btn">Load More</a>
+                                <a href="listing-map.php" class="main-btn icon-btn">Load More</a>
                             </div>
                         </div>
                     </div>
