@@ -1,3 +1,8 @@
+<?php
+include("admin/include/config.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,7 +63,7 @@
                             <div class="page-title">
                                 <h1 class="title">Terms & Conditions</h1>
                                 <ul class="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li class="active">Terms & Conditions</li>
                                 </ul>
                             </div>
@@ -67,6 +72,113 @@
                 </div>
             </div>
         </section>
+
+        <div class="pricing pricing-1 pt-10">
+        <div class="container" >
+            <div class="default-section-title default-section-title-middle" style="text-align:center;">
+                <h3 class="pt-5" >Introduction</h3>
+            </div>
+            <div class="setion-content">
+                <div class="row justify-content-center pt-5">
+                    <div class="col-8">
+                        <label>The Services of ‘Digiinfromatrics’ is provided by Tectignis It Solutions Private Limited, a company incorporated under the Companies Act, 1956 and having its registered office at C.S.N-2122,2123 Mumbai ,TALUKA- panvel DISTRICT – Raighadh, STATE- MAHARASHTRA INDIA , PIN.-400706 and it is the platform created with clear vision of Digitally Empowering Local Indian Businesses, makes it easy to Local Indian Businesses to create their business listings & to connect with their customers. One-Stop for all their digital presence & marketing needs. For more details please refer about us page- <a target="_blank"
+                                href="http://demo.digiinfromatrics.com" class="text-danger" style="text-decoration:none">http://demo.digiinfromatrics.com</a></label>
+                     <label>Digiinfromatrics also provides search engine directory services to its Website & App Visitors as per their requirements & searches made on Digiinfromatrics portals to find the up-to-date information about Vendors (defined hereinafter) of various products and services (“Information”) in selected towns and cities in India (“Service”) to end users.</label>
+                        </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>SUBSCRIPTION :</h5>
+                        <label>Digiinfromatrics provides Free & Premium Listings &  Other Services as may be introduced by Digiinfromatrics from time to time .Small Medium Enterprises, Corporate Entities, Individual Free Lancers ,Vendors can subscribe to the Digiinfromatrics Listing Service in order to list their company or business on Digiinfromatrics Portal.</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>LISTINGS :</h5>
+                        <label>Listings are the location based services in the selected categories and pin codes in respect of specific area search, the listing of the vendors will appear on those positions, which have been opted by them. The packages value may vary based upon the listing features , additional services offering as may be identified by Digiinfromatrics packages. Please refer pricing plans https://cardsmela.com/pricing-plan/ </label>
+                        <label>After claim approval Listing Owner can access the listing backend dashboard to add, delete, modify description, images , keywords or pin-codes. Listing owner can also use exclusive ad campaigning services.</label>
+                        </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>PAYMENT MODES : </h5>
+                        <label>Digiinfromatrics allows the Listing Owner  to make the payments for the Listing & Digital Marketing  by way any of the following modes</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center ">
+                    <div class="col-8">
+                        <label><b>1.</b>  Cheque</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center ">
+                    <div class="col-8">
+                        <label><b>2.</b>  RTGS  (Real Time Gross Settlement)</label>
+                            
+                    </div>
+                </div>
+                <div class="row justify-content-center ">
+                    <div class="col-8">
+                        <label><b>3.</b>  UPI Services</label>
+                    </div>
+                </div>
+               
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>PAYMENT TERMS : </h5>
+                        <label>Listing Owner agrees to pay a  Subscription Fee for the Services that will be determined by Digiinfromatrics at the time of accepting the Service. Digiinfromatrics will send the customer receipt/Invoice to Listing Owners registered Mobile Number and email ID, simultaneously after receipt of payment from Listing Owner.</label>
+                   <label>Digiinfromatrics shall, at its sole discretion, reserve its right to decide the Service Fee for the Services, from time to time.</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>REFUNDS POLICY : </h5>
+                        <label>Subscription Fee paid by you to Digiinfromatrics are final and non-refundable. </label>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>PUSH NOTIFICATION AGREEMNT : </h5>
+                        <label>You agree and confirm that listing data you post on Digiinfromatrics platform will be shared with subscribers  of Digiinfromatrics.</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>HOSTING AGREEMNT : </h5>
+                        <label>Digiinfromatrics agrees to host and maintain your business listing details on our secure server(s). Digiinfromatrics on best effort basis will take all reasonable precautions to implement data backup services on the data stored in your listing. Digiinfromatrics agrees to monitor hosting services and make listings available to Internet users. However, Digiinfromatrics is not responsible for unintentional damages or loss, either incidental or direct, caused by a loss of your information. </label>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>PRIVACY POLICY : </h5>
+                        <label>Digiinfromatrics is committed to protecting the privacy and confidentiality of any personal information that it may request and receive from its clients, business partners and other users of the Website. You hereby confirm and acknowledge that the contact details and other details provided by you to Digiinfromatrics will be used and forwarded by Digiinfromatrics to the respective listing owners /enquirers for which call or enquiry has been made.</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8">
+                        <h5>DISCLAIMER : </h5>
+                        <label>Information provided by Listing Owners through the Digiinfromatrics may contain links to third party websites that are not owned or controlled by Digiinfromatrics. Digiinfromatrics has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party websites.</label>
+                    <label>By using the Service, you expressly acknowledge and agree that Digiinfromatrics shall not be responsible for any damages, claims or other liability arising from or related to your use of any third-party website. You understand that the information and opinions in the third party content represent solely the thoughts of the author and is neither endorsed by nor does it necessarily reflect Digiinfromatrics belief.</label>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-8 pb-5">
+                        <h5>GOVERNING LAW & JURISDICTION: </h5>
+                        <label>This Terms of Use shall be governed and construed in accordance with the laws in India. Any dispute arising hereunder shall be subject to the exclusive jurisdiction of the courts in Mumbai, India.</label>
+                    <label>If you have any questions or concerns  please write us to  <a target="_blank"
+                                href="http://demo.digiinfromatrics.com" class="text-danger" style="text-decoration:none">http://digiinfromatrics.com</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
         <!--====== End Hero Section ======-->
         <!--====== Start Contact Section ======-->
       
