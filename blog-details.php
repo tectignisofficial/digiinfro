@@ -251,7 +251,7 @@ if(isset($_POST['save'])){
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
                                     <li class="post-thumbnail-content">
-                                    <img src="assets/images/blog_image/img3.png/<?php echo $arr['img'];?>">
+                                    <img src="assets/images/blog_image/<?php echo $arr['img'];?>">
                                         <div class="post-title-date">
                                         <span class="posted-on"><i class="ti-calendar"></i><a href="#"><?php echo $arr['date'];?></a></span>
                                         <h6><a href="blog-details.php?id=<?php echo $arr['id'];?>"><?php echo $arr['title'];?></a></h6>
