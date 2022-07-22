@@ -92,33 +92,9 @@ if(isset($_POST['submit'])){
         <div class="footer-widget pb-60">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                     <div class="col-lg-5 col-md-6 col-sm-12">
                         <div class="widget about-widget mb-40">
-                            <h4 class="widget-title">Mobile Experience</h4>
-                            <ul class="button">
-                                <li>
-                                    <a href="#" class="app-btn android-btn">
-                                        <div class="icon">
-                                            <i class="ti-android"></i>
-                                        </div>
-                                        <div class="info">
-                                            <span>get it on</span>
-                                            <h6>Goole Play</h6>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="app-btn apple-btn">
-                                        <div class="icon">
-                                            <i class="ti-apple"></i>
-                                        </div>
-                                        <div class="info">
-                                            <span>get it on</span>
-                                            <h6>App Store</h6>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
+                            
                             <div class="footer-social">
                                 <h4>Follow Us</h4>
                                 <ul class="social-link">
@@ -131,7 +107,7 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="widget recent-post-widget mb-40">
                             <h4 class="widget-title">Recent News</h4>
                             <ul class="post-widget-list">
@@ -151,8 +127,8 @@ if(isset($_POST['submit'])){
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-12">
+                    </div> -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="widget categories-widget mb-40">
                             <h4 class="widget-title">Categories</h4>
                             <ul class="categories-link">
