@@ -28,6 +28,7 @@ if($row>0){
         $_SESSION['email']=$email;
         $_SESSION['password']=$password;
         header("location:../admin/index.php");
+        // echo "<script>alert('fdgdg')</script>";
     }else{
         echo "<script>alert('Password is incorrect');</script>";
     }
