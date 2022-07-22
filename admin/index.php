@@ -30,6 +30,10 @@ include("include/config.php");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script type="text/javascript" src="jscript/graph.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -73,30 +77,40 @@ include("include/config.php");
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-info">
+              <?php 
+                   $query=mysqli_query($conn,"select * from vendor");
+                   $count2=mysqli_num_rows($query);
+                   ?>
                 <div class="inner">
-                  <h3>150</h3>
-  
-                  <p>New Orders</p>
+               
+                  <h3><?php echo $count2 ?></h3>
+                  <p>vendor Registration</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="completeappoval" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
+              
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
+              <?php
+                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NULL or location IS NULL or authorized_person IS NULL or mobile_no IS NULL or whatsapp_no IS NULL or email IS NULL or services IS NULL or shop_act_license IS NULL or pan_card IS NULL or shop_name IS NULL or category IS NULL or image1 IS NULL or image2 IS NULL or image3 IS NULL or image4 IS NULL or city IS NULL or state IS NULL or post IS NULL or description IS NULL or profile_img IS NULL;");
+                    $count=$sql->num_rows;
+                    
+                    ?>
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo $count ?></h3>
   
-                  <p>Bounce Rate</p>
+                  <p>pending  Approval</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="pendingapproval" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -104,29 +118,38 @@ include("include/config.php");
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                <?php
+                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NOT NULL and authorized_person IS NOT NULL and mobile_no IS NOT NULL and whatsapp_no IS NOT NULL and email IS NOT NULL and services IS NOT NULL and shop_act_license IS NOT NULL and pan_card IS NOT NULL and shop_name IS NOT NULL and category IS NOT NULL and image1 IS NOT NULL and image2 IS NOT NULL and image3 IS NOT NULL and image4 IS NOT NULL and city IS NOT NULL and state IS NOT NULL and location IS NOT NULL and post IS NOT NULL and description IS NOT NULL and profile_img IS NOT NULL;");
+                    $count1=$sql->num_rows;
+                    ?>
+                    <h3> <?php echo $count1 ?> </h3>
+                   
   
-                  <p>User Registrations</p>
+                  <p>Complete  Approval</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="completeappoval" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-danger">
+              <?php 
+                   $query=mysqli_query($conn,"select * from listcategory");
+                   $count=mysqli_num_rows($query);
+                   ?>
                 <div class="inner">
-                  <h3>65</h3>
+                <h3><?php echo $count ?></h3>
   
-                  <p>Unique Visitors</p>
+                  <p>Category</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="category.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -135,82 +158,131 @@ include("include/config.php");
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-6 connectedSortable">
              <!-- Map card -->
-     <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item invisible">
-                      <a class="nav-link" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane invisible" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                   </div>
-                  <div class="chart tab-pane active" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                  </div>
-                </div>
-              </div><!-- /.card-body -->
-            </div>
-             
+     
+             <div class="card">
+<div class="card-header">
+<h3 class="card-title"  style="width:100%">
+<i class="fas fa-chart-pie mr-1"></i>
+Total Case
+</div>
+</h3>
+<div class="card-body">
+<div class="tab-content p-0">
+
+<div class="container" style="width: 50%; margin: 15px auto;">
+  <h2>Vendor Registration</h2>
+  <div id="container" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
+ 
+</div>
+<script>
+   anychart.onDocumentReady(function () {
+  var data = anychart.data.set([
+    ['complete',<?php echo $count ?>],
+    ['pending', <?php echo $count1 ?>],
+    
+  ]);
+  
+  var chart = anychart.pie(data);
+  chart.innerRadius('55%')
+  var palette = anychart.palettes.distinctColors();
+  palette.items([
+    { color: '#2ecc71' },
+    { color: '#3498db' },
+    
+  ]);
+
+  chart.palette(palette);
+ 
+  chart.legend(false);
+  
+  var label = anychart.standalones.label();
+  label
+    .useHtml(true)
+    .text(
+      '<span style = "color:#3498db; font-size:20px;">Vendor<br/></span>' +
+      '<span style="color:#2ecc71; font-size:14px;"><i>Registeration</span>'
+    )
+    .position('center')
+    .anchor('center')
+    .hAlign('center')
+    .vAlign('middle');
+  chart.center().content(label);
+  chart.container('container');
+    chart.draw();
+});
+</script>
+</div>
+</div>
+</div>
             </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
+            <section class="col-lg-6 connectedSortable">
      <!-- Map card -->
      <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item invisible">
-                      <a class="nav-link" href="#revenue-chart2" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#sales-chart2" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane invisible" id="revenue-chart2"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas2" height="300" style="height: 300px;"></canvas>
-                   </div>
-                  <div class="chart tab-pane active" id="sales-chart2" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas2" height="300" style="height: 300px;"></canvas>
-                  </div>
-                </div>
-              </div><!-- /.card-body -->
-            </div>
-             
-            
-              <!-- /.card-body-->
-             
-                    <div id="sparkline-1" class="invisible"></div>
-                    <div id="sparkline-2" class="invisible"></div>
-                    <div id="sparkline-3" class="invisible"></div>
-                  </div>
+<div class="card-header">
+<h3 class="card-title"  style="width:100%">
+<i class="fas fa-chart-pie mr-1"></i>
+Total Case
+</div>
+</h3>
+<div class="card-body">
+<div class="tab-content p-0">
+
+<div class="container" style="width: 50%; margin: 15px auto;">
+  <h2>Contact/Subscriber</h2>
+  <div id="contain" style="width: 100%; height:300px; margin: 0; padding: 0; "></div>
+ 
+</div>
+<?php
+$contact=mysqli_query($conn,"select * from contact");
+$confull=mysqli_num_rows($contact);
+$emailc=mysqli_query($conn,"select * from subscriber");
+$emailcfull=mysqli_num_rows($emailc);
+
+?>
+<script>
+   anychart.onDocumentReady(function () {
+  var data = anychart.data.set([
+    ['contact',<?php echo $confull ?>],
+    ['Subscriber', <?php echo $emailcfull ?>],
+   
+  ]);
+  
+  var chart = anychart.pie(data);
+  chart.innerRadius('55%')
+  var palette = anychart.palettes.distinctColors();
+  palette.items([
+    
+    { color: '#cc8033' },
+    { color: '#cca633' },
+  ]);
+
+  chart.palette(palette);
+ 
+  chart.legend(false);
+  
+  var label = anychart.standalones.label();
+  label
+    .useHtml(true)
+    .text(
+      '<span style = "color:#3498db; font-size:20px;">pending<br/></span>' +
+      '<br/><br/></br><span style="color:#2ecc71; font-size:20px;"><i>complete</span>'
+    )
+    .position('center')
+    .anchor('center')
+    .hAlign('center')
+    .vAlign('middle');
+  chart.center().content(label);
+  chart.container('contain');
+    chart.draw();
+});
+</script>
+</div>
+</div>
+</div>
                   <!-- ./col -->
   
          
