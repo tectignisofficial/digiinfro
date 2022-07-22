@@ -138,7 +138,7 @@ if(isset($_POST['signup'])){
                             <div class="page-title">
                                 <h1 class="title">About Us</h1>
                                 <ul class="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li class="active">About us</li>
                                 </ul>
                             </div>
@@ -169,7 +169,7 @@ if(isset($_POST['signup'])){
                                 <div class="content">
                                     <h3 class="title">User Friendly</h3>
                                     <p>Congue men porttitor blandit erat to loborti lacinia sapien pretium disenty</p>
-                                    <a href="how-work.html" class="btn-link icon-btn">More Details</a>
+                                    <a href="how-work.php" class="btn-link icon-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +181,7 @@ if(isset($_POST['signup'])){
                                 <div class="content">
                                     <h3 class="title">Daily Offers</h3>
                                     <p>Congue men porttitor blandit erat to loborti lacinia sapien pretium disenty</p>
-                                    <a href="how-work.html" class="btn-link icon-btn">More Details</a>
+                                    <a href="how-work.php" class="btn-link icon-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@ if(isset($_POST['signup'])){
                                 <div class="content">
                                     <h3 class="title">Quick Search</h3>
                                     <p>Congue men porttitor blandit erat to loborti lacinia sapien pretium disenty</p>
-                                    <a href="how-work.html" class="btn-link icon-btn">More Details</a>
+                                    <a href="how-work.php" class="btn-link icon-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ if(isset($_POST['signup'])){
                                 <div class="content">
                                     <h3 class="title">Live Support</h3>
                                     <p>Congue men porttitor blandit erat to loborti lacinia sapien pretium disenty</p>
-                                    <a href="how-work.html" class="btn-link icon-btn">More Details</a>
+                                    <a href="how-work.php" class="btn-link icon-btn">More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -288,7 +288,7 @@ if(isset($_POST['signup'])){
                             <div class="cta-content-box">
                                 <h2>Visit the Best Places</h2>
                                 <p>Pharetra venenatis ante pulvinar fermentum dignissim one malesuada laoreet ridiculus fringilla quam</p>
-                                <a href="listing-grid.html" class="main-btn icon-btn">Explore Now</a>
+                                <a href="listing-grid.php" class="main-btn icon-btn">Explore Now</a>
                             </div>
                         </div>
                     </div>

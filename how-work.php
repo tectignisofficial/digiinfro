@@ -1,3 +1,8 @@
+<?php
+include("admin/include/config.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,7 +63,7 @@
                             <div class="page-title">
                                 <h1 class="title">Working Process</h1>
                                 <ul class="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li class="active">Working Process</li>
                                 </ul>
                             </div>
@@ -106,7 +111,7 @@
                                             <h3 class="title">Choose<br>
                                                 A Category</h3>
                                             <p>Be seed saying our sign beginning face give spirit own beast and a darkness morning moveth green multipl she doin kind saying one shall, two which darkness have day image god their night his feed subdue so you rule can.</p>
-                                            <a href="listing-grid.html" class="btn-link icon-btn">Explore List</a>
+                                            <a href="listing-grid.php" class="btn-link icon-btn">Explore List</a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +132,7 @@
                                             <h3 class="title">Select<br>
                                                 Amazing Place</h3>
                                             <p>Be seed saying our sign beginning face give spirit own beast and a darkness morning moveth green multipl she doin kind saying one shall, two which darkness have day image god their night his feed subdue so you rule can.</p>
-                                            <a href="listing-grid.html" class="btn-link icon-btn">Explore List</a>
+                                            <a href="listing-grid.php" class="btn-link icon-btn">Explore List</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +153,7 @@
                                             <h3 class="title">Explore<br>  
                                                 Selected Place</h3>
                                             <p>Be seed saying our sign beginning face give spirit own beast and a darkness morning moveth green multipl she doin kind saying one shall, two which darkness have day image god their night his feed subdue so you rule can.</p>
-                                            <a href="listing-grid.html" class="btn-link icon-btn">Explore List</a>
+                                            <a href="listing-grid.php" class="btn-link icon-btn">Explore List</a>
                                         </div>
                                     </div>
                                 </div>

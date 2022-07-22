@@ -396,7 +396,7 @@ if(isset($_POST['searchlist'])){
                                 <p>Dictumst integer tellus eros quam vestibulum ante tortor mollis adipisn pharetra curae curae and pulvinar porttitor</p>
                                 <ul class="button">
                                     <li>
-                                        <a href="index.html" class="app-btn">
+                                        <a href="index.php" class="app-btn">
                                             <div class="icon">
                                                 <i class="ti-android"></i>
                                             </div>
@@ -407,7 +407,7 @@ if(isset($_POST['searchlist'])){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="index.html" class="app-btn">
+                                        <a href="index.php" class="app-btn">
                                             <div class="icon">
                                                 <i class="ti-apple"></i>
                                             </div>
@@ -490,7 +490,7 @@ if(isset($_POST['searchlist'])){
                             </ul>
                         </div>
                         <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.html"><?php echo $arr['shop_name'] ?></a></h3>
+                            <h3 class="title"><a href="listing-details-2.php"><?php echo $arr['shop_name'] ?></a></h3>
                             <p>Popular <?php echo $arr['category'] ?> in <?php echo $arr['city'] ?></p>
                             <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $arr['mobile_no'] ?></a><span class="status st-open">Open</span></span>
                             <div class="listing-meta">
@@ -533,7 +533,7 @@ if(isset($_POST['searchlist'])){
                                 </div>
                                 <p>Risus urnas Iaculis per amet vestibulum luctus tincidunt ultricies aenean
                                     quam eros eleifend sodales cubilia mattis quam.</p>
-                                <a href="listing-grid.html" class="main-btn icon-btn">Explore List</a>
+                                <a href="listing-grid.php" class="main-btn icon-btn">Explore List</a>
                             </div>
                         </div>
                     </div>

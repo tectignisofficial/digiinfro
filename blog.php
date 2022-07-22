@@ -164,7 +164,7 @@ include("admin/include/config.php");
                                 <ul class="recent-post-list">
                                 <?php 
                         
-                        $sql=mysqli_query($conn,"select * from `blog`");
+                        $sql=mysqli_query($conn,"select blog.*, blog_category.* from blog inner join blog_category on blog.category_id=blog_category.id");
                      $count=1;
                          while($arr=mysqli_fetch_array($sql)){
                         ?>
