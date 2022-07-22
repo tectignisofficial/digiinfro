@@ -167,7 +167,7 @@ if(isset($_POST['submit'])){
                         <div class="copyright-text">
                     
                             <p>Copyright &copy;  All Rights Reserved  <span>Digiinfromatrics</span>
-                            <a href="http://tec.tectignis.in/"></a></p>
+                            <a href="http://digiinfromatrics.com/"></a></p>
                                 
                         </div>
                     </div>
@@ -175,7 +175,7 @@ if(isset($_POST['submit'])){
                         <div class="copyright-link">
                             <ul>
                                 <li><a href="terms_and_conditions.php">Terms & Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="pricing.php">Privacy Policy</a></li>
                                 
                             </ul>
                         </div>
