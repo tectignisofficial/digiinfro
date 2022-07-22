@@ -298,7 +298,7 @@ transform: rotateY(180deg);
                                     <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
-                                    <img src="admin/dist/img/vender_image/<?php echo $row['image5'] ?>" alt="gallery image" width="170" height="170">
+                                    <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="170" height="170">
                                     </div>
                                     <div class="gallery-item">
                                         <img src="admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170">
