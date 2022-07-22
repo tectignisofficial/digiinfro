@@ -208,13 +208,13 @@ include('include/sidebar.php');
 
                   <div class="form-group">
                   <label>City Name</label>
-                       <select class="form-control select2 designation" name="city" style="width: 100%;" >
+                       <select class="form-control select2 city" name="city" style="width: 100%;" onChange="get2(this.value)">
                        </select>
                 </div>
 
                 <div class="form-group">
                   <label>location</label>
-                       <select class="form-control select2 designation" name="location" id="designation" style="width: 100%;" >
+                       <select class="form-control select2 location" name="location" id="designation" style="width: 100%;" >
                        </select>
                         
                 </div>
@@ -970,7 +970,7 @@ $.ajax({
   url:'newcheck.php',
   data:'state='+val,
   success:function(html){
-    $('.designation').html(html);
+    $('.city').html(html);
   }
 });
   }
@@ -978,13 +978,13 @@ $.ajax({
 
 
 <script>
-  function get(val){
+  function get2(val){
 $.ajax({
   type:'POST',
   url:'newcheck.php',
   data:'city='+val,
   success:function(html){
-    $('.designation').html(html);
+    $('.location').html(html);
   }
 });
   }

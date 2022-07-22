@@ -30,11 +30,8 @@ if(isset($_POST['id'])){
         <textarea class="form-control" name="shop_address" id="shop_address" placeholder="Enter shop address">'.$arr['shop_address'].'</textarea>
   </div>
   <div class="form-row">
-  <div class="form-group col-md-6">
-    <h6>Shop Name</label>
-    <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Enter shop name" value="'.$arr['shop_name'].'">
-  </div>
-    <div class="form-group col-md-6">
+  
+    <div class="form-group col-md-12">
     <h6>Authorized Person Name</h6>
     <input type="text" class="form-control" value="'.$arr['authorized_person'].'" name="authorized_person" id="example1" placeholder="Enter autorized person name">
     <span id="spanpersonname"></span>
@@ -230,11 +227,7 @@ if(isset($_POST['compid'])){
         <textarea class="form-control" name="shop_address" id="shop_address" placeholder="Enter shop address">'.$arr['shop_address'].'</textarea>
   </div>
   <div class="form-row">
-  <div class="form-group col-md-6">
-    <h6>Shop Name</label>
-    <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Enter shop name" value="'.$arr['shop_name'].'">
-  </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
     <h6>Authorized Person Name</h6>
     <input type="text" class="form-control" value="'.$arr['authorized_person'].'" name="authorized_person" id="example1" placeholder="Enter autorized person name">
     <span id="spanpersonname"></span>
