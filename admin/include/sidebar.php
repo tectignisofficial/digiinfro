@@ -61,7 +61,7 @@
               <i class="far fa-circle nav-icon"></i>
               <p>Pending Approval</p>
              <span style="color:red;border: 2px solid white;border-radius:50%;background:white;padding: 0 2px;"> <?php
-                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NULL or authorized_person IS NULL or mobile_no IS NULL or whatsapp_no IS NULL or email IS NULL or services IS NULL or shop_act_license IS NULL or pan_card IS NULL or shop_name IS NULL or category IS NULL or image1 IS NULL or image2 IS NULL or image3 IS NULL or image4 IS NULL or city IS NULL or state IS NULL or location IS NULL or post IS NULL or description IS NULL or profile_img IS NULL;");
+                    $sql=mysqli_query($conn,"select * from `vendor` where shop_address IS NULL or location IS NULL or authorized_person IS NULL or mobile_no IS NULL or whatsapp_no IS NULL or email IS NULL or services IS NULL or shop_act_license IS NULL or pan_card IS NULL or shop_name IS NULL or category IS NULL or image1 IS NULL or image2 IS NULL or image3 IS NULL or image4 IS NULL or city IS NULL or state IS NULL or post IS NULL or description IS NULL or profile_img IS NULL;");
                     $count=$sql->num_rows;
                     echo $count;
                     ?>
