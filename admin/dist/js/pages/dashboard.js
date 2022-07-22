@@ -113,7 +113,7 @@ $(function () {
 
   /* Chart.js Charts */
   // Sales chart
-  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
+  var salesChartCanvas = document.getElementById('revenue-chart-canvas2').getContext('2d')
   // $('#revenue-chart').get(0).getContext('2d');
 
   var salesChartData = {
@@ -173,7 +173,7 @@ $(function () {
   })
 
   // Donut Chart
-  var pieChartCanvas = $('#sales-chart-canvas').get(0).getContext('2d')
+  var pieChartCanvas = $('#sales-chart-canvas2').get(0).getContext('2d')
   var pieData = {
     labels: [
       'Instore Sales',

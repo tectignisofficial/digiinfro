@@ -2,7 +2,7 @@
 <!-- Brand Logo -->
 <a href="index3.html" class="brand-link">
   <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-  <span class="brand-text font-weight-light">AdminLTE 3</span>
+  <span class="brand-text font-weight-light">Admin</span>
 </a>
 
 <!-- Sidebar -->
@@ -13,7 +13,7 @@
       <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-      <a href="#" class="d-block">Admin</a>
+      <a href="#" class="d-block">Digiinfro</a>
     </div>
   </div>
 
@@ -124,7 +124,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="services.php" class="nav-link">
+            <a href="service.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Services</p>
             </a>
@@ -135,12 +135,7 @@
               <p>Testimonial</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="offer.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Offer</p>
-            </a>
-          </li>
+          
         </ul>
       </li>
       <li class="nav-item">
@@ -196,64 +191,8 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-tree"></i>
-          <p>
-            Page
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="about.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>About</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="terms_and_conditions.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Terms & Condition</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="errorpage.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Error Page</p>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-edit"></i>
-          <p>
-            Location
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="state.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>State</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="city.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>City</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="location.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Location</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+     
+      
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-table"></i>
@@ -269,12 +208,7 @@
               <p>General Setting</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="blogsetting.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Blog</p>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a href="paymentaccount.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
@@ -293,43 +227,10 @@
               <p>Email Configuration</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="emailtemplate.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Email Template</p>
-            </a>
-          </li>
+          
         </ul>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon far fa-envelope"></i>
-          <p>
-           Blog
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="categoryblog.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="blog.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Blog</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="commentblog.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Comment</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+      
       <li class="nav-item">
         <a href="contact.php" class="nav-link">
           <i class="nav-icon fas fa-book"></i>
@@ -353,12 +254,7 @@
               <p> Subscriber</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="emailsubscriber.php" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Email with Subscriber</p>
-            </a>
-          </li>
+          
         </ul>
       </li>
         </ul>
