@@ -344,7 +344,7 @@ label{
                                             <input type="file" name="license">
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-4.png" alt="Image">
+                                                    <img src="assets/images/elements/input-1.png" alt="Image">
                                                     <span>Upload +</span>
 												</div>
 											</div>
@@ -356,7 +356,7 @@ label{
                                             <input type="file" name="pan">
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-4.png" alt="Image">
+                                                    <img src="assets/images/elements/input-3.png" alt="Image">
                                                     <span>Upload +</span>
 												</div>
 											</div>
