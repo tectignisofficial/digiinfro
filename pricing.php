@@ -77,7 +77,7 @@ include("admin/include/config.php");
                             <div class="page-title">
                                 <h1 class="title">Pricing Table</h1>
                                 <ul class="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li class="active">Pricing Table</li>
                                 </ul>
                             </div>
@@ -114,7 +114,7 @@ include("admin/include/config.php");
                                         <li>Always plan support</li>
                                         <li>Visualization premise</li>
                                     </ul>
-                                    <a href="pricing.html" class="main-btn icon-btn">Get Started</a>
+                                    <a href="pricing.php" class="main-btn icon-btn">Get Started</a>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@ include("admin/include/config.php");
                                         <li>Always plan support</li>
                                         <li>Visualization premise</li>
                                     </ul>
-                                    <a href="pricing.html" class="main-btn icon-btn">Get Started</a>
+                                    <a href="pricing.php" class="main-btn icon-btn">Get Started</a>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ include("admin/include/config.php");
                                         <li>Always plan support</li>
                                         <li>Visualization premise</li>
                                     </ul>
-                                    <a href="pricing.html" class="main-btn icon-btn">Get Started</a>
+                                    <a href="pricing.php" class="main-btn icon-btn">Get Started</a>
                                 </div>
                             </div>
                         </div>

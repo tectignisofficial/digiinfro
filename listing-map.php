@@ -52,7 +52,7 @@
                             <div class="page-title">
                                 <h1 class="title">Listing Map</h1>
                                 <ul class="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li class="active">Listing Map</li>
                                 </ul>
                             </div>
