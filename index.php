@@ -131,13 +131,13 @@ if(isset($_POST['searchlist'])){
         :root {
   --star-size: 60px;
   --star-color: #fff;
-  --star-background: #fc0;
+  --star-background: #ff344f;
 }
         .Stars {
   --percent: calc(var(--rating) / 5 * 100%);
   
   display: inline-block;
-  font-size: var(--star-size);
+  font-size: 24px;
   font-family: Times; // make sure ★ appears correctly
   line-height: 1;
 }
