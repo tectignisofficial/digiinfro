@@ -131,20 +131,36 @@ if(isset($_POST['searchlist'])){
         :root {
   --star-size: 60px;
   --star-color: #fff;
+  --star-colors: #676767;
   --star-background: #ff344f;
 }
         .Stars {
   --percent: calc(var(--rating) / 5 * 100%);
   
   display: inline-block;
-  font-size: 24px;
+  font-size: 22px;
   font-family: Times; // make sure ★ appears correctly
   line-height: 1;
 }
 .Stars:before {
     content: '★★★★★';
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .Stars1 {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block;
+  font-size: 22px;
+  font-family: Times; // make sure ★ appears correctly
+  line-height: 1;
+}
+  .Stars1:before {
+    content: '★★★★★';
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-colors) var(--percent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -277,17 +293,16 @@ if(isset($_POST['searchlist'])){
                                 <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $row['shop_code']; ?>"><?php echo $row['shop_name'] ?></a></h3>
                                 <div class="ratings">
                                     <ul class="ratings ratings-three">
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
-                                        <li class="star"><i class="flaticon-star-1"></i></li>
+                                        
                                         <?php
                                             $checkreview=$row['shop_code'];
-                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
-                                            $rfetch=mysqli_num_rows($rsql);
+                                            $rsql=mysqli_query($conn,"SELECT round(avg(`rating`),2) AS `average_rate`, count(`rating`) AS `num_of_rating`
+                                            FROM list_comment 
+                                            WHERE detail_id = '$checkreview'");
+                                            $arr2=mysqli_fetch_array($rsql);
                                             ?>
-                                        <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
+                                             <div class="Stars1" style="--rating: <?php echo $arr2['average_rate'] ?>;" aria-label="Rating of this product is 2.3 out of 5."></div>
+                                        <li><span><a href="#">(  <?php echo $arr2['num_of_rating'] ?> Reviews)</a></span></li>
                                     </ul>
                                 </div>
                               

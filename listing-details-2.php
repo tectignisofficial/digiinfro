@@ -14,8 +14,10 @@ if(isset($_POST['commentSubmit'])){
     $sql=mysqli_query($conn,"INSERT INTO `list_comment`(`name`, `email`, `message`, `detail_id`, `checkbox`, `date`,`rating`) VALUES ('$name','$email','$message','$comid','$checkbox','$date','$rating')");
   }
   $detailpen=$_GET['detailpen'];
-  $reviewsql=mysqli_query($conn,"select * from list_comment where detail_id='DIMSC0004'");
-  $reviewfetch=mysqli_num_rows($reviewsql);
+  $reviewsql=mysqli_query($conn,"SELECT round(avg(`rating`),2) AS `average_rate`, count(`rating`) AS `num_of_rating`
+  FROM list_comment 
+  WHERE detail_id = '$detailpen'");
+  $arr1=mysqli_fetch_array($reviewsql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -192,6 +194,28 @@ transform: rotateY(180deg);
 .pagination .active .fa-circle{
   color:#ff344f !important;
 }
+/* show star */
+:root {
+  --star-size: 60px;
+  --star-color: #fff;
+  --star-colors: #676767;
+  --star-background: #ff344f;
+}
+        .Stars1 {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block;
+  font-size: 22px;
+  font-family: Times; // make sure ★ appears correctly
+  line-height: 1;
+}
+  .Stars1:before {
+    content: '★★★★★';
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-colors) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
         </style>
     </head>
     <body>
@@ -231,12 +255,8 @@ transform: rotateY(180deg);
                                     <div class="col-md-8">
                                         <div class="listing-info-content">
                                             <ul class="ratings ratings-three">
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                                <li><span><a href="#">( <?php echo $reviewfetch; ?> Reviews)</a></span></li>
+                                            <div class="Stars1" style="--rating: <?php echo $arr1['average_rate'] ?>;" aria-label="Rating of this product is 2.3 out of 5."></div>
+                                                <li><span><a href="#">( <?php echo $arr1['num_of_rating'] ?> Reviews)</a></span></li>
                                             </ul>
                                             <h3 class="title"><?php echo $row['shop_name']; ?></h3>
                                             <div class="listing-meta">
