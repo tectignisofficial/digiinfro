@@ -128,6 +128,27 @@ if(isset($_POST['searchlist'])){
             background: url(assets/images/banner/<?php echo $arr['file'];?>) no-repeat center center;
             background-size: cover;
         }
+        :root {
+  --star-size: 60px;
+  --star-color: #fff;
+  --star-background: #fc0;
+}
+        .Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times; // make sure ★ appears correctly
+  line-height: 1;
+}
+.Stars:before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
     </style>
     <?php }  ?>
     </head>
@@ -467,7 +488,8 @@ if(isset($_POST['searchlist'])){
                 </div>
                 <div class="listing-slider-one">
                 <?php
-                        $query=mysqli_query($conn,"select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.morerating='1' limit 4");
+                        $query=mysqli_query($conn,"select * from vendor inner join listcategory on listcategory.name=vendor.category  where vendor.morerating='1' limit 4");
+                        
                         while($arr=mysqli_fetch_array($query)){
                         ?>
                     <div class="listing-item listing-grid-item-two">
@@ -476,21 +498,21 @@ if(isset($_POST['searchlist'])){
                             <a href="#" class="cat-btn"><i class="<?php echo $arr['icon'] ?>"></i></a>
                             <span class="featured-btn">Featured</span>
                             <ul class="ratings ratings-four">
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
-                                <li class="star"><i class="flaticon-star-1"></i></li>
+                            
                                 <?php
                                             $checkreview=$arr['shop_code'];
-                                            $rsql=mysqli_query($conn,"select * from list_comment where detail_id='$checkreview'");
-                                            $rfetch=mysqli_num_rows($rsql);
+                                            $rsql=mysqli_query($conn," SELECT round(avg(`rating`),2) AS `average_rate`, count(`rating`) AS `num_of_rating`
+                                            FROM list_comment 
+                                            WHERE detail_id = '$checkreview'");
+                                            $arr1=mysqli_fetch_array($rsql);
                                             ?>
-                                <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
+                                            <div class="Stars" style="--rating: <?php echo $arr1['average_rate'] ?>;" aria-label="Rating of this product is 2.3 out of 5."></div>
+                                           
+                                <li><span><a href="#">( <?php echo $arr1['num_of_rating'] ?> Reviews)</a></span></li>
                             </ul>
                         </div>
                         <div class="listing-content">
-                            <h3 class="title"><a href="listing-details-2.php"><?php echo $arr['shop_name'] ?></a></h3>
+                            <h3 class="title"><a href="listing-details-2.php?detailpen=<?php echo $arr['shop_code'] ?>"><?php echo $arr['shop_name'] ?></a></h3>
                             <p>Popular <?php echo $arr['category'] ?> in <?php echo $arr['city'] ?></p>
                             <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $arr['mobile_no'] ?></a><span class="status st-open">Open</span></span>
                             <div class="listing-meta">
