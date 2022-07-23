@@ -269,7 +269,7 @@ if(isset($_POST['searchlist'])){
                                         <li><span><a href="#">( <?php echo $rfetch; ?> Reviews)</a></span></li>
                                     </ul>
                                 </div>
-                                <span class="price">$05.00 - $80.00</span>
+                              
                                 <span class="phone-meta"><i class="ti-tablet"></i><a href="tel:+982653652-05"><?php echo $row['mobile_no'] ?></a></span>
                                 <div class="listing-meta">
                                     <ul>
