@@ -427,7 +427,7 @@ transform: rotateY(180deg);
                                                     <label for="star5"></label>
                                     </li>
                                     </ul>   
-                                            <span>( <?php echo $reviewfetch; ?> Reviews)</span>
+                                            <span>( <?php echo $arr1['num_of_rating'] ?> Reviews)</span>
                                         </div>
                                     </div>
                                 </div>
