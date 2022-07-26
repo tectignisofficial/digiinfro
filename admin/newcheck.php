@@ -194,9 +194,9 @@ body {
   <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
   <hr style="border:none;border-top:1px solid #eee" />
   <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-    <p>Your Brand Inc</p>
-    <p>1600 Amphitheatre Parkway</p>
-    <p>California</p>
+    <p>Tectignis It Solution</p>
+    <p>Ashiyaana, kamothe</p>
+    <p>Navi Mumbai</p>
   </div>
 </div>
 </div>
