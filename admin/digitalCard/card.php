@@ -663,7 +663,7 @@ body {top: 0px!important;}
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-            <img src="https://<?php echo $url ?>/admin/image/card_image/<?php echo $row['logo'] ?>" alt="Logo">
+            <img src="http://<?php echo $url ?>/admin/image/card_image/<?php echo $row['logo'] ?>" alt="Logo">
             
             </div>
             <div class="bottom-header">
