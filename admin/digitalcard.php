@@ -1,31 +1,6 @@
 <?php
 include("include/config.php");
-if(isset($_POST['digital'])){
-  $logo=$_FILES['logo']['name'];
-  $profile=$_FILES['profile']['name'];
-  $linkedin=$_POST['linkedin'];
-  $insta=$_POST['insta'];
-  $facebook=$_POST['facebook'];
-  $website=$_POST['website'];
-  $address=$_POST['address'];
-  $mobile_no=$_POST['mobile_no'];
-  $whatsapp_no=$_POST['whatsapp_no'];
-  $Post=$_POST['Post'];
-  $email=$_POST['email'];
-  $name=$_POST['name'];
 
-  move_uploaded_file($_FILES['logo']['tmp_name'],"image/card_image/".$logo);
-  move_uploaded_file($_FILES['profile']['tmp_name'],"image/card_image/".$profile);
-  $sql=mysqli_query($conn,"INSERT INTO `digitalcard`(`name`, `profile_img`, `email`, `post`, `whatsapp_no`, `mobile_no`, `address`, `website`, `facebook_link`, `instagram_link`, `linkedIn_link`, `logo`) VALUES ('$name','$profile','$email','$Post','$whatsapp_no','$mobile_no','$address','$website','$facebook','$insta','$linkedin','$logo')");
-  if($sql){
-      echo "<script>alert('Digital Card Added Successfully');</script>";
-      echo "<script>window.location.href='digitalcard.php';</script>";
-  }
-  else{
-      echo "<script>alert('Digital Card Not Added');</script>";
-      echo "<script>window.location.href='digitalcard.php';</script>";
-  }
-}
 if(isset($_GET['id'])){
   $id=$_GET['id'];
   $sql=mysqli_query($conn,"DELETE FROM `digitalcard` WHERE `id`='$id'");
@@ -246,7 +221,7 @@ if(isset($_POST['savedigitaleditsave'])){
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" action="newcheck.php">
         <div class="modal-body">
           <div class="form-group">
             <label for="email1">Name</label>
