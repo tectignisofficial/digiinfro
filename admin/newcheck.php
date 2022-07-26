@@ -152,13 +152,12 @@ if(isset($_POST['digital'])){
   $name=$_POST['name'];
 
   //email
-  $from = 'Enquiry <ceo@tectignis.in>';
-  $sendTo = 'Enquiry <'.$email.'>';
-  $subject = 'Digital Card';
-  $from = 'Digital Card ';
-  $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$from .= "Content-Type: multipart/mixed;"; 
-$from .= "boundary = $boundary\r\n";
+  $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
+$sendTo = 'Enquiry <'.$email.'>';
+$subject = 'Your OTP for Verification Email';
+// $fields = array( 'name' => 'name' );
+$from = 'Agreerent: 1.0' . "\r\n";
+$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 $emailText = '
 <html>
