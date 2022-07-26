@@ -1,6 +1,6 @@
 <?php
 include("../include/config.php");
-$url="http://".$_SERVER['SERVER_NAME'];
+include '../../url.php';
 
 $cardid=$_GET['cardid'];
 $sql=mysqli_query($conn,"select * from digitalcard where id='$cardid'");
@@ -687,7 +687,8 @@ body {top: 0px!important;}
                 <ul>
                     <li>
                         <div class="icon-single" id="hs-1">
-                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['name']; ?>%0A%20&amp;source=&amp;data=" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['name']; ?>%0A%20&amp;
+                            <?php echo $url ?>/admin/digitalCard/card.php?cardid=<?php echo $row['id'] ?>" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
                         </div>
                     </li>
                     <li>

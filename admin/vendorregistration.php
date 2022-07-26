@@ -1,4 +1,6 @@
-<?php include("include/config.php"); ?>
+<?php include("include/config.php"); 
+include '../url.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -900,7 +902,7 @@ ul.social li{
              <tr>
                    <td style="text-align: center;">
                        <div class="text-author">
-                           <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/"'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                           <img src="'.$url.'/admin/dist/img/vender_image/"'.$image.'" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
                            <h3 class="name">'.$shop_name.'</h3>
                            <span class="position">'.$shop_name.'</span>
                          <p>Client Code&nbsp;:&nbsp;<b>'.$shop_name.'</b><br>Username&nbsp;:&nbsp;<b>'.$email.'</b><br>Password&nbsp;:&nbsp;<b>'.$shop_name.'</b></p> 

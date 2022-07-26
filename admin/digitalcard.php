@@ -1,6 +1,6 @@
 <?php
 include("include/config.php");
-
+include '../url.php';
 if(isset($_GET['id'])){
   $id=$_GET['id'];
   $sql=mysqli_query($conn,"DELETE FROM `digitalcard` WHERE `id`='$id'");
@@ -174,7 +174,7 @@ if(isset($_POST['savedigitaleditsave'])){
                     <a href="digitalcard.php?id=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     <?php if($arr['status']==0){?>
                     <a href="https://api.whatsapp.com/send?phone=<?php echo $arr['mobile_no']; ?>&text=your digital card link here :
-                    http://demo.digiinfromatrics.com/admin/digitalcard.php" data-value="<?php echo $arr['id']; ?>" class="btn btn-info senddigi" target="_blank"><i class="fab fa-whatsapp"></i></a><?php } ?></td>
+                    <?php echo $url ?>/admin/digitalCard/card.php" data-value="<?php echo $arr['id']; ?>" class="btn btn-info senddigi" target="_blank"><i class="fab fa-whatsapp"></i></a><?php } ?></td>
                   </tr>
                   <?php $count++; } ?>
                   </tbody>

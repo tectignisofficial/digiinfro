@@ -1,5 +1,6 @@
 <?php
 include("../admin/include/config.php");
+include '../url.php';
 $cardid=$_GET['cardid'];
 $sql=mysqli_query($conn,"select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.shop_code='$cardid'");
 $row=mysqli_fetch_array($sql);
@@ -32,7 +33,7 @@ $row=mysqli_fetch_array($sql);
 <script src="http://commonfiles.visitingcardpro.com/js/bootbox.all.js"></script>
 <script src="http://commonfiles.visitingcardpro.com/js/lightbox.js"></script>
 <link rel="stylesheet" href="http://commonfiles.visitingcardpro.com/css/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
-<link rel="shortcut icon" href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" type="image/png">
+<link rel="shortcut icon" href="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" type="image/png">
         <meta name="og:title" content="Digiinfromatrics"/>
         <meta name="og:type" content="Digital Card"/>
         <meta name="og:url" content=""/>
@@ -668,11 +669,11 @@ body {top: 0px!important;}
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
+            <img src="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
             
             </div>
             <div class="bottom-header">
-                <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
+                <img src="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
                 <span>
                     <h4><?php echo $row['authorized_person']; ?></h4>
                     <address>
@@ -692,7 +693,8 @@ body {top: 0px!important;}
                 <ul>
                     <li>
                         <div class="icon-single" id="hs-1">
-                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['authorized_person']; ?>%0A%20&amp;source=&amp;data=" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['authorized_person']; ?>
+                            <?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code'] ?>" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
                         </div>
                     </li>
                     <li>
@@ -702,7 +704,7 @@ body {top: 0px!important;}
                     </li>
                     <!-- <li>
                         <div class="icon-single" id="hs-4">
-                            <a href="http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank" download><i class="fa fa-download"></i>
+                            <a href="<?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank" download><i class="fa fa-download"></i>
                             </a>
                         </div>
                     </li> -->
@@ -845,7 +847,7 @@ body {top: 0px!important;}
                     <?php }?>
                 </ul>
                 <hr>
-                <p class="text-center"><small><a href="http://demo.digiinfromatrics.com/" class="text-dark">Product by Digi Infromatics</a> |<a href="http://tec.tectignis.in/" class="text-dark"> Developed by Tectignis IT Solutions</a></small></p>
+                <p class="text-center"><small><a href="<?php echo $url ?>/" class="text-dark">Product by Digi Infromatics</a> |<a href="http://tec.tectignis.in/" class="text-dark"> Developed by Tectignis IT Solutions</a></small></p>
             </div>
         </div>
         </div>
@@ -863,13 +865,13 @@ body {top: 0px!important;}
                     <!-- Modal body -->
                     <div class="modal-body">
                         <ul class="share">
-                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
+                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=<?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
                             
-                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
-                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
+                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+<?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
+                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 <?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
                             
-                            <li><a href="http://www.facebook.com/sharer.php?u=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
-                            <li><a href="https://twitter.com/share?url=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
+                            <li><a href="http://www.facebook.com/sharer.php?u=<?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
+                            <li><a href="https://twitter.com/share?url=<?php echo $url ?>/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -916,16 +918,16 @@ body {top: 0px!important;}
             </button>
           </div>
           <div id="lazyLoadDiv" class="modal-body" style="max-height:500px; overflow-y:auto; overflow-x:hidden">
-            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
+            <a href="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="gallery image" width="466" height="311" class="img-fluid w-100 my-2">
                 <h4>Image 1 </h4>
             </a>
-            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
+            <a href="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image3'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                 <h4>Image 2 </h4>
             </a>
-            <a href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
-            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
+            <a href="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" data-toggle="lightbox" data-gallery="example-gallery">
+            <img src="<?php echo $url ?>/admin/dist/img/vender_image/<?php echo $row['image4'] ?>" alt="gallery image" width="170" height="170" class="img-fluid w-100 my-2">
                <h4>Image 3</h4>
             </a>
             
