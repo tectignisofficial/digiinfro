@@ -14,6 +14,7 @@ if(isset($_GET['id'])){
   }
 }
 
+
 if(isset($_POST['savedigitaleditsave'])){
   $logo=$_FILES['logo']['name'];
   $profile=$_FILES['profile']['name'];
@@ -170,13 +171,17 @@ if(isset($_POST['savedigitaleditsave'])){
                     <td>
                     <button class="btn btn-primary editshop" data-id="<?php echo $arr['id'] ?>"><i class="fa fa-edit"></i></button>
                     <a href="" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                    <a href="digitalcard.php?id=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <a href="digitalcard.php?id=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    <?php if($arr['status']==0){?>
+                    <a href="https://api.whatsapp.com/send?phone=<?php echo $arr['mobile_no']; ?>&text=your digital card link here :
+                    http://demo.digiinfromatrics.com/admin/digitalcard.php" data-value="<?php echo $arr['id']; ?>" class="btn btn-info senddigi" target="_blank"><i class="fab fa-whatsapp"></i></a><?php } ?></td>
                   </tr>
                   <?php $count++; } ?>
                   </tbody>
                   
                 </table>
               </div>
+             
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -355,7 +360,21 @@ $(document).ready(function(){
     }
   });
 });
+
 });
 </script>
+<script>
+$(".senddigi").click(function(){
+  $.ajax({
+    url:"newcheck.php",
+    type:"POST",
+    data:{
+      idwhatsapp:$(this).attr('data-value')
+    },
+    success:function(data){
+    }
+  });
+  })
+              </script>
 </body>
 </html>

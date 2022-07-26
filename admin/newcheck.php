@@ -1,8 +1,6 @@
 <?php
 include("include/config.php");
-
 if(isset($_POST['otp'])){
-
   
   $email=$_POST['email'];
   $name=$_POST['name'];
@@ -154,9 +152,9 @@ if(isset($_POST['digital'])){
   //email
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
 $sendTo = 'Enquiry <'.$email.'>';
-$subject = 'Your OTP for Verification Email';
+$subject = 'Digital card';
 // $fields = array( 'name' => 'name' );
-$from = 'Agreerent: 1.0' . "\r\n";
+$from = 'Tectignis It Solution : 1.0' . "\r\n";
 $from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 $emailText = '
@@ -191,7 +189,7 @@ body {
     <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Agreerent</a>
   </div>
   <p style="font-size:1.1em">Hi '.$name.'</p>
-  <p>Please enter below OTP to verify your Email id.</p>
+  <p>Link</p>
   <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">'.$email.'</h2>
   <p style="font-size:0.9em;">Regards,<br />Your Brand</p>
   <hr style="border:none;border-top:1px solid #eee" />
@@ -237,5 +235,16 @@ catch(\Exception $e){
     echo $responseArray['message'];    
     }
  
+}
+
+if(isset($_POST['idwhatsapp'])){
+  $idwhatsapp=$_POST['idwhatsapp'];
+  $sql=mysqli_query($conn,"UPDATE `digitalcard` SET `status`=1 WHERE `id`='$idwhatsapp'");
+  if($sql==1){
+echo "fdgfgfg";
+  }
+  else{
+    echo "not done";
+  }
 }
 ?>
