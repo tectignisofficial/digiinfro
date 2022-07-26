@@ -1,6 +1,6 @@
 <?php
 include("../include/config.php");
-$url=$_SERVER['SERVER_NAME'];
+$url="http://".$_SERVER['SERVER_NAME'];
 
 $cardid=$_GET['cardid'];
 $sql=mysqli_query($conn,"select * from digitalcard where id='$cardid'");
@@ -663,7 +663,7 @@ body {top: 0px!important;}
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-            <img src="http://<?php echo $url ?>/admin/image/card_image/<?php echo $row['logo'] ?>" alt="Logo">
+            <img src="<?php echo $url ?>/admin/image/card_image/<?php echo $row['logo'] ?>" alt="Logo">
             
             </div>
             <div class="bottom-header">
