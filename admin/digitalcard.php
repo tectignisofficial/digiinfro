@@ -274,12 +274,12 @@ if(isset($_POST['savedigitaleditsave'])){
             <input type="text" class="form-control" name="linkedin" id="linkedIn_link" placeholder="LinkedIn link">
           </div>
           <div class="form-group">
-            <label for="profile">Profile image</label>
-            <input type="file" name="profile" class="form-control" id="profile" placeholder="Logo">
-          </div>
-          <div class="form-group">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profile">Profile image</label>
+            <input type="file" name="profile" class="form-control" id="profile" placeholder="Logo">
           </div>
           <div class="form-group">
             <label for="logo">Logo</label>
