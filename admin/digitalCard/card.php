@@ -1,21 +1,16 @@
 <?php
-include("../admin/include/config.php");
+include("../include/config.php");
+$url=$_SERVER['SERVER_NAME'];
+
 $cardid=$_GET['cardid'];
-$sql=mysqli_query($conn,"select * from vendor inner join listcategory on listcategory.name=vendor.category where vendor.shop_code='$cardid'");
+$sql=mysqli_query($conn,"select * from digitalcard where id='$cardid'");
 $row=mysqli_fetch_array($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-        <script>
-  if (!location.hash) {
-    location.hash = "#0";
-    location.reload(true);
-  } else {
-    location.hash = "#1";
-  }
-</script>
+    
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
@@ -32,14 +27,14 @@ $row=mysqli_fetch_array($sql);
 <script src="http://commonfiles.visitingcardpro.com/js/bootbox.all.js"></script>
 <script src="http://commonfiles.visitingcardpro.com/js/lightbox.js"></script>
 <link rel="stylesheet" href="http://commonfiles.visitingcardpro.com/css/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css">
-<link rel="shortcut icon" href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" type="image/png">
+<link rel="shortcut icon" href="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['logo'] ?>" type="image/png">
         <meta name="og:title" content="Digiinfromatrics"/>
         <meta name="og:type" content="Digital Card"/>
         <meta name="og:url" content=""/>
         <meta property="og:image" content="dist/img/vender_image/<?php echo $row['profile_img'] ?>" />
         <meta name="og:site_name" content="AnnotationDigitalCard"/>
         <meta name="og:description" content="Digital Card of Chitalkar Bandhu"/>
-        <title><?php echo $row['authorized_person']; ?></title>
+        <title><?php echo $row['name']; ?></title>
         <style>
            .mb-0{
     margin-bottom:0;
@@ -668,13 +663,13 @@ body {top: 0px!important;}
         <div class="desktop-view">
         <div class="mobile"> 
             <div class="header">
-            <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['image1'] ?>" alt="Logo">
+            <img src="<?php echo $url ?>/admin/image/card_image/<?php echo $row['logo'] ?>" alt="Logo">
             
             </div>
             <div class="bottom-header">
-                <img src="http://demo.digiinfromatrics.com/admin/dist/img/vender_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
+                <img src="http://demo.digiinfromatrics.com/admin/image/card_image/<?php echo $row['profile_img'] ?>" alt="profile" onClick="hopscotch.startTour(tour,0)" style="cursor:pointer">
                 <span>
-                    <h4><?php echo $row['authorized_person']; ?></h4>
+                    <h4><?php echo $row['name']; ?></h4>
                     <address>
                     <?php echo $row['post']; ?>, <wbr/>
                         <i><?php echo $row['shop_name']; ?></i>
@@ -692,7 +687,7 @@ body {top: 0px!important;}
                 <ul>
                     <li>
                         <div class="icon-single" id="hs-1">
-                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['authorized_person']; ?>%0A%20&amp;source=&amp;data=" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=<?php echo $row['whatsapp_no']; ?>&amp;text=Hello%2C%20<?php echo $row['name']; ?>%0A%20&amp;source=&amp;data=" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
                         </div>
                     </li>
                     <li>
@@ -706,6 +701,8 @@ body {top: 0px!important;}
                             </a>
                         </div>
                     </li> -->
+
+
                     <li>
                         <div class="icon-single" id="hs-3">
                             <a href="https://goo.gl/maps/GzFpDi7fEnTe1htq9" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
@@ -771,7 +768,7 @@ body {top: 0px!important;}
                             </span>
                         </a>
                     </div>
-                    <?php if($row['email']!=""){ ?>
+                    <?php if($row['website']!=""){ ?>
                     <div style="width: 35%;">
                         <a href="<?php echo $row['website']; ?>" target="_blank">
                             <span>
@@ -836,12 +833,12 @@ body {top: 0px!important;}
             <div class="clearfix"></div>
             <div class="footer">
                 <ul>
-                <?php if($row['email']!=""){ ?>
-                    <li><a href="<?php echo $row['facebook']; ?>" target="_blank"><i class="fab fa-facebook-square fa-lg"></i></a></li>
-                    <?php } ?><?php if($row['email']!=""){ ?>
-                    <li><a href="<?php echo $row['instagram']; ?>" target="_blank"><i class="fab fa-instagram-square fa-lg"></i></a></li>
-                    <?php } ?> <?php if($row['email']!=""){ ?>
-                    <li><a href="<?php echo $row['LinkedIn']; ?>" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                <?php if($row['facebook_link']!=""){ ?>
+                    <li><a href="<?php echo $row['facebook_link']; ?>" target="_blank"><i class="fab fa-facebook-square fa-lg"></i></a></li>
+                    <?php } ?><?php if($row['instagram_link']!=""){ ?>
+                    <li><a href="<?php echo $row['instagram_link']; ?>" target="_blank"><i class="fab fa-instagram-square fa-lg"></i></a></li>
+                    <?php } ?> <?php if($row['linkedIn_link']!=""){ ?>
+                    <li><a href="<?php echo $row['linkedIn_link']; ?>" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
                     <?php }?>
                 </ul>
                 <hr>
@@ -863,13 +860,13 @@ body {top: 0px!important;}
                     <!-- Modal body -->
                     <div class="modal-body">
                         <ul class="share">
-                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
+                            <li class="show-alert"><a href="https://wa.me/whatsappphonenumber/?text=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['id']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/whatsapp.png" alt="wtsp"></a></li>
                             
-                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
-                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
+                            <li><a href="sms:?body=Here+is+the+Digital+Business+Card+of+Chitalkar+Bandhu+%0A+http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['id']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/message.png" alt="sms"></a></li>
+                            <li><a href="mailto:?subject= <?php echo $row['email']; ?>&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['id']; ?>"><img src="http://commonfiles.visitingcardpro.com/social_logos/email.png" alt="mail"></a></li>
                             
-                            <li><a href="http://www.facebook.com/sharer.php?u=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
-                            <li><a href="https://twitter.com/share?url=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['shop_code']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
+                            <li><a href="http://www.facebook.com/sharer.php?u=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['id']; ?>" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/facebook.png" alt="fb"></a></li>
+                            <li><a href="https://twitter.com/share?url=http://demo.digiinfromatrics.com/card/card.php?cardid=<?php echo $row['id']; ?>&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><img src="http://commonfiles.visitingcardpro.com/social_logos/twitter.png" alt="twtr"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -891,7 +888,7 @@ body {top: 0px!important;}
             </button>
           </div>
           <div class="modal-body">
-            <p><strong><span><?php echo $row['authorized_person']; ?></span></strong>,<?php echo $row['description']; ?></p></strong>
+            <p><strong><span><?php echo $row['name']; ?></span></strong>,<?php echo $row['description']; ?></p></strong>
           </div>
         </div>
       </div>

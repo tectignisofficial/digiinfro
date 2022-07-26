@@ -552,7 +552,7 @@ let validenqName;
 
 if(isset($_POST['subit'])){
 
-  $category=$_POST['category'];
+$category=$_POST['category'];
 $shop_name=$_POST['shop_name'];
 $shop_address=$_POST['shop_address'];
 $authorized_person=$_POST['authorized_person'];

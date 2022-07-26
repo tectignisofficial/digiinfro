@@ -170,7 +170,7 @@ if(isset($_POST['savedigitaleditsave'])){
                     <td><?php echo $arr['email'];?></td>
                     <td>
                     <button class="btn btn-primary editshop" data-id="<?php echo $arr['id'] ?>"><i class="fa fa-edit"></i></button>
-                    <a href="" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                    <a href="digitalCard/card.php?cardid=<?php echo $arr['id']; ?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
                     <a href="digitalcard.php?id=<?php echo $arr['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     <?php if($arr['status']==0){?>
                     <a href="https://api.whatsapp.com/send?phone=<?php echo $arr['mobile_no']; ?>&text=your digital card link here :
@@ -250,6 +250,10 @@ if(isset($_POST['savedigitaleditsave'])){
             <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Mobile no">
           </div>
           <div class="form-group">
+            <label for="mobile_no">Shop Name</label>
+            <input type="text" class="form-control" id="shop_name" name="shop_name" placeholder="Shop Name">
+          </div>
+          <div class="form-group">
             <label for="address">Address</label>
             <input type="text" class="form-control" id="address" name="address" placeholder="Address">
           </div>
@@ -272,6 +276,10 @@ if(isset($_POST['savedigitaleditsave'])){
           <div class="form-group">
             <label for="profile">Profile image</label>
             <input type="file" name="profile" class="form-control" id="profile" placeholder="Logo">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
           </div>
           <div class="form-group">
             <label for="logo">Logo</label>

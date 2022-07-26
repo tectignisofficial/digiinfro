@@ -148,6 +148,8 @@ if(isset($_POST['digital'])){
   $Post=$_POST['Post'];
   $email=$_POST['email'];
   $name=$_POST['name'];
+  $shop_name=$_POST['shop_name'];
+  $description=$_POST['description'];
 
   //email
   $from = 'Enquiry <ceo@tectignis.in>' . "\r\n";
@@ -209,10 +211,10 @@ try{
       $emailText.="$fields[$key]: $value\n";
     }
    }
-   if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+   if(mail($sendTo,$subject,$emailText, "From:" .$from)){
     move_uploaded_file($_FILES['logo']['tmp_name'],"image/card_image/".$logo);
     move_uploaded_file($_FILES['profile']['tmp_name'],"image/card_image/".$profile);
-    $sql=mysqli_query($conn,"INSERT INTO `digitalcard`(`name`, `profile_img`, `email`, `post`, `whatsapp_no`, `mobile_no`, `address`, `website`, `facebook_link`, `instagram_link`, `linkedIn_link`, `logo`) VALUES ('$name','$profile','$email','$Post','$whatsapp_no','$mobile_no','$address','$website','$facebook','$insta','$linkedin','$logo')");
+    $sql=mysqli_query($conn,"INSERT INTO `digitalcard`(`name`, `profile_img`, `email`, `post`, `whatsapp_no`, `mobile_no`, `address`, `website`, `facebook_link`, `instagram_link`, `linkedIn_link`, `logo`,`shop_name`,`description`) VALUES ('$name','$profile','$email','$Post','$whatsapp_no','$mobile_no','$address','$website','$facebook','$insta','$linkedin','$logo','$shop_name','$description')");
     if($sql){
         echo "<script>alert('Digital Card Added Successfully');</script>";
         echo "<script>window.location.href='digitalcard.php';</script>";
