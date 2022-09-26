@@ -241,15 +241,15 @@ label{
                                             </select> 
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <!-- <div class="col-lg-12">
                                         <div class="form_group" style="text-align:center">
                                         <button class="main-btn" type ="button" id="otp">Get OTP</button>
 
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <div class="add-listing-form details-listing-form mb-60 getotp">
+                            <!-- <div class="add-listing-form details-listing-form mb-60 getotp">
                                 <h4 class="title">OTP</h4>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -259,7 +259,7 @@ label{
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="add-listing-form details-listing-form mb-60">
                                 <h4 class="title">Social Media</h4>
                                 <div class="row">
