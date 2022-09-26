@@ -1,5 +1,7 @@
 
 <?php include("admin/include/config.php"); 
+$detailpen=$_GET['detailpen'];
+echo $detailpen;
 if(isset($_POST['commentSubmit'])){
 
     $message=$_POST['message'];
@@ -13,7 +15,7 @@ if(isset($_POST['commentSubmit'])){
   
     $sql=mysqli_query($conn,"INSERT INTO `list_comment`(`name`, `email`, `message`, `detail_id`, `checkbox`, `date`,`rating`) VALUES ('$name','$email','$message','$comid','$checkbox','$date','$rating')");
   }
-  $detailpen=$_GET['detailpen'];
+  
   $reviewsql=mysqli_query($conn,"SELECT round(avg(`rating`),2) AS `average_rate`, count(`rating`) AS `num_of_rating`
   FROM list_comment 
   WHERE detail_id = '$detailpen'");
@@ -23,6 +25,7 @@ if(isset($_POST['commentSubmit'])){
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
+        <base href="http://localhost/digiinfro/">
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <?php
@@ -298,6 +301,7 @@ transform: rotateY(180deg);
                                     </div>
                                 </div>
                             </div>
+                            <?php echo $detailpen; ?>
                             <div class="listing-thumbnail mb-30">
                                 <img src="admin/dist/img/vender_image/<?php echo $row['image2'] ?>" alt="listing image" width="770" height="500">
                             </div>
