@@ -291,10 +291,12 @@ label{
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
-                                            <input type="file" name="img" accept="image/png,image/jpeg,,image/jpg">
+                                        <input class="form-control" type='file' name="img" accept='image/*'  onchange="readURL(this)" >
+                                            <!-- <input type="file" name="img" accept="image/png,image/jpeg,,image/jpg"> -->
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image">
+                                                    <img src="assets/images/elements/input-1.png" alt="Image" style="width:70px;height:100px;"
+                                                    class="img">
                                                     <span>Logo +</span>
 												</div>
 											</div>
@@ -302,10 +304,10 @@ label{
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
-                                            <input type="file" name="img2" accept="image/png, image/jpeg" >
+                                            <input type="file" name="img2" accept="image/png, image/jpeg" onchange="readURL1(this)">
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image">
+                                                    <img src="assets/images/elements/input-1.png" alt="Image"  class="img1" style="width:70px;height:100px;">
                                                     <span>Image +</span>
 												</div>
 											</div>
@@ -313,10 +315,10 @@ label{
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
-                                            <input type="file" name="img3" accept="image/png, image/jpeg" >
+                                        <input class="form-control" type='file' name="img3" accept='image/*'  onchange="readURL2(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image">
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img2" style="width:70px;height:100px;">
                                                     <span>Image +</span>
 												</div>
 											</div>
@@ -324,10 +326,10 @@ label{
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
-                                            <input type="file" name="img4">
+                                        <input class="form-control" type='file' name="img4" accept='image/*'  onchange="readURL3(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image">
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img3" style="width:70px;height:100px;">
                                                     <span>Image +</span>
 												</div>
 											</div>
@@ -341,10 +343,11 @@ label{
                                     <div class="col-lg-6">
                                     <p>Shop Act License</p>
                                         <div class="form_group file-input-two">
-                                            <input type="file" name="license">
+                                        <input class="form-control" type='file' name="license" accept='image/*'  onchange="readURL4(this)" >
+                                           
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image">
+                                                    <img src="assets/images/elements/input-1.png" alt="Image" class="license" style="width:100px;height:50px;">
                                                     <span>Upload +</span>
 												</div>
 											</div>
@@ -353,10 +356,10 @@ label{
                                     <div class="col-lg-6">
                                     <p>Pan Card</p>
                                         <div class="form_group file-input-two">
-                                            <input type="file" name="pan">
+                                        <input class="form-control" type='file' name="pan" accept='image/*'  onchange="readURL5(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image">
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="pan" style="width:100px;height:50px;">
                                                     <span>Upload +</span>
 												</div>
 											</div>
@@ -983,6 +986,73 @@ else{
  }
 ?>
 <script src="/path/to/bootstrap-material-datetimepicker.js"></script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".img").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+
+  function readURL1(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".img1").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+
+  function readURL2(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".img2").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+
+  function readURL3(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".img3").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+
+  function readURL4(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".license").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+
+  function readURL5(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) { 
+        document.querySelector(".pan").setAttribute("src",e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); 
+    }
+  }
+  </script>
 <script>$('#time').bootstrapMaterialDatePicker({ date: false });</script>
     </body>
 </html>
