@@ -3,6 +3,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^detailpen/([^/\.]+)/([^/.]+)?$ listing-details-2.php?detailpen=$1
+
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
