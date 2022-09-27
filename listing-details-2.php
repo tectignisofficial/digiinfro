@@ -25,7 +25,7 @@ if(isset($_POST['commentSubmit'])){
 <html lang="en">
     <head>
         <!--====== Required meta tags ======-->
-        <base href="http://localhost/digiinfro/">
+        <base href="http://localhost/digiinfro/listing-details-2.php">
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <?php
