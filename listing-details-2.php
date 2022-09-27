@@ -1,6 +1,6 @@
 
 <?php include("admin/include/config.php"); 
-$detailpen=$_GET['detailpen'];
+
 if(isset($_POST['commentSubmit'])){
 
     $message=$_POST['message'];
