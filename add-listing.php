@@ -295,45 +295,50 @@ label{
                                             <!-- <input type="file" name="img" accept="image/png,image/jpeg,,image/jpg"> -->
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image" style="width:70px;height:100px;"
+                                                    <img src="assets/images/elements/input-1.png" alt="Image" style="width:80px;height:120px;"
                                                     class="img">
-                                                    <span>Logo +</span>
+                                                    
 												</div>
 											</div>
                                         </div>
+                                        <span>Logo +</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
                                             <input type="file" name="img2" accept="image/png, image/jpeg" onchange="readURL1(this)">
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image"  class="img1" style="width:70px;height:100px;">
-                                                    <span>Image +</span>
+                                                    <img src="assets/images/elements/input-1.png" alt="Image"  class="img1" style="width:80px;height:120px;">
+                                                    
 												</div>
 											</div>
+                                            
                                         </div>
+                                        <span>Image +</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
                                         <input class="form-control" type='file' name="img3" accept='image/*'  onchange="readURL2(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img2" style="width:70px;height:100px;">
-                                                    <span>Image +</span>
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img2" style="width:80px;height:120px;">
+                                                   
 												</div>
 											</div>
                                         </div>
+                                        <span>Image +</span>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form_group file-input-one">
                                         <input class="form-control" type='file' name="img4" accept='image/*'  onchange="readURL3(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img3" style="width:70px;height:100px;">
-                                                    <span>Image +</span>
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="img3" style="width:80px;height:120px;">
+                                                   
 												</div>
 											</div>
                                         </div>
+                                        <span>Image +</span>
                                     </div>
                                 </div>
                             </div>
@@ -347,11 +352,12 @@ label{
                                            
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-1.png" alt="Image" class="license" style="width:100px;height:50px;">
-                                                    <span>Upload +</span>
+                                                    <img src="assets/images/elements/input-1.png" alt="Image" class="license" style="width:130px;height:50px;">
+                                                   
 												</div>
 											</div>
                                         </div>
+                                        <span>Upload +</span>
                                     </div>    
                                     <div class="col-lg-6">
                                     <p>Pan Card</p>
@@ -359,11 +365,12 @@ label{
                                         <input class="form-control" type='file' name="pan" accept='image/*'  onchange="readURL5(this)" >
                                             <div class="upload-content">
 												<div class="upload-title-icon d-flex align-items-center justify-content-center">
-                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="pan" style="width:100px;height:50px;">
-                                                    <span>Upload +</span>
+                                                    <img src="assets/images/elements/input-3.png" alt="Image" class="pan" style="width:130px;height:50px;">
+                                                    
 												</div>
 											</div>
                                         </div>
+                                        <span>Upload +</span>
                                     </div>
                                 </div>
                             </div>
