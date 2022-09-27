@@ -270,7 +270,7 @@ include("admin/include/config.php");
                                     </div>
                                 </div>
                                 <div class="listing-content">
-                                    <h3 class="title"><a href="listing-details-2/<?php echo $row['shop_code']; ?>"><?php echo $row['shop_name'] ?></a></h3>
+                                    <h3 class="title"><a href="listing-details-2.php/<?php echo $row['shop_code']; ?>"><?php echo $row['shop_name'] ?></a></h3>
                                     <div class="ratings">
                                         <ul class="ratings ratings-three">
                                            
