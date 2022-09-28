@@ -124,7 +124,7 @@ include("admin/include/config.php");
                                                 <option value="08">Thailand</option>
                                             </select>
                                         </div>
-                                        <div class="form_group">
+                                        <!-- <div class="form_group">
                                             <select class="wide">
                                                 <option data-dsplay="By place">By place</option>
                                                 <option value="01">Dhaka</option>
@@ -136,7 +136,7 @@ include("admin/include/config.php");
                                                 <option value="07">Bern</option>
                                                 <option value="08">Bangkok</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="price-range-widget">
                                         <h4 class="widget-title">Around Distance: 50 km</h4>
