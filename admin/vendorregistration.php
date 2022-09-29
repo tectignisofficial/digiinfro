@@ -618,21 +618,21 @@ $profileimage=$_FILES['profileimage']['name'];
 $tmp_name = $_FILES['pprofileimagean']['tmp_name']; 
 $loc6="dist/img/vender_image/".basename($profileimage);
 
-$otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
-$otprow=mysqli_fetch_assoc($otpsql);
-$otp=$otprow['otp'];
-if($veriotp == ""){
- echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
-}else{
-if($otp==$veriotp){
+// $otpsql=mysqli_query($conn,"SELECT * FROM otp where email='$email'");
+// $otprow=mysqli_fetch_assoc($otpsql);
+// $otp=$otprow['otp'];
+// if($veriotp == ""){
+//  echo "<script>swal('oops..','please Verify your email first then submit','error');</script>";
+// }else{
+// if($otp==$veriotp){
 
-if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
- echo "<script>swal('oops','please fill all the fields','success');</script>";
+// if($category == "" || $shop_name == "" || $shop_address== "" || $authorized_person=="" || $mobile_no == "" || $whatsapp_no == "" || $city=="" || $state=="" || $email=="" || $location=="" || $services==""){
+//  echo "<script>swal('oops','please fill all the fields','success');</script>";
 
-}
- move_uploaded_file($tmp_name, $loc);
+// }
+//  move_uploaded_file($tmp_name, $loc);
 
-$imgEncoded = base64_encode(file_get_contents($tmp_name));
+// $imgEncoded = base64_encode(file_get_contents($tmp_name));
 
 //   $loc="dist/img/";
 
@@ -922,13 +922,13 @@ $imgEncoded = base64_encode(file_get_contents($tmp_name));
 // </body>
 // </html>';
 
-try{
-foreach($_POST as $key => $value){
- if(isset($fields[$key])){
-   $emailText.="$fields[$key]: $value\n";
- }
-}
-if( mail($sendTo,$subject,$emailText, "From:" .$from)){
+// try{
+// foreach($_POST as $key => $value){
+//  if(isset($fields[$key])){
+//    $emailText.="$fields[$key]: $value\n";
+//  }
+// }
+// if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
 $sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`,  `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `end_mon`, `end_tue`, `end_wed`, `end_thur`, `end_fri`, `end_sat`, `end_sun`, `post`, `description`, `profile_img`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state','$monopen','$tueopen','$wedopen','$thuropen','$friopen','$satopen','$sunopen','$endmon','$endtue','$endwed','$endthur','$endfri','$endsat','$endsun','$Post','$description','$profileimage')");
 if($sql=1){
@@ -936,13 +936,13 @@ if($sql=1){
 else{
   echo "<script>swal('error','Something Wrong','error');</script>";
 }
-}else{
- echo "eeee $sendTo $subject $emailText $from";
-}
-}
-catch(\Exception $e){
-echo "not done";
-}
+// }else{
+//  echo "eeee $sendTo $subject $emailText $from";
+// }
+// }
+// catch(\Exception $e){
+// echo "not done";
+// }
 // if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 // $encode=json_encode($responseArray);
 // header('content-Type: application/json');
@@ -957,7 +957,7 @@ echo "not done";
 // echo "<script>swal('oops...','Invalid Otp','warning');</script>";
 // }
 // }
-// }
+ }
 ?>
 
 
