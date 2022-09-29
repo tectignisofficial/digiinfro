@@ -153,7 +153,7 @@ include('include/sidebar.php');
             <span id="spanemail"></span>
                                         </div>
                                     </div> -->
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
                                         <input type="text" class="form-control mt-2 col-lg-6" name="veriotp" id="veriotp" >
@@ -161,7 +161,7 @@ include('include/sidebar.php');
                                         ?>
                                         <p style="color:red;font-size:12px;width:100%;margin-left:17%">Enter OTP sent to your registered email id</p>
                                      </div>
-                                    </div>
+                                    </div> -->
                                    
                                    
                   
