@@ -137,7 +137,7 @@ include('include/sidebar.php');
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                   </div> -->
 
-                  <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
+                  <!-- <label for="exampleemail" class="col-sm-2 col-form-label">Email ID<label
                                                 style="color:Red">*</label></label>
 
                   <div class="form-group row">
@@ -152,7 +152,7 @@ include('include/sidebar.php');
             </div>
             <span id="spanemail"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                     <div class="collapse multi-collapse row" id="multiCollapseExample1">
                                         <label for="examplepan" class="col-sm-2 ml-1 col-form-label"></label>
