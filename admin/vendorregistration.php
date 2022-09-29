@@ -523,7 +523,7 @@ let validenqName;
 
 
 
-      <script>
+      <!-- <script>
         $(document).ready(function(){
 
             $("#otp").on("click", function () {
@@ -548,7 +548,7 @@ let validenqName;
                 });
             });
         });
-    </script>
+    </script> -->
 
 <?php
 
@@ -562,7 +562,7 @@ $mobile_no=$_POST['mobile_no'];
 $whatsapp_no=$_POST['whatsapp_no'];
 $city=$_POST['city'];
 $state=$_POST['state'];
-$email=$_POST['email'];
+// $email=$_POST['email'];
 $website=$_POST['website'];
 $services=$_POST['services'];
 $facebook=$_POST['facebook'];
@@ -930,7 +930,7 @@ foreach($_POST as $key => $value){
 }
 if( mail($sendTo,$subject,$emailText, "From:" .$from)){
 
-$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`, `email`, `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `end_mon`, `end_tue`, `end_wed`, `end_thur`, `end_fri`, `end_sat`, `end_sun`, `post`, `description`, `profile_img`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$email','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state','$monopen','$tueopen','$wedopen','$thuropen','$friopen','$satopen','$sunopen','$endmon','$endtue','$endwed','$endthur','$endfri','$endsat','$endsun','$Post','$description','$profileimage')");
+$sql=mysqli_query($conn,"INSERT INTO `vendor`(`shop_name`, `category`, `shop_address`, `authorized_person`, `mobile_no`, `whatsapp_no`,  `services`,`website`, `facebook`, `instagram`, `LinkedIn`, `youtube`,`status`,`shop_act_license`,`video`,`pan_card`,`action`,`image1`,`image2`,`image3`,`image4`,`location`,`city`,`state`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `end_mon`, `end_tue`, `end_wed`, `end_thur`, `end_fri`, `end_sat`, `end_sun`, `post`, `description`, `profile_img`) VALUES ('$shop_name','$category','$shop_address','$authorized_person','$mobile_no','$whatsapp_no','$services','$website','$facebook','$instagram','$linkedin','$youtube','$status','$license','$video','$pan','$action','$image','$image1','$image2','$image3','$location','$city','$state','$monopen','$tueopen','$wedopen','$thuropen','$friopen','$satopen','$sunopen','$endmon','$endtue','$endwed','$endthur','$endfri','$endsat','$endsun','$Post','$description','$profileimage')");
 if($sql=1){
   echo "<script>swal('success','vendor Registered Successfully','success');</script>";    }
 else{
