@@ -189,7 +189,7 @@ if(isset($_POST['listcate53']))
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Banner</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -240,7 +240,7 @@ if(isset($_POST['listcate53']))
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item active">Banner</li>
               </ol>
             </div><!-- /.col -->
