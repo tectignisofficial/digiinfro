@@ -126,7 +126,7 @@ include("include/sidebar.php");
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <<?php include"include/footer.php" ?>
+  <?php include"include/footer.php" ?>
 
 
   <!-- Control Sidebar -->
