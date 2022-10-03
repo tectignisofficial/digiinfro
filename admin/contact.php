@@ -132,7 +132,8 @@ $sql=mysqli_query($conn,"DELETE FROM contact WHERE Id='$del'");
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php include"include/sidebar.php" ?>
+  <<?php include"include/footer.php" ?>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
