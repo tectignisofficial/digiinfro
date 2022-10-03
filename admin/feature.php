@@ -43,7 +43,7 @@ if(isset($_POST['submit']))
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Feature</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -99,7 +99,7 @@ if(isset($_POST['submit']))
             </div>
             <div class="col-sm-10">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item active">Feature Table</li>
               </ol>
             </div>
