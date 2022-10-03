@@ -1012,7 +1012,7 @@ if(isset($_POST['listcate53']))
 
     </div>
     <!-- /.content-wrapper -->
-    <?php include("include/footer.php")?>
+    <?php include("include/footer.php");?>
 
 
     <!-- Control Sidebar -->

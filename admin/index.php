@@ -298,7 +298,8 @@ $emailcfull=mysqli_num_rows($emailc);
 
 
     <!-- Control Sidebar -->
-    <?php include"include/footer.php" ?>
+    <?php include("include/footer.php"); ?>
+
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->

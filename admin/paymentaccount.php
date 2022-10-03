@@ -155,7 +155,8 @@ include"include/config.php";
 
 
   <!-- Control Sidebar -->
-     <?php include"include/footer.php" ?>
+  <?php include("include/footer.php"); ?>
+
 
   <!-- /.control-sidebar -->
 </div>
